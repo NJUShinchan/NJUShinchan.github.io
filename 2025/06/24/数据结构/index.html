@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>数据结构 | NJUShinchan&#39;s Blog</title>
+    <meta name="author" content="Yonghong Lin" />
+    <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NJUSHINCHAN&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NJUSHINCHAN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>数据结构</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/24
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>数据结构的C++实现</p>
+<span id="more"></span>
+
+<h1 id="第一章-数据结构概论"><a href="#第一章-数据结构概论" class="headerlink" title="第一章 数据结构概论"></a>第一章 数据结构概论</h1><h2 id="1-1数据结构的概念"><a href="#1-1数据结构的概念" class="headerlink" title="1.1数据结构的概念"></a>1.1数据结构的概念</h2><h3 id="1-1-1数据与数据结构"><a href="#1-1-1数据与数据结构" class="headerlink" title="1.1.1数据与数据结构"></a>1.1.1数据与数据结构</h3><p>1.数据是信息的载体，是描述客观事物的数与字符，以及所有能输入到计算机并被计算机程序识别和处理的符号的集合。</p>
+<p>2.分为数值性数据和非数值性数据</p>
+<p>3.数据的基本单位为数据元素，一个数据元素又可以由若干个数据项组成</p>
+<p>4.数据项分为初等项和组合项</p>
+<p>初等项——在数据处理时不能再分割的最小单位 如学生的性别</p>
+<p>组合项——可以再划分为更小的项 如成绩（-&gt;物理，化学…）</p>
+<p>5.数据元素之间的关系称为结构</p>
+<p>6.数据结构由某一数据元素的集合和该集合中数据元素之间的关系组成，记为Data_Structure&#x3D;{D,R}</p>
+<p>即数据结构&#x3D;data+relationship</p>
+<h3 id="1-1-2-数据结构的分类"><a href="#1-1-2-数据结构的分类" class="headerlink" title="1.1.2 数据结构的分类"></a>1.1.2 数据结构的分类</h3><h4 id="一-线性结构（线性表）"><a href="#一-线性结构（线性表）" class="headerlink" title="一.线性结构（线性表）"></a>一.线性结构（线性表）</h4><p>所有数据元素都按某种次序排列在一个序列中</p>
+<p>根据线性结构中数据元素的存取方法不同，可分为：</p>
+<p>1.直接存取结构：可以直接存取某一指定项而不须先访问其前驱 如数组文件</p>
+<p>2.顺序存取结构：只能从序列中的第一个元素起，按序逐个访问直到指定的元素 如栈，队列，优先级队列</p>
+<p>3.字典：通过关键码（key）进行索引</p>
+<h4 id="二-非线性结构"><a href="#二-非线性结构" class="headerlink" title="二.非线性结构"></a>二.非线性结构</h4><p>各个数据元素不再保持在一个线性序列中，每个数据元素可能与零个或多个其他数据元素发生联系</p>
+<p>根据关系的不同，可分为：</p>
+<p>1.层次结构：按层次划分 如树</p>
+<p>2.群结构：所有元素之间无顺序关系 如集合，图，网络（一种特殊的图的形式，边被赋予权重）</p>
+<h3 id="1-1-3-数据结构课程的内容"><a href="#1-1-3-数据结构课程的内容" class="headerlink" title="1.1.3 数据结构课程的内容"></a>1.1.3 数据结构课程的内容</h3><h4 id="一-如何选择数据结构"><a href="#一-如何选择数据结构" class="headerlink" title="一.如何选择数据结构"></a>一.如何选择数据结构</h4><p>步骤：1.分析问题，确定算法遇到的资源限制（内外存空间限制和执行时间限制）</p>
+<p>2.确定必须支持的基本运算，度量每个运算所受到的资源限制。基本运算包括插入、删除和查找</p>
+<p>3.选择最接近这些资源开销的数据结构</p>
+<p>贯彻以数据为中心的设计观点</p>
+<h4 id="二-课程内容体系"><a href="#二-课程内容体系" class="headerlink" title="二.课程内容体系"></a>二.课程内容体系</h4><h4 id="三-数据结构的核心技术"><a href="#三-数据结构的核心技术" class="headerlink" title="三.数据结构的核心技术"></a>三.数据结构的核心技术</h4><p>分解与抽象</p>
+<p>通过分解划分出数据的层次（数据-数据元素-数据项）；再通过抽象，舍弃数据元素的具体内容，得到数据结构的逻辑结构。类似地，通过分解将处理要求划分为各种功能，再通过抽象舍弃实现细节得到运算定义。</p>
+<h4 id="四-数据的逻辑结构与物理结构"><a href="#四-数据的逻辑结构与物理结构" class="headerlink" title="四.数据的逻辑结构与物理结构"></a>四.数据的逻辑结构与物理结构</h4><h5 id="1-逻辑结构"><a href="#1-逻辑结构" class="headerlink" title="1.逻辑结构"></a>1.逻辑结构</h5><p>指从解决问题的需要出发，为实现必要的功能建立的数据结构，属于用户的视图，面向问题</p>
+<h5 id="2-物理结构"><a href="#2-物理结构" class="headerlink" title="2.物理结构"></a>2.物理结构</h5><p>指数据应该如何存在在计算机中，是数据逻辑结构的物理存储方式，是属于具体实现的视图，面向计算机，是逻辑数据的存储映像</p>
+<h4 id="五-数据结构的存储结构"><a href="#五-数据结构的存储结构" class="headerlink" title="五.数据结构的存储结构"></a>五.数据结构的存储结构</h4><h5 id="1-顺序存储方法"><a href="#1-顺序存储方法" class="headerlink" title="1.顺序存储方法"></a>1.顺序存储方法</h5><p>把逻辑上相邻的数据元素放到物理位置上相邻的存储单元中</p>
+<h5 id="2-链接存储方法"><a href="#2-链接存储方法" class="headerlink" title="2.链接存储方法"></a>2.链接存储方法</h5><p>元素之间的逻辑关系由附加的指针来指示</p>
+<h5 id="3-索引存储方法"><a href="#3-索引存储方法" class="headerlink" title="3.索引存储方法"></a>3.索引存储方法</h5><p>在存储元素信息的同时建立索引表，索引表中的每一项称为索引项（（关键码，地址））</p>
+<p>稠密索引：每个结点在索引表中都有一个索引项，索引项中的地址指示结点所在的物理位置</p>
+<p>稀疏索引：一组相邻的结点在索引表中只有一个索引项，索引项中的地址指示一组相邻结点的起始存储位置</p>
+<h5 id="4-散列存储方法"><a href="#4-散列存储方法" class="headerlink" title="4.散列存储方法"></a>4.散列存储方法</h5><p>根据结点的关键码通过一个函数计算直接得到该结点的存储地址</p>
+<h2 id="1-2-数据结构的抽象形式"><a href="#1-2-数据结构的抽象形式" class="headerlink" title="1.2 数据结构的抽象形式"></a>1.2 数据结构的抽象形式</h2><h3 id="1-2-1数据类型"><a href="#1-2-1数据类型" class="headerlink" title="1.2.1数据类型"></a>1.2.1数据类型</h3><h4 id="1-类型"><a href="#1-类型" class="headerlink" title="1.类型"></a>1.类型</h4><p>一组值的集合</p>
+<h4 id="2-类型分类"><a href="#2-类型分类" class="headerlink" title="2.类型分类"></a>2.类型分类</h4><p>原子类型：无法再分割的整体 如一个整数、浮点数、字符、指针、枚举量</p>
+<p>结构类型：由原子类型按照一定的规则构造而成，结构类型还可以包括结构类型</p>
+<h4 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3.数据类型"></a>3.数据类型</h4><p>数据类型是指一种类型以及定义于这个值集合上的一组操作的总称</p>
+<h3 id="1-2-2-数据抽象与抽象数据类型"><a href="#1-2-2-数据抽象与抽象数据类型" class="headerlink" title="1.2.2 数据抽象与抽象数据类型"></a>1.2.2 数据抽象与抽象数据类型</h3><h4 id="1-抽象的本质"><a href="#1-抽象的本质" class="headerlink" title="1.抽象的本质"></a>1.抽象的本质</h4><p>抽取反应问题本质的东西，忽略非本质的细节</p>
+<h4 id="2-抽象数据类型"><a href="#2-抽象数据类型" class="headerlink" title="2.抽象数据类型"></a>2.抽象数据类型</h4><p>指由用户定义，用于表示应用问题的数据模型，是将数据结构作为一个软件构件的实现，由基本的数据类型组成，并包括一组相关的服务（操作）</p>
+<p>对于一个其数据元素完全相同的数据类型，如果给它定义具有不同功能的一组，则可形成不同的抽象数据类型</p>
+<p>抽象数据类型的特征是使用与实现分离，实行封闭和信息隐蔽</p>
+<h4 id="3-抽象数据类型的好处"><a href="#3-抽象数据类型的好处" class="headerlink" title="3.抽象数据类型的好处"></a>3.抽象数据类型的好处</h4><p>a.使用者在开发过程中只要了解该抽象数据类型的规格说明，就可以利用其公共接口中的服务来使用属于这个类型的数据，而不必关心其物理实现，使使用者在开发过程中抓住重点，集中精力考虑如何解决应用问题，简化问题</p>
+<p>b.将物理实现封装起来，有利于编码、测试，也有利于将来的修改。因为这样做使得错误局部化，一旦出现错误，其传播范围不致于影响其他模块</p>
+<p>c.在改进数据结构时可能要更改物理实现，但只要界面中的服务的使用方式不变，其他所有使用该抽象数据类型的程序都可以不变，大大提高系统稳定性</p>
+<h2 id="1-3-作为ADT的C-类"><a href="#1-3-作为ADT的C-类" class="headerlink" title="1.3 作为ADT的C++类"></a>1.3 作为ADT的C++类</h2><h3 id="1-3-1面向对象的概念"><a href="#1-3-1面向对象的概念" class="headerlink" title="1.3.1面向对象的概念"></a>1.3.1面向对象的概念</h3><p>面向对象&#x3D;对象+类+继承+消息通信</p>
+<h4 id="1-对象"><a href="#1-对象" class="headerlink" title="1.对象"></a>1.对象</h4><p>指在应用问题中出现的各种实体、事件、规格说明等，由一组属性值（确定对象状态）和在这组值上的一组服务（操作）构成</p>
+<h4 id="2-类"><a href="#2-类" class="headerlink" title="2.类"></a>2.类</h4><h4 id="3-继承"><a href="#3-继承" class="headerlink" title="3.继承"></a>3.继承</h4><h4 id="4-消息通信"><a href="#4-消息通信" class="headerlink" title="4.消息通信"></a>4.消息通信</h4>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2025 - 2025 NJUShinchan&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yonghong Lin
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>软工二复习 | NJUShinchan&#39;s Blog</title>
+    <meta name="author" content="Yonghong Lin" />
+    <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NJUSHINCHAN&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NJUSHINCHAN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>软工二复习</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/24
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>2025春软件工程与计算二复习提纲</p>
+<span id="more"></span>
+
+<h1 id="第一二章"><a href="#第一二章" class="headerlink" title="第一二章"></a>第一二章</h1><h2 id="名词解释：软件工程"><a href="#名词解释：软件工程" class="headerlink" title="名词解释：软件工程"></a>名词解释：软件工程</h2><ol>
+<li>应用系统的、规范的、可量化的方法来开发、运行和维护软件，即将工程应用到软件</li>
+<li>对①中各种方法的研究</li>
+</ol>
+<h2 id="从1950s-2000s之间的特点"><a href="#从1950s-2000s之间的特点" class="headerlink" title="从1950s-2000s之间的特点"></a>从1950s-2000s之间的特点</h2><ol>
+<li>1950s:科学计算；以机器为中心进行编程；像生产硬件一样生产软件</li>
+<li>1960s:业务应用（批量数据处理和事物计算）；软件不同于硬件；用软件工艺的方式生产软件</li>
+<li>1970s:结构化方法；瀑布模型；强调规则和纪律，它们奠定了软件工程的基础，是后续年代软件工程发展的支撑</li>
+<li>1980s：追求生产力最大化；现代结构化方法&#x2F;面向对象编程广泛应用；重视过程的作用</li>
+<li>1990s:企业为中心的大规模软件系统开发；追求快速开发、可变更性和用户价值；web应用出现</li>
+<li>2000s：大规模web应用；大量面向大众的web产品；追求快速开发、可变更性、用户价值和创新</li>
+</ol>
+<h1 id="第四章-项目启动"><a href="#第四章-项目启动" class="headerlink" title="第四章 项目启动"></a>第四章 项目启动</h1><h2 id="如何管理团队？"><a href="#如何管理团队？" class="headerlink" title="如何管理团队？"></a>如何管理团队？</h2><ul>
+<li>在实验中 采取了哪些方法？有哪些经验？</li>
+</ul>
+<p>团队建设</p>
+<ol>
+<li>建立团队章程</li>
+<li>持续成功</li>
+<li>和谐沟通</li>
+<li>不断总结</li>
+<li>避免团队杀手（防范式管理 官僚主义 地理分布：异地办公 时间分割：保证全天候有人在 产品质量的降低 虚假的最后期限 小圈子管理 ）</li>
+</ol>
+<ul>
+<li>团队结构有哪几种</li>
+</ul>
+<ol>
+<li>主程序员团队</li>
+<li>开放团队</li>
+<li>民主团队</li>
+</ol>
+<h2 id="质量保障有哪些措施？"><a href="#质量保障有哪些措施？" class="headerlink" title="质量保障有哪些措施？"></a>质量保障有哪些措施？</h2><ol>
+<li>需求开发：需求评审和需求度量</li>
+<li>体系结构：体系结构评审和集成测试（持续集成）</li>
+<li>详细设计：详细设计评审、设计度量和集成测试（持续集成）</li>
+<li>构造阶段：代码评审、代码度量、测试（测试驱动和持续集成）</li>
+<li>测试阶段：测试，测试度量</li>
+<li>要及时的根据保障计划进行质量验证，质量验证的方法主要有评审、测试和质量度量三种</li>
+</ol>
+<h2 id="配置管理有哪些活动"><a href="#配置管理有哪些活动" class="headerlink" title="配置管理有哪些活动"></a>配置管理有哪些活动</h2><ol>
+<li>标识配置项：确定应该被保留的部分，并且给予他们确定的标识，包含配置项的特征，包括生产者、基线建立时间、使用者等</li>
+<li>版本管理**</li>
+<li>变更控制：变更请求表单</li>
+<li>配置审计：验证配置项的完整性、正确性、一致性和可追踪性</li>
+<li>状态报告：反应当前的配置状态</li>
+<li>软件发布管理：将配置项发布到开发活动之外，例如发布给客户</li>
+</ol>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>什么是需求？</p>
+<ol>
+<li>用户为解决问题或达到某些目标所需要的条件或能力</li>
+<li>系统或系统部件为了满足合同、标准、规范或其他正式文档所规定的要求而需要具备的条件或能力</li>
+<li>对1&#x2F;2中的一个条件或一种能力的文档化表述</li>
+</ol>
+<h2 id="需求的层次"><a href="#需求的层次" class="headerlink" title="需求的层次"></a>需求的层次</h2><ol>
+<li>业务需求：为什么要开发系统，是高层次的解决方案和系统特性、系统开发的战略出发点、高层次的需求</li>
+<li>用户需求：执行具体任务的用户对系统所能完成任务的期望，描述了系统能帮用户做什么</li>
+<li>系统级需求：用户对系统行为的期望，每个系统级需求反映了一次外界和系统的交互行为，或者系统的一个实现细节</li>
+</ol>
+<h2 id="需求的类型"><a href="#需求的类型" class="headerlink" title="需求的类型"></a>需求的类型</h2><ul>
+<li>需求</li>
+</ul>
+<ol>
+<li>项目需求（人的数量、计划成本、时间）</li>
+<li>过程需求（人的分工、合作、方法、工具）</li>
+<li>系统需求 ：软件需求，硬件需求，其他需求</li>
+</ol>
+<p>软件需求：功能需求，数据需求，性能需求，对外接口，约束（编程语言、硬件设施等），质量需求（可移植性，可维护性等）</p>
+<ol>
+<li>其他需求 如系统要购买专用服务器，对规格大小的需求；如系统投入使用时，需要对用户进行一个星期的集中培训</li>
+</ol>
+<ul>
+<li>不切实际的需求</li>
+</ul>
+<h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h2 id="数据流图-非重点"><a href="#数据流图-非重点" class="headerlink" title="数据流图 非重点"></a>数据流图 非重点</h2><p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=MmYyNzFlN2I5MTJiMjllNDhjZDE1ZTczNDFiYjRiYjRfVk4zdUJ1YUxscjg5VW80S09ZWlA4bWRpVHcwaURWWGVfVG9rZW46SXNPb2JheDJjb2Z4WnB4Qnc1ZmNJa25zbmRiXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=NTI3YTk2OWRhNzBlMWUzNzUyMjQ0Y2Y3YzNhNjA4N2JfdnFqbHNNZU9sajlTSENHYnFpM2djaXV4NjdGa0ZCMlpfVG9rZW46TkVuM2JnWWpTb1pIMk54c1VrM2NxQUVFbmNlXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<h2 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h2><ul>
+<li>用例：在系统和外部对象的交互行为中所执行的行为序列的描述，包括各种不同的序列和错误的序列，他们的联合能提供一种有价值的服务</li>
+<li>图例：</li>
+</ul>
+<ol>
+<li>用例：椭圆</li>
+<li>参与者：小人</li>
+<li>关系：一条直线</li>
+<li>系统边界：一个框</li>
+</ol>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=NDQ4YTM4YjhkZmMyZThiZDQxNDg1MjhkZWVlMzgxNmNfMkN2eUtxbGVPcmtWUFZ2ZXJWTEx5M0NXamZHeGlaTlpfVG9rZW46SEcxUmJ4T2NLb21pSnJ4VW14a2NzUURMbkliXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=NDU4YjUxYWE5Y2EzNWY0ZGExZDMzYjI2YzU2YWZlZDZfM0d1WHRnOHJtbWpWdVphcXNIeDdlYkRCYjYzSGtUWHZfVG9rZW46WGhyNWJQVFJWb1VyOGx4bnVzQWM5cGlwbkFjXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=NTNhMGRhYmFlZmMzYzFjYWQ3YTEzZDI0N2MzMzczMDJfYzI5OVI2TldkNGd6TTNJQVNVeWJBY1E4Q0RlN1FDbE5fVG9rZW46TDczTWJhVFJRb0lOUzB4TE1UVWN3V2dDblZoXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=ODI4YjMyOTMwZWFkZWVhOWU5OWIzNDkwOWZiN2FiODlfRWRPSmFDSWdva0RyNWQ4MTdXdHJNM3d2SWdUdTZtNkZfVG9rZW46RFRmM2IzT2hrb3UzZ1V4Y0x4TWNoejNEblhiXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<h2 id="概念类图（分析类图）"><a href="#概念类图（分析类图）" class="headerlink" title="概念类图（分析类图）"></a>概念类图（分析类图）</h2><p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=YTVmYTlmYjRjMDRlZjFlYjEyZTlhODhkNWQ0Y2M4ZTZfRmNncFlVR2FCNG04WnIxZ1ZDVU5vUFZUSUtKelVxM1hfVG9rZW46TFA3TmJWQmN4b0dMTTh4WThCamNlc2hqbkdjXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=MWI0OGRmNmU0NGJjYzJlNTIxOWQ0NjMxNGFlYTIxNTFfZEg3OTBzRW1NMzZjeXlGd2I5bE91azVIUVVwWFN1aHpfVG9rZW46Q3N0d2J1WFlZb3hRTVB4R3Rsb2NIa21DbkZoXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p>聚合：聚合中的部分可以独立于整体存在</p>
+<p>组合：组合中的部分不可以独立于整体存在</p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=YTJhYjUxZmM2YzUxNzkwZWUzMjYxZjRmY2ZiYWZmODJfUWZHbUMzMDJuZW1qRWJKZUlIVDluVExTVGNkQVJ0dE9fVG9rZW46UFFiUWJNMmFIb01yTnR4enRTdmNVS1lzbkVkXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+<p>三角形表示泛化（继承）</p>
+<p><img src="https://mcnw7sy6rg66.feishu.cn/space/api/box/stream/download/asynccode/?code=NWZjYTBmZDI5MTEzNGUyYmZmNWI4ZGE5ZDM2MmUzY2FfaENabUFLSlZqZlhwNFZwWks1VXJwZmtMeWVmUUFCVnpfVG9rZW46SThTUWJUNm1qb1NIcDV4aFp2MGNnWVRTbnBmXzE3NTA2OTk5ODg6MTc1MDcwMzU4OF9WNA" alt="img"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2025 - 2025 NJUShinchan&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yonghong Lin
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
