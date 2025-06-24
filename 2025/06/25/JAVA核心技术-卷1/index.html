@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>JAVA核心技术 卷1 | NJUShinchan&#39;s Blog</title>
+    <meta name="author" content="Yonghong Lin" />
+    <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NJUSHINCHAN&#39;S BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NJUSHINCHAN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>JAVA核心技术 卷1</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/25
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>作者：Cay S.Horstmann</p>
+<p>介绍了JAVA语言的基本概念以及用户界面程序设计的基础知识</p>
+<p>Learn <a target="_blank" rel="noopener" href="https://horstmann.com/corejava/">Java 核心技术</a></p>
+<span id="more"></span>
+
+<h1 id="第一章-JAVA程序设计概述"><a href="#第一章-JAVA程序设计概述" class="headerlink" title="第一章 JAVA程序设计概述"></a>第一章 JAVA程序设计概述</h1><h2 id="1-1-JAVA程序设计平台"><a href="#1-1-JAVA程序设计平台" class="headerlink" title="1.1 JAVA程序设计平台"></a>1.1 JAVA程序设计平台</h2><p>JAVA是一个完整的平台，有一个<strong>庞大丰富</strong>的库，其中包含了大量可重用的代码，还有一个提供诸如安全性、跨操作系统的可移植性以及自动垃圾收集等服务的执行环境。</p>
+<h2 id="1-2-JAVA白皮书的关键术语"><a href="#1-2-JAVA白皮书的关键术语" class="headerlink" title="1.2 JAVA白皮书的关键术语"></a>1.2 JAVA白皮书的关键术语</h2><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/language-environment.html">白皮书</a>以及<a target="_blank" rel="noopener" href="https://horstmann.com/corejava/java-an-overview/7Gosling.pdf">11个关键术语的概述</a></p>
+<h3 id="1-2-1-简单性"><a href="#1-2-1-简单性" class="headerlink" title="1.2.1 简单性"></a>1.2.1 简单性</h3><p>JAVA语法是C++语法的一个纯净版本，没有头文件、指针运算（甚至没有指针语法）、结构、联合、操作符重载、虚基类等，但设计者并没有试图修正C++的所有不适当的特性。</p>
+<h3 id="1-2-2-面向对象"><a href="#1-2-2-面向对象" class="headerlink" title="1.2.2 面向对象"></a>1.2.2 面向对象</h3><p>面向对象设计是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上。Java与C++的不同点主要在于多重继承，在Java中取而代之的是更简单的接口概念。与C++相比，Java提供了更丰富的运行时自省功能。</p>
+<h3 id="1-2-3-分布式"><a href="#1-2-3-分布式" class="headerlink" title="1.2.3 分布式"></a>1.2.3 分布式</h3><p>Java应用程序能够通过URL打开和访问网上的对象，其便捷程度就好像访问本地的文件一样（以前的特性，如今已理所当然）。</p>
+<h3 id="1-2-4-健壮性"><a href="#1-2-4-健壮性" class="headerlink" title="1.2.4 健壮性"></a>1.2.4 健壮性</h3><p>Java编译器能够检测许多其他语言在运行时才能检测出来的问题。</p>
+<h3 id="1-2-5-安全性"><a href="#1-2-5-安全性" class="headerlink" title="1.2.5 安全性"></a>1.2.5 安全性</h3><p>使用Java可以构建防病毒、防篡改的系统。</p>
+<p>从一开始，Java就设计成能够防范各种攻击，其中包括：</p>
+<ul>
+<li><p>运行时堆栈溢出，这是蠕虫和病毒常用的攻击手段</p>
+</li>
+<li><p>破坏自己的进程空间之外的内存</p>
+</li>
+<li><p>未经授权读写文件</p>
+<p>ActiveX：使用数字签名进行代码交付</p>
+</li>
+</ul>
+<h3 id="1-2-6-体系结构中立"><a href="#1-2-6-体系结构中立" class="headerlink" title="1.2.6 体系结构中立"></a>1.2.6 体系结构中立</h3><p>编译器生成体系结构中立的目标文件格式，这是一种编译型代码，即Java通过生成与特定计算机体系结构无关的字节码指令来实现这一特性。</p>
+<p>Java虚拟机还有一些其他优点，如它可以检查指令序列的行为，从而增强安全性。</p>
+<h3 id="1-2-7-可移植性"><a href="#1-2-7-可移植性" class="headerlink" title="1.2.7 可移植性"></a>1.2.7 可移植性</h3><p>数值类型有固定的字节数，二进制数据以固定的格式进行存储和传输，消除了有关字节顺序的困扰，字符串则采用标准的Unicode格式存储。可以很好地支持平台独立性。（C&#x2F;C++中int可以是16&#x2F;32位整数&#x2F;编译器开发商指定的其他大小，在Java中总是32位）</p>
+<h3 id="1-2-8-解释性"><a href="#1-2-8-解释性" class="headerlink" title="1.2.8 解释性"></a>1.2.8 解释性</h3><p>Java解释器可以在任何移植了解释器的机器码上直接执行Java字节码。</p>
+<h3 id="1-2-9-高性能"><a href="#1-2-9-高性能" class="headerlink" title="1.2.9 高性能"></a>1.2.9 高性能</h3><p>即时编译器可以监控哪些代码频繁执行，并优化这些代码以提高速度。跟为复杂的优化是消除函数调用（内联）。</p>
+<h3 id="1-2-10-多线程"><a href="#1-2-10-多线程" class="headerlink" title="1.2.10 多线程"></a>1.2.10 多线程</h3><p>第一个支持并发程序设计。</p>
+<h3 id="1-2-11-动态性"><a href="#1-2-11-动态性" class="headerlink" title="1.2.11 动态性"></a>1.2.11 动态性</h3><p>库可以自由地添加新方法和实例变量，而对客户端没有任何影响。让一个正在运行的程序实现演进。</p>
+<h2 id="1-3-JAVA-applet-与-Internet"><a href="#1-3-JAVA-applet-与-Internet" class="headerlink" title="1.3 JAVA applet 与 Internet"></a>1.3 JAVA applet 与 Internet</h2><p>在网页中运行的JAVA程序称为applet</p>
+<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/E:/Desktop\MyBlog\source_posts\JAVA核心技术-卷1\1.jpg" alt="图片"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/E:/Tencent\VXDocuments\xwechat_files\wxid_470kggbxv20022_23a3\temp\2025-06\RWTemp\030ca84c91dcc9dc4067ed3ea1224e1e\ca97e1a036e2e600607d1e28e95377dd.jpg" alt="ca97e1a036e2e600607d1e28e95377dd"></p>
+<h2 id="1-5关于JAVA的常见误解"><a href="#1-5关于JAVA的常见误解" class="headerlink" title="1.5关于JAVA的常见误解"></a>1.5关于JAVA的常见误解</h2><ol>
+<li><p>JAVA是HTML的扩展</p>
+<p>JAVA是一种程序设计语言，而HTML是一种描述网页结构的方式。</p>
+</li>
+<li><p>我使用XML，不需要JAVA</p>
+<p>XML是一种描述数据的方式，可以使用任意的程序设计语言处理XML数据，JAVA API对XML处理提供了很好的支持。</p>
+</li>
+<li><p>JAVA非常容易学习</p>
+<p>数千个类和接口，数万个函数</p>
+</li>
+<li><p>JAVA将适用于所有平台</p>
+<p>有可能，但某些领域其他语言有更出色的表现。比如objective C和后来的Swift在iOS设备上就有着无可替代的地位，浏览器中的处理几乎由JavaScript掌控，Windows程序通常用C++或C#编写，JAVA在服务器编程和跨平台客户端应用领域则很有优势。</p>
+</li>
+<li><p>JAVA一般</p>
+<p>JAVA的成功源于其类库能够让人们很轻松地完成原本有一定难度的工作&#x2F;JAVA减少了指针错误……</p>
+</li>
+<li><p>JAVA是专用的，应避免使用</p>
+<p>已开源</p>
+</li>
+<li><p>JAVA是解释性的，所以执行速度太慢了</p>
+<p>现在的JAVA虚拟机使用了即时编译器（JIT，just in time），因此用JAVA编写的代码运行速度与C++相差无几，有些情况甚至更快</p>
+</li>
+<li><p>所有JAVA程序都在网页中运行</p>
+<p>大多数程序都在服务器上运行，为网页生成代码或者计算业务逻辑</p>
+</li>
+<li><p>JAVA程序存在重大安全风险</p>
+<p>虚拟机提供保护，JAVA应用比C或C++编写的应用要安全的多</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/C:/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625012722518.png" alt="image-20250625012722518"></p>
+</li>
+<li><p>JavaScript是Java的简易版</p>
+<p>JavaScript是一种可以在网页中使用的脚本语言，Java是强类型的，能够捕获类型滥用导致的很多错误，而JavaScript只有当程序运行时才能发现这些错误。</p>
+</li>
+<li><p>使用JAVA时可以用廉价的Internet设备代替桌面计算机</p>
+</li>
+</ol>
+<p>​	网络计算机（是一种以网络为中心的计算设备，强调通过网络访问应用和数据，而不是依赖本地资源。它的理念在现代云计算、虚拟	化和瘦客户端技术中得到了延续。虽然在 20 世纪末未能大规模普及，但它为后来的网络化、云化计算奠定了基础）没有本地存储且	功能有限</p>
+<h1 id="第二章-JAVA编程环境"><a href="#第二章-JAVA编程环境" class="headerlink" title="第二章 JAVA编程环境"></a>第二章 JAVA编程环境</h1><h2 id="2-1-安装Java开发工具包（JDK）"><a href="#2-1-安装Java开发工具包（JDK）" class="headerlink" title="2.1 安装Java开发工具包（JDK）"></a>2.1 安装Java开发工具包（JDK）</h2><h3 id="2-1-1-下载JDK"><a href="#2-1-1-下载JDK" class="headerlink" title="2.1.1 下载JDK"></a>2.1.1 下载JDK</h3><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/?er=221886">Java Downloads | Oracle</a></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/E:/Tencent\VXDocuments\xwechat_files\wxid_470kggbxv20022_23a3\temp\2025-06\RWTemp\030ca84c91dcc9dc4067ed3ea1224e1e\f53331218245a3b8348f2cd77f4d7d05.jpg" alt="f53331218245a3b8348f2cd77f4d7d05"></p>
+<h3 id="2-1-2-设置JDK"><a href="#2-1-2-设置JDK" class="headerlink" title="2.1.2 设置JDK"></a>2.1.2 设置JDK</h3><p>重点：</p>
+<ul>
+<li><p>最好不要接受默认位置，自己选择路径，推荐安装在其他盘（如D&#x2F;E盘）</p>
+</li>
+<li><p>如何检测安装是否成功？</p>
+<pre><code>javac -version
+</code></pre>
+</li>
+</ul>
+<p>​	出现版本信息则成功，如果报错则需仔细检查安装</p>
+<ul>
+<li><p>将JDK 的bin目录添加到可执行路径中——可执行路径是操作系统查找可执行文件时所遍历的目录列表</p>
+<p>Linux系统：在<del>&#x2F;.bashrc或</del>&#x2F;.bash_profile文件的最后一行添加：</p>
+<pre><code>export PATH=jdk/bin:$PATH
+</code></pre>
+<p>windows系统：在设置中搜索环境变量，编辑环境变量&#x2F;点击Win+R，输入sysdm.cpl，然后选择高级，再单击环境变量，在用户变量列表中找到并选择一个名为Path的变量，单击Edit再单击New，添加一个新值——jdk的bin目录</p>
+</li>
+</ul>
+<h3 id="2-1-3-安装源文件和文档"><a href="#2-1-3-安装源文件和文档" class="headerlink" title="2.1.3 安装源文件和文档"></a>2.1.3 安装源文件和文档</h3><p>解压lib&#x2F;src.zip到新建的目录javasrc中，可通过终端创建该目录</p>
+<pre><code>mkdir javasrc
+cd javasrc
+jar xvf jdk/lib/src.zip
+cd ..
+</code></pre>
+<p>文档则包含在独立于JDK的一个压缩文件中，后续略</p>
+<h2 id="2-2使用命令行工具"><a href="#2-2使用命令行工具" class="headerlink" title="2.2使用命令行工具"></a>2.2使用命令行工具</h2><pre><code>cd dir(该文件所在目录)
+javac xxx.java
+java xxx
+</code></pre>
+<p>此过程中javac编译器将xxx.java编译成xxx.class,java程序启动jvm,jvm执行编译器编译到类文件中的字节码</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/E:/Tencent\VXDocuments\xwechat_files\wxid_470kggbxv20022_23a3\temp\2025-06\RWTemp\030ca84c91dcc9dc4067ed3ea1224e1e\08808ae3903a0abb9e0ce08db3e61d4b.jpg" alt="08808ae3903a0abb9e0ce08db3e61d4b"></p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/getStarted/cupojava/netbeans.html">初学者易犯错误)</a></p>
+<h2 id="2-3-使用集成开发环境"><a href="#2-3-使用集成开发环境" class="headerlink" title="2.3 使用集成开发环境"></a>2.3 使用集成开发环境</h2><p>下载JetBrains Toolbox，验证学生身份后即可免费使用，然后在工具箱中下载IntelliJ IDEA </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63173180/article/details/135510713">jetbrains工具箱教程：下载IDEA社区版与完全版的步骤-CSDN博客</a></p>
+<h2 id="2-4-JShell"><a href="#2-4-JShell" class="headerlink" title="2.4 JShell"></a>2.4 JShell</h2><p>键入一个JAVA表达式，JShell会评估输入，打印结果并等待下一个输入</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/C:/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020534877.png" alt="image-20250625020534877"></p>
+<p>另一个有用的特性是“tab补全”，如果键入Math.然后按一次tab键，会得到Math类调用的所有方法的一个列表</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/C:/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020713157.png" alt="image-20250625020713157"></p>
+<p>键入l,再按一次tab键，方法名会补全为log，然后得到一个比较小的列表</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/C:/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020835072.png" alt="image-20250625020835072"></p>
+<p><strong>小技巧</strong>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
+<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><p>未完待续</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2025 - 2025 NJUShinchan&#39;s Blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yonghong Lin
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
