@@ -25,13 +25,13 @@ const ap = new APlayer({
             url: 'https://echeverra.cn/wp-content/uploads/2021/06/周杰伦-给我一首歌的时间.mp3',
             cover: 'https://echeverra.cn/wp-content/uploads/2021/06/周杰伦-给我一首歌的时间-mp3-image.png',
             theme: '#46718b'
-        },
-        {
-            name: '退后', //如果只有一首歌，删掉这一块，如有更多歌曲按此格式逐渐往下添加
-            artist: '周杰伦',
-            url: 'https://github.com/NJUShinchan/music/raw/main/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E9%80%80%E5%90%8E_H.mp3',
-            cover: 'https://github.com/NJUShinchan/music/raw/main/T002R500x500M000002jLGWe16Tf1H_1.jpg',
-            theme: '#46718b'
         }
+        // {
+        //     name: '退后', //如果只有一首歌，删掉这一块，如有更多歌曲按此格式逐渐往下添加
+        //     artist: '周杰伦',
+        //     url: 'https://github.com/NJUShinchan/music/raw/main/%E5%91%A8%E6%9D%B0%E4%BC%A6%20-%20%E9%80%80%E5%90%8E_H.mp3',
+        //     cover: 'https://github.com/NJUShinchan/music/raw/main/T002R500x500M000002jLGWe16Tf1H_1.jpg',
+        //     theme: '#46718b'
+        // }
     ]
 });
