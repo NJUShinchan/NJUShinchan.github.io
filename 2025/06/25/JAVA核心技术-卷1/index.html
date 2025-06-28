@@ -214,7 +214,7 @@
 <h3 id="1-2-10-多线程"><a href="#1-2-10-多线程" class="headerlink" title="1.2.10 多线程"></a>1.2.10 多线程</h3><p>第一个支持并发程序设计。</p>
 <h3 id="1-2-11-动态性"><a href="#1-2-11-动态性" class="headerlink" title="1.2.11 动态性"></a>1.2.11 动态性</h3><p>库可以自由地添加新方法和实例变量，而对客户端没有任何影响。让一个正在运行的程序实现演进。</p>
 <h2 id="1-3-JAVA-applet-与-Internet"><a href="#1-3-JAVA-applet-与-Internet" class="headerlink" title="1.3 JAVA applet 与 Internet"></a>1.3 JAVA applet 与 Internet</h2><p>在网页中运行的JAVA程序称为applet</p>
-<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><p><img src="/.io//1.jpg" alt="1.jpg"><br><img src="/.io//2.jpg" alt="2.jpg"></p>
+<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/1.jpg" alt="1.jpg"><br><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/2.jpg" alt="2.jpg"></p>
 <h2 id="1-5关于JAVA的常见误解"><a href="#1-5关于JAVA的常见误解" class="headerlink" title="1.5关于JAVA的常见误解"></a>1.5关于JAVA的常见误解</h2><ol>
 <li><p>JAVA是HTML的扩展</p>
 <p>JAVA是一种程序设计语言，而HTML是一种描述网页结构的方式。</p>
@@ -294,8 +294,82 @@ java xxx
 <p>键入l,再按一次tab键，方法名会补全为log，然后得到一个比较小的列表</p>
 <p><img src="/.io//Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020835072.png" alt="image-20250625020835072"></p>
 <p><strong>小技巧</strong>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
-<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><p>未完待续</p>
-
+<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><h2 id="3-1-一个简单的JAVA程序"><a href="#3-1-一个简单的JAVA程序" class="headerlink" title="3.1 一个简单的JAVA程序"></a>3.1 一个简单的JAVA程序</h2><pre><code>public class FirstSample &#123;
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
+    &#125;
+&#125;
+</code></pre>
+<ol>
+<li><p>JAVA区分大小写</p>
+</li>
+<li><p>关键字public被称为访问修饰符，用于控制程序的其他部分对这段代码的访问级别</p>
+</li>
+<li><p>关键字class表明JAVA程序中的全部内容都包含在类中，类可以看做是<strong>程序逻辑的一个容器</strong>，定义了应用程序的行为；<strong>类是所有JAVA应用的构建模块</strong>，JAVA程序中的所有内容都必须放在类中</p>
+</li>
+<li><p>类名必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用JAVA关键字（或被称为保留字）。标准命名约定为：类名是以<strong>大写字母开头的名词</strong>，如果名字由多个单词组成，那么每个单词的第一个字母都应该大写（驼峰&#x2F;骆驼命名法）</p>
+</li>
+<li><p>源代码的文件名必须和类名一致，并以.java作为扩展名，正确编译这个源代码之后，会得到一个包含这个类字节码的文件，JAVA编译器将这个字节码文件自动命名为FirstSample.class,并存储在源文件所在的同一个目录下，随便便可运行程序</p>
+<pre><code>java FirstSample
+</code></pre>
+</li>
+<li><p>运行一个已编译的程序时，Java虚拟机总是从指定类中main方法（即函数）的代码开始执行，因此类的源代码必须包含一个main方法</p>
+</li>
+<li><p><strong>main方法必须声明为public</strong>，详情可见<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/">Java语言规范</a></p>
+</li>
+<li><p>大括号用来划分程序的各个部分（通常称为块），任何方法的代码都必须以“{”开始，“}”结束；大括号的使用风格因人而异，JAVA编译器会忽略空白符，所以你可以选用自己喜欢的任何大括号风格</p>
+<pre><code>public class FirstSample &#123;
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>public class FirstSample 
+&#123;
+    public static void main(String[] args) 
+    &#123;
+        System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
+    &#125;
+&#125;
+教材推荐风格（把匹配的大括号对齐）
+</code></pre>
+</li>
+<li><p>JAVA中的所有函数都是某个类的<strong>方法</strong>，因此，JAVA中的main方法必须有一个外壳（shell）类</p>
+</li>
+<li><p>与C&#x2F;C++相同，关键字void表示这个方法不返回值，但不同的是main方法不会为操作系统返回一个“退出码”。如果main方法正常退出，那么JAVA程序的退出码为0，表示成功地运行了程序，如果要以其他退出码终止程序，则需要使用System.exit方法</p>
+</li>
+<li><p>每个语句必须用分号结束，回车不是语句结束的标志，如果需要一条语句可以跨多行</p>
+</li>
+<li><p>.用于调用方法，JAVA使用的通用语法是object.method(parameters),这等价于一个函数调用，JAVA中的方法可以没有参数，也可以有一个或多个参数，即使没有参数，也需要使用空括号</p>
+</li>
+<li><p>println(a)&#x3D;print(a)+print(‘\n’)</p>
+</li>
+</ol>
+<h2 id="3-2-注释"><a href="#3-2-注释" class="headerlink" title="3.2 注释"></a>3.2 注释</h2><p>JAVA中的注释不会出现在可执行程序中。所以可以添加任意多的注释而无须担心代码膨胀</p>
+<p>共有三种注释方法</p>
+<ol>
+<li><p>从&#x2F;&#x2F;开始到本行结束都是注释</p>
+<pre><code>//这是注释
+</code></pre>
+</li>
+<li><p>可以使用 &#x2F;* 和 *&#x2F; 注释界定符将一段比较长的注释括起来</p>
+<pre><code>/*
+这是注释
+这是注释
+ */
+</code></pre>
+<p>&#x2F;* *&#x2F;    <strong>不能嵌套</strong></p>
+</li>
+<li><p>以 &#x2F;** 开始，以 *&#x2F; 结束的注释可以用来自动生成文档</p>
+</li>
+</ol>
+<pre><code>/**
+ * 这是注释
+ * @version 111666
+ * 888
+ */
+</code></pre>
+<h2 id="3-3数据类型"><a href="#3-3数据类型" class="headerlink" title="3.3数据类型"></a>3.3数据类型</h2>
     </div>
     
     
