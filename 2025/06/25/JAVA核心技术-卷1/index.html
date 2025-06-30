@@ -296,7 +296,7 @@ java xxx
 <p><img src="/.io//Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020713157.png" alt="image-20250625020713157"></p>
 <p>键入l,再按一次tab键，方法名会补全为log，然后得到一个比较小的列表</p>
 <p><img src="/.io//Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020835072.png" alt="image-20250625020835072"></p>
-<p><strong>小技巧</strong>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
+<p><em><strong>小技巧</strong></em>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
 <h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><h2 id="3-1-一个简单的JAVA程序"><a href="#3-1-一个简单的JAVA程序" class="headerlink" title="3.1 一个简单的JAVA程序"></a>3.1 一个简单的JAVA程序</h2><pre><code class="language-java">public class FirstSample &#123;
     public static void main(String[] args) &#123;
         System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
@@ -308,9 +308,9 @@ java xxx
 </li>
 <li><p>关键字public被称为访问修饰符，用于控制程序的其他部分对这段代码的访问级别</p>
 </li>
-<li><p>关键字class表明JAVA程序中的全部内容都包含在类中，类可以看做是<strong>程序逻辑的一个容器</strong>，定义了应用程序的行为；<strong>类是所有JAVA应用的构建模块</strong>，JAVA程序中的所有内容都必须放在类中</p>
+<li><p>关键字class表明JAVA程序中的全部内容都包含在类中，类可以看做是<em><strong>程序逻辑的一个容器</strong></em>，定义了应用程序的行为；<em><strong>类是所有JAVA应用的构建模块</strong></em>，JAVA程序中的所有内容都必须放在类中</p>
 </li>
-<li><p>类名必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用JAVA关键字（或被称为保留字）。标准命名约定为：类名是以<strong>大写字母开头的名词</strong>，如果名字由多个单词组成，那么每个单词的第一个字母都应该大写（驼峰&#x2F;骆驼命名法）</p>
+<li><p>类名必须以字母开头，后面可以跟字母和数字的任意组合，长度没有限制，但是不能使用JAVA关键字（或被称为保留字）。标准命名约定为：类名是以<em><strong>大写字母开头的名词</strong></em>，如果名字由多个单词组成，那么每个单词的第一个字母都应该大写（驼峰&#x2F;骆驼命名法）</p>
 </li>
 <li><p>源代码的文件名必须和类名一致，并以.java作为扩展名，正确编译这个源代码之后，会得到一个包含这个类字节码的文件，JAVA编译器将这个字节码文件自动命名为FirstSample.class,并存储在源文件所在的同一个目录下，随便便可运行程序</p>
 <pre><code>java FirstSample
@@ -318,7 +318,7 @@ java xxx
 </li>
 <li><p>运行一个已编译的程序时，Java虚拟机总是从指定类中main方法（即函数）的代码开始执行，因此类的源代码必须包含一个main方法</p>
 </li>
-<li><p><strong>main方法必须声明为public</strong>，详情可见<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/">Java语言规范</a></p>
+<li><p><em><strong>main方法必须声明为public</strong></em>，详情可见<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/">Java语言规范</a></p>
 </li>
 <li><p>大括号用来划分程序的各个部分（通常称为块），任何方法的代码都必须以“{”开始，“}”结束；大括号的使用风格因人而异，JAVA编译器会忽略空白符，所以你可以选用自己喜欢的任何大括号风格</p>
 <pre><code class="language-java">public class FirstSample &#123;
@@ -337,7 +337,7 @@ java xxx
 教材推荐风格（把匹配的大括号对齐）
 </code></pre>
 </li>
-<li><p>JAVA中的所有函数都是某个类的<strong>方法</strong>，因此，JAVA中的main方法必须有一个外壳（shell）类</p>
+<li><p>JAVA中的所有函数都是某个类的<em><strong>方法</strong></em>，因此，JAVA中的main方法必须有一个外壳（shell）类</p>
 </li>
 <li><p>与C&#x2F;C++相同，关键字void表示这个方法不返回值，但不同的是main方法不会为操作系统返回一个“退出码”。如果main方法正常退出，那么JAVA程序的退出码为0，表示成功地运行了程序，如果要以其他退出码终止程序，则需要使用System.exit方法</p>
 </li>
@@ -361,7 +361,7 @@ java xxx
 这是注释
  */
 </code></pre>
-<p>&#x2F;* *&#x2F;    <strong>不能嵌套</strong></p>
+<p>&#x2F;* *&#x2F;   <em><strong>不能嵌套</strong></em></p>
 </li>
 <li><p>以 &#x2F;** 开始，以 *&#x2F; 结束的注释可以用来自动生成文档</p>
 </li>
@@ -407,7 +407,7 @@ java xxx
 <td align="center">-128~127</td>
 </tr>
 </tbody></table>
-<p>在Java中，<strong>整型的范围和运行Java代码的机器无关</strong>（保证在所有机器上都能得到相同的运行结果），与此相反，C&#x2F;C++会针对不同的处理器选择最高效的整型。<strong>JAVA没有无符号形式的int,long,byte,short类型</strong></p>
+<p>在Java中，<em><strong>整型的范围和运行Java代码的机器无关</strong></em>（保证在所有机器上都能得到相同的运行结果），与此相反，C&#x2F;C++会针对不同的处理器选择最高效的整型。<em><strong>JAVA没有无符号形式的int,long,byte,short类型</strong></em></p>
 <blockquote>
 <p>[!CAUTION]</p>
 <p>如果使用不可能为负的整数值而且确实需要额外的一位（bit），也可以把有符号整数值解释为无符号数。例如，一个byte值b可以不表示-128~127的范围,如果你想表示0-255的范围，也可以存储在一个byte中。基于二进制算术运算的性质，只要不溢出，加法、减法、乘法都能正常运算。但对于其他运算，需要调用Byte.tuUnsignedInt(b)来得到一个0-255的int值，然后处理这个整数值，再把它转换回Byte.Integer和Long类都提供了处理无符号除法和余数的方法。</p>
@@ -524,21 +524,21 @@ java xxx
 <p>Unicode转义序列会在解析代码前处理。例如“\u0022+\u0022”会得到一个空串（解析为””+””）。更隐秘地，一定要注意注释中的\u，例如&#x2F;&#x2F; \u000A is a newline（\u000A会替换为一个换行符）会产生语法错误，&#x2F;&#x2F; look inside c:\users（\u后面没有跟着四位十六进制数）也会产生一个语法错误。</p>
 </blockquote>
 <h3 id="3-3-4-Unicode和char型"><a href="#3-3-4-Unicode和char型" class="headerlink" title="3.3.4 Unicode和char型"></a>3.3.4 Unicode和char型</h3><p>不同的编码机制标准：美国的ASCII，西欧语言的ISO 8859-1，俄罗斯的KOI-8，中国的GB 18030和BIG-5等</p>
-<p><strong>码点（code point）是指与一个编码表中的某个字对应的代码值</strong>。在Unicode标准中，码点采用十六进制书写，并加上前缀U+，例如U+0041为拉丁字母A的码点。Unicode的码点可以氛围17个代码平面（code plane）。第一个代码平面称为基本多语言平面，范围为U+0000-U+FFFF，其余十六个平面从U+10000到U+10FFFF，包含各种辅助字符</p>
-<p>UTF-16编码采用不同长度的代码来表示所有Unicode码点，在基本多语言平面中，每个字符用16位表示，通常称为<strong>代码单元</strong>；而辅助字符编码为一对连续的代码单元，采用这种编码对表示的每个值都属于基本多语言平面中未用的2048个值范围，通常称为替代区域（U+D800-U+DBFF用于第一个代码单元，U+DC00-U+DFFF用于第二个代码单元）。</p>
+<p><em><strong>码点（code point）是指与一个编码表中的某个字对应的代码值</strong></em>。在Unicode标准中，码点采用十六进制书写，并加上前缀U+，例如U+0041为拉丁字母A的码点。Unicode的码点可以氛围17个代码平面（code plane）。第一个代码平面称为基本多语言平面，范围为U+0000-U+FFFF，其余十六个平面从U+10000到U+10FFFF，包含各种辅助字符</p>
+<p>UTF-16编码采用不同长度的代码来表示所有Unicode码点，在基本多语言平面中，每个字符用16位表示，通常称为<em><strong>代码单元</strong></em>；而辅助字符编码为一对连续的代码单元，采用这种编码对表示的每个值都属于基本多语言平面中未用的2048个值范围，通常称为替代区域（U+D800-U+DBFF用于第一个代码单元，U+DC00-U+DFFF用于第二个代码单元）。</p>
 <blockquote>
 <p>[!TIP]</p>
-<p><strong>强烈建议不要使用char类型</strong>，除非确实需要处理UTF-16代码单元，最好将字符串作为抽象数据类型来处理</p>
+<p><em><strong>强烈建议不要使用char类型</strong></em>，除非确实需要处理UTF-16代码单元，最好将字符串作为抽象数据类型来处理</p>
 </blockquote>
-<h3 id="3-3-5-boolean类型"><a href="#3-3-5-boolean类型" class="headerlink" title="3.3.5 boolean类型"></a>3.3.5 boolean类型</h3><p>boolean类型有两个值：true和false，用来判定逻辑条件，<strong>整型值和布尔值之间不能互相转换</strong>。（在C++中，数值甚至指针可以代替布尔值，if(x&#x3D;0)在C++中始终为false,而在Java中无法通过编译，因为整数表达式x&#x3D;0不能转换为布尔值）</p>
+<h3 id="3-3-5-boolean类型"><a href="#3-3-5-boolean类型" class="headerlink" title="3.3.5 boolean类型"></a>3.3.5 boolean类型</h3><p>boolean类型有两个值：true和false，用来判定逻辑条件，<em><strong>整型值和布尔值之间不能互相转换</strong></em>。（在C++中，数值甚至指针可以代替布尔值，if(x&#x3D;0)在C++中始终为false,而在Java中无法通过编译，因为整数表达式x&#x3D;0不能转换为布尔值）</p>
 <h2 id="3-4变量与常量"><a href="#3-4变量与常量" class="headerlink" title="3.4变量与常量"></a>3.4变量与常量</h2><p>常量就是值不变的变量。</p>
 <h3 id="3-4-1声明变量"><a href="#3-4-1声明变量" class="headerlink" title="3.4.1声明变量"></a>3.4.1声明变量</h3><p>声明是一个完整的JAVA语句，先指定变量类型，然后是变量名，每个声明都以分号结束</p>
 <pre><code class="language-java">double salary;
 </code></pre>
-<p>作为变量名的标识符<strong>由字母、数字、货币符号以及”标点连接符”组成</strong>，<strong>第一个字符不能是数字</strong>，’+’、空格等不能出现，字母<strong>区分大小写</strong>，<strong>不能使用Java关键字</strong>作为变量名，可以一行声明多个变量，但推荐<strong>分别声明</strong>以此来提高程序可读性</p>
+<p>作为变量名的标识符<em><strong>由字母、数字、货币符号以及”标点连接符”组成</strong></em>，<em><strong>第一个字符不能是数字</strong></em>，’+’、空格等不能出现，字母<em><strong>区分大小写</strong></em>，<em><strong>不能使用Java关键字</strong></em>作为变量名，可以一行声明多个变量，但推荐<em><strong>分别声明</strong></em>以此来提高程序可读性</p>
 <blockquote>
 <p>[!NOTE]</p>
-<p>如果想要知道标识符中可以使用哪些Unicode字符，可以使用Charater类的<strong>isJavaIdentifierStart</strong>和<strong>isJavaIdentifierPart</strong>来检查</p>
+<p>如果想要知道标识符中可以使用哪些Unicode字符，可以使用Charater类的<em><strong>isJavaIdentifierStart</strong></em>和<em><strong>isJavaIdentifierPart</strong></em>来检查</p>
 </blockquote>
 <h3 id="3-4-2初始化变量"><a href="#3-4-2初始化变量" class="headerlink" title="3.4.2初始化变量"></a>3.4.2初始化变量</h3><p>声明变量后必须显式地使用赋值语句初始化变量，不能使用未初始化的变量。</p>
 <pre><code class="language-java">double salary;
@@ -556,25 +556,25 @@ var greeting=&quot;hello&quot;;
 </code></pre>
 <h4 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h4><p>声明：不分配内存（变量）&#x2F;不提供具体实现（方法函数）</p>
 <p>定义则反之</p>
-<h3 id="3-4-3常量"><a href="#3-4-3常量" class="headerlink" title="3.4.3常量"></a>3.4.3常量</h3><p>可以使用<strong>final</strong>关键字来指示，表示该变量<strong>只能被赋值一次</strong>，一旦赋值就无法更改，习惯上，<strong>常量名使用全大写</strong></p>
+<h3 id="3-4-3常量"><a href="#3-4-3常量" class="headerlink" title="3.4.3常量"></a>3.4.3常量</h3><p>可以使用<em><strong>final</strong></em>关键字来指示，表示该变量<em><strong>只能被赋值一次</strong></em>，一旦赋值就无法更改，习惯上，<em><strong>常量名使用全大写</strong></em></p>
 <pre><code class="language-java">final double pai=3.14;
 </code></pre>
-<p>类常量（class constant）：在一个类的多个方法中使用，使用static final设置 ,定义位于main函数之外，如果一个类常量声明为public，那么其他类也可以使用这个常量，通过<strong>类名.类常量名</strong>的形式调用</p>
+<p>类常量（class constant）：在一个类的多个方法中使用，使用static final设置 ,定义位于main函数之外，如果一个类常量声明为public，那么其他类也可以使用这个常量，通过<em><strong>类名.类常量名</strong></em>的形式调用</p>
 <pre><code class="language-java">public static final double pai=3.14;
 </code></pre>
 <blockquote>
 <p>[!NOTE]</p>
 <p>const是Java保留的关键字，目前并没有使用，在Java中必须使用final声明常量</p>
 </blockquote>
-<h3 id="3-4-4枚举类型"><a href="#3-4-4枚举类型" class="headerlink" title="3.4.4枚举类型"></a>3.4.4枚举类型</h3><p>一个变量<strong>只包含有限的一组值</strong>。例如</p>
+<h3 id="3-4-4枚举类型"><a href="#3-4-4枚举类型" class="headerlink" title="3.4.4枚举类型"></a>3.4.4枚举类型</h3><p>一个变量<em><strong>只包含有限的一组值</strong></em>。例如</p>
 <pre><code class="language-java">enum Size&#123;SMALL,MEDIUM,LARGE,EXTRA_LARGE&#125;;
 Size s=Size.MEDIUM;
 </code></pre>
-<p>Size类型的变量<strong>只能存储这个类型声明中所列的某个值，或者特殊值null</strong>，null表示这个变量没有设置任何值</p>
+<p>Size类型的变量<em><strong>只能存储这个类型声明中所列的某个值，或者特殊值null</strong></em>，null表示这个变量没有设置任何值</p>
 <h2 id="3-5运算符"><a href="#3-5运算符" class="headerlink" title="3.5运算符"></a>3.5运算符</h2><p>运算符用于连接值。</p>
 <h3 id="3-5-1算术运算符"><a href="#3-5-1算术运算符" class="headerlink" title="3.5.1算术运算符"></a>3.5.1算术运算符</h3><p>+，-，*，&#x2F; 加减乘除 求余%</p>
 <p>当参与&#x2F;运算的两个操作数都为整数时，&#x2F;表示整数除法，否则这表示浮点数除法 15&#x2F;2&#x3D;7 15.0&#x2F;2&#x3D;7.5</p>
-<p><strong>整数被零除将产生一个异常，而浮点数被零除将会得到一个无穷大或NaN结果</strong> x&#x2F;0</p>
+<p><em><strong>整数被零除将产生一个异常，而浮点数被零除将会得到一个无穷大或NaN结果</strong></em> x&#x2F;0</p>
 <h3 id="3-5-2-数学函数与常量"><a href="#3-5-2-数学函数与常量" class="headerlink" title="3.5.2 数学函数与常量"></a>3.5.2 数学函数与常量</h3><p>Math类中包含了各种常用的数学函数</p>
 <p>要想计算一个数的平方根，可以使用sqrt函数</p>
 <pre><code class="language-java">double x=4;
@@ -585,11 +585,11 @@ System.out.println(y);//prints 2.0
 <p>[!NOTE]</p>
 <p>println方法处理System.out对象，而Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法（static method）</p>
 </blockquote>
-<p>在Java中，没有完成幂运算的运算符，故必须使用Math类中的pow方法，<strong>pow方法有两个double类型的参数，其返回类型也为double</strong></p>
+<p>在Java中，没有完成幂运算的运算符，故必须使用Math类中的pow方法，<em><strong>pow方法有两个double类型的参数，其返回类型也为double</strong></em></p>
 <pre><code class="language-java">double y=Math.pow(x,a);//将y设置为x的a次幂
 </code></pre>
 <p>floorMod方法是为了解决整数余数问题（n%2当n为负奇数时结果为-1）</p>
-<p><strong>最优规则（欧几里得规则）：余数总是大于等于0</strong></p>
+<p><em><strong>最优规则（欧几里得规则）：余数总是大于等于0</strong></em></p>
 <p>计算一个时钟时针的位置，这里要做一个调整，归一化为一个0-11之间的数，若使用式（position+adjustment）%12,当调整为负数时可能会得到一个负数，若使用（（position+adjustment）%12+12）%12则很麻烦，使用floorMod(position+adjustment，12)总会得到一个0-11之间的数（但对于负除数floorMod会得到负数结果）</p>
 <p>常用三角函数</p>
 <table>
@@ -641,7 +641,7 @@ System.out.println(y);//prints 2.0
 <td>求解以10为底的对数</td>
 </tr>
 </tbody></table>
-<p>以上方法参数及返回值均为double类型，且均为静态方法，可直接通过Math类调用，<strong>无需创建Math对象</strong></p>
+<p>以上方法参数及返回值均为double类型，且均为静态方法，可直接通过Math类调用，<em><strong>无需创建Math对象</strong></em></p>
 <p>常用常量</p>
 <table>
 <thead>
@@ -667,17 +667,17 @@ System.out.println(y);//prints 2.0
 <pre><code class="language-java">System.out.println(sqrt(PI));
 </code></pre>
 </blockquote>
-<p>如果得到一个完全可预测的结果比运行速度更重要的话，应该使用<strong>StrictMath类</strong>，确保在所有平台上得到相同的结果</p>
+<p>如果得到一个完全可预测的结果比运行速度更重要的话，应该使用<em><strong>StrictMath类</strong></em>，确保在所有平台上得到相同的结果</p>
 <blockquote>
 <p>[!CAUTION]</p>
-<p>Math类提供了一些方法让整数运算更加安全，如果一个计算溢出，数学运算只是<strong>悄悄地返回错误的结果而不做任何提醒</strong>，使用Math.multiplyExact（10 0000 0000，3）就会生成一个异常，使得你可以<strong>捕获这个异常并进行处理</strong>，还存在其他方法（abbExact,subtractExact,incrementExact,decrementExact,negateExact,absExact）也可以正确地处理int和long参数</p>
+<p>Math类提供了一些方法让整数运算更加安全，如果一个计算溢出，数学运算只是<em><strong>悄悄地返回错误的结果而不做任何提醒</strong></em>，使用Math.multiplyExact（10 0000 0000，3）就会生成一个异常，使得你可以<em><strong>捕获这个异常并进行处理</strong></em>，还存在其他方法（abbExact,subtractExact,incrementExact,decrementExact,negateExact,absExact）也可以正确地处理int和long参数</p>
 </blockquote>
 <h3 id="3-5-3数值类型之间的转换"><a href="#3-5-3数值类型之间的转换" class="headerlink" title="3.5.3数值类型之间的转换"></a>3.5.3数值类型之间的转换</h3><p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/6.jpg" alt="6"></p>
 <p>其中实线类型表示无信息丢失的转换，而另有三个虚线箭头，表示有精度损失的转换</p>
 <pre><code class="language-java">int n=123456789;
 float f=n;//f is 1.23456792E8
 </code></pre>
-<p>当用一个二元运算符连接两个值时，需要<strong>先将两个操作数转换为同一种类型</strong>，然后再进行计算</p>
+<p>当用一个二元运算符连接两个值时，需要<em><strong>先将两个操作数转换为同一种类型</strong></em>，然后再进行计算</p>
 <ul>
 <li>如果有一个是double类型，那么另一个就会转换为double类型</li>
 <li>否则，如果有一个是float类型，那么另一个就会转换为float类型</li>
@@ -690,7 +690,7 @@ float f=n;//f is 1.23456792E8
 <pre><code class="language-java">double x=9.997;
 int nx=(int)x;//nx is 9
 </code></pre>
-<p>强制类型转换通过<strong>截断小数部分将浮点值转换为整型</strong></p>
+<p>强制类型转换通过<em><strong>截断小数部分将浮点值转换为整型</strong></em></p>
 <p>若想舍入（round）一个浮点数来得到一个最接近的整数，可以使用Math.round方法</p>
 <pre><code class="language-java">double x=9.997;
 int nx=(int)Math.round(x);//nx is 10
@@ -700,7 +700,7 @@ int nx=(int)Math.round(x);//nx is 10
 <p>[!WARNING]</p>
 <p>如果试图将一个数从一种类型强制转换为另一种类型而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值，如（byte）300&#x3D;44</p>
 </blockquote>
-<p><strong>不要在boolean类型和任何类型之间进行强制类型转换</strong>，若需要将boolean类型转换成一个数，可以使用条件表达式b?1:0</p>
+<p><em><strong>不要在boolean类型和任何类型之间进行强制类型转换</strong></em>，若需要将boolean类型转换成一个数，可以使用条件表达式b?1:0</p>
 <h3 id="3-5-5赋值"><a href="#3-5-5赋值" class="headerlink" title="3.5.5赋值"></a>3.5.5赋值</h3><p>可以在赋值中使用二元运算符 +&#x3D; *&#x3D; %&#x3D; …</p>
 <pre><code class="language-java">x+=4;//等价于x=x+4
 </code></pre>
@@ -712,7 +712,7 @@ int nx=(int)Math.round(x);//nx is 10
 x+=3.5;//x被设置为（int）(x+3.5)
 </code></pre>
 </blockquote>
-<p>在Java中，<strong>赋值是一个表达式，即表达式有一个值（所赋的值）</strong></p>
+<p>在Java中，<em><strong>赋值是一个表达式，即表达式有一个值（所赋的值）</strong></em></p>
 <pre><code class="language-java">int x=1;
 int y= x+=4;//x+=4的值是5
 </code></pre>
@@ -748,7 +748,7 @@ int b=2*(n++);//now b is 14,n is 8
 </code></pre>
 <p>但在Java中较少使用</p>
 <h3 id="3-5-7关系和boolean运算符"><a href="#3-5-7关系和boolean运算符" class="headerlink" title="3.5.7关系和boolean运算符"></a>3.5.7关系和boolean运算符</h3><p>&#x3D;&#x3D;，！&#x3D;，&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;关系运算符 3&#x3D;&#x3D;7值为false</p>
-<p>&amp;&amp;逻辑与运算 ||逻辑或运算  ！逻辑非运算 &amp;&amp;与||是<strong>按照短路方式来求值</strong>的，即<strong>如果第一个操作数已经能够确定表达式的值，那么第二个操作数就不会计算</strong></p>
+<p>&amp;&amp;逻辑与运算 ||逻辑或运算  ！逻辑非运算 &amp;&amp;与||是<em><strong>按照短路方式来求值</strong></em>的，即<em><strong>如果第一个操作数已经能够确定表达式的值，那么第二个操作数就不会计算</strong></em></p>
 <p>如exp1&amp;&amp;exp2，若exp1真值为false，就不会计算exp2,可以利用这种行为来避免错误</p>
 <p>如x!&#x3D;0&amp;&amp;1&#x2F;x&gt;x+y&#x2F;&#x2F;no division by 0 如果x&#x3D;0，那么第二部分就不会计算，exp1||exp2同理</p>
 <h3 id="3-5-8-条件运算符"><a href="#3-5-8-条件运算符" class="headerlink" title="3.5.8 条件运算符"></a>3.5.8 条件运算符</h3><p>condition?exp1:exp2 如果condition为真，表达式计算为exp1的值，反之则为exp2的值</p>
