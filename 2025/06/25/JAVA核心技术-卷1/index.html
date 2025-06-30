@@ -214,7 +214,10 @@
 <h3 id="1-2-10-多线程"><a href="#1-2-10-多线程" class="headerlink" title="1.2.10 多线程"></a>1.2.10 多线程</h3><p>第一个支持并发程序设计。</p>
 <h3 id="1-2-11-动态性"><a href="#1-2-11-动态性" class="headerlink" title="1.2.11 动态性"></a>1.2.11 动态性</h3><p>库可以自由地添加新方法和实例变量，而对客户端没有任何影响。让一个正在运行的程序实现演进。</p>
 <h2 id="1-3-JAVA-applet-与-Internet"><a href="#1-3-JAVA-applet-与-Internet" class="headerlink" title="1.3 JAVA applet 与 Internet"></a>1.3 JAVA applet 与 Internet</h2><p>在网页中运行的JAVA程序称为applet</p>
-<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/1.jpg" alt="1.jpg"><br><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/2.jpg" alt="2.jpg"></p>
+<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><img src="/.io//1.jpg" alt="1.jpg">
+<img src="/.io//2.jpg" alt="2.jpg">
+
+
 <h2 id="1-5关于JAVA的常见误解"><a href="#1-5关于JAVA的常见误解" class="headerlink" title="1.5关于JAVA的常见误解"></a>1.5关于JAVA的常见误解</h2><ol>
 <li><p>JAVA是HTML的扩展</p>
 <p>JAVA是一种程序设计语言，而HTML是一种描述网页结构的方式。</p>
@@ -258,7 +261,7 @@
 <li><p>最好不要接受默认位置，自己选择路径，推荐安装在其他盘（如D&#x2F;E盘）</p>
 </li>
 <li><p>如何检测安装是否成功？</p>
-<pre><code>javac -version
+<pre><code class="language-shell">javac -version
 </code></pre>
 </li>
 </ul>
@@ -266,13 +269,13 @@
 <ul>
 <li><p>将JDK 的bin目录添加到可执行路径中——可执行路径是操作系统查找可执行文件时所遍历的目录列表</p>
 <p>Linux系统：在<del>&#x2F;.bashrc或</del>&#x2F;.bash_profile文件的最后一行添加：</p>
-<pre><code>export PATH=jdk/bin:$PATH
+<pre><code class="language-shell">export PATH=jdk/bin:$PATH
 </code></pre>
 <p>windows系统：在设置中搜索环境变量，编辑环境变量&#x2F;点击Win+R，输入sysdm.cpl，然后选择高级，再单击环境变量，在用户变量列表中找到并选择一个名为Path的变量，单击Edit再单击New，添加一个新值——jdk的bin目录</p>
 </li>
 </ul>
 <h3 id="2-1-3-安装源文件和文档"><a href="#2-1-3-安装源文件和文档" class="headerlink" title="2.1.3 安装源文件和文档"></a>2.1.3 安装源文件和文档</h3><p>解压lib&#x2F;src.zip到新建的目录javasrc中，可通过终端创建该目录</p>
-<pre><code>mkdir javasrc
+<pre><code class="language-shell">mkdir javasrc
 cd javasrc
 jar xvf jdk/lib/src.zip
 cd ..
@@ -294,7 +297,7 @@ java xxx
 <p>键入l,再按一次tab键，方法名会补全为log，然后得到一个比较小的列表</p>
 <p><img src="/.io//Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20250625020835072.png" alt="image-20250625020835072"></p>
 <p><strong>小技巧</strong>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
-<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><h2 id="3-1-一个简单的JAVA程序"><a href="#3-1-一个简单的JAVA程序" class="headerlink" title="3.1 一个简单的JAVA程序"></a>3.1 一个简单的JAVA程序</h2><pre><code>public class FirstSample &#123;
+<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><h2 id="3-1-一个简单的JAVA程序"><a href="#3-1-一个简单的JAVA程序" class="headerlink" title="3.1 一个简单的JAVA程序"></a>3.1 一个简单的JAVA程序</h2><pre><code class="language-java">public class FirstSample &#123;
     public static void main(String[] args) &#123;
         System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
     &#125;
@@ -318,13 +321,13 @@ java xxx
 <li><p><strong>main方法必须声明为public</strong>，详情可见<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/">Java语言规范</a></p>
 </li>
 <li><p>大括号用来划分程序的各个部分（通常称为块），任何方法的代码都必须以“{”开始，“}”结束；大括号的使用风格因人而异，JAVA编译器会忽略空白符，所以你可以选用自己喜欢的任何大括号风格</p>
-<pre><code>public class FirstSample &#123;
+<pre><code class="language-java">public class FirstSample &#123;
     public static void main(String[] args) &#123;
         System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
     &#125;
 &#125;
 </code></pre>
-<pre><code>public class FirstSample 
+<pre><code class="language-java">public class FirstSample 
 &#123;
     public static void main(String[] args) 
     &#123;
@@ -369,7 +372,388 @@ java xxx
  * 888
  */
 </code></pre>
-<h2 id="3-3数据类型"><a href="#3-3数据类型" class="headerlink" title="3.3数据类型"></a>3.3数据类型</h2>
+<h2 id="3-3-数据类型"><a href="#3-3-数据类型" class="headerlink" title="3.3 数据类型"></a>3.3 数据类型</h2><p>JAVA是一种强类型语言，必须为每一个变量声明一个类型。在Java中，一共有8种基本类型，其中4种整型、2种浮点类型，1种字符类型，1种用于表示真值的boolean类型</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>JAVA有一个能够表示任意精度的算数包，所谓的“大数”（big number）是JAVA对象而非基本类型。</p>
+</blockquote>
+<h3 id="3-3-1-整型"><a href="#3-3-1-整型" class="headerlink" title="3.3.1 整型"></a>3.3.1 整型</h3><p>整型用于表示没有小数部分的数，可以是负数。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">存储需求 字节数</th>
+<th align="center">取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">-21 4748 3648~21 4748 3647(略高于20亿)</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">2</td>
+<td align="center">-3 2768~3 2767</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">8</td>
+<td align="center">-922 3372 0368 5477 5808~922 3382 0368 5477 5807</td>
+</tr>
+<tr>
+<td align="center">byte</td>
+<td align="center">1</td>
+<td align="center">-128~127</td>
+</tr>
+</tbody></table>
+<p>在Java中，<strong>整型的范围和运行Java代码的机器无关</strong>（保证在所有机器上都能得到相同的运行结果），与此相反，C&#x2F;C++会针对不同的处理器选择最高效的整型。<strong>JAVA没有无符号形式的int,long,byte,short类型</strong></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>如果使用不可能为负的整数值而且确实需要额外的一位（bit），也可以把有符号整数值解释为无符号数。例如，一个byte值b可以不表示-128~127的范围,如果你想表示0-255的范围，也可以存储在一个byte中。基于二进制算术运算的性质，只要不溢出，加法、减法、乘法都能正常运算。但对于其他运算，需要调用Byte.tuUnsignedInt(b)来得到一个0-255的int值，然后处理这个整数值，再把它转换回Byte.Integer和Long类都提供了处理无符号除法和余数的方法。</p>
+</blockquote>
+<p>长整型的后缀有一个L或1（如40 0000 0000L),十六进制数有一个前缀0x或0X（如0xCAFE),八进制有一个前缀0（010对应十进制里面的8），八进制易混淆，所以不建议使用，二进制数有一个前缀0b或0B。另外可以为数字字面量增加下划线，如1_000_000(或0b1111_0110_1101_0011)表示一百万，下划线的作用是为了增加易读性。</p>
+<h3 id="3-3-2-浮点型"><a href="#3-3-2-浮点型" class="headerlink" title="3.3.2 浮点型"></a>3.3.2 浮点型</h3><p>浮点类型用来表示有小数部分的数。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求（字节数）</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4</td>
+<td>6-7位有效数字</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>15位有效数字</td>
+</tr>
+</tbody></table>
+<p>$$<br>float取值范围大约为±3.40 282 347*10^{38}<br>$$</p>
+<p>$$<br>double取值范围大约为±1.79 769 313 486 231 570*10^{308}<br>$$</p>
+<p>double表示这种类型的数值精度是float的两倍，所以也被称为双精度数，很多时候float的精度并不能满足要求，所以除非必须使用单精度数否则基本上都使用double。float类型的数有一个后缀F或f（如3.14F），没有后缀的浮点数值总是默认为double类型。可选地，也可以在double类型的数后加上后缀D或d（如3.14D）。</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>可以使用十六进制表示浮点数字面量，例如0.123&#x3D;2^{-3}次方可以写成0x1.0p-3,在十六进制表示法中，使用p表示指数而不是e，因为e是十六进制数位。其中尾数采用十六进制，指数采用十进制。指数的基数是2，而不是10.</p>
+</blockquote>
+<p>所有浮点数计算都遵循IEEE754规范，具体来说，有三个特殊的浮点数值表示溢出和出错情况：</p>
+<ul>
+<li><p>正无穷大</p>
+</li>
+<li><p>负无穷大</p>
+</li>
+<li><p>NaN（不是一个数）</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>常量Double.POSITIVE_INFINITY和Double.NEGATIVE_INFINITY和Double.NaN（以及相应的float类型常量）分别表示这三个特殊的值。其中所有NaN的值都认为是不相同的故x&#x3D;&#x3D;Double.NaN is never true,只能通过Double.isNaN(x)来检测是否是Double.NaN</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>[!WARNING]</p>
+<p>浮点数值不适用于无法接受舍入误差的金融计算，例如System.out.println(2.0-1.1)将打印出0.89999999999，而非我们期望中的0.9。这样的舍入误差主要原因是浮点数采用二进制表示，所以无法精确地表示1&#x2F;10，好比十进制无法精确地表示1&#x2F;3。如果需要精确的数值计算，不允许舍入误差，则应该使用BigDecimal类。</p>
+</blockquote>
+<h3 id="3-3-3-char型"><a href="#3-3-3-char型" class="headerlink" title="3.3.3 char型"></a>3.3.3 char型</h3><p>char类型的字面量值要用单引号括起来，例如，’A’是编码值为65的字符常量。它与”A”（包含一个字符的字符串）不同。char类型的值可以表示为十六进制值，其范围从\u0000-\uFFFF,例如，\u2122表示商标符号™ ，\u03C0表示希腊字母π。</p>
+<p>除了转义序列\u以外，还有一些用来表示特殊字符的转义序列。</p>
+<table>
+<thead>
+<tr>
+<th>转义序列</th>
+<th>名称</th>
+<th>Unicode值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\b</td>
+<td>退格</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+<td>\u000c</td>
+</tr>
+<tr>
+<td>\ “(中间没有空格，添加空格防止在此处被转义)</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\ ‘(中间没有空格，添加空格防止在此处被转义)</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>\ \ (中间没有空格，添加空格防止在此处被转义)</td>
+<td>反斜线</td>
+<td>\u005c</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空格，在文本块中用来保留末尾空白符</td>
+<td>\u0020</td>
+</tr>
+<tr>
+<td>\newline</td>
+<td>只在文本块中使用，用来连接这一行和下一行</td>
+<td>——</td>
+</tr>
+</tbody></table>
+<p>可以在加引号的字符字面量或字符串中使用这些转义序列，例如’\u2122’或”Hello\n”。转义序列\u还可以在加引号字符常量或字符串之外使用（而其他所有转义序列不可以），如public static void main(String\u005B\u005D args)(但我自己在IDE上使用JAVA8编译报错，故此处存疑)，其中\u005B和\u005D是 [ 和 ] 的编码</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>Unicode转义序列会在解析代码前处理。例如“\u0022+\u0022”会得到一个空串（解析为””+””）。更隐秘地，一定要注意注释中的\u，例如&#x2F;&#x2F; \u000A is a newline（\u000A会替换为一个换行符）会产生语法错误，&#x2F;&#x2F; look inside c:\users（\u后面没有跟着四位十六进制数）也会产生一个语法错误。</p>
+</blockquote>
+<h3 id="3-3-4-Unicode和char型"><a href="#3-3-4-Unicode和char型" class="headerlink" title="3.3.4 Unicode和char型"></a>3.3.4 Unicode和char型</h3><p>不同的编码机制标准：美国的ASCII，西欧语言的ISO 8859-1，俄罗斯的KOI-8，中国的GB 18030和BIG-5等</p>
+<p><strong>码点（code point）是指与一个编码表中的某个字对应的代码值</strong>。在Unicode标准中，码点采用十六进制书写，并加上前缀U+，例如U+0041为拉丁字母A的码点。Unicode的码点可以氛围17个代码平面（code plane）。第一个代码平面称为基本多语言平面，范围为U+0000-U+FFFF，其余十六个平面从U+10000到U+10FFFF，包含各种辅助字符</p>
+<p>UTF-16编码采用不同长度的代码来表示所有Unicode码点，在基本多语言平面中，每个字符用16位表示，通常称为<strong>代码单元</strong>；而辅助字符编码为一对连续的代码单元，采用这种编码对表示的每个值都属于基本多语言平面中未用的2048个值范围，通常称为替代区域（U+D800-U+DBFF用于第一个代码单元，U+DC00-U+DFFF用于第二个代码单元）。</p>
+<blockquote>
+<p>[!TIP]</p>
+<p><strong>强烈建议不要使用char类型</strong>，除非确实需要处理UTF-16代码单元，最好将字符串作为抽象数据类型来处理</p>
+</blockquote>
+<h3 id="3-3-5-boolean类型"><a href="#3-3-5-boolean类型" class="headerlink" title="3.3.5 boolean类型"></a>3.3.5 boolean类型</h3><p>boolean类型有两个值：true和false，用来判定逻辑条件，<strong>整型值和布尔值之间不能互相转换</strong>。（在C++中，数值甚至指针可以代替布尔值，if(x&#x3D;0)在C++中始终为false,而在Java中无法通过编译，因为整数表达式x&#x3D;0不能转换为布尔值）</p>
+<h2 id="3-4变量与常量"><a href="#3-4变量与常量" class="headerlink" title="3.4变量与常量"></a>3.4变量与常量</h2><p>常量就是值不变的变量。</p>
+<h3 id="3-4-1声明变量"><a href="#3-4-1声明变量" class="headerlink" title="3.4.1声明变量"></a>3.4.1声明变量</h3><p>声明是一个完整的JAVA语句，先指定变量类型，然后是变量名，每个声明都以分号结束</p>
+<pre><code class="language-java">double salary;
+</code></pre>
+<p>作为变量名的标识符<strong>由字母、数字、货币符号以及”标点连接符”组成</strong>，<strong>第一个字符不能是数字</strong>，’+’、空格等不能出现，字母<strong>区分大小写</strong>，<strong>不能使用Java关键字</strong>作为变量名，可以一行声明多个变量，但推荐<strong>分别声明</strong>以此来提高程序可读性</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>如果想要知道标识符中可以使用哪些Unicode字符，可以使用Charater类的<strong>isJavaIdentifierStart</strong>和<strong>isJavaIdentifierPart</strong>来检查</p>
+</blockquote>
+<h3 id="3-4-2初始化变量"><a href="#3-4-2初始化变量" class="headerlink" title="3.4.2初始化变量"></a>3.4.2初始化变量</h3><p>声明变量后必须显式地使用赋值语句初始化变量，不能使用未初始化的变量。</p>
+<pre><code class="language-java">double salary;
+salary=10000;
+</code></pre>
+<pre><code class="language-java">double salary=10000;
+</code></pre>
+<blockquote>
+<p>[!TIP]</p>
+<p>变量的声明应尽可能靠近第一次使用这个变量的地方</p>
+</blockquote>
+<p>从Java10开始，如果可以从变量的初始值推断出其类型，则无需声明类型，只需要使用关键字var</p>
+<pre><code class="language-java">var salary=10000;
+var greeting=&quot;hello&quot;;
+</code></pre>
+<h4 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h4><p>声明：不分配内存（变量）&#x2F;不提供具体实现（方法函数）</p>
+<p>定义则反之</p>
+<h3 id="3-4-3常量"><a href="#3-4-3常量" class="headerlink" title="3.4.3常量"></a>3.4.3常量</h3><p>可以使用<strong>final</strong>关键字来指示，表示该变量<strong>只能被赋值一次</strong>，一旦赋值就无法更改，习惯上，<strong>常量名使用全大写</strong></p>
+<pre><code class="language-java">final double pai=3.14;
+</code></pre>
+<p>类常量（class constant）：在一个类的多个方法中使用，使用static final设置 ,定义位于main函数之外，如果一个类常量声明为public，那么其他类也可以使用这个常量，通过<strong>类名.类常量名</strong>的形式调用</p>
+<pre><code class="language-java">public static final double pai=3.14;
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p>const是Java保留的关键字，目前并没有使用，在Java中必须使用final声明常量</p>
+</blockquote>
+<h3 id="3-4-4枚举类型"><a href="#3-4-4枚举类型" class="headerlink" title="3.4.4枚举类型"></a>3.4.4枚举类型</h3><p>一个变量<strong>只包含有限的一组值</strong>。例如</p>
+<pre><code class="language-java">enum Size&#123;SMALL,MEDIUM,LARGE,EXTRA_LARGE&#125;;
+Size s=Size.MEDIUM;
+</code></pre>
+<p>Size类型的变量<strong>只能存储这个类型声明中所列的某个值，或者特殊值null</strong>，null表示这个变量没有设置任何值</p>
+<h2 id="3-5运算符"><a href="#3-5运算符" class="headerlink" title="3.5运算符"></a>3.5运算符</h2><p>运算符用于连接值。</p>
+<h3 id="3-5-1算术运算符"><a href="#3-5-1算术运算符" class="headerlink" title="3.5.1算术运算符"></a>3.5.1算术运算符</h3><p>+，-，*，&#x2F; 加减乘除 求余%</p>
+<p>当参与&#x2F;运算的两个操作数都为整数时，&#x2F;表示整数除法，否则这表示浮点数除法 15&#x2F;2&#x3D;7 15.0&#x2F;2&#x3D;7.5</p>
+<p><strong>整数被零除将产生一个异常，而浮点数被零除将会得到一个无穷大或NaN结果</strong> x&#x2F;0</p>
+<h3 id="3-5-2-数学函数与常量"><a href="#3-5-2-数学函数与常量" class="headerlink" title="3.5.2 数学函数与常量"></a>3.5.2 数学函数与常量</h3><p>Math类中包含了各种常用的数学函数</p>
+<p>要想计算一个数的平方根，可以使用sqrt函数</p>
+<pre><code class="language-java">double x=4;
+double y=Math.sqrt(x);
+System.out.println(y);//prints 2.0
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p>println方法处理System.out对象，而Math类中的sqrt方法并不处理任何对象，这样的方法被称为静态方法（static method）</p>
+</blockquote>
+<p>在Java中，没有完成幂运算的运算符，故必须使用Math类中的pow方法，<strong>pow方法有两个double类型的参数，其返回类型也为double</strong></p>
+<pre><code class="language-java">double y=Math.pow(x,a);//将y设置为x的a次幂
+</code></pre>
+<p>floorMod方法是为了解决整数余数问题（n%2当n为负奇数时结果为-1）</p>
+<p><strong>最优规则（欧几里得规则）：余数总是大于等于0</strong></p>
+<p>计算一个时钟时针的位置，这里要做一个调整，归一化为一个0-11之间的数，若使用式（position+adjustment）%12,当调整为负数时可能会得到一个负数，若使用（（position+adjustment）%12+12）%12则很麻烦，使用floorMod(position+adjustment，12)总会得到一个0-11之间的数（但对于负除数floorMod会得到负数结果）</p>
+<p>常用三角函数</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Math.sin</td>
+<td>求正弦</td>
+</tr>
+<tr>
+<td>Math.cos</td>
+<td>求余弦</td>
+</tr>
+<tr>
+<td>Math.tan</td>
+<td>求正切</td>
+</tr>
+<tr>
+<td>Math.atan</td>
+<td>求反正切值</td>
+</tr>
+<tr>
+<td>Math.atan2</td>
+<td>求y&#x2F;x的反正切值</td>
+</tr>
+</tbody></table>
+<p>指数函数及对数函数（指数函数的反函数）</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Math.exp</td>
+<td>指数函数</td>
+</tr>
+<tr>
+<td>Math.log</td>
+<td>求解自然对数</td>
+</tr>
+<tr>
+<td>Math.log10</td>
+<td>求解以10为底的对数</td>
+</tr>
+</tbody></table>
+<p>以上方法参数及返回值均为double类型，且均为静态方法，可直接通过Math类调用，<strong>无需创建Math对象</strong></p>
+<p>常用常量</p>
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Math.PI</td>
+<td>π</td>
+</tr>
+<tr>
+<td>Math.E</td>
+<td>e</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>[!TIP]</p>
+<p>可以使用静态导入，这样就不用在方法名和常量名前添加前缀Math</p>
+<pre><code class="language-java">import static java lang.Math.*
+</code></pre>
+<pre><code class="language-java">System.out.println(sqrt(PI));
+</code></pre>
+</blockquote>
+<p>如果得到一个完全可预测的结果比运行速度更重要的话，应该使用<strong>StrictMath类</strong>，确保在所有平台上得到相同的结果</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>Math类提供了一些方法让整数运算更加安全，如果一个计算溢出，数学运算只是<strong>悄悄地返回错误的结果而不做任何提醒</strong>，使用Math.multiplyExact（10 0000 0000，3）就会生成一个异常，使得你可以<strong>捕获这个异常并进行处理</strong>，还存在其他方法（abbExact,subtractExact,incrementExact,decrementExact,negateExact,absExact）也可以正确地处理int和long参数</p>
+</blockquote>
+<h3 id="3-5-3数值类型之间的转换"><a href="#3-5-3数值类型之间的转换" class="headerlink" title="3.5.3数值类型之间的转换"></a>3.5.3数值类型之间的转换</h3><p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/6.jpg" alt="6"></p>
+<p>其中实线类型表示无信息丢失的转换，而另有三个虚线箭头，表示有精度损失的转换</p>
+<pre><code class="language-java">int n=123456789;
+float f=n;//f is 1.23456792E8
+</code></pre>
+<p>当用一个二元运算符连接两个值时，需要<strong>先将两个操作数转换为同一种类型</strong>，然后再进行计算</p>
+<ul>
+<li>如果有一个是double类型，那么另一个就会转换为double类型</li>
+<li>否则，如果有一个是float类型，那么另一个就会转换为float类型</li>
+<li>否则，如果有一个是long类型，那么另一个就会转换为long类型</li>
+<li>否则，两个都被转换为int类型</li>
+</ul>
+<p>即优先转换为精度高的浮点数类型</p>
+<h3 id="3-5-4强制类型转换"><a href="#3-5-4强制类型转换" class="headerlink" title="3.5.4强制类型转换"></a>3.5.4强制类型转换</h3><p>可能丢失信息的转换要通过强制类型转换来完成,确保开发者知道转换后果</p>
+<p>强制类型转换（cast）的语法格式是在圆括号中指定想要转换的目标类型，后面紧跟待转换的变量名</p>
+<pre><code class="language-java">double x=9.997;
+int nx=(int)x;//nx is 9
+</code></pre>
+<p>强制类型转换通过<strong>截断小数部分将浮点值转换为整型</strong></p>
+<p>若想舍入（round）一个浮点数来得到一个最接近的整数，可以使用Math.round方法</p>
+<pre><code class="language-java">double x=9.997;
+int nx=(int)Math.round(x);//nx is 10
+</code></pre>
+<p>之所以还需要进行强制类型转换是因为round方法的返回值为long类型</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>如果试图将一个数从一种类型强制转换为另一种类型而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值，如（byte）300&#x3D;44</p>
+</blockquote>
+<p><strong>不要在boolean类型和任何类型之间进行强制类型转换</strong>，若需要将boolean类型转换成一个数，可以使用条件表达式b?1:0</p>
+<h3 id="3-5-5赋值"><a href="#3-5-5赋值" class="headerlink" title="3.5.5赋值"></a>3.5.5赋值</h3><p>可以在赋值中使用二元运算符 +&#x3D; *&#x3D; %&#x3D; …</p>
+<pre><code class="language-java">x+=4;//等价于x=x+4
+</code></pre>
+<blockquote>
+<p>[!WARNING]</p>
+<p>如果运算符得到一个值，其类型与左侧操作数的类型不同，就会发生强制类型转换</p>
+<pre><code class="language-java">int x;
+...
+x+=3.5;//x被设置为（int）(x+3.5)
+</code></pre>
+</blockquote>
+<p>在Java中，<strong>赋值是一个表达式，即表达式有一个值（所赋的值）</strong></p>
+<pre><code class="language-java">int x=1;
+int y= x+=4;//x+=4的值是5
+</code></pre>
+<p>但不推荐这样写，嵌套赋值容易混淆</p>
+<h3 id="3-5-6自增与自减运算符"><a href="#3-5-6自增与自减运算符" class="headerlink" title="3.5.6自增与自减运算符"></a>3.5.6自增与自减运算符</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>n++</td>
+<td>先使用n原来的值，然后n自增1</td>
+</tr>
+<tr>
+<td>++n</td>
+<td>n先自增1，然后使用n的值</td>
+</tr>
+<tr>
+<td>n–</td>
+<td>先使用n原来的值，然后n自减1</td>
+</tr>
+<tr>
+<td>–n</td>
+<td>n先自减1，然后使用n的值</td>
+</tr>
+</tbody></table>
+<pre><code class="language-java">int m=7;
+int n=7;
+int a=2*(++m);//now a is 16,m is 8
+int b=2*(n++);//now b is 14,n is 8
+</code></pre>
+<p>但在Java中较少使用</p>
+<h3 id="3-5-7关系和boolean运算符"><a href="#3-5-7关系和boolean运算符" class="headerlink" title="3.5.7关系和boolean运算符"></a>3.5.7关系和boolean运算符</h3><p>&#x3D;&#x3D;，！&#x3D;，&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;关系运算符 3&#x3D;&#x3D;7值为false</p>
+<p>&amp;&amp;逻辑与运算 ||逻辑或运算  ！逻辑非运算 &amp;&amp;与||是<strong>按照短路方式来求值</strong>的，即<strong>如果第一个操作数已经能够确定表达式的值，那么第二个操作数就不会计算</strong></p>
+<p>如exp1&amp;&amp;exp2，若exp1真值为false，就不会计算exp2,可以利用这种行为来避免错误</p>
+<p>如x!&#x3D;0&amp;&amp;1&#x2F;x&gt;x+y&#x2F;&#x2F;no division by 0 如果x&#x3D;0，那么第二部分就不会计算，exp1||exp2同理</p>
+<h3 id="3-5-8-条件运算符"><a href="#3-5-8-条件运算符" class="headerlink" title="3.5.8 条件运算符"></a>3.5.8 条件运算符</h3><p>condition?exp1:exp2 如果condition为真，表达式计算为exp1的值，反之则为exp2的值</p>
+<p>如x&lt;y?x:y 会返回x、y中较小的一个</p>
+
     </div>
     
     
