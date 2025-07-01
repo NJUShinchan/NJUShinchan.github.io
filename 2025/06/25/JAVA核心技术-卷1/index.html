@@ -939,7 +939,457 @@ if(greeting.substring(0,3)==&quot;Hel&quot;)...//probably false
 <pre><code class="language-java">if(str!=null &amp;&amp; str.length()!=0)
 </code></pre>
 <p><em><strong>首先要检查str不为null</strong></em>，因为如果在一个null值上调用方法，会出现错误，所以上述检查顺序不可调换</p>
-<h3 id="3-6-6-码点与代码单元"><a href="#3-6-6-码点与代码单元" class="headerlink" title="3.6.6 码点与代码单元"></a>3.6.6 码点与代码单元</h3>
+<h3 id="3-6-6-码点与代码单元"><a href="#3-6-6-码点与代码单元" class="headerlink" title="3.6.6 码点与代码单元"></a>3.6.6 码点与代码单元</h3><p>length()方法将返回采用UTF-16编码表示给定字符串所需要的代码单元个数。</p>
+<pre><code class="language-java">String greeting=&quot;Hello&quot;;
+int n=greeting.length();//n is 5
+</code></pre>
+<p>要想得到实际长度，即码点个数，调用：</p>
+<pre><code class="language-java">int cpCount=greeting.codePointerCount(0,greeting.length());
+</code></pre>
+<p>调用s.charAt(n)将返回位置n的代码单元，<em><strong>n介于0~s.length()-1之间</strong></em></p>
+<pre><code class="language-java">char first=greeting.charAt(0);//&quot;H&quot;
+char last=greeting.charAt(4);//&quot;o&quot;
+</code></pre>
+<pre><code class="language-java">String sentence=&quot;😈 is a sentence&quot;;
+
+int n=sentence.length();
+int cpCount=sentence.codePointCount(0, sentence.length());
+
+int index=sentence.offsetByCodePoints(0, 0);
+int cp=sentence.codePointAt(index);//得到第0个码点
+
+System.out.println(n);//16 😈占用两个代码单元
+System.out.println(cpCount);//15
+System.out.println(cp);//128520
+</code></pre>
+<p>不能忽略在U+FFFF以上的奇怪字符，喜欢emoji表情符号的用户可能会在字符串中下入类似🍺的字符</p>
+<p>要想遍历一个字符串并且一次查看每一个码点，可以使用以下语句</p>
+<pre><code class="language-java">int cp=sentence.codePointAt(i);
+i+=Character.charCount(cp);
+</code></pre>
+<p>可以使用以下语句实现反向遍历</p>
+<pre><code class="language-java">i--；
+if(Character.isSurrogate(sentence.charAt(i))) i--;//判断是否是辅助字符/代理字符
+int cp=sentence.codePointAt(i);
+</code></pre>
+<p>使用<em><strong>codePoints</strong></em>方法更为简易，它会生成int值的一个流，每个int值对应一个码点，可以将流转换为一个数组，再完成遍历</p>
+<pre><code class="language-java">int[] codePoints=str.codePoints().toArray();
+</code></pre>
+<p>反之要把一个码点数组转换为字符串，可以使用构造器</p>
+<pre><code class="language-java">String str=new String(codePoints,0,codePoints.length);
+</code></pre>
+<p>要把单个码点转换成字符串，可以使用***Character.toString(int)***方法</p>
+<pre><code class="language-java">int codePoint=0x1F37A;
+str=Character.toString(codePoint);
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p>虚拟机不一定把字符串实现为代码单元序列，在Java9中使用了一个跟为紧凑的表示，如果只包含单字节代码单元，字符串使用Byte数组实现，所有其他字符串使用char数组</p>
+</blockquote>
+<h3 id="3-6-7-String-API"><a href="#3-6-7-String-API" class="headerlink" title="3.6.7 String API"></a>3.6.7 String API</h3><p><em><strong>API（Application Programming Interface）：应用程序编程接口</strong></em></p>
+<p>类 java.lang.String <strong>1.0</strong>(引入版本号，下同)</p>
+<ul>
+<li><p>char charAt(int index)</p>
+<p>返回给定位置的代码单元，除非对底层代码感兴趣，否则不需要</p>
+</li>
+<li><p>int codePointAt(int index)  <strong>5</strong></p>
+<p>返回从给定位置开始的码点</p>
+</li>
+<li><p>int offsetByCodePoints(int startIndex,int cpCount)  <strong>5</strong></p>
+<p>返回从startIndex码点开始，cpCount个码点后的码点索引</p>
+</li>
+<li><p>int compareTo(String other)</p>
+<p>按照字典顺序，如果字符串位于other之前，返回一个负数；如果相等，返回0；如果位于之后，返回一个正数</p>
+</li>
+<li><p>IntStream codePoints()  <strong>8</strong></p>
+<p>将这个字符串的码点作为一个流返回，调用toArray将它们放在数组中</p>
+</li>
+<li><p>new Stirng(int[] codePoints,int offset,int count)  <strong>5</strong></p>
+<p>用数组中从offset开始的count个码点构造一个字符串</p>
+</li>
+<li><p>boolean isEmpty() </p>
+<p>boolean isBlank()  <strong>11</strong></p>
+<p>如果字符串为空&#x2F;由空白符组成，返回true</p>
+</li>
+<li><p>boolean equals(Object other)</p>
+<p>如果字符串与other相等，返回true</p>
+</li>
+<li><p>boolean equalsIgnoreCase(String other)</p>
+<p>如果字符串与other相等（忽略大小写），返回true</p>
+</li>
+<li><p>boolean startsWith(String prefix)</p>
+<p>boolean endsWith(String suffix)</p>
+<p>如果字符串以prefix开头或者以suffix结尾返回true</p>
+</li>
+<li><p>int indexOf(String str)</p>
+</li>
+<li><p>int indexOf(String str,int fromIndex)</p>
+</li>
+<li><p>int indexOf(int cp)</p>
+</li>
+<li><p>int indexOf(int cp,int fromIndex)</p>
+<p>返回与字符串str或码点cp相等的第一个子串的开始位置，从索引0或fromIndex开始匹配，如果str或cp不在字符串中，则返回-1</p>
+</li>
+<li><p>int lastIndexOf(String str)</p>
+</li>
+<li><p>int lastIndexOf(String str,int fromIndex)</p>
+</li>
+<li><p>int lastIndexOf(int cp)</p>
+</li>
+<li><p>int lastIndexOf(int cp,int fromIndex)</p>
+<p>返回与字符串str或码点cp相等的最后一个子串的开始位置，从字符串末尾或fromIndex开始匹配，如果str或cp不在字符串中，则返回-1</p>
+</li>
+<li><p>int length()</p>
+<p>返回字符串代码单元的个数</p>
+</li>
+<li><p>int codePointCount(int startIndex,int endIndex)  <strong>5</strong></p>
+<p>返回从startIndex到endIndex-1之间的码点个数</p>
+</li>
+<li><p>String replace(CharSequence oldString,CharSequence newString)</p>
+<p>返回一个新字符串，这是用newString替换原始字符串中与oldString匹配的所有子串得到的，可以用String或者StringBuilder对象作为CharSequence参数</p>
+</li>
+<li><p>String substring(int beginIndex)</p>
+</li>
+<li><p>String substring(int beginIndex,int endIndex)</p>
+<p>返回一个新字符串，这个字符串包含原始字符串从beginIndex开始到字符串末尾或endIndex-1的所有代码单元</p>
+</li>
+<li><p>String toLowerCase()</p>
+</li>
+<li><p>String toUpperCase()</p>
+<p>返回一个新字符串，这个字符串包含原始字符串中的所有字符，不过将原始字符串中的大写字母全部小写，或将小写字母全部大写</p>
+</li>
+<li><p>String strip()  <strong>11</strong></p>
+<p>String stripLeading()  <strong>11</strong></p>
+<p>String stripTrailing()  <strong>11</strong></p>
+<p>返回一个新字符串，这个字符串要删除原始原始字符串头部和尾部或者只是头部或尾部的空白符。要用这些方法而不是使用古老的trim方法删除小于等于U+0020的字符</p>
+</li>
+<li><p>String join(CharSequence delimiter,CharSequence… elements)  <strong>8</strong></p>
+<p>返回一个新字符串，用给定的定界符连接所有元素</p>
+</li>
+<li><p>String repeat(int count)</p>
+<p>返回一个字符串，将当前字符串重复count次</p>
+</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]</p>
+<p>在API注释中，有一些CharSequence类型的参数，这是一种接口类型，所有字符串都属于这种接口，当看到一个CharSequence形参（parameter)时，完全可以传入String类型的实参（argument)</p>
+</blockquote>
+<h3 id="3-6-8-联机API文档"><a href="#3-6-8-联机API文档" class="headerlink" title="3.6.8 联机API文档***"></a>3.6.8 联机API文档***</h3><p>类与方法数量过多，不可能全部记住，必须学会阅读联机API文档</p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/17/docs/api/">Overview (Java SE 17 &amp; JDK 17)</a></p>
+<h3 id="3-6-9-构建字符串"><a href="#3-6-9-构建字符串" class="headerlink" title="3.6.9 构建字符串"></a>3.6.9 构建字符串</h3><p>采用字符串拼接的方式将较短的字符串构建长字符串效率低，使用<em><strong>StringBuilder类</strong></em>可以避免此问题</p>
+<pre><code class="language-java">StringBuilder builder = new StringBuilder();//构建一个空的字符串构建器
+builder.append(ch);//appends a single character
+builder.append(str);//appends a string
+String completedString=builder.toString();//得到一个包含构建器中字符序列的String对象
+</code></pre>
+<blockquote>
+<p>[!TIP]</p>
+<p>StringBuffer类的效率不如StringBuilder类，但是它允许多线程的方式添加或删除字符串，如果所有字符串编辑都在单个线程中操作（通常情况），则应当使用StringBuilder类。这两个类的API是一样的</p>
+</blockquote>
+<p>java.lang.StringBuilder <strong>5</strong></p>
+<ul>
+<li><p>StringBuilder()</p>
+<p>构造一个空的字符串构建器</p>
+</li>
+<li><p>int length()</p>
+<p>返回构建器或缓冲器中的代码单元数量</p>
+</li>
+<li><p>StringBuilder append(String str)</p>
+<p>追加一个字符串并返回this</p>
+</li>
+<li><p>StringBuilder append(char c)</p>
+<p>追加一个代码单元并返回this</p>
+</li>
+<li><p>StringBuilder appendCodePoint(int cp)</p>
+<p>追加一个码点，将它转换为一个或两个代码单元并返回this</p>
+</li>
+<li><p>void setCharAt(int i,char c)</p>
+<p>将第i个代码单元设置为c</p>
+</li>
+<li><p>StringBuilder insert(int offset,String str)</p>
+<p>在offset位置插入一个字符串并返回this</p>
+</li>
+<li><p>StringBuilder insert(int offset,char c)</p>
+<p>在offset位置插入一个代码单元并返回this</p>
+</li>
+<li><p>StringBuilder delete(int startIndex,int endIndex)</p>
+<p>删除从startIndex到endIndex-1的代码单元并返回this</p>
+</li>
+<li><p>String toString()</p>
+<p>返回一个字符串，其数据与构建器或缓冲器内容相同</p>
+</li>
+</ul>
+<h3 id="3-6-10-文本块"><a href="#3-6-10-文本块" class="headerlink" title="3.6.10 文本块"></a>3.6.10 文本块</h3><p>利用java15新增的文本块特性，可以很容易地提供跨多行的字符串字面量，<em><strong>文本块以”””开头，后面是一个换行符，并以另一个”””结束</strong></em></p>
+<pre><code class="language-java">        String greeting= &quot;&quot;&quot;
+                Hello
+                World
+                &quot;&quot;&quot;;
+</code></pre>
+<p>特点：易于读写</p>
+<p>这个字符串有两个\n，一个在Hello后面，一个在World后面，<em><strong>开始”””后面的换行符不作为字符串字面量的一部分</strong></em></p>
+<p>文本块很适合包含其他语言编写的代码，如SQL或HTML</p>
+<pre><code class="language-java">        String html= &quot;&quot;&quot;
+                &lt;div class=&quot;warning&quot;&gt;
+                    Beware of those who say &quot;Hello&quot; to the world.
+                &lt;/div&gt;
+                &quot;&quot;&quot;;
+</code></pre>
+<p>只在以下两种对引号转义：</p>
+<ol>
+<li>文本块以一个引号结尾</li>
+<li>文本块中包含三个或更多引号所组成的一个序列</li>
+</ol>
+<p><em><strong>所有反斜线\都需要转义</strong></em>，有一个转义序列只能在文本块中使用，<em><strong>行尾的\会把这一行与下一行连接起来</strong></em></p>
+<pre><code class="language-java">String html= &quot;&quot;&quot;
+                Hello,my name is lyh.\
+                Please enter your name:&quot;&quot;&quot;;
+</code></pre>
+<p>文本块会对行结束符进行标准化，删除末尾的空白符，并把Windows 的行结束符(\r\n)改为简单的换行符(\n)。假如需要保留末尾的空格，请把最后一个空格转换为一个\s转义序列</p>
+<pre><code class="language-java">		String html= &quot;&quot;&quot;
+                &lt;div class=&quot;warning&quot;&gt;
+                    Beware of those who say &quot;Hello&quot; to the world.
+                &lt;/div&gt;
+                &quot;&quot;&quot;;
+</code></pre>
+<p><em><strong>文本块将去除所有行的公共缩进</strong></em>，</p>
+<p>实际字符串为”<div class="warning">\n	Beware of those who say “Hello” to the world.\n</div>\n”</p>
+<p>去除缩进过程中不考虑空行，不过，结束”””前面的空白符很重要，一定要缩进到想要去除的空白符末尾</p>
+<h2 id="3-6输入与输出"><a href="#3-6输入与输出" class="headerlink" title="3.6输入与输出"></a>3.6输入与输出</h2><p>简单介绍如何使用基本控制台来实现输入输出而非使用GUI</p>
+<h3 id="3-7-1-读取输入"><a href="#3-7-1-读取输入" class="headerlink" title="3.7.1 读取输入"></a>3.7.1 读取输入</h3><p>要想读取控制台输入，<em><strong>首先要构造一个与“标准输入流”System.in关联的Scanner对象</strong></em>。</p>
+<pre><code class="language-java">Scanner in=new Scanner(System.in);
+</code></pre>
+<p>然后使用Scanner类的各种方法读取输入，如nextLine方法将读取一行输入</p>
+<pre><code class="language-java">String name=in.nextLine();
+</code></pre>
+<p>在这里<em><strong>使用nextLine方法是因为输入行中可能含有空格</strong></em>，要想读取一个单词（以空白符为分隔符），可以调用<em><strong>next</strong></em>方法</p>
+<pre><code class="language-java">String firstName=in.next();
+</code></pre>
+<p>要想读取一个整数，使用<em><strong>nextInt</strong></em>方法</p>
+<pre><code class="language-java">int age=in.nextInt();
+</code></pre>
+<p>类似地，使用<em><strong>nextDouble</strong></em>读取下一个浮点数</p>
+<p><em><strong>Scanner类在java.util包中定义</strong></em>，使用请先导入(import)</p>
+<p>扩展：util：utility package 工具包&#x2F;实用程序包</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>因为输入对所有人都可见，所以Scanner类不适用于从控制台读取密码，可以使用Console类打到读取密码的目的</p>
+<pre><code class="language-java">Console cons=System.console();
+String username=cons.readLine(&quot;Enter your name: &quot;);
+char[] password=cons.readPassword(&quot;Enter your password: &quot;);
+</code></pre>
+<p>为什么使用字符数组char[]存储密码比使用字符串更安全？</p>
+<p>一旦创建了一个String对象，它的内容就<em><strong>不能被修改</strong></em>，意味着，密码一旦被存储为String，它就会一直存在于内存中，直到被垃圾回收器（GC）回收,同时由于String是不可变的，Java 中的字符串常量池（String Pool）可能会<em><strong>永久保留</strong></em>这个密码，增加被恶意访问的风险。</p>
+<p>完成对密码的处理后，应该马上用一个填充值覆盖数组元素。</p>
+<p>使用Console对象处理输入不如使用Scanner来的方便，<em><strong>必须一次读取一行输入，而且Console类没有提供方法来读取单个单词或数字</strong></em></p>
+</blockquote>
+<p>java.util.Scanner <strong>5</strong> 常用方法</p>
+<ul>
+<li><p>Scanner(InputStream in)</p>
+<p>用给定的输入流构造一个Scanner对象</p>
+</li>
+<li><p>String nextLine()</p>
+<p>读取下一行输入</p>
+</li>
+<li><p>String next()</p>
+<p>读取输入的下一个单词(以空白符为分隔符)</p>
+</li>
+<li><p>int nextInt()</p>
+</li>
+<li><p>double nextDouble()</p>
+<p>读取并转换下一个表示整数或浮点数的字符序列</p>
+</li>
+<li><p>boolean hasNext()</p>
+<p>检测输入中是否还有其他单词</p>
+</li>
+<li><p>boolean hasNextInt()</p>
+</li>
+<li><p>boolean hasNextDouble</p>
+<p>检测下一个字符序列是否表示一个整数或一个浮点数</p>
+</li>
+</ul>
+<p>java.lang.System <strong>1.0</strong></p>
+<ul>
+<li><p>static Console console() <strong>6</strong></p>
+<p>如果有可能进行交互操作，就通过控制台窗口为交互的用户返回一个Console对象，否则返回null，对于任何一个在控制台窗口启动的程序，都可使用Console对象。否则，是否可用取决于使用的系统</p>
+</li>
+</ul>
+<p>java.io.Console <strong>6</strong></p>
+<ul>
+<li><p>static char[] readPassword(String prompt,Object… args)（在命令行&#x2F;终端中使用不显示输入）</p>
+</li>
+<li><p>static String readLine(String prompt,Object… args)</p>
+<p>显示提示符(prompt)并读取用户输入，直到输入行结束，可选的args参数用来提供格式参数</p>
+</li>
+</ul>
+<h3 id="3-7-2格式化输出"><a href="#3-7-2格式化输出" class="headerlink" title="3.7.2格式化输出"></a>3.7.2格式化输出</h3><p>可以使用System.out.println(x)语句将数值x输出到控制台，这个命令将以x的类型所允许的最大非零位数打印x。可以使用printf方法解决某些格式问题</p>
+<pre><code class="language-java">double x=10000.0/3.0;
+System.out.printf(&quot;%8.2f&quot;,x);
+</code></pre>
+<p>打印x时字段宽度为8个字符，精度为2个字符，结果为” 3333.33”，包含一个前导空格</p>
+<p>可以为printf提供多个参数</p>
+<pre><code class="language-java">System.out.printf(&quot;Hello,%s.Next year,you&#39;ll be %d years old.\n&quot;,name,age);
+</code></pre>
+<p><em><strong>每一个以%开头的格式说明符都替换为相应的参数，格式说明符末尾的转换字符指示要格式化的数值的类型：f表示浮点数，s表示字符串，d表示十进制整数</strong></em></p>
+<p>用于printf的转换字符如下</p>
+<table>
+<thead>
+<tr>
+<th>转换字符</th>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d</td>
+<td>十进制整数</td>
+<td>156</td>
+</tr>
+<tr>
+<td>x或X</td>
+<td>十六进制整数，要想对十六进制整数进行更多的操作，可以使用HexFormat类</td>
+<td>9f</td>
+</tr>
+<tr>
+<td>e</td>
+<td>八进制整数</td>
+<td>237</td>
+</tr>
+<tr>
+<td>f或F</td>
+<td>定点浮点数</td>
+<td>15.9</td>
+</tr>
+<tr>
+<td>e或E</td>
+<td>指数浮点数</td>
+<td>1.59e+01</td>
+</tr>
+<tr>
+<td>g或G</td>
+<td>通用浮点数（e和f中比较短的一个）</td>
+<td>——</td>
+</tr>
+<tr>
+<td>a或A</td>
+<td>十六进制浮点数</td>
+<td>0x1.fccdp3</td>
+</tr>
+<tr>
+<td>s或S</td>
+<td>字符串</td>
+<td>Hello</td>
+</tr>
+<tr>
+<td>c或C</td>
+<td>字符</td>
+<td>H</td>
+</tr>
+<tr>
+<td>b或B</td>
+<td>布尔</td>
+<td>true</td>
+</tr>
+<tr>
+<td>h或H</td>
+<td>散列码</td>
+<td>42628b2</td>
+</tr>
+<tr>
+<td>tx或TX</td>
+<td>遗留的日期时间格式化，应当改为java.time类</td>
+<td>——</td>
+</tr>
+<tr>
+<td>%</td>
+<td>百分号（即%%&#x3D;%）</td>
+<td>%</td>
+</tr>
+<tr>
+<td>n</td>
+<td>与平台有关的行分隔符</td>
+<td>——</td>
+</tr>
+</tbody></table>
+<p><em><strong>大写形式会生成大写字母</strong></em>，如”%8.2E”将3333.33格式化为3.33E+03</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>可以使用s转换字符格式化任意的对象，如果一个任意对象实现了Formattable接口，格式化时调用这个对象的formatTo方法，否则，会调用toString方法将这个对象转换为一个字符串</p>
+</blockquote>
+<p>另外，还可以指定控制格式化输出外观的各种标志（flag）例如，逗号标志会增加分组分隔符</p>
+<pre><code class="language-java">System.out.println(&quot;%,.2f&quot;，10000.0/3.0)；//打印3,333.33
+</code></pre>
+<p>可以使用多个标志，例如”%,(.2f”会使用分组分隔符，并将负数包围在括号内</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>打印正数或负数的符号</td>
+<td>+3333.33</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>在正数前面增加一个空格</td>
+<td>| 3333.33|</td>
+</tr>
+<tr>
+<td>0</td>
+<td>增加前导0</td>
+<td>003333.33</td>
+</tr>
+<tr>
+<td>-</td>
+<td>字段左对齐</td>
+<td>|3333.33|</td>
+</tr>
+<tr>
+<td>(</td>
+<td>将负数包围在括号内</td>
+<td>（3333.33）&#x3D;-3333.33</td>
+</tr>
+<tr>
+<td>,</td>
+<td>增加分组分隔符</td>
+<td>3,333.33</td>
+</tr>
+<tr>
+<td>#(对于f格式)</td>
+<td>总是包含一个小数点</td>
+<td>3,333.</td>
+</tr>
+<tr>
+<td>#(对于x或0格式)</td>
+<td>添加前缀0x或0</td>
+<td>0xcafe</td>
+</tr>
+<tr>
+<td>$</td>
+<td>指定要格式化的参数索引，例如%1$x将以十六进制打印第一个参数</td>
+<td>159 9F</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>格式化前面指定的同一个值，%d&lt;%x将以十进制和十六进制打印同一个数</td>
+<td>159 9F</td>
+</tr>
+</tbody></table>
+<p>可以<em><strong>使用静态的String.format方法创建一个格式化的字符串而不打印输出</strong></em></p>
+<pre><code class="language-java">String message=String.format(&quot;Hello,%s.Next year,you&#39;ll be %d years old.\n&quot;,name,age+1);
+</code></pre>
+<p>在Java15中，可以使用<em><strong>formatted</strong></em>方法</p>
+<pre><code class="language-java">String message=&quot;Hello,%s.Next year,you&#39;ll be %d years old.\n&quot;.formatted(name,age+1);
+</code></pre>
+<p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/7.jpg" alt="7"></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p><em><strong>格式化规则是特定于本地环境的</strong></em>，例如在德国分组分隔符是点号而不是逗号，因此要学习如何控制应用的国际化行为</p>
+</blockquote>
+<h3 id="3-7-3文件输入与输出"><a href="#3-7-3文件输入与输出" class="headerlink" title="3.7.3文件输入与输出"></a>3.7.3文件输入与输出</h3>
     </div>
     
     
