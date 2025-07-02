@@ -1389,7 +1389,825 @@ System.out.printf(&quot;%8.2f&quot;,x);
 <p>[!CAUTION]</p>
 <p><em><strong>格式化规则是特定于本地环境的</strong></em>，例如在德国分组分隔符是点号而不是逗号，因此要学习如何控制应用的国际化行为</p>
 </blockquote>
-<h3 id="3-7-3文件输入与输出"><a href="#3-7-3文件输入与输出" class="headerlink" title="3.7.3文件输入与输出"></a>3.7.3文件输入与输出</h3>
+<h3 id="3-7-3文件输入与输出"><a href="#3-7-3文件输入与输出" class="headerlink" title="3.7.3文件输入与输出"></a>3.7.3文件输入与输出</h3><p>要想读取一个文件，需要先构造一个Scanner对象</p>
+<pre><code class="language-java">Scanner in=new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF_8);
+</code></pre>
+<p><em><strong>如果文件名中包含反斜线符号，要在每个反斜线符号之前加上一个额外的反斜线进行转义</strong></em></p>
+<p>然后可以使用跟之前的任何Scanner方法读取文件</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>上面指定了UTF-8字符编码，这对于互联网上的文件很常见，但并不一定完全适用，所以在读取一个文本文件时，要知道它的字符编码，若省略字符编码则会使用运行这个JAVA程序的机器的默认编码，这并不是是一个好主意，因为这会导致在不同的机器上运行这个程序可能会有不同的表现</p>
+</blockquote>
+<blockquote>
+<p>[!WARNING]</p>
+<p>可以提供一个字符串参数来构造一个Scanner，但这个Scanner会把字符串解析为数据而非文件名，例如</p>
+<pre><code class="language-java">Scanner in=new Scanner(&quot;myfile.txt&quot;);
+</code></pre>
+<p>这个Scanner会将参数看作是包含十个字符的数据</p>
+</blockquote>
+<p><em><strong>要想写入文件，需要构造一个PrintWriter</strong></em></p>
+<pre><code class="language-java">PrintWriter out = new PrintWriter(&quot;myfile.txt&quot;, StandardCharsets.UTF_8);
+</code></pre>
+<p>如果文件不存在，则会先创建该文件，可以像输出到System.out一样使用println、print、printf等命令</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>当指定一个相对文件名时，例如”myfile.txt””..&#x2F;myfile.txt”,文件将相对于启动JAVA虚拟机的那个目录放置</p>
+<p>如果从一个命令Shell执行一下命令启动程序</p>
+<pre><code class="language-shell">java MyProg
+</code></pre>
+<p>启动目录就是命令shell的当前目录，不过如果使用集成开发环境，那么启动目录将由IDE（Integrated Development Environment）控制，可以使用下面的调用找到这个目录的位置</p>
+<pre><code class="language-java">String dir=System.getProperty(&quot;user.dir&quot;);
+</code></pre>
+<p>如果觉得文件定位太麻烦，建议<em><strong>使用绝对路径</strong></em>，如”&#x2F;home&#x2F;me&#x2F;mydirectory&#x2F;myfile.txt”等（也可使用反斜线，但要注意转义）</p>
+</blockquote>
+<p>如果<em><strong>用一个不存在的文件构造一个Scanner，或者用一个无法创建的文件名构造一个PrintWriter，就会产生异常</strong></em>，JAVA编译器认为这些异常比”被零除”更严重</p>
+<pre><code class="language-java">    public static void main(String[] args) throws IOException &#123;//处理异常
+        Scanner out = new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF_8);
+    &#125;
+</code></pre>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>从命令shell启动一个程序时，可以利用shell的重定向语法将任意文件关联到System.in和System.out</p>
+<pre><code class="language-java">java MyProg&lt;myfile.txt&gt;output.txt//将标准输入重定向到 myfile.txt 文件，同时将标准输出重定向到 output.txt 文件
+</code></pre>
+<p>这样就不用担心处理IOException异常了（Java程序本身不需要显式地处理这些IO异常。这是因为重定向是由shell处理的，而不是由Java程序直接处理的）</p>
+</blockquote>
+<p>java.util.Scanner <strong>5</strong></p>
+<ul>
+<li><p>Scanner(Path p,String encoding)</p>
+<p>构造一个Scanner使用给定字符编码从给定路径读取数据</p>
+</li>
+<li><p>Scanner(String data)</p>
+<p>构造一个Scanner从给定字符串读取数据</p>
+</li>
+</ul>
+<p>java.io.PrintWriter <strong>1.1</strong></p>
+<ul>
+<li><p>PrintWriter(String fileName)</p>
+<p>构造一个PrintWriter将数据写入指定文件</p>
+</li>
+</ul>
+<p>java.nio.file.Path  </p>
+<ul>
+<li><p>static Path of(String pathname)  <strong>11</strong></p>
+<p>由指定路径名构造一个Path</p>
+</li>
+</ul>
+<h2 id="3-8控制流程"><a href="#3-8控制流程" class="headerlink" title="3.8控制流程"></a>3.8控制流程</h2><p>与任何程序设计语句一样，java支持使用<em><strong>条件语句和循环结构</strong></em>来控制流程</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>Java的控制流程结构与C&#x2F;C++基本相同，只有很少几个例外。Java中没有goto语句，但break语句可以带标签，可以利用它从嵌套循环中跳出（C中可能就要使用goto语句了）。以及还有一种变形的for循环，有点类似于C++中基于范围的for循环和C#中的foreach循环</p>
+</blockquote>
+<h3 id="3-8-1块作用域"><a href="#3-8-1块作用域" class="headerlink" title="3.8.1块作用域"></a>3.8.1块作用域</h3><p><em><strong>块（即复合语句）由若干条Java语句组成，并用一对大括号括起来，块确定了变量的作用域，一个块可以嵌套在另一个块中</strong></em></p>
+<p><em><strong>不能在嵌套的两个块中声明同名变量</strong></em></p>
+<pre><code class="language-java">public static void main(String[] args)
+&#123;
+	int n;
+	...
+	&#123;
+		int k;
+        int n;//ERROR--can&#39;t redeclare n in inner block
+        ...
+	&#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p>在C++中，可以在嵌套的块中重定义一个变量，在内层定义的变量会屏蔽在外层定义的变量，这就有可能带来编程错误，因此Java中不允许这样做</p>
+</blockquote>
+<h3 id="3-8-2条件语句"><a href="#3-8-2条件语句" class="headerlink" title="3.8.2条件语句"></a>3.8.2条件语句</h3><p>条件语句的形式为<em><strong>if(condition) statement</strong></em></p>
+<p>其中statement可以是块语句</p>
+<pre><code class="language-java">if(condition)
+&#123;
+	statement1
+	statement2
+	...
+&#125;
+</code></pre>
+<p>更一般的条件语句 <em><strong>if(condition) statement1 else statement2</strong></em> 同样可以替换为块语句</p>
+<p><em><strong>else子句与最邻近的if构成一组</strong></em></p>
+<pre><code class="language-java">if(x&lt;=0)if(x==0) sign=0;else sign=-1;
+</code></pre>
+<p>else与第二个if配对，但建议使用大括号让代码更加清晰</p>
+<pre><code class="language-java">if(x&lt;=0)&#123;if(x==0) sign=0;else sign=-1;&#125;
+</code></pre>
+<p>反复使用if…else if…也很常见</p>
+<pre><code class="language-java">if()&#123;&#125;
+else if()&#123;&#125;
+else if()&#123;&#125;
+...
+else&#123;&#125;
+</code></pre>
+<h3 id="3-8-3-循环"><a href="#3-8-3-循环" class="headerlink" title="3.8.3 循环"></a>3.8.3 循环</h3><p><em><strong>while循环会在条件为true时反复执行一个（块）语句，如果开始时循环条件就为false，那么while循环一次也不执行</strong></em></p>
+<p>如果希望循环体至少循环一次，需要使用do&#x2F;while循环将检测放到最后 <em><strong>do statement while(condition)</strong></em></p>
+<p>这种循环先执行语句（块），然后再检查循环条件，如果条件为true，重复执行语句，然后继续检测，以此类推</p>
+<p>示例程序1</p>
+<pre><code class="language-java">import java.util.*;
+
+/**
+ * This program demonstrates a &lt;code&gt;while&lt;/code&gt; loop.
+ * @version 1.20 2004-02-10
+ * @author Cay Horstmann
+ */
+public class Retirement
+&#123;
+   public static void main(String[] args)
+   &#123;
+      // read inputs
+      Scanner in = new Scanner(System.in);
+
+      System.out.print(&quot;How much money do you need to retire? &quot;);
+      double goal = in.nextDouble();
+
+      System.out.print(&quot;How much money will you contribute every year? &quot;);
+      double payment = in.nextDouble();
+
+      System.out.print(&quot;Interest rate in %: &quot;);
+      double interestRate = in.nextDouble();
+
+      double balance = 0;
+      int years = 0;
+
+      // update account balance while goal isn&#39;t reached
+      while (balance &lt; goal)
+      &#123;
+         // add this year&#39;s payment and interest
+         balance += payment;
+         double interest = balance * interestRate / 100;
+         balance += interest;
+         years++;
+      &#125;
+
+      System.out.println(&quot;You can retire in &quot; + years + &quot; years.&quot;);
+   &#125;
+&#125;
+</code></pre>
+<p>示例程序2</p>
+<pre><code class="language-java">import java.util.*;
+
+/**
+ * This program demonstrates a &lt;code&gt;do/while&lt;/code&gt; loop.
+ * @version 1.20 2004-02-10
+ * @author Cay Horstmann
+ */
+public class Retirement2
+&#123;
+   public static void main(String[] args)
+   &#123;
+      Scanner in = new Scanner(System.in);
+
+      System.out.print(&quot;How much money will you contribute every year? &quot;);
+      double payment = in.nextDouble();
+
+      System.out.print(&quot;Interest rate in %: &quot;);
+      double interestRate = in.nextDouble();
+
+      double balance = 0;
+      int year = 0;
+
+      String input;
+
+      // update account balance while user isn&#39;t ready to retire
+      do
+      &#123;
+         // add this year&#39;s payment and interest
+         balance += payment;
+         double interest = balance * interestRate / 100;
+         balance += interest;
+
+         year++;
+
+         // print current balance
+         System.out.printf(&quot;After year %d, your balance is %,.2f%n&quot;, year, balance);
+
+         // ask if ready to retire and get input
+         System.out.print(&quot;Ready to retire? (Y/N) &quot;);
+         input = in.next();
+      &#125;
+      while (input.equals(&quot;N&quot;));
+   &#125;
+&#125;
+</code></pre>
+<h3 id="3-8-4-确定性循环"><a href="#3-8-4-确定性循环" class="headerlink" title="3.8.4 确定性循环"></a>3.8.4 确定性循环</h3><p>for循环语句是支持迭代的一种通用结构，它由一个计数器或类似的变量控制迭代次数，每次迭代后更新变量。</p>
+<pre><code class="language-java">for(int i=1;i&lt;=10;i++)
+	System.out.println(i);
+</code></pre>
+<p>for语句的第一部分通常是对计数器初始化，第二部分给出每次新一轮循环执行前要检测的循环条件；第三部分指定如何更新计数器，建议三个部分<em><strong>使用相同的计数器变量</strong></em>，否则可能循环晦涩难懂</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>在循环中检测两个浮点数是否相等需要格外小心</p>
+<pre><code class="language-java">for(double x=0;x!=10;x+=0.1)...
+</code></pre>
+<p>这个循环永远不会结束，由于存在舍入误差，可能永远无法达到精确的最终值，上述循环中由于0.1无法精确地用二进制表示，x将从9.99999999999998跳到10.0999999999998</p>
+</blockquote>
+<p>如果变量在for语句内部声明，就只能在循环体内使用，若希望在外部使用则需要在外部声明</p>
+<p><em><strong>可以在不同的for循环中定义同名变量</strong></em></p>
+<p>for循环只是while循环的一种简化形式</p>
+<p>示例程序</p>
+<pre><code class="language-java">import java.util.*;
+
+/**
+ * This program demonstrates a &lt;code&gt;for&lt;/code&gt; loop.
+ * @version 1.20 2004-02-10
+ * @author Cay Horstmann
+ */
+public class LotteryOdds
+&#123;
+   public static void main(String[] args)
+   &#123;
+      Scanner in = new Scanner(System.in);
+
+      System.out.print(&quot;How many numbers do you need to draw? &quot;);
+      int k = in.nextInt();
+
+      System.out.print(&quot;What is the highest number you can draw? &quot;);
+      int n = in.nextInt();
+
+      /*
+       * compute binomial coefficient n*(n-1)*(n-2)*...*(n-k+1)/(1*2*3*...*k)
+       */
+
+      int lotteryOdds = 1;
+      for (int i = 1; i &lt;= k; i++)
+         lotteryOdds = lotteryOdds * (n - i + 1) / i;
+
+      System.out.println(&quot;Your odds are 1 in &quot; + lotteryOdds + &quot;. Good luck!&quot;);
+   &#125;
+&#125;
+</code></pre>
+<h3 id="3-8-5-多重选择：switch语句"><a href="#3-8-5-多重选择：switch语句" class="headerlink" title="3.8.5 多重选择：switch语句"></a>3.8.5 多重选择：switch语句</h3><p><em><strong>适用于处理同一个表达式的多个选项</strong></em></p>
+<pre><code class="language-java">      String input=&quot;&quot;;
+      switch(input.toLowerCase())
+      &#123;
+         case &quot;yes&quot;,&quot;y&quot;-&gt;
+         	...
+         case &quot;no&quot;,&quot;n&quot;-&gt;
+         	...
+         default -&gt;
+         	...
+      &#125;
+</code></pre>
+<p>switch的经典形式可以追溯到C语言</p>
+<pre><code class="language-java">int chOice=...;
+switch(choice)
+&#123;
+	case 1:
+		...
+		break;
+	case 2:
+		...
+		break;
+	...
+	default://bad input
+		...
+		break;
+&#125;
+</code></pre>
+<p>switch语句从与 选项值相匹配的case标签开始执行，直到遇到下一个break语句，或者执行到switch语句结束。如果没有匹配的case标签，则执行default子句（若有）。</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>有可能会触发多个分支。如果忘记在一个分支末尾加上break语句，就会接着执行下一个分支，这很容易引发错误</p>
+<p>为了检测这种问题，编译代码时可以加上-Xlint:fallthrough选项</p>
+<pre><code class="language-shell">javac -Xlint:fallthrough Test.java
+</code></pre>
+<p>这样一来如果某个分支最后缺少一个break语句编译器就会给出一个警告</p>
+<p>如果确实要使用这种直通式行为（执行多个分支），可以为其外围方法添加一个注解@SuppressWarnings(“fallthrough”)，就不会生成警告了（注解是为编译器或处理Java源文件或类文件的工具提供信息的一种机制）</p>
+</blockquote>
+<p>switch表达式没有直通式行为，但为了对称，Java14引入了有直通行为的switch表达式</p>
+<p><em><strong>有直通行为的以冒号结束，无直通行为则以箭头结束，二者不能混用</strong></em></p>
+<p><strong>表达式</strong></p>
+<p>无直通行为</p>
+<pre><code class="language-java">      int numLetters=switch(seasonName)
+      &#123;
+         case &quot;Spring&quot; -&gt;
+         &#123;
+           System.out.print(&quot;spring time!&quot;);//增加日志语句
+           yield 6;//yield：终止执行，并生成表达式的值
+         &#125;
+         case &quot;Summer&quot;,&quot;Winter&quot;-&gt;5;
+         case &quot;Fall&quot; -&gt;4;
+         default -&gt; -1;
+      &#125;;
+</code></pre>
+<p>有直通行为 </p>
+<pre><code class="language-java">      int numLetters=switch(seasonName)
+      &#123;
+         case &quot;Spring&quot; :
+         &#123;
+           System.out.print(&quot;spring time!&quot;);
+         &#125;
+         case &quot;Summer&quot;,&quot;Winter&quot;:
+            yield 5;
+         case &quot;Fall&quot; :
+            yield 4;
+         default:
+            yield -1;
+      &#125;;
+</code></pre>
+<p><strong>语句</strong></p>
+<p>无直通行为</p>
+<pre><code class="language-java">      int numLetters;
+      switch (seasonName)
+      &#123;
+         case &quot;Spring&quot;-&gt;
+         &#123;
+            System.out.print(&quot;spring time&quot;);
+            numLetters=6;
+         &#125;
+         case &quot;Summer&quot;,&quot;Winter&quot;-&gt;
+            numLetters=5;
+         case &quot;Fall&quot;-&gt;
+            numLetters=4;
+         default -&gt; 
+            numLetters=-1;
+      &#125;
+</code></pre>
+<p>有直通行为</p>
+<pre><code class="language-java">int numLetters;
+switch (seasonName)
+&#123;
+   case &quot;Spring&quot;:
+   &#123;
+      System.out.print(&quot;spring time&quot;);
+   &#125;
+   case &quot;Summer&quot;,&quot;Winter&quot;:
+      numLetters=5;
+      break;
+   case &quot;Fall&quot;:
+      numLetters=4;
+      break;
+   default :
+      numLetters=-1;
+&#125;
+</code></pre>
+<p><em><strong>switch表达式必须为每个可能的case生成一个值（经常需要default），但是语句则不用</strong></em></p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>完全可以在switch表达式 的一个分支中抛出异常</p>
+<pre><code class="language-java">default-&gt;throw new IllegalArgumentException(&quot;Not a valid season&quot;);
+</code></pre>
+</blockquote>
+<blockquote>
+<p>[!WARNING]</p>
+<p><em><strong>switch表达式的关键在于生成一个值（或者产生一个异常而失败），不允许跳出表达式</strong></em></p>
+<pre><code class="language-java">default-&gt;&#123;return -1；&#125;//Error
+</code></pre>
+<p><em><strong>不能在switch表达式中使用return，break，continue语句</strong></em></p>
+</blockquote>
+<p><em><strong>switch表达式优于switch语句</strong></em>，只有在确实需要直通式行为，或者必须为一个switch表达式增加语句时，才需要使用break或yield</p>
+<h3 id="3-8-6中断控制流程的语句"><a href="#3-8-6中断控制流程的语句" class="headerlink" title="3.8.6中断控制流程的语句"></a>3.8.6中断控制流程的语句</h3><p>尽管Java的设计者将goto仍作为一个保留字，但实际上并不打算在语言中包含goto。通常使用goto会被认为是一种拙劣的编码风格，无限制地使用goto语句很容易导致错误，但在有些情况下偶尔使用goto跳出循环还是很有益处的。</p>
+<h4 id="不带标签的break"><a href="#不带标签的break" class="headerlink" title="不带标签的break"></a>不带标签的break</h4><p>退出循环（最内层）</p>
+<h4 id="带标签的break（与C-不同，新增）"><a href="#带标签的break（与C-不同，新增）" class="headerlink" title="带标签的break（与C++不同，新增）"></a>带标签的break（与C++不同，新增）</h4><p><em><strong>允许跳出多重嵌套的循环</strong></em>（有时希望跳出所有循环）</p>
+<p><em><strong>标签必须放在你想跳出的最外层循环之前，并且紧跟一个冒号</strong></em></p>
+<pre><code class="language-java">Scanner in=new Scanner(System.in);
+int n;
+read_data:
+while(...)//this loop statement is tagged with the label
+&#123;
+	...
+	for(...)//this inner loop is not labeled
+    &#123;
+    	System.out.print(&quot;...&quot;);
+    	n=.in.nextInt();
+    	if(n&lt;0)
+    		break read_data;//break out of read_data loop
+    	...
+    &#125;
+&#125;
+//this statement is executed immediately after the label break
+//即如果输入有误，执行带标签的break会跳转到带标签的语句块末尾
+//与任何使用break语句的代码一样，接下来需要检测循环是正常退出的还是由于break提前退出
+if(n&lt;0)//check for bad situation
+&#123;
+	//deal with bad situation
+&#125;
+else
+&#123;
+	//carry out normal situation
+&#125;
+</code></pre>
+<p>实际上，<em><strong>可以将标签应用到任何语句</strong></em>，包括if语句或块语句。<em><strong>但只能跳出语句块，而不能跳入语句块</strong></em></p>
+<h4 id="continue语句（不带标签）"><a href="#continue语句（不带标签）" class="headerlink" title="continue语句（不带标签）"></a>continue语句（不带标签）</h4><p><em><strong>将控制转移到最内层外围循环首部，如果在for循环中使用会跳转到for循环的更新部分</strong></em></p>
+<h4 id="带标签的continue语句"><a href="#带标签的continue语句" class="headerlink" title="带标签的continue语句"></a>带标签的continue语句</h4><h2 id="3-9大数"><a href="#3-9大数" class="headerlink" title="3.9大数"></a>3.9大数</h2><p>使用java.math包中两个很有用的类：<em><strong>BigInteger</strong></em>和<em><strong>BigDecimal</strong></em>可以处理包含<em><strong>任意长度数字序列</strong></em>的数值，BigInteger实现任意精度的整数运算，BigDecimal类实现任意精度的浮点数运算</p>
+<p>使用静态的<em><strong>valueOf</strong></em>方法可以将一个普通的数转换成大数</p>
+<pre><code class="language-java">BigInteger a=BigInteger.valueOf(100);
+</code></pre>
+<p>对于更长的数，可以使用一个带字符串参数的构造器：</p>
+<pre><code class="language-java">BigInteger reallyBig=new BigInteger(&quot;65659874454564561654165413146515614231685456212348954&quot;);
+</code></pre>
+<p>一些常量：<em><strong>BigInteger.ZERO,BigInteger.ONE,BigInteger.TEN</strong></em>,java 9之后还新增<em><strong>BigInteger.TWO</strong></em></p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>对于BigDecimal类，总是应当使用一个带字符串参数的构造器，还有一个BigDecimal（double）构造器，但是这个构造器本质上很<em><strong>容易产生舍入误差</strong></em>，例如new BigDecimal(0.1)会得到以下数位：0.1000000000000000055511151231257827021181583404541015625</p>
+</blockquote>
+<p>不能使用熟悉的算术运算符如+、*等来组合大数，而需要使用  <strong>大数类中的add和multiply方法</strong></p>
+<pre><code class="language-java">BigInteger c=a.add(b);//c=a+b
+BIgInteger d=c.mutiply(b.add(BigInteger.valueOf(2)));//d=c*(b+2)
+</code></pre>
+<blockquote>
+<p>[!NOTE]</p>
+<p>与C++不同，Java不能通过编程实现运算符重载，使用BigInteger类的程序员无法重定义+和*运算符来提供BigInteger类的add和mutiply运算。Java设计者重载了+运算符来完成字符串拼接，但没有重载其他运算符，也没有给Java程序员重载的机会</p>
+</blockquote>
+<p>示例程序</p>
+<pre><code class="language-java">import java.math.*;
+import java.util.*;
+
+/**
+ * This program uses big numbers to compute the odds of winning the grand prize in a lottery.
+ * @version 1.21 2021-09-03
+ * @author Cay Horstmann
+ */
+public class BigIntegerTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      Scanner in = new Scanner(System.in);
+
+      System.out.print(&quot;How many numbers do you need to draw? &quot;);
+      int k = in.nextInt();
+
+      System.out.print(&quot;What is the highest number you can draw? &quot;);
+      BigInteger n = in.nextBigInteger();
+
+      /*
+       * compute binomial coefficient n*(n-1)*(n-2)*...*(n-k+1)/(1*2*3*...*k)
+       */
+
+      BigInteger lotteryOdds = BigInteger.ONE;
+
+      for (int i = 1; i &lt;= k; i++)
+         lotteryOdds = lotteryOdds
+            .multiply(n.subtract(BigInteger.valueOf(i - 1)))
+            .divide(BigInteger.valueOf(i));
+
+      System.out.printf(&quot;Your odds are 1 in %s. Good luck!%n&quot;, lotteryOdds);
+   &#125;
+&#125;
+</code></pre>
+<p>java.math.BigInteger <strong>1.1</strong></p>
+<ul>
+<li><p>BigInteger add(BigInteger other)</p>
+</li>
+<li><p>BigInteger subtract(BigInteger other)</p>
+</li>
+<li><p>BigInteger mutiply(BigInteger other)</p>
+</li>
+<li><p>BigInteger divide(BigInteger other)</p>
+</li>
+<li><p>BigInteger mod(BigInteger other)</p>
+<p>返回这个大整数和另一个大整数other的和、差、积、商和余数</p>
+</li>
+<li><p>BigInteger sqrt() <strong>9</strong></p>
+<p>得到这个BigInteger的平方根</p>
+</li>
+<li><p>int compareTo(BigInteger other)</p>
+<p>如果和另一个大整数other相等，返回0；如果小于other，返回负数；否则返回正数</p>
+</li>
+<li><p>static BigInteger valueOf(long x)</p>
+<p>返回 值等于x的大整数</p>
+</li>
+</ul>
+<p>java.math.BigDecimal <strong>1.1</strong></p>
+<ul>
+<li><p>BigDecimal(String digits)</p>
+<p>用给定数位构造一个大实数</p>
+</li>
+<li><p>BigDecimal add(BigDecimal other)</p>
+</li>
+<li><p>BigDecimal subtract(BigDecimal other)</p>
+</li>
+<li><p>BigDecimal mutiply(BigDecimal other)</p>
+</li>
+<li><p>BigDecimal divide(BigDecimal other)</p>
+</li>
+<li><p>BigDecimal divide(BigDecimal other，RoundingMode mode)</p>
+<p>返回这个大实数与另一个大实数other的和差积商。如果商是一个无限小数，第一个divide方法会抛出一个异常，要得到一个舍入的结果，就要使用第二个方法。RoundingMode.HALF_UP是四舍五入，其他舍入方法详见API文档</p>
+</li>
+<li><p>int compareTo(BigDecimal other)</p>
+<p>如果和另一个大实数other相等，返回0；如果小于other，返回负数；否则返回正数</p>
+</li>
+</ul>
+<h2 id="3-10数组"><a href="#3-10数组" class="headerlink" title="3.10数组"></a>3.10数组</h2><p>数组存储相同类型值的序列</p>
+<h3 id="3-10-1-声明数组"><a href="#3-10-1-声明数组" class="headerlink" title="3.10.1 声明数组"></a>3.10.1 声明数组</h3><p>数组是一种数据结构，用来存储同一类型值的集合，通过一个整型下标（index）可以访问数组中的每一个值</p>
+<pre><code class="language-java">int[] a;//声明数组
+int[] a=new int[100];//or var a=new int[100];//初始化
+</code></pre>
+<p><em><strong>数组长度不要求是常数</strong></em>：new int[n]会创建一个长度为n的数组-&gt;根据n的当前值，并不会跟着n动态变化</p>
+<p>一旦创建了数组，就不能再改变它的长度，如果程序运行过程中经常需要扩展数组的长度，就应该使用另一种数据结构——<em><strong>数组列表（array list）</strong></em></p>
+<blockquote>
+<p>[!TIP]</p>
+<p>int[] a和int a[]均正确，但推荐使用int[] a,因为他可以将类型（整数数组）和变量名清晰地分开</p>
+</blockquote>
+<p>Java还提供了一种创建数组对象并提供初始值的简写形式,不需要new，也不需要指明数组长度</p>
+<pre><code class="language-java">int[] Primes=&#123;2,3,5,7&#125;;
+String[] authors=
+&#123;
+    &quot;nailong&quot;,
+    &quot;James Gosling&quot;,
+&#125;
+</code></pre>
+<p><em><strong>最后一个值后面允许有逗号</strong></em>，方便后续为数组增加值</p>
+<p>可以使用以下语法<em><strong>重新初始化一个数组而无需创建新变量</strong></em></p>
+<pre><code class="language-java">smallPrimes=new int[] &#123;2,3,5,7&#125;;
+</code></pre>
+<blockquote>
+<p>[!IMPORTANT]</p>
+<p>在Java中，允许有长度为0的数组，如果编写一个结果为数组的方法时碰巧结果为空，可以构造如下数组：</p>
+<pre><code class="language-java">new elementType[0]//or new elementType[]&#123;&#125;
+</code></pre>
+<p><em><strong>长度为0的数组与null并不同</strong></em></p>
+</blockquote>
+<h3 id="3-10-2-访问数组元素"><a href="#3-10-2-访问数组元素" class="headerlink" title="3.10.2 访问数组元素"></a>3.10.2 访问数组元素</h3><p><em><strong>数组元素从0开始编号，最后一个合法索引为数组长度-1</strong></em></p>
+<p><em><strong>创建一个数字数组时，所有元素都初始化为0；boolean数组的元素会初始化为false；对象数组（如字符串）的元素则初始化为一个特殊值null，表示还未存放任何对象</strong></em></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>C&#x2F;C++中若没有初始化数组可能为乱码</p>
+</blockquote>
+<p>如果创建一个包含一百个元素的数组然后访问a[100]就会出现”array index out of bounds”(数组索引越界)异常</p>
+<p>要想获取数组中元素个数可以使用array.length</p>
+<h3 id="3-10-3-for-each循环"><a href="#3-10-3-for-each循环" class="headerlink" title="3.10.3 for each循环"></a>3.10.3 for each循环</h3><p>增强的for循环形式（遍历数组而不用考虑指定索引值）</p>
+<pre><code class="language-java">for(variable:collection)statement//循环collection中的每一个元素
+</code></pre>
+<p>variable：集合中的每一个元素</p>
+<p>collection：数组或是一个实现了Iterable接口的对象（例如ArrayList）</p>
+<p>优点:简洁；不易出错；不必考虑起始和终止索引值，避免越界访问</p>
+<p>缺点：只能遍历整个数组；无法在循环内部使用索引值（此时使用传统for循环更佳）</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>利用Arrays类中的toString方法可以更容易地打印数组中的所有值，调用Arrays.toString(a)会返回一个包含数组元素的字符串，这些元素包含在中括号中，并用逗号分隔，如”[2,3,5,7]”(并非逐个输出，而是整体输出)</p>
+</blockquote>
+<h3 id="3-10-4数组拷贝"><a href="#3-10-4数组拷贝" class="headerlink" title="3.10.4数组拷贝"></a>3.10.4数组拷贝</h3><p>在Java中，允许将一个数组变量拷贝到另一个数组变量，此时两个变量将<em><strong>引用同一个数组</strong></em>（指针）</p>
+<pre><code class="language-java">int[] luckyNumbers=smallPrimes;
+</code></pre>
+<p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/8.jpg" alt="8"></p>
+<p>如果只希望复制值，就要使用Arrays类的copyOf方法</p>
+<pre><code class="language-java">int[] copiedLuckyNumbers=Arrays.copyOf(luckyNumbers,luckNumbers.length);//第二个参数为新数组长度
+</code></pre>
+<p>可以利用此方法来增加数组长度</p>
+<pre><code>luckyNumbers=Arrays.copyOf(luckyNumbers,2*luckNumbers.length);
+</code></pre>
+<p><em><strong>如果数组元素是数值型，那么新增元素将填入0；如果是布尔型，填入false。如果新数组长度小于原数组，只拷贝前面的值。</strong></em></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>Java数组与堆栈上的C++数组有很大不同，但基本上与在堆上的分配的数组指针一样</p>
+<p>也就是说</p>
+<pre><code class="language-java">int[] a=new int[100];
+</code></pre>
+<p>不同于</p>
+<pre><code class="language-c++">int a[100];
+</code></pre>
+<p>而等同于</p>
+<pre><code class="language-c++">int* a=new int[100];
+</code></pre>
+<p><em><strong>Java中的[]运算符预定义为会完成越界检查（编写代码时便会出现越界警告）</strong></em>。另外，没有指针运算，意味着<em><strong>不能通过a+1得到数组中的下一个元素</strong></em></p>
+</blockquote>
+<h3 id="3-10-5-命令行参数"><a href="#3-10-5-命令行参数" class="headerlink" title="3.10.5 命令行参数"></a>3.10.5 命令行参数</h3><p><em><strong>String args[]表明main方法接受一个字符串数组，也就是命令行上指定的参数</strong></em></p>
+<pre><code class="language-java">public class Message&#123;
+   public static void main(String[] args)
+   &#123;
+   	if(args.length==0||args[0].equals(&quot;-h&quot;))
+   		System.out.print(&quot;Hello,&quot;);
+   	else if(args[0].equals(&quot;-g&quot;))
+        System.out.print(&quot;Goodbye,&quot;);
+    for(int i=1;i&lt;args.length;i++)
+        System.out.print(&quot; &quot;+args[i]);
+    System.out.println(&quot;!&quot;);
+   &#125;
+&#125;
+</code></pre>
+<p>如果如下调用程序</p>
+<pre><code class="language-shell">java Message -g cruel world
+</code></pre>
+<p>args数组将包含以下内容：args[0]:”-g” args[1]:”cruel” args[2]:”world”</p>
+<p>程序将会显示：Goodbye,cruel world!</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>在Java程序的main方法中，程序名并不存储在args数组中，例如</p>
+<pre><code class="language-shell">java Message -h world
+</code></pre>
+<p>args[0]是”-h”,而不是”Message”或者”java”</p>
+</blockquote>
+<h3 id="3-10-6-数组排序"><a href="#3-10-6-数组排序" class="headerlink" title="3.10.6 数组排序"></a>3.10.6 数组排序</h3><p>想对数值型数组排序可以使用Arrays类中的sort方法，这个方法使用了优化的<em><strong>快速排序</strong></em>算法</p>
+<p>示例程序</p>
+<pre><code class="language-java">import java.util.*;
+
+/**
+ * This program demonstrates array manipulation.
+ * @version 1.20 2004-02-10
+ * @author Cay Horstmann
+ */
+public class LotteryDrawing
+&#123;
+   public static void main(String[] args)
+   &#123;
+      Scanner in = new Scanner(System.in);
+
+      System.out.print(&quot;How many numbers do you need to draw? &quot;);
+      int k = in.nextInt();
+
+      System.out.print(&quot;What is the highest number you can draw? &quot;);
+      int n = in.nextInt();
+
+      // fill an array with numbers 1 2 3 . . . n
+      int[] numbers = new int[n];
+      for (int i = 0; i &lt; numbers.length; i++)
+         numbers[i] = i + 1;
+
+      // draw k numbers and put them into a second array
+      int[] result = new int[k];
+      for (int i = 0; i &lt; result.length; i++)
+      &#123;
+         // make a random index between 0 and n - 1
+         int r = (int) (Math.random() * n);
+
+         // pick the element at the random location
+         result[i] = numbers[r];
+
+         // move the last element into the random location
+         numbers[r] = numbers[n - 1];
+         n--;
+      &#125;
+
+      // print the sorted array
+      Arrays.sort(result);
+      System.out.println(&quot;Bet the following combination. It&#39;ll make you rich!&quot;);
+      for (int r : result)
+         System.out.println(r);
+   &#125;
+&#125;
+</code></pre>
+<p>其中Math.random方法将返回一个0到1之间（包含0而不包含1）的随机浮点数，用n乘以这个浮点数就可以得到从0到n-1的一个随机数</p>
+<pre><code class="language-java">int r=(int)(Math.random()*n);
+</code></pre>
+<p>java.util.Arrays <strong>12</strong></p>
+<ul>
+<li><p>static String toString(xxx[] a) <strong>5</strong></p>
+<p>返回一个字符串，其中包含a中的元素，这些元素用中括号包围。并用逗号分隔。在这个方法和后面 的方法中，数组元素类型xxx可以是int,long,short,char,byte,boolean,float,double</p>
+</li>
+<li><p>static xxx[] copyOf(xxx[] a,int end) <strong>6</strong></p>
+</li>
+<li><p>static xxx[] copyOfRange(xxx[] a,int start,int end) <strong>6</strong></p>
+<p>返回与a类型相同的一个数组，其长度为end或end-start,并填入a中对应的值，如果end大于a.length,结果会填充0或false</p>
+</li>
+<li><p>static void sort(xxx[] a)</p>
+<p>使用优化的快排算法排序</p>
+</li>
+<li><p>static int binarysearch(xxx[] a,xxx v)</p>
+</li>
+<li><p>static int binarysearch(xxx[] a,int start,int end,xxx v) <strong>6</strong></p>
+<p>使用二分查找算法在<em><strong>有序数组</strong></em>a中查找值v，<em><strong>如果找到v,返回对应索引；否则返回一个负数值r,-r-1是v应该插入的位置</strong></em></p>
+</li>
+<li><p>static void fill(xxx[] a,xxx v)</p>
+<p>将所有数组元素设置为v</p>
+</li>
+<li><p>static boolean equals(xxx[] a,xxx[] b)</p>
+<p>如果两个数组长度相同且相同索引对应元素相同返回true</p>
+</li>
+</ul>
+<h3 id="3-10-7多维数组"><a href="#3-10-7多维数组" class="headerlink" title="3.10.7多维数组"></a>3.10.7多维数组</h3><p>创建、初始化、访问与一维数组类似</p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>for each循环语句不会自动循环处理二维数组的所有元素，他会循环处理行，而这些行本身是一维数组，要想访问二维数组a的所有元素，需要使用两个嵌套循环</p>
+<pre><code class="language-java">for(double[] row:a)
+	for(double value:row)
+		do something with value
+</code></pre>
+</blockquote>
+<blockquote>
+<p>[!NOTE]</p>
+<p>要想快速打印一个二维数组的元素列表，可以调用：</p>
+<p>System.out.println(Arrays.deepToString(a));</p>
+<p>输出格式为：</p>
+<p>[[16,3,2,13],[5,10,11,8],[9,6,7,12],[4,15,14,1]]</p>
+</blockquote>
+<pre><code class="language-java">/**
+ * This program shows how to store tabular data in a 2D array.
+ * @version 1.41 2023-11-28
+ * @author Cay Horstmann
+ */
+public class CompoundInterest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      final double STARTRATE = 5;
+      final int NRATES = 6;
+      final int NYEARS = 10;
+
+      // set interest rates to 5 . . . 10%
+      double[] interestRate = new double[NRATES];
+      for (int j = 0; j &lt; interestRate.length; j++)
+         interestRate[j] = (STARTRATE + j) / 100.0;
+
+      double[][] balances = new double[NYEARS][NRATES];
+
+      // set initial balances to 10000
+      for (int j = 0; j &lt; balances[0].length; j++)
+         balances[0][j] = 10000;
+
+      // compute interest for future years
+      for (int i = 1; i &lt; balances.length; i++)
+      &#123;
+         for (int j = 0; j &lt; balances[i].length; j++)
+         &#123;
+            // get last year&#39;s balances from previous row
+            double oldBalance = balances[i - 1][j];
+
+            // compute interest
+            double interest = oldBalance * interestRate[j];
+
+            // compute this year&#39;s balances
+            balances[i][j] = oldBalance + interest;
+         &#125;
+      &#125;
+
+      // print one row of interest rates
+      for (int j = 0; j &lt; interestRate.length; j++)
+         System.out.printf(&quot;%9.0f%%&quot;, 100 * interestRate[j]);
+
+      System.out.println();
+
+      // print balance table
+      for (double[] row : balances)
+      &#123;
+         // print table row
+         for (double b : row)
+            System.out.printf(&quot;%10.2f&quot;, b);
+
+         System.out.println();
+      &#125;
+   &#125;
+&#125;
+</code></pre>
+<h3 id="3-10-8-不规则数组"><a href="#3-10-8-不规则数组" class="headerlink" title="3.10.8 不规则数组"></a>3.10.8 不规则数组</h3><p><em><strong>Java实际上没有多维数组，只有一维数组，被解释为”数组的数组”</strong></em></p>
+<p><img src="/.io//06/24/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80%E7%AC%AC%E4%B8%80%E7%AB%A0/1/9.jpg" alt="9"></p>
+<p>由于可以单独地访问数组的某一行，所以可以让两行交换。</p>
+<pre><code class="language-java">double[] temp =balance[i];
+balance[i]=balance[i+1];
+balance[i+1]=temp;
+</code></pre>
+<p>还可以构造一个不规则数组，即<em><strong>数组的每一行有不同的长度</strong></em></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>在C++中，Java声明</p>
+<pre><code class="language-java">double[][] balances=new double[10][6];
+</code></pre>
+<p>不同于</p>
+<pre><code class="language-c++">double balances[10][6];
+</code></pre>
+<p>也不同于</p>
+<pre><code class="language-c++">double (*balances)[6]=new double[10][6];
+</code></pre>
+<p>而是分配了一个包含十个指针的数组</p>
+<pre><code class="language-c++">double** balances=new double*[10];
+</code></pre>
+<p>这个指针数组的每一个元素会填充一个包含六个数字的数组</p>
+<pre><code class="language-java">for(i=0;i&lt;10;i++)
+	balances[i]=new double[6];
+</code></pre>
+<p>在需要不规则的数组时，需要单独地分配行数组</p>
+</blockquote>
+<p>示例程序</p>
+<pre><code class="language-java">/**
+ * This program demonstrates a triangular array.
+ * @version 1.20 2004-02-10
+ * @author Cay Horstmann
+ */
+public class LotteryArray
+&#123;
+   public static void main(String[] args)
+   &#123;
+      final int NMAX = 10;
+
+      // allocate triangular array
+      int[][] odds = new int[NMAX + 1][];
+      for (int n = 0; n &lt;= NMAX; n++)
+         odds[n] = new int[n + 1];
+
+      // fill triangular array
+      for (int n = 0; n &lt; odds.length; n++)
+         for (int k = 0; k &lt; odds[n].length; k++)
+         &#123;
+            /*
+             * compute binomial coefficient n*(n-1)*(n-2)*...*(n-k+1)/(1*2*3*...*k)
+             */
+            int lotteryOdds = 1;
+            for (int i = 1; i &lt;= k; i++)
+               lotteryOdds = lotteryOdds * (n - i + 1) / i;
+
+            odds[n][k] = lotteryOdds;
+         &#125;
+
+      // print triangular array
+      for (int[] row : odds)
+      &#123;
+         for (int odd : row)
+            System.out.printf(&quot;%4d&quot;, odd);
+         System.out.println();
+      &#125;
+   &#125;
+&#125;
+</code></pre>
+<h1 id="第四章-对象与类"><a href="#第四章-对象与类" class="headerlink" title="第四章 对象与类"></a>第四章 对象与类</h1>
     </div>
     
     
