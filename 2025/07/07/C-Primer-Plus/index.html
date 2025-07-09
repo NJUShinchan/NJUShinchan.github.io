@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>C++ Primer Plus | NJUShinchan&#39;s Nest</title>
+    <meta name="author" content="Yonghong Lin" />
+    <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="https://s4.zstatic.net/ajax/libs/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/gitalk/1.8.0/gitalk.min.css" />
+
+
+<script src="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline-meta.min.css" />
+
+
+<script src="https://s4.zstatic.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>NJUSHINCHAN&#39;S NEST</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;NJUSHINCHAN&#39;S NEST</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>C++ Primer Plus</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/7/7
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>C++语言入门教程</p>
+<span id="more"></span>
+
+<h1 id="第一章-预备知识"><a href="#第一章-预备知识" class="headerlink" title="第一章 预备知识"></a>第一章 预备知识</h1><p>本章包括：</p>
+<ul>
+<li>C语言和C++的发展历史和基本原理</li>
+<li>过程性编程和面向对象编程</li>
+<li>C++是如何在C语言的基础上添加面向对象概念的</li>
+<li>C++是如何在C语言的基础上添加泛型编程概念的</li>
+<li>编程语言标准</li>
+<li>创建程序技巧</li>
+</ul>
+<h2 id="1-1C-简介"><a href="#1-1C-简介" class="headerlink" title="1.1C++简介"></a>1.1C++简介</h2><p>C++是在C语言基础上开发的一种<em><strong>集面向对象编程、泛型编程和过程化编程为一体的编程语言</strong></em>，是<em><strong>C语言的超集</strong></em>。</p>
+<h2 id="1-2C-简史"><a href="#1-2C-简史" class="headerlink" title="1.2C++简史"></a>1.2C++简史</h2><h3 id="1-2-1-C语言"><a href="#1-2-1-C语言" class="headerlink" title="1.2.1 C语言"></a>1.2.1 C语言</h3><p>贝尔实验室的Ritchie（UNIX操作系统开发人员）希望有一种语言将低级语言的效率、硬件访问能力和高级语言的通用性、可移植性融合在一起，所以在旧语言的基础上开发了C语言。</p>
+<h3 id="1-2-2-C语言编程原理"><a href="#1-2-2-C语言编程原理" class="headerlink" title="1.2.2 C语言编程原理"></a>1.2.2 C语言编程原理</h3><p>程序&#x3D;数据+算法</p>
+<p>C语言是过程性语言，关注<em><strong>算法</strong></em>，即从操作出发构造程序。</p>
+<p>使用***自顶向下（top-down）***设计，将大型程序分解成小型、便于管理的任务</p>
+<h3 id="1-2-3-面向对象编程OOP"><a href="#1-2-3-面向对象编程OOP" class="headerlink" title="1.2.3 面向对象编程OOP"></a>1.2.3 面向对象编程OOP</h3><p>强调<em><strong>数据</strong></em>，其理念是设计与问题的本质特性对应的数据格式，在C++中，类是一种规范，描述了这种新型数据格式</p>
+<p>OOP程序设计方法首先设计类，它们准确地表示了程序要处理的东西。从低级组织（如类）到高级组织（如程序）的处理过程叫做***自下向上（bottom-up）***的编程</p>
+<p>三大特性：</p>
+<ul>
+<li><em><strong>封装</strong></em>：信息隐藏可以保护数据，免遭不合法的访问</li>
+<li><em><strong>继承</strong></em>：使用旧类派生出新类</li>
+<li><em><strong>多态</strong></em>：为运算符和函数创建多个定义</li>
+</ul>
+<p>C++真正的优点之一：可以<em><strong>方便地重用和修改现有的、经过仔细测试的代码</strong></em></p>
+<h3 id="1-2-4-C-和泛型编程"><a href="#1-2-4-C-和泛型编程" class="headerlink" title="1.2.4 C++和泛型编程"></a>1.2.4 C++和泛型编程</h3><p>术语泛型（generic）指的是创建<em><strong>独立于类型</strong></em>的代码：只编写一个泛型函数并将其用于各种实际类型</p>
+<h3 id="1-2-5-C-的起源"><a href="#1-2-5-C-的起源" class="headerlink" title="1.2.5 C++的起源"></a>1.2.5 C++的起源</h3><p>也诞生于贝尔实验室（<a target="_blank" rel="noopener" href="https://www.stroustrup.com/">Bjarne Stroustrup’s Homepage</a>）。</p>
+<p>名称C++来自于C语言的递增运算符++，表明它是C的扩充版本</p>
+<p>C++的二重性：</p>
+<ul>
+<li>OOP提供了高级抽象</li>
+<li>C语言提供了低级硬件访问</li>
+</ul>
+<p>C++融合了OOP、泛型编程和传统过程性方法，表明C++强调实用价值而非意识形态方法</p>
+<h2 id="1-3-可移植性和标准"><a href="#1-3-可移植性和标准" class="headerlink" title="1.3 可移植性和标准"></a>1.3 可移植性和标准</h2><p><em><strong>在新平台运行时，如果在不修改代码的情况下，重新编译程序后，该程序运行良好，则该程序是可移植的。</strong></em></p>
+<p>在理想情况下，C语言程序都应该是有效的C++程序。</p>
+<p>本书重点介绍大多数编译器都支持的特性，并简要总结其它特性</p>
+<h2 id="1-4-程序创建的技巧"><a href="#1-4-程序创建的技巧" class="headerlink" title="1.4 程序创建的技巧"></a>1.4 程序创建的技巧</h2><p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144146_151.jpg" alt="微信图片_20250707144146_151"></p>
+<h3 id="1-4-1-创建源文件"><a href="#1-4-1-创建源文件" class="headerlink" title="1.4.1 创建源文件"></a>1.4.1 创建源文件</h3><p>UNIX编译器报错“bad magic number”-&gt;后缀不正确 </p>
+<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144729_152.jpg" alt="微信图片_20250707144729_152"></p>
+<h3 id="1-4-2-编译和链接"><a href="#1-4-2-编译和链接" class="headerlink" title="1.4.2 编译和链接"></a>1.4.2 编译和链接</h3><p>.c-&gt;.o-&gt;.out</p>
+<p>如果程序违反了语言规则，编译器将生成错误信息，指出存在问题的行，问题可能在标识行之前，一个错误可能引发一连串的错误，所以改正错误时<em><strong>先改正第一个错误</strong></em>，如果在标识行找不到错误就往前找</p>
+<p>程序能通过某个编译器的编译不代表它是合法的C++程序，不能通过也不代表非法。有时编译器在不完全构建程序后将出现混乱，显示无法改正、无意义的错误信息</p>
+<p>可以使用***cin.get()***防止辅助窗口过快自动关闭</p>
+<h1 id="第二章-开始学习C"><a href="#第二章-开始学习C" class="headerlink" title="第二章 开始学习C++"></a>第二章 开始学习C++</h1><p>本章内容包括：</p>
+<ul>
+<li>创建C++程序</li>
+<li>C++程序的一般格式</li>
+<li>#include编译指令</li>
+<li>main（）函数</li>
+<li>使用cout对象进行输出</li>
+<li>在C++程序中加入注释</li>
+<li>何时以及如何使用endl</li>
+<li>声明和使用变量</li>
+<li>使用cin对象进行输入</li>
+<li>定义和使用简单函数</li>
+</ul>
+<h2 id="2-1-进入C"><a href="#2-1-进入C" class="headerlink" title="2.1 进入C++"></a>2.1 进入C++</h2><p>C++能够使用printf()、scanf()和其他所有标准C输入和输出函数，只需要包含常规C语言的<em><strong>stdio.h</strong></em>文件即可</p>
+<h3 id="2-1-1-main函数"><a href="#2-1-1-main函数" class="headerlink" title="2.1.1 main函数"></a>2.1.1 main函数</h3><p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707172903_153.jpg" alt="微信图片_20250707172903_153"></p>
+<p><em><strong>函数头对函数与程序其他部分之间的接口进行了总结；函数体是指出函数应做什么的计算机指令</strong></em></p>
+<p>C++与C都使用终止符而非分隔符（如FORTRAN使用行尾将语句分隔开来），终止符是一个分号，是语句的结束标志，是语句的组成部分，不是语句之间的标志，故不能省略分号</p>
+<ol>
+<li><p>作为接口的函数头</p>
+<p><em><strong>main()被启动代码调用</strong></em>，启动代码是编译器添加到程序中的，是操作系统和程序之间的桥梁</p>
+<pre><code class="language-c++">int main()
+int main(void)
+</code></pre>
+<p>在C++中，让括号空着与在括号中使用void等效，但在C中，让括号空着意味着对是否接收参数保持沉默</p>
+<p>在main()函数中如果最后没有返回语句则<em><strong>默认return 0</strong></em>,其他函数不适用</p>
+</li>
+<li><p>为什么main()不能使用其他名称</p>
+</li>
+</ol>
+<p>·运行C++程序时，通常从main()函数开始运行</p>
+<p>常规独立程序均需要main()函数</p>
+<h3 id="2-1-2-C-注释"><a href="#2-1-2-C-注释" class="headerlink" title="2.1.2 C++注释"></a>2.1.2 C++注释</h3><p>C++注释以&#x2F;&#x2F;开头，到行尾结束，可独立一行也可与代码同一行</p>
+<blockquote>
+<p>[!TIP]</p>
+<p>应使用注释来说明程序，程序越复杂，注释的价值就越大</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE]</p>
+<p>C++中也包含C 的&#x2F;* *&#x2F;注释，该注释可跨越多行，但应尽量使用&#x2F;&#x2F;避免产生问题</p>
+</blockquote>
+<h3 id="2-1-3-C-预处理器和iostream文件（cin-cout）"><a href="#2-1-3-C-预处理器和iostream文件（cin-cout）" class="headerlink" title="2.1.3 C++预处理器和iostream文件（cin\cout）"></a>2.1.3 C++预处理器和iostream文件（cin\cout）</h3><pre><code class="language-c++">#include&lt;iostream&gt;
+</code></pre>
+<p>该编译指令导致预处理器将iostream文件的内容添加到程序中，这是一种典型的预处理器操作：<em><strong>在源代码被编译之前，替换或添加文本</strong></em></p>
+<h3 id="2-1-4-头文件名"><a href="#2-1-4-头文件名" class="headerlink" title="2.1.4 头文件名"></a>2.1.4 头文件名</h3><p>像iostream这样的文件被称为包含文件，因为被包含在其他文件中；也被称为头文件，因为被包含在其他文件起始处</p>
+<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707175755_154.jpg" alt="微信图片_20250707175755_154"></p>
+<h3 id="2-1-5-名称空间"><a href="#2-1-5-名称空间" class="headerlink" title="2.1.5 名称空间"></a>2.1.5 名称空间</h3><p>如果使用iostream而非iostream.h则应使用下面的名称空间编译指令来使iostream中的定义对程序可用</p>
+<pre><code class="language-c++">using namespace std;
+</code></pre>
+<p>这叫做using编译指令。</p>
+<p>名称空间支持是一项C++特性，旨在让您编写大型程序以及多个厂商现有的代码组合起来的程序时更容易，它还有助于组织程序。一个潜在的问题是，可能使用两个已经封装好的产品，而他们都包含一个同名函数，编译器将不知道指的是哪个版本，名称空间让厂商能够将其产品封装在一个叫做名称空间的单元中，这个时候可以使用名称空间来指出想使用哪个厂商的产品</p>
+<pre><code class="language-c++">Microflop::wanda(&quot;go dancing?&quot;);//using Microflop namespace version
+Piscine:wanda(&quot;a fish named Desire&quot;);//using Piscine namespace version
+</code></pre>
+<p>按照这种方式，类、函数、变量便是C++编译器的标准组件，它们现在都放置在名称空间std中，仅当头文件名没有扩展名h时情况才是如此，这意味着在iostream中定义的用于输出的cout变量实际上是std::cout,而endl实际上是std::endl，因此可以省略编译指令using，使用下述方式进行编码</p>
+<pre><code class="language-c++">std::cout&lt;&lt;&quot;sdjk&quot;;
+std::cout&lt;&lt;std::endl;
+</code></pre>
+<p>然而多数用户并不喜欢将引入名称空间之前的代码（使用iostream.h和cout）转换为名称空间代码（使用iostream和std::cout)。于是using编译指令产生</p>
+<pre><code class="language-c++">using namespace std;//可以使用std名称空间中定义的名称而不必使用std::前缀
+</code></pre>
+<p>这个using指令使得std名称空间中的所有名称都可用，但在大型项目中是一个潜在问题，可以如下只使所需名称可用</p>
+<pre><code class="language-c++">using std::cout;//make cout available
+using std::endl;//make endl available
+using std::cin;//make cin available
+</code></pre>
+<h3 id="2-1-6-使用cout进行C-输出"><a href="#2-1-6-使用cout进行C-输出" class="headerlink" title="2.1.6 使用cout进行C++输出"></a>2.1.6 使用cout进行C++输出</h3><pre><code class="language-c++">cout&lt;&lt;&quot;sidiuw&quot;;
+</code></pre>
+<p>&lt;&lt;是一个插入运算符，表示把字符串发送给cout,指出了信息流动的路径，将字符串插入到输出流中；cout是一个预定义的对象，知道如何显示字符串、数字和单个字符</p>
+<p><em><strong>每条cout语句的输出将从前一个输出的末尾开始</strong></em></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>&lt;&lt;是一个运算符重载的例子，也可作为按位左移运算符</p>
+</blockquote>
+<ol>
+<li><p>控制符endl</p>
+<p>endl:重启一行，在输出流中插入将导致屏幕光标移到下一行开头</p>
+<p>诸如endl等对于cout来说有特殊含义的特殊符号被称为<em><strong>控制符</strong></em></p>
+</li>
+<li><p>换行符</p>
+<pre><code class="language-c++">cout &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<p>一个差别是，<em><strong>endl确保程序继续运行前刷新输出（将其立即显示在屏幕上），而是用”\n”则不能提供这样的保证，这意味着在某些系统中有时可能在输入信息后才会出现提示</strong></em></p>
+<p>原理：</p>
+<ol>
+<li><code>endl</code>的行为</li>
+</ol>
+<ul>
+<li><strong>刷新缓冲区</strong>：<code>endl</code>不仅插入一个换行符（<code>\n</code>），还会强制刷新输出缓冲区（<code>flush</code>操作）。这意味着无论缓冲区是否已满，当前所有待输出的内容都会立即写入目标设备（如屏幕或文件）。</li>
+<li><strong>立即显示</strong>：由于刷新操作，用户会立即看到输出内容，不会因为缓冲区未满而延迟显示。</li>
+<li><strong>性能影响</strong>：频繁使用<code>endl</code>会导致频繁的I&#x2F;O操作，可能影响程序性能，尤其是在大量输出时。</li>
+</ul>
+<ol start="2">
+<li><code>&quot;\n&quot;</code>的行为</li>
+</ol>
+<ul>
+<li><strong>仅插入换行符</strong>：<code>&quot;\n&quot;</code>仅插入一个换行符，不会触发缓冲区刷新。输出内容会留在缓冲区中，直到缓冲区满、程序结束或显式调用<code>flush</code>时才被实际写入。</li>
+<li><strong>延迟显示</strong>：在某些系统中（如终端或控制台），如果缓冲区未满且未刷新，后续的输出（如提示信息）可能不会立即显示，导致用户在输入前看不到完整信息，交互混乱。</li>
+<li><strong>性能优势</strong>：由于不刷新缓冲区，<code>&quot;\n&quot;</code>在大量输出时性能更好</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-1-7-C-源代码的格式化"><a href="#2-1-7-C-源代码的格式化" class="headerlink" title="2.1.7 C++源代码的格式化"></a>2.1.7 C++源代码的格式化</h3><p>不能把空格、制表符或回车放在元素（如名称）中间，也不能把回车放在字符串中间</p>
+<ol>
+<li><p>源代码中的标记和空白</p>
+<p><em><strong>一行代码中不可分割的元素叫做标记（token）</strong></em></p>
+<p>通常必须使用空格、制表符、回车将两个标记分开，空格、制表符、回车统称为空白，有些字符（如逗号括号）是不需要用空白分开的标记</p>
+<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707193833_155.jpg" alt="微信图片_20250707193833_155"></p>
+</li>
+<li><p>C++源代码风格</p>
+<p>可增加代码易读性</p>
+</li>
+</ol>
+<ul>
+<li>每条语句占一行</li>
+<li>每个函数都有一个开始花括号和一个结束花括号，这两个花括号各占一行</li>
+<li>函数中的语句都相对于花括号进行缩进</li>
+<li>与函数名称相关的圆括号周围没有空白</li>
+</ul>
+<p>前三条规则旨在确保代码清晰易读，第四条帮忙区分函数和一些也是用圆括号的C++内置结构，如循环</p>
+<h2 id="2-2-C-语句"><a href="#2-2-C-语句" class="headerlink" title="2.2 C++语句"></a>2.2 C++语句</h2>
+    </div>
+    
+    
+    
+    <div id="comment">
+        <div id="gitalk-container"></div>
+    </div>
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2025 - 2025 NJUShinchan&#39;s Nest
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yonghong Lin
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+
+
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang=""
+    crossorigin
+    async
+></script>
+
+
+<script>
+    const gitalk = new Gitalk({
+        clientID: "",
+        clientSecret: "",
+        repo: "",
+        owner: "",
+        admin: "".split(","),
+        language: "",
+        id: location.pathname,
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
+
+
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
+        lang: "",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        
+    });
+</script>
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
+    
+</body>
+</html>
+<canvas
+        id="fireworks"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+
+<canvas
+        id="background"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
