@@ -222,9 +222,9 @@
 <h2 id="1-3-可移植性和标准"><a href="#1-3-可移植性和标准" class="headerlink" title="1.3 可移植性和标准"></a>1.3 可移植性和标准</h2><p><em><strong>在新平台运行时，如果在不修改代码的情况下，重新编译程序后，该程序运行良好，则该程序是可移植的。</strong></em></p>
 <p>在理想情况下，C语言程序都应该是有效的C++程序。</p>
 <p>本书重点介绍大多数编译器都支持的特性，并简要总结其它特性</p>
-<h2 id="1-4-程序创建的技巧"><a href="#1-4-程序创建的技巧" class="headerlink" title="1.4 程序创建的技巧"></a>1.4 程序创建的技巧</h2><p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144146_151.jpg" alt="微信图片_20250707144146_151"></p>
+<h2 id="1-4-程序创建的技巧"><a href="#1-4-程序创建的技巧" class="headerlink" title="1.4 程序创建的技巧"></a>1.4 程序创建的技巧</h2><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144146_151.jpg" alt="微信图片_20250707144146_151"></p>
 <h3 id="1-4-1-创建源文件"><a href="#1-4-1-创建源文件" class="headerlink" title="1.4.1 创建源文件"></a>1.4.1 创建源文件</h3><p>UNIX编译器报错“bad magic number”-&gt;后缀不正确 </p>
-<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144729_152.jpg" alt="微信图片_20250707144729_152"></p>
+<p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144729_152.jpg" alt="微信图片_20250707144729_152"></p>
 <h3 id="1-4-2-编译和链接"><a href="#1-4-2-编译和链接" class="headerlink" title="1.4.2 编译和链接"></a>1.4.2 编译和链接</h3><p>.c-&gt;.o-&gt;.out</p>
 <p>如果程序违反了语言规则，编译器将生成错误信息，指出存在问题的行，问题可能在标识行之前，一个错误可能引发一连串的错误，所以改正错误时<em><strong>先改正第一个错误</strong></em>，如果在标识行找不到错误就往前找</p>
 <p>程序能通过某个编译器的编译不代表它是合法的C++程序，不能通过也不代表非法。有时编译器在不完全构建程序后将出现混乱，显示无法改正、无意义的错误信息</p>
@@ -243,7 +243,7 @@
 <li>定义和使用简单函数</li>
 </ul>
 <h2 id="2-1-进入C"><a href="#2-1-进入C" class="headerlink" title="2.1 进入C++"></a>2.1 进入C++</h2><p>C++能够使用printf()、scanf()和其他所有标准C输入和输出函数，只需要包含常规C语言的<em><strong>stdio.h</strong></em>文件即可</p>
-<h3 id="2-1-1-main函数"><a href="#2-1-1-main函数" class="headerlink" title="2.1.1 main函数"></a>2.1.1 main函数</h3><p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707172903_153.jpg" alt="微信图片_20250707172903_153"></p>
+<h3 id="2-1-1-main函数"><a href="#2-1-1-main函数" class="headerlink" title="2.1.1 main函数"></a>2.1.1 main函数</h3><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707172903_153.jpg" alt="微信图片_20250707172903_153"></p>
 <p><em><strong>函数头对函数与程序其他部分之间的接口进行了总结；函数体是指出函数应做什么的计算机指令</strong></em></p>
 <p>C++与C都使用终止符而非分隔符（如FORTRAN使用行尾将语句分隔开来），终止符是一个分号，是语句的结束标志，是语句的组成部分，不是语句之间的标志，故不能省略分号</p>
 <ol>
@@ -273,7 +273,7 @@ int main(void)
 </code></pre>
 <p>该编译指令导致预处理器将iostream文件的内容添加到程序中，这是一种典型的预处理器操作：<em><strong>在源代码被编译之前，替换或添加文本</strong></em></p>
 <h3 id="2-1-4-头文件名"><a href="#2-1-4-头文件名" class="headerlink" title="2.1.4 头文件名"></a>2.1.4 头文件名</h3><p>像iostream这样的文件被称为包含文件，因为被包含在其他文件中；也被称为头文件，因为被包含在其他文件起始处</p>
-<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707175755_154.jpg" alt="微信图片_20250707175755_154"></p>
+<p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707175755_154.jpg" alt="微信图片_20250707175755_154"></p>
 <h3 id="2-1-5-名称空间"><a href="#2-1-5-名称空间" class="headerlink" title="2.1.5 名称空间"></a>2.1.5 名称空间</h3><p>如果使用iostream而非iostream.h则应使用下面的名称空间编译指令来使iostream中的定义对程序可用</p>
 <pre><code class="language-c++">using namespace std;
 </code></pre>
@@ -284,7 +284,7 @@ Piscine:wanda(&quot;a fish named Desire&quot;);//using Piscine namespace version
 </code></pre>
 <p>按照这种方式，类、函数、变量便是C++编译器的标准组件，它们现在都放置在名称空间std中，仅当头文件名没有扩展名h时情况才是如此，这意味着在iostream中定义的用于输出的cout变量实际上是std::cout,而endl实际上是std::endl，因此可以省略编译指令using，使用下述方式进行编码</p>
 <pre><code class="language-c++">std::cout&lt;&lt;&quot;sdjk&quot;;
-std::cout&lt;&lt;std::endl;
+std::cout &lt;&lt; std::endl;
 </code></pre>
 <p>然而多数用户并不喜欢将引入名称空间之前的代码（使用iostream.h和cout）转换为名称空间代码（使用iostream和std::cout)。于是using编译指令产生</p>
 <pre><code class="language-c++">using namespace std;//可以使用std名称空间中定义的名称而不必使用std::前缀
@@ -335,7 +335,7 @@ using std::cin;//make cin available
 <li><p>源代码中的标记和空白</p>
 <p><em><strong>一行代码中不可分割的元素叫做标记（token）</strong></em></p>
 <p>通常必须使用空格、制表符、回车将两个标记分开，空格、制表符、回车统称为空白，有些字符（如逗号括号）是不需要用空白分开的标记</p>
-<p><img src="/.io//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707193833_155.jpg" alt="微信图片_20250707193833_155"></p>
+<p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707193833_155.jpg" alt="微信图片_20250707193833_155"></p>
 </li>
 <li><p>C++源代码风格</p>
 <p>可增加代码易读性</p>
