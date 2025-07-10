@@ -1,4 +1,3 @@
-
 var OriginTitle = document.title;
 var titleTime;
 document.addEventListener('visibilitychange', function () {
