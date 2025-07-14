@@ -189,6 +189,7 @@
 <p>Learn <a target="_blank" rel="noopener" href="https://horstmann.com/corejava/">Java 核心技术</a></p>
 <span id="more"></span>
 
+<p>[TOC]</p>
 <h1 id="第一章-JAVA程序设计概述"><a href="#第一章-JAVA程序设计概述" class="headerlink" title="第一章 JAVA程序设计概述"></a>第一章 JAVA程序设计概述</h1><h2 id="1-1-JAVA程序设计平台"><a href="#1-1-JAVA程序设计平台" class="headerlink" title="1.1 JAVA程序设计平台"></a>1.1 JAVA程序设计平台</h2><p>JAVA是一个完整的平台，有一个<strong>庞大丰富</strong>的库，其中包含了大量可重用的代码，还有一个提供诸如安全性、跨操作系统的可移植性以及自动垃圾收集等服务的执行环境。</p>
 <h2 id="1-2-JAVA白皮书的关键术语"><a href="#1-2-JAVA白皮书的关键术语" class="headerlink" title="1.2 JAVA白皮书的关键术语"></a>1.2 JAVA白皮书的关键术语</h2><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/language-environment.html">白皮书</a>以及<a target="_blank" rel="noopener" href="https://horstmann.com/corejava/java-an-overview/7Gosling.pdf">11个关键术语的概述</a></p>
 <h3 id="1-2-1-简单性"><a href="#1-2-1-简单性" class="headerlink" title="1.2.1 简单性"></a>1.2.1 简单性</h3><p>JAVA语法是C++语法的一个纯净版本，没有头文件、指针运算（甚至没有指针语法）、结构、联合、操作符重载、虚基类等，但设计者并没有试图修正C++的所有不适当的特性。</p>
@@ -2243,6 +2244,330 @@ public class LotteryArray
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250710232644776.png" alt="image-20250710232644776"></p>
 </li>
 </ul>
+<h2 id="4-2-使用预定义类"><a href="#4-2-使用预定义类" class="headerlink" title="4.2 使用预定义类"></a>4.2 使用预定义类</h2><h3 id="4-2-1-对象与对象变量"><a href="#4-2-1-对象与对象变量" class="headerlink" title="4.2.1 对象与对象变量"></a>4.2.1 对象与对象变量</h3><p>要想使用对象，必须先构造对象，并指定其初始状态，然后对对象应用方法。在Java中，要使用<code>构造器</code>构造对象，<em><strong>构造器始终与类同名</strong></em></p>
+<pre><code class="language-java">Date rightNow=new Date();
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143302954.png" alt="image-20250714143302954"></p>
+<p><em><strong>对象变量可以引用其所对应类型的对象，但其并非一个对象</strong></em></p>
+<pre><code class="language-java">startTime=new Date();
+startTime=rightNow;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143546228.png" alt="image-20250714143546228"></p>
+<p>即<em><strong>对象变量并不实际包含一个对象，而是只是引用一个对象</strong></em></p>
+<p>Java中，<em><strong>任何对象变量的值都是一个引用，指向存储在另一个地方的某个对象，new操作符的返回值也是一个引用</strong></em></p>
+<p>null指示当前对象还没有引用任何对象</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143802791.png" alt="image-20250714143802791"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143827114.png" alt="image-20250714143827114"></p>
+<h3 id="4-2-2-Java类库中的LocalDate类"><a href="#4-2-2-Java类库中的LocalDate类" class="headerlink" title="4.2.2 Java类库中的LocalDate类"></a>4.2.2 Java类库中的LocalDate类</h3><p>用于表示日期，使用静态工厂方法构造对象</p>
+<pre><code class="language-java">LocalDate now = LocalDate.now();
+LocalDate writeTime=LocalDate.of(2025,7,14);
+int year= writeTime.getYear();//2025
+int month=writeTime.getMonthValue();//7
+int day=writeTime.getDayOfMonth();//14
+LocalDate aThousandsLater=writeTime.plusDays(1000);
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714145751268.png" alt="image-20250714145751268"></p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>JDK提供了jdeprscan工具来检查代码中是否使用了Java API中已经废弃的特性。<a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/17/docs/specs/man/jdeprscan.html">The jdeprscan Command</a></p>
+</blockquote>
+<h3 id="4-2-3-更改器方法与访问器方法"><a href="#4-2-3-更改器方法与访问器方法" class="headerlink" title="4.2.3 更改器方法与访问器方法"></a>4.2.3 更改器方法与访问器方法</h3><p><em><strong>只访问对象而不修改对象的方法称为访问器方法</strong></em>，如LocalDate中的plusDays方法会生成一个新的对象</p>
+<p>会修改对象的方法称为更改器方法，如GregorianCalendar中的add反法</p>
+<pre><code class="language-java">GregorianCalendar someday=new GregorianCalendar(2025, 6,14);//6代表7月，0-11
+someday.add(Calendar.DAY_OF_MONTH, 1000);
+</code></pre>
+<p>给出一个能显示当前月的日历的示例程序，格式如下</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714145809040.png" alt="image-20250714145809040"></p>
+<pre><code class="language-java">import java.time.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+/**
+ * @version 1.5 2015-05-08
+ * @author Cay Horstmann
+ */
+public class CalendarTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      LocalDate date = LocalDate.now();
+      int month = date.getMonthValue();
+      int today = date.getDayOfMonth();
+
+      date = date.minusDays(today - 1); // set to start of month
+      DayOfWeek weekday = date.getDayOfWeek();
+      int value = weekday.getValue(); // 1 = Monday, . . . , 7 = Sunday
+
+      System.out.println(&quot;Mon Tue Wed Thu Fri Sat Sun&quot;);
+      for (int i = 1; i &lt; value; i++)
+         System.out.print(&quot;    &quot;);
+      while (date.getMonthValue() == month)
+      &#123;
+         System.out.printf(&quot;%3d&quot;, date.getDayOfMonth());
+         if (date.getDayOfMonth() == today)
+            System.out.print(&quot;*&quot;);
+         else
+            System.out.print(&quot; &quot;);
+         date = date.plusDays(1);
+         if (date.getDayOfWeek().getValue() == 1) System.out.println();
+      &#125;
+      if (date.getDayOfWeek().getValue() != 1) System.out.println();
+   &#125;
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714151059038.png" alt="image-20250714151059038"></p>
+<p><code>API</code>  java.time.LocalDate <strong>8</strong></p>
+<ul>
+<li>static LocalDate now()</li>
+<li>static LocalDate of(int year,int month,int day)</li>
+<li>int getYear()</li>
+<li>int getMonthValue()</li>
+<li>int getDayOfMonth()</li>
+<li>DayOfWeek getDayOfWeek()</li>
+<li>LocalDate plusDays(int n)</li>
+<li>LocalDate minusDays(int n)</li>
+</ul>
+<h2 id="4-3-自定义类"><a href="#4-3-自定义类" class="headerlink" title="4.3 自定义类"></a>4.3 自定义类</h2><h3 id="4-3-1-Employee类"><a href="#4-3-1-Employee类" class="headerlink" title="4.3.1 Employee类"></a>4.3.1 Employee类</h3><p>最简单类定义形式</p>
+<pre><code class="language-java">class ClassName
+&#123;
+	field1
+	field2
+	...
+	constructor1
+	constructor2
+	...
+	method1
+	method2
+	...
+&#125;
+</code></pre>
+<pre><code class="language-java">import java.time.*;
+
+/**
+ * This program tests the Employee class.
+ * @version 1.13 2018-04-10
+ * @author Cay Horstmann
+ */
+public class EmployeeTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      // fill the staff array with three Employee objects
+      Employee[] staff = new Employee[3];
+
+      staff[0] = new Employee(&quot;Carl Cracker&quot;, 75000, 1987, 12, 15);
+      staff[1] = new Employee(&quot;Harry Hacker&quot;, 50000, 1989, 10, 1);
+      staff[2] = new Employee(&quot;Tony Tester&quot;, 40000, 1990, 3, 15);
+
+      // raise everyone&#39;s salary by 5%
+      for (Employee e : staff)
+         e.raiseSalary(5);
+
+      // print out information about all Employee objects
+      for (Employee e : staff)
+         System.out.println(&quot;name=&quot; + e.getName() + &quot;,salary=&quot; + e.getSalary() + &quot;,hireDay=&quot; 
+            + e.getHireDay());
+   &#125;
+&#125;
+
+class Employee
+&#123;
+   private String name;
+   private double salary;
+   private LocalDate hireDay;//为什么不能使用Date
+
+   public Employee(String n, double s, int year, int month, int day)
+   &#123;
+      name = n;
+      salary = s;
+      hireDay = LocalDate.of(year, month, day);
+   &#125;
+
+   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public LocalDate getHireDay()
+   &#123;
+      return hireDay;
+   &#125;
+
+   public void raiseSalary(double byPercent)
+   &#123;
+      double raise = salary * byPercent / 100;
+      salary += raise;
+   &#125;
+&#125;
+</code></pre>
+<p>源文件名为EmployeeTest.java，这是因为文件名必须与public类的名字相匹配，<em><strong>一个源文件只能有一个公共类，但可以有任意数目的非公共类</strong></em></p>
+<h3 id="4-3-2-使用多个源文件"><a href="#4-3-2-使用多个源文件" class="headerlink" title="4.3.2 使用多个源文件"></a>4.3.2 使用多个源文件</h3><p>推荐将各个类放在一个单独的源文件中</p>
+<h3 id="4-3-3-剖析Employee类"><a href="#4-3-3-剖析Employee类" class="headerlink" title="4.3.3 剖析Employee类"></a>4.3.3 剖析Employee类</h3><p>标记为public代表任何类的任何方法都可以调用，private则说明只有Employee类本身能够调用（实例字段）</p>
+<p>类经常包含类类型的实例字段，如String类</p>
+<h3 id="4-3-4-从构造器开始"><a href="#4-3-4-从构造器开始" class="headerlink" title="4.3.4 从构造器开始"></a>4.3.4 从构造器开始</h3><pre><code class="language-java">   public Employee(String n, double s, int year, int month, int day)
+   &#123;
+      name = n;
+      salary = s;
+      hireDay = LocalDate.of(year, month, day);
+   &#125;
+</code></pre>
+<p><em><strong>构造器总是结合new操作符来调用，不能对一个已经存在的对象调用构造器来重新设置实例字段</strong></em></p>
+<p>几个有关构造器的内容</p>
+<ul>
+<li>构造器与类同名</li>
+<li>每个类可以有一个以上的构造器</li>
+<li>构造器可以有0&#x2F;1&#x2F;多个参数</li>
+<li>构造器没有返回值</li>
+<li>构造器总是结合new操作符调用</li>
+</ul>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714153021350.png" alt="image-20250714153021350"></p>
+<p><em><strong>不要引入与实例字段同名的局部变量</strong></em></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714153040069.png" alt="image-20250714153040069"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714153047603.png" alt="image-20250714153047603"></p>
+<h3 id="4-3-5-用var声明局部变量"><a href="#4-3-5-用var声明局部变量" class="headerlink" title="4.3.5 用var声明局部变量"></a>4.3.5 用var声明局部变量</h3><p>从java10开始，如果<em><strong>可以从变量的初始值推导出它们的类型</strong></em>，可以<em><strong>用var关键字声明局部变量而无需指定类型</strong></em></p>
+<pre><code class="language-java">Employee harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
+var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
+</code></pre>
+<p><em><strong>不要对数值类型使用var</strong></em>,如long&#x2F;int&#x2F;double，否则难以区分0、0L、0.0之间的区别</p>
+<p><em><strong>var关键字只能用于方法中的局部变量，参数和字段的类型必须声明</strong></em></p>
+<h3 id="4-3-6-使用null引用"><a href="#4-3-6-使用null引用" class="headerlink" title="4.3.6 使用null引用"></a>4.3.6 使用null引用</h3><p>使用null值要非常小心，虽然这是一种处理特殊情况的便捷机制，但是比如对null值应用方法时，会产生NullPointerException异常</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714154120836.png" alt="image-20250714154120836"></p>
+<p>定义一个类时，最好请楚地知道哪些字段可能为null，然后进行处理</p>
+<p>两种解决方法</p>
+<ul>
+<li><p>宽容方法:把null参数转换为一个适当的非null值</p>
+<pre><code class="language-java">if(n==null)name=&quot;unknown&quot;;else name=n;
+</code></pre>
+<p>Objects类为此提供了一个便利方法</p>
+<pre><code class="language-java">name=Objects.requireNonNullElse(n,&quot;unknown&quot;);
+</code></pre>
+</li>
+<li><p>严格方法：拒绝null参数</p>
+<pre><code class="language-java">name=Objects.requireNonNull(n,&quot;The name can not be null&quot;);
+</code></pre>
+<p>好处：</p>
+<ol>
+<li>异常报告会提供这个问题的描述</li>
+<li>异常报告会准确地指出问题所在位置，否则NullPointerException异常会出现在其他地方，而很难追踪到真正导致问题的构造器参数</li>
+</ol>
+</li>
+</ul>
+<p>如果要接受一个对象引用作为构造参数，就要弄清楚是否接受可有可无的值，如果不是，那么严格方法更适用</p>
+<h3 id="4-3-7-隐式参数与显式参数"><a href="#4-3-7-隐式参数与显式参数" class="headerlink" title="4.3.7 隐式参数与显式参数"></a>4.3.7 隐式参数与显式参数</h3><pre><code class="language-java">public void raiseSalary(double byPercent)
+   &#123;
+      double raise = salary * byPercent / 100;
+      salary += raise;
+   &#125;
+</code></pre>
+<p>raiseSalary方法有两个参数，<em><strong>出现在方法名前的Employee类型的对象为隐式（implicit）参数，位于方法名后面括号中的数值为显式（explicit）参数，隐式参数也称为方法调用的目标或接收者</strong></em></p>
+<p>显式参数显式地列在方法声明中，隐式参数则没有出现</p>
+<p>在每一个方法中，关键字this指示隐式参数</p>
+<pre><code class="language-java">public void raiseSalary(double byPercent)
+   &#123;
+      double raise = this.salary * byPercent / 100;
+      this.salary += raise;
+   &#125;
+</code></pre>
+<p>这样的风格能将实例字段与局部变量明显地区分开来</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714155721278.png" alt="image-20250714155721278"></p>
+<p>内联方法（Inline Method）是一种编程中的代码重构技术，用于将一个方法的实现直接嵌入到调用该方法的代码中，从而去除该方法的定义。这种方法通常用于简化代码结构、提高性能或减少方法调用的开销</p>
+<h3 id="4-3-8-封装的优点"><a href="#4-3-8-封装的优点" class="headerlink" title="4.3.8 封装的优点"></a>4.3.8 封装的优点</h3><pre><code class="language-java">   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public LocalDate getHireDay()
+   &#123;
+      return hireDay;
+   &#125;
+</code></pre>
+<p>这些都是典型的访问器方法，由于只返回实例字段的值，所以又被称为<code>字段访问器</code></p>
+<p>若想获得或设置实例字段的值，需要以下三项内容：</p>
+<ol>
+<li>一个私有的实例字段</li>
+<li>一个公共的字段访问器方法</li>
+<li>一个公共的字段更改器方法</li>
+</ol>
+<p>好处：</p>
+<ul>
+<li>只读字段不会受到外界破坏</li>
+<li>改变内部实现而不影响该类之外的任何其它代码</li>
+<li>更改器方法可以完成错误检查，只对字段进行赋值的代码不会费心这么做，如setSalary方法可以检查工资是否小于0</li>
+</ul>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714161313188.png" alt="image-20250714161313188"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714161328088.png" alt="image-20250714161328088"></p>
+<h3 id="4-3-9-基于类的访问权限"><a href="#4-3-9-基于类的访问权限" class="headerlink" title="4.3.9 基于类的访问权限"></a>4.3.9 基于类的访问权限</h3><p><em><strong>方法可以访问调用这个方法的对象的私有数据，一个类的方法可以访问这个类的<u>所有对象</u>的私有数据</strong></em></p>
+<h3 id="4-3-10-私有方法"><a href="#4-3-10-私有方法" class="headerlink" title="4.3.10 私有方法"></a>4.3.10 私有方法</h3><p>public-&gt;private 多为辅助方法</p>
+<h3 id="4-3-11-final实例字段"><a href="#4-3-11-final实例字段" class="headerlink" title="4.3.11 final实例字段"></a>4.3.11 final实例字段</h3><p>这样的字段必须<em><strong>在构造对象时初始化，并且之后不能再修改修改这个字段</strong></em></p>
+<p>final修饰符对类型为基本类型或不可变类（如String）的字段尤其有效</p>
+<p>对于可变类，使用final修饰符可能会造成混乱</p>
+<p>考虑以下字段</p>
+<pre><code class="language-java">private final StringBuilder evaluations;
+</code></pre>
+<p>它在Employee构造器中初始化为</p>
+<pre><code class="language-java">evaluations=new StringBuilder();
+</code></pre>
+<p><em><strong>final关键字只是表示存储在evaluations变量中的对象引用不会再指示另一个不同的StringBuilder对象，不过该对象可以更改</strong></em></p>
+<pre><code class="language-java">evaluations.append(&quot;123456&quot;);
+</code></pre>
+<h2 id="4-4-静态字段与静态方法"><a href="#4-4-静态字段与静态方法" class="headerlink" title="4.4 静态字段与静态方法"></a>4.4 静态字段与静态方法</h2><p>有关static修饰符</p>
+<h3 id="4-4-1-静态字段"><a href="#4-4-1-静态字段" class="headerlink" title="4.4.1 静态字段"></a>4.4.1 静态字段</h3><p>如果将一个字段定义为static，那么该字段并不出现在每个类的对象中，每个静态字段只有一个副本，可以认为<em><strong>静态字段属于类而不属于单个对象</strong></em></p>
+<pre><code class="language-java">class Employee
+&#123;
+	private static int nextId=1;
+	private int id;
+	...
+&#125;
+</code></pre>
+<p>每个Employee对象只有自己的id字段，但这个类的所有实例对象共享一个nextId字段</p>
+<p>即使没有Employee对象，静态字段nextId字段也存在，它属于类而不属于任何对象</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>在一些OOP语言中，静态字段被称为<code>类字段</code>，术语静态只是沿用C++叫法，并无实际意义</p>
+</blockquote>
+<p>假设我们构造了一个对象harry，harry的id字段被设置为静态字段nextId的当前值，并将静态字段nextId的值+1</p>
+<pre><code class="language-java">harry.id=Employee.nextId;
+Employee.nextId++;
+</code></pre>
+<h3 id="4-4-2-静态常量"><a href="#4-4-2-静态常量" class="headerlink" title="4.4.2 静态常量"></a>4.4.2 静态常量</h3><p>如Math类中定义的静态常量PI，使用Math.PI 访问，另一经常使用的静态常量为System.out</p>
+<pre><code class="language-java">public class System
+&#123;
+	...
+	public static final PrintStream out=...;
+	...
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714164543350.png" alt="image-20250714164543350"></p>
+<h3 id="4-4-3-静态方法"><a href="#4-4-3-静态方法" class="headerlink" title="4.4.3 静态方法"></a>4.4.3 静态方法</h3><p><em><strong>静态方法是不操作对象的方法，即这个方法没有隐式参数</strong></em></p>
+<p>Employee类的静态方法不能访问id实例字段，因为它并不操作对象，但是它可以访问静态字段</p>
+<pre><code class="language-java">public static int advanceId()
+&#123;
+	int r=nextId;
+	nextId++;
+	return r;
+&#125;
+</code></pre>
+<p>要调用这个方法需要提供类名</p>
+<pre><code class="language-java">int n=Employee.advanceId();
+</code></pre>
+<p>若省略关键字static,则需要使用对象来调用方法</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714165233942.png" alt="image-20250714165233942"></p>
+<p>以下情况可以使用静态方法</p>
+<ul>
+<li>方法不需要访问对象状态，所需参数都由显式参数提供</li>
+<li>方法只需要访问类的静态字段</li>
+</ul>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714165359566.png" alt="image-20250714165359566"></p>
 
     </div>
     
