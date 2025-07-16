@@ -189,8 +189,84 @@
 <p>Learn <a target="_blank" rel="noopener" href="https://horstmann.com/corejava/">Java 核心技术</a></p>
 <span id="more"></span>
 
-<p>[TOC]</p>
+
+
+
+
+
+
 <h1 id="第一章-JAVA程序设计概述"><a href="#第一章-JAVA程序设计概述" class="headerlink" title="第一章 JAVA程序设计概述"></a>第一章 JAVA程序设计概述</h1><h2 id="1-1-JAVA程序设计平台"><a href="#1-1-JAVA程序设计平台" class="headerlink" title="1.1 JAVA程序设计平台"></a>1.1 JAVA程序设计平台</h2><p>JAVA是一个完整的平台，有一个<strong>庞大丰富</strong>的库，其中包含了大量可重用的代码，还有一个提供诸如安全性、跨操作系统的可移植性以及自动垃圾收集等服务的执行环境。</p>
+<pre><code class="language-java">import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+
+/**
+ * A program for viewing images.
+ * @version 1.31 2018-04-10
+ * @author Cay Horstmann
+ */
+public class ImageViewer
+&#123;
+   public static void main(String[] args)
+   &#123;
+      EventQueue.invokeLater(() -&gt;
+         &#123;
+            var frame = new ImageViewerFrame();
+            frame.setTitle(&quot;ImageViewer&quot;);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+         &#125;);
+   &#125;
+&#125;
+
+/**
+ * A frame with a label to show an image.
+ */
+class ImageViewerFrame extends JFrame
+&#123;
+   private static final int DEFAULT_WIDTH = 300;
+   private static final int DEFAULT_HEIGHT = 400;
+
+   public ImageViewerFrame()
+   &#123;
+      setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+
+      // use a label to display the images
+      var label = new JLabel();
+      add(label);
+
+      // set up the file chooser
+      var chooser = new JFileChooser();
+      chooser.setCurrentDirectory(new File(&quot;.&quot;));
+
+      // set up the menu bar
+      var menuBar = new JMenuBar();
+      setJMenuBar(menuBar);
+
+      var menu = new JMenu(&quot;File&quot;);
+      menuBar.add(menu);
+
+      var openItem = new JMenuItem(&quot;Open&quot;);
+      menu.add(openItem);
+      openItem.addActionListener(event -&gt;
+         &#123;
+            // show file chooser dialog
+            int result = chooser.showOpenDialog(null);
+
+            // if file selected, set it as icon of the label
+            if (result == JFileChooser.APPROVE_OPTION)
+            &#123;
+               String name = chooser.getSelectedFile().getPath();
+               label.setIcon(new ImageIcon(name));
+            &#125;
+         &#125;);
+
+      var exitItem = new JMenuItem(&quot;Exit&quot;);
+      menu.add(exitItem);
+      exitItem.addActionListener(event -&gt; System.exit(0));
+   &#125;
+&#125;
+</code></pre>
 <h2 id="1-2-JAVA白皮书的关键术语"><a href="#1-2-JAVA白皮书的关键术语" class="headerlink" title="1.2 JAVA白皮书的关键术语"></a>1.2 JAVA白皮书的关键术语</h2><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/language-environment.html">白皮书</a>以及<a target="_blank" rel="noopener" href="https://horstmann.com/corejava/java-an-overview/7Gosling.pdf">11个关键术语的概述</a></p>
 <h3 id="1-2-1-简单性"><a href="#1-2-1-简单性" class="headerlink" title="1.2.1 简单性"></a>1.2.1 简单性</h3><p>JAVA语法是C++语法的一个纯净版本，没有头文件、指针运算（甚至没有指针语法）、结构、联合、操作符重载、虚基类等，但设计者并没有试图修正C++的所有不适当的特性。</p>
 <h3 id="1-2-2-面向对象"><a href="#1-2-2-面向对象" class="headerlink" title="1.2.2 面向对象"></a>1.2.2 面向对象</h3><p>面向对象设计是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上。Java与C++的不同点主要在于多重继承，在Java中取而代之的是更简单的接口概念。与C++相比，Java提供了更丰富的运行时自省功能。</p>
@@ -2568,6 +2644,1038 @@ Employee.nextId++;
 <li>方法只需要访问类的静态字段</li>
 </ul>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714165359566.png" alt="image-20250714165359566"></p>
+<h3 id="4-4-4-工厂方法"><a href="#4-4-4-工厂方法" class="headerlink" title="4.4.4 工厂方法"></a>4.4.4 工厂方法</h3><p>类似LocalDate和NumberFormat的类使用静态工厂方法来构造对象，如LocalDate.now和LocalDate.of</p>
+<pre><code class="language-java">	  NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+      NumberFormat percentFormatter = NumberFormat.getPercentInstance();
+      double x=0.1;
+      System.out.println(currencyFormatter.format(x));
+      System.out.println(percentFormatter.format(x));
+</code></pre>
+<p>为什么NumberFormat类不使用构造器</p>
+<ol>
+<li>无法为构造器命名，构造器的名字要与类名相同，这里希望有两个不同的名字分别得到货币实例和百分比实例</li>
+<li>使用构造器方法时无法改变所构造对象的类型，而工厂方法实际将返回DecimalFormat类的对象，这是继承NumberFormat的一个子类</li>
+</ol>
+<h3 id="4-4-5-main方法"><a href="#4-4-5-main方法" class="headerlink" title="4.4.5 main方法"></a>4.4.5 main方法</h3><p>main方法也是一个静态方法，不对任何对象进行操作</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714175302678.png" alt="image-20250714175302678"></p>
+<pre><code class="language-java">/**
+ * This program demonstrates static methods.
+ * @version 1.03 2021-09-03
+ * @author Cay Horstmann
+ */
+public class StaticTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      // fill the staff array with three Employee objects
+      var staff = new Employee[3];
+
+      staff[0] = new Employee(&quot;Tom&quot;, 40000);
+      staff[1] = new Employee(&quot;Dick&quot;, 60000);
+      staff[2] = new Employee(&quot;Harry&quot;, 65000);
+
+      // print out information about all Employee objects
+      for (Employee e : staff)
+      &#123;
+         System.out.println(&quot;name=&quot; + e.getName() + &quot;,id=&quot; + e.getId() + &quot;,salary=&quot;
+            + e.getSalary());
+      &#125;
+
+      int n = Employee.advanceId(); // calls static method
+      System.out.println(&quot;Next issued id=&quot; + n);
+   &#125;
+&#125;
+
+class Employee
+&#123;
+   private static int nextId = 1;
+
+   private String name;
+   private double salary;
+   private int id;
+
+   public Employee(String n, double s)
+   &#123;
+      name = n;
+      salary = s;
+      id = advanceId();
+   &#125;
+
+   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public int getId()
+   &#123;
+      return id;
+   &#125;
+
+   public static int advanceId()
+   &#123;
+      int r = nextId; // obtain next available id
+      nextId++;
+      return r;
+   &#125;
+
+   public static void main(String[] args) // runs demo,unit test
+   &#123;
+      var e = new Employee(&quot;Harry&quot;, 50000);
+      System.out.println(e.getName() + &quot; &quot; + e.getSalary());
+   &#125;
+&#125;
+</code></pre>
+<p><code>API</code> java.util.Objects <strong>7</strong></p>
+<ul>
+<li><p>static &lt; T &gt; void requireNonNull(T obj)</p>
+</li>
+<li><p>static &lt; T &gt; void requireNonNull(T obj,String message)</p>
+</li>
+<li><p>static &lt; T &gt; void requireNonNull(T obj,Supplier&lt; String &gt; messageSupplier)  <strong>8</strong></p>
+<p>如果obj为null，这些方法会抛出一个NullPointerException异常而没有任何消息或者有给定的消息</p>
+</li>
+<li><p>static &lt; T &gt; T requireNonNullElse(T obj,T defaultObj)  <strong>9</strong></p>
+</li>
+<li><p>static &lt; T &gt; T requireNonNullElseGet(T obj,Supplier&lt; T &gt; defaultSupplier)  <strong>9</strong></p>
+<p>如果obj不为null则返回obj，或者如果obj为null则返回默认对象</p>
+</li>
+</ul>
+<h2 id="4-5-方法参数"><a href="#4-5-方法参数" class="headerlink" title="4.5 方法参数"></a>4.5 方法参数</h2><p><code>按值调用（call by value）</code>表示方法接收的是调用者提供的值，<code>按引用调用（call by reference）</code>表示方法接收的是调用者提供的变量位置，所以<em><strong>可以修改按引用传递的变量的值，而不能修改按值传递的变量的值</strong></em></p>
+<p>按…调用是一个标准的计算机术语，用来描述各种程序设计语言中方法参数的行为，还有一种古老的方式——按名调用已经成为历史</p>
+<p>java程序设计语言总是采用<em><strong>按值调用</strong></em>，方法会得到所有参数值的一个副本，所以无法修改传递给它的任何参数变量的值</p>
+<pre><code class="language-java">public static void tripleValue(double x)// doesn&#39;t work
+&#123;
+	x=3*x;
+&#125;
+double percent=10;
+tripleValue(percent);//the value of percent is still 10
+</code></pre>
+<p>x&#x3D;30但percent仍为10，且方法结束后参数变量x不再使用</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714181008087.png" alt="image-20250714181008087"></p>
+<p>有两种不同类型的方法参数：</p>
+<ol>
+<li>基本数据类型（数字&#x2F;布尔值）</li>
+<li>对象引用</li>
+</ol>
+<p>若为对象参数则不同</p>
+<pre><code class="language-java">public static void tripleSalary(Employee x)// works
+&#123;
+	x.raiseSalary(200);
+&#125;
+harry=new Employee(...);
+tripleSalary(harry);
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714181419241.png" alt="image-20250714181419241"></p>
+<p>如何证明java对对象采用的不是按引用调用？</p>
+<p>下面来编写一个交换Employee对象的方法</p>
+<pre><code class="language-java">public static void swap(Employee x,Employee y)//doesn&#39;t work
+&#123;
+    Employee temp=x;
+    x=y;
+    y=temp;
+&#125;
+</code></pre>
+<p>如果Java对对象采用的是引用传递，那么这个方法应该能够实现交换</p>
+<pre><code class="language-java">var a=new Employee(&quot;Alice&quot;,...);
+var a=new Employee(&quot;Bob&quot;,...);
+swap(a,b);
+</code></pre>
+<p>这个方法并没有改变存储在a,b中的对象引用，swap方法的参数x和y初始化为两个对象引用的副本，交换的是这两个副本</p>
+<pre><code class="language-java">//x refers to Alice,y refers to Bob
+Employee temp=x;
+x=y;
+y=temp;
+//now x refers to Bob,y to Alice
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714182343143.png" alt="image-20250714182343143"></p>
+<p>以上说明了java程序设计语言对对象采用的不是按引用调用的，实际上，<em><strong>对象引用是按值传递的</strong></em></p>
+<p>java中能对方法参数做什么&#x2F;不能做什么？</p>
+<ul>
+<li>不能修改基本数据类型的参数</li>
+<li>可以改变对象参数的状态</li>
+<li>不能让一个对象参数引用一个新对象</li>
+</ul>
+<pre><code class="language-java">/**
+ * This program demonstrates parameter passing in Java.
+ * @version 1.01 2018-04-10
+ * @author Cay Horstmann
+ */
+public class ParamTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      /*
+       * Test 1: Methods can&#39;t modify numeric parameters
+       */
+      System.out.println(&quot;Testing tripleValue:&quot;);
+      double percent = 10;
+      System.out.println(&quot;Before: percent=&quot; + percent);
+      tripleValue(percent);
+      System.out.println(&quot;After: percent=&quot; + percent);
+
+      /*
+       * Test 2: Methods can change the state of object parameters
+       */
+      System.out.println(&quot;\nTesting tripleSalary:&quot;);
+      var harry = new Employee(&quot;Harry&quot;, 50000);
+      System.out.println(&quot;Before: salary=&quot; + harry.getSalary());
+      tripleSalary(harry);
+      System.out.println(&quot;After: salary=&quot; + harry.getSalary());
+
+      /*
+       * Test 3: Methods can&#39;t attach new objects to object parameters
+       */
+      System.out.println(&quot;\nTesting swap:&quot;);
+      var a = new Employee(&quot;Alice&quot;, 70000);
+      var b = new Employee(&quot;Bob&quot;, 60000);
+      System.out.println(&quot;Before: a=&quot; + a.getName());
+      System.out.println(&quot;Before: b=&quot; + b.getName());
+      swap(a, b);
+      System.out.println(&quot;After: a=&quot; + a.getName());
+      System.out.println(&quot;After: b=&quot; + b.getName());
+   &#125;
+
+   public static void tripleValue(double x) // doesn&#39;t work
+   &#123;
+      x = 3 * x;
+      System.out.println(&quot;End of method: x=&quot; + x);
+   &#125;
+
+   public static void tripleSalary(Employee x) // works
+   &#123;
+      x.raiseSalary(200);
+      System.out.println(&quot;End of method: salary=&quot; + x.getSalary());
+   &#125;
+
+   public static void swap(Employee x, Employee y)
+   &#123;
+      Employee temp = x;
+      x = y;
+      y = temp;
+      System.out.println(&quot;End of method: x=&quot; + x.getName());
+      System.out.println(&quot;End of method: y=&quot; + y.getName());
+   &#125;
+&#125;
+
+class Employee // simplified Employee class
+&#123;
+   private String name;
+   private double salary;
+
+   public Employee(String n, double s)
+   &#123;
+      name = n;
+      salary = s;
+   &#125;
+
+   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public void raiseSalary(double byPercent)
+   &#123;
+      double raise = salary * byPercent / 100;
+      salary += raise;
+   &#125;
+&#125;
+</code></pre>
+<h2 id="4-6-对象构造"><a href="#4-6-对象构造" class="headerlink" title="4.6 对象构造"></a>4.6 对象构造</h2><p>Java提供了多种编写构造器的机制</p>
+<h3 id="4-6-1-重载"><a href="#4-6-1-重载" class="headerlink" title="4.6.1 重载"></a>4.6.1 重载</h3><pre><code class="language-java">var messages=new StringBuilder();
+var todoList=new StringBuilder(&quot;to do&quot;);
+</code></pre>
+<p>如果多个方法有<em><strong>相同的方法名</strong></em>但有<em><strong>不同的参数</strong></em>，便出现了<code>重载</code>，编译器必须挑选出具体调用哪个方法，它用各个方法首部中的参数类型与特定方法调用中所使用 的值的类型进行匹配来选出正确的方法，不存在匹配就会产生编译时错误，这个查找匹配的过程称为<code>重载解析</code></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714183341689.png" alt="image-20250714183341689"></p>
+<h3 id="4-6-2-默认字段初始化"><a href="#4-6-2-默认字段初始化" class="headerlink" title="4.6.2 默认字段初始化"></a>4.6.2 默认字段初始化</h3><p>构造器中若没有显式地为一个字段设置初始值，就会为它设置为默认值：数值将设置为0，布尔值为false，对象引用为null</p>
+<h3 id="4-6-3-无参数构造器"><a href="#4-6-3-无参数构造器" class="headerlink" title="4.6.3 无参数构造器"></a>4.6.3 无参数构造器</h3><p>对象状态设置为默认值</p>
+<pre><code class="language-java">public Employee()
+&#123;
+	name=&quot;&quot;;
+	salary=0;
+	hireDay=LocalDate.now();
+&#125;
+</code></pre>
+<p>如果你写的类没有构造器，就会默认为你提供一个无参数构造器，这个构造器将会进行默认字段初始化</p>
+<p><em><strong>如果类中提供了至少一个构造器，但是没有提供无参数构造器，这个时候使用无参数构造器就是不合法的</strong></em></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714184225487.png" alt="image-20250714184225487"></p>
+<h3 id="4-6-4-显式字段初始化"><a href="#4-6-4-显式字段初始化" class="headerlink" title="4.6.4 显式字段初始化"></a>4.6.4 显式字段初始化</h3><p>如果一个类的所有构造器都需要把某个特定的实例字段设置为同一个值，可以在类定义中直接为其赋值，在执行构造器之前会完成这个赋值，<em><strong>初始值不一定是常量值</strong></em>，例如</p>
+<pre><code class="language-java">class Employee
+&#123;
+	private static int nextId;
+	private int id =advanceId();
+	...
+	private static int advanceId()
+	&#123;
+		int r=nextId;
+		nextId++;
+		return r;
+	&#125;
+	...
+&#125;
+</code></pre>
+<h3 id="4-6-5-参数名"><a href="#4-6-5-参数名" class="headerlink" title="4.6.5 参数名"></a>4.6.5 参数名</h3><p><em><strong>出发点：提高易读性（避免xyz），简洁，不会出错</strong></em></p>
+<p>如</p>
+<pre><code class="language-java">public Employee(String aName,double aSalary)
+&#123;
+	name=aName；
+	salary=aSalary;
+&#125;
+</code></pre>
+<p>还有一种常见技巧，基于：参数变量会遮蔽同名实例字段，但是可以利用this关键字</p>
+<pre><code class="language-java">public Employee(String name,double salary)
+&#123;
+	this.name=name；
+	this.salary=salary;
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714185207385.png" alt="image-20250714185207385"></p>
+<h3 id="4-6-6-调用另一个构造器"><a href="#4-6-6-调用另一个构造器" class="headerlink" title="4.6.6 调用另一个构造器"></a>4.6.6 调用另一个构造器</h3><p>关键字this指示一个方法的隐式参数</p>
+<p>如果构造器的一个语句形如this(…)，这个构造器将调用同一个类的另一个构造器</p>
+<pre><code class="language-java">public Employee(double s)
+&#123;
+	//calls Employee(String,double)
+	this(&quot;Employee #&quot;+nextId,s);
+	nextId++;
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714185627596.png" alt="image-20250714185627596"></p>
+<h3 id="4-6-7-初始化块"><a href="#4-6-7-初始化块" class="headerlink" title="4.6.7 初始化块"></a>4.6.7 初始化块</h3><pre><code class="language-java">class Employee
+&#123;
+	private static int nextId;
+	private int id;
+	private String name;
+	private double salary;
+	//object initialization block
+    &#123;
+        id=nextId;
+        nextId++;
+    &#125;
+    ...
+&#125;
+</code></pre>
+<p>在以上示例中，无论使用哪个构造器构造对象，id字段都会在对象初始化块中初始化，<em><strong>首先运行初始化块，然后才运行构造器的主体部分</strong></em></p>
+<p>建议将初始化块放在字段定义之后</p>
+<p><em><strong>调用构造器的具体处理步骤</strong></em></p>
+<ol>
+<li><p>如果构造器的第一行调用了另一个构造器，则基于所提供的参数执行第二个构造器</p>
+</li>
+<li><p>否则，</p>
+<p>a)所有实例字段初始化为其默认值</p>
+<p>b)按照在类声明中出现的顺序，执行所有字段初始化方法和初始化块</p>
+</li>
+<li><p>执行构造器主体代码</p>
+</li>
+</ol>
+<p>如果类的静态字段需要很复杂的初始化代码，那么可以使用<code>静态初始化块</code></p>
+<pre><code class="language-java">private static Random generator=new Random();
+//static initialization block
+static
+&#123;
+	nextId=generator.nextInt(10000);
+&#125;//将员工Id的起始值赋值为一个小于10000的随机整数
+</code></pre>
+<p>此例子采用Random类来生成随机数，从JDK 17开始，java.util.random包提供了考虑多种因素的强算法的实现</p>
+<pre><code class="language-java">RandomGenerator generator=RandomGenerator.of(&quot;L64X128MixRandom&quot;);
+</code></pre>
+<pre><code class="language-java">import java.util.random.*;
+
+/**
+ * This program demonstrates object construction.
+ * @version 1.02 2018-04-10
+ * @author Cay Horstmann
+ */
+public class ConstructorTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      // fill the staff array with three Employee objects
+      var staff = new Employee[3];
+
+      staff[0] = new Employee(&quot;Harry&quot;, 40000);
+      staff[1] = new Employee(60000);
+      staff[2] = new Employee();
+
+      // print out information about all Employee objects
+      for (Employee e : staff)
+         System.out.println(&quot;name=&quot; + e.getName() + &quot;,id=&quot; + e.getId() + &quot;,salary=&quot;
+            + e.getSalary());
+   &#125;
+&#125;
+
+class Employee
+&#123;
+   private static int nextId;
+
+   private int id;
+   private String name = &quot;&quot;; // instance field initialization
+   private double salary;
+
+   private static RandomGenerator generator = RandomGenerator.getDefault();
+   
+   // static initialization block
+   static
+   &#123;
+      // set nextId to a random number between 0 and 9999
+      nextId = generator.nextInt(10000);
+   &#125;
+
+   // object initialization block
+   &#123;
+      id = nextId;
+      nextId++;
+   &#125;
+
+   // three overloaded constructors
+   public Employee(String n, double s)
+   &#123;
+      name = n;
+      salary = s;
+   &#125;
+
+   public Employee(double s)
+   &#123;
+      // calls the Employee(String, double) constructor
+      this(&quot;Employee #&quot; + nextId, s);
+   &#125;
+
+   // the default constructor
+   public Employee()
+   &#123;
+      // name initialized to &quot;&quot;--see above
+      // salary not explicitly set--initialized to 0
+      // id initialized in initialization block
+   &#125;
+
+   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public int getId()
+   &#123;
+      return id;
+   &#125;
+&#125;
+</code></pre>
+<p><code>API</code> java.util.Random <strong>1.0</strong></p>
+<ul>
+<li><p>Random()</p>
+<p><em><strong>构造一个新的随机数生成器</strong></em></p>
+</li>
+</ul>
+<p><code>API</code> java.util.Random.RandomGenerator <strong>17</strong></p>
+<ul>
+<li><p>int nextInt(int n)</p>
+<p>返回一个0~n-1的随机数</p>
+</li>
+<li><p>static RandomGenerator of(String name)</p>
+<p>由给定算法名生成一个随机数生成器，算法L64X128MixRandom对大多数应用都适用</p>
+</li>
+</ul>
+<h3 id="4-6-8-对象析构与finalize方法"><a href="#4-6-8-对象析构与finalize方法" class="headerlink" title="4.6.8 对象析构与finalize方法"></a>4.6.8 对象析构与finalize方法</h3><p>java会完成自动的垃圾回收，不需要人工回收内存，所以java不支持析构器</p>
+<p>当然，如果某些对象使用了内存之外的其他资源，如文件或使用系统资源的另一个对象的句柄，在这种情况下当资源不再需要时回收再利用就十分重要。如果一个资源一旦使用完就需要立即关闭，那么应当提供一个close方法来完成必要的清理工作（第七章中将介绍如何确保自动调用这个方法）</p>
+<p>如果可以等到虚拟机退出，那么可以使用方法Runtime.addShutdownHook增加一个关闭钩，在java9中可以使用Cleaner类注册一个动作，当对象不再可达时（除了清洁器还能访问，其他对象都无法再访问这个对象）就会完成这个动作，可在API文档中了解这两种方法的详细内容</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>不要使用finalize方法进行清理，这个方法原本要在垃圾回收器清理对象之前调用，不过你并不能知道这个方法到底什么时候调用，而且该方法已经废弃</p>
+</blockquote>
+<h2 id="4-7-记录"><a href="#4-7-记录" class="headerlink" title="4.7 记录"></a>4.7 记录</h2><p>考虑一个类Point,这个类描述平面上的一个点，有x和y坐标</p>
+<pre><code class="language-java">public class Point &#123;
+    private final double x;
+    private final double y;
+    public Point(double x, double y) &#123;this.x = x;this.y = y;&#125;
+    public double getX() &#123;return x;&#125;
+    public double getY() &#123;return y;&#125;
+    public String toString() &#123; return &quot;Point[x=%d, y=%d]&quot;.formatted(x, y);&#125;
+    //More methods
+&#125;
+</code></pre>
+<p>为了更简洁地表示这些类，JDK14引入了一个预览特性：”记录”</p>
+<h3 id="4-7-1-记录概念"><a href="#4-7-1-记录概念" class="headerlink" title="4.7.1 记录概念"></a>4.7.1 记录概念</h3><p><em><strong>记录是一种特殊形式的类，其状态不可变，而且公共可读</strong></em></p>
+<p>可以如下将Point定义为一个记录</p>
+<pre><code class="language-java">record Point(double x,double y)&#123;&#125;
+</code></pre>
+<p>其结果是有以下实例字段的类</p>
+<pre><code class="language-java">	private final double x;
+    private final double y;
+</code></pre>
+<p>一个记录的实例字段被称为<code>组件</code></p>
+<p>这个类有一个构造器和以下访问器方法</p>
+<pre><code class="language-java">Point(double x,double y)
+public double x()//不是GetX/GetY
+public double y()
+</code></pre>
+<p>Java中实例字段和方法同名和合法的</p>
+<pre><code class="language-java">var p=new Point(3,4);
+System.out.println(p.x()+&quot;&quot;+p.y());
+</code></pre>
+<p>除了字段访问器方法，每个记录有三个自动定义的方法：toString、equals、hashCode</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714211726451.png" alt="image-20250714211726451"></p>
+<p>可以为一个记录增加静态字段和方法，但是不能增加实例字段</p>
+<pre><code class="language-java">record Point(double x,double y)
+&#123;
+    public double distanceFromOrigin()&#123;return Math.hypot(x,y);&#125;
+    public static Point ORIGIN = new Point(0,0);
+    public static double distance(Point p1, Point p2)
+    &#123;
+        return Math.hypot(p1.x - p2.x,p1.y - p2.y);
+    &#125;
+    private double r;//Error
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714212353831.png" alt="image-20250714212353831"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714212402329.png" alt="image-20250714212402329"></p>
+<h3 id="4-7-2-构造器：标准、自定义和简洁"><a href="#4-7-2-构造器：标准、自定义和简洁" class="headerlink" title="4.7.2 构造器：标准、自定义和简洁"></a>4.7.2 构造器：标准、自定义和简洁</h3><p>自动定义地设置所有实例字段的构造器称为<code>标准构造器</code>。</p>
+<p>还可以定义另外的<code>自定义构造器</code>，<em><strong>这种构造器的第一个语句必须调用另一个构造器</strong></em>，所以最终会调用标准构造器</p>
+<pre><code class="language-java">record Point(double x,double y)
+&#123;
+    public Point()&#123;this(0,0);&#125;
+&#125;
+</code></pre>
+<p>这个记录有两个构造器：标准构造器和一个生成原点的无参数构造器</p>
+<p>如果标准构造器需要完成额外的工作那么可以提供你自己的实现</p>
+<pre><code class="language-java">record Range(int from, int to)
+&#123;
+    public Range(int from, int to)
+    &#123;
+        if(from &lt;= to)
+        &#123;
+            this.from = from;
+            this.to = to;
+        &#125;
+        else
+        &#123;
+            this.from = to;
+            this.to = from;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>不过实现标准构造器时建议使用一种简洁形式，不用指定参数列表</p>
+<pre><code class="language-java">record Range(int from, int to)
+&#123;
+    public Range//简洁形式
+    &#123;
+        if(from &gt; to)//交换上下界
+        &#123;
+            int temp = from;
+            from = to;
+            to = temp;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><em><strong>简洁形式的主体是标准构造器的“前奏”</strong></em>，它只是<em><strong>在为实例字段this.from和this.to赋值之前修改参数变量from和to</strong></em>，<em><strong>不能在简介构造器的主体中读取或修改实例字段</strong></em></p>
+<pre><code class="language-java">import java.util.*;
+
+/**
+ * This program demonstrates records.
+ * @version 1.0 2021-05-13
+ * @author Cay Horstmann
+ */
+public class RecordTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      var p = new Point(3, 4);
+      System.out.println(&quot;Coordinates of p: &quot; + p.x() + &quot; &quot; + p.y());
+      System.out.println(&quot;Distance from origin: &quot; + p.distanceFromOrigin());
+      // Same computation with static field and method
+      System.out.println(&quot;Distance from origin: &quot; + Point.distance(Point.ORIGIN, p));
+
+      // A mutable record
+      var pt = new PointInTime(3, 4, new Date());
+      System.out.println(&quot;Before: &quot; + pt);
+      pt.when().setTime(0);
+      System.out.println(&quot;After: &quot; + pt);
+
+      // Invoking a compact constructor
+
+      var r = new Range(4, 3);
+      System.out.println(&quot;r: &quot; + r);
+   &#125;
+&#125;
+
+record Point(double x, double y)
+&#123;
+   // A custom constructor
+   public Point() &#123; this(0, 0); &#125;
+   // A method
+   public double distanceFromOrigin()
+   &#123;
+      return Math.hypot(x, y);
+   &#125;   
+   // A static field and method
+   public static Point ORIGIN = new Point();
+   public static double distance(Point p, Point q)
+   &#123;
+      return Math.hypot(p.x - q.x, p.y - q.y);
+   &#125;
+&#125;
+
+record PointInTime(double x, double y, Date when) &#123; &#125;
+
+record Range(int from, int to)
+&#123;
+   // A compact constructor 
+   public Range
+   &#123;
+      if (from &gt; to) // Swap the bounds
+      &#123;
+         int temp = from;
+         from = to;
+         to = temp;
+      &#125;
+   &#125;
+&#125;
+</code></pre>
+<p>运行结果</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714214129008.png" alt="image-20250714214129008"></p>
+<h2 id="4-8-包"><a href="#4-8-包" class="headerlink" title="4.8 包"></a>4.8 包</h2><p>Java允许<em><strong>使用包（package）将类组织在一个集合中</strong></em>，借助包可以方便地组织你的代码，并将你自己的代码和别人提供的代码库分开</p>
+<h3 id="4-8-1-包名"><a href="#4-8-1-包名" class="headerlink" title="4.8.1 包名"></a>4.8.1 包名</h3><p>使用包的主要原因是<em><strong>确保类名的唯一性</strong></em>。假如两个程序员不约而同地提供了Employee类，只要他们将自己的类放置在不同的包中，就不会产生冲突。事实上，为了保证包名的绝对唯一性，可以使用一个因特网域名（这显然是唯一的）以逆序的形式作为包名，然后对于不同的项目使用不同的子包。例如，考虑域名lyh.com,如果逆序来写，就得到了com.lyh,然后可以追加一个项目名，如com.lyh.project,如果再把某个类放在这个包里，那么这个类的“完全限定”名就是com.lyh.project.className</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>从编译器的角度来看，嵌套的包之间没有任何关系，例如java.util包与java.util.jar包毫无关系，<em><strong>每一个包都是独立的类的集合</strong></em></p>
+</blockquote>
+<h3 id="4-8-2-包的导入"><a href="#4-8-2-包的导入" class="headerlink" title="4.8.2 包的导入"></a>4.8.2 包的导入</h3><p><em><strong>一个类可以使用一个所属包的所有类以及其他包中的公共类</strong></em></p>
+<p>可以采用两种方式访问另一个包中的公共类</p>
+<ol>
+<li><p>使用完全限定名（包名+类名）</p>
+<pre><code class="language-java">java.time.LocalDate today = java.time.LocalDate.now();
+</code></pre>
+</li>
+<li><p>可以使用import语句导入一个特定的类或整个包。<em><strong>import语句应该位于源文件的顶部（但位于package语句的后面）</strong></em></p>
+<p>package语句用于定义源文件所属的包</p>
+<pre><code class="language-java">import java.time.*;//import java.time.LocalDate;
+</code></pre>
+<p>有了上述import语句以后就可以使用</p>
+<pre><code class="language-java">LocalDate today=LocalDate.now();
+</code></pre>
+</li>
+</ol>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714215832434.png" alt="image-20250714215832434"></p>
+<p>只能使用<code>* </code>导入一个包，不能使用<code>import java.* </code>或<code>import java.*.*</code>导入以java为前缀的所有包</p>
+<p>导入包或具体的类并无显著差异，不过导入具体使用的类能更加准确地让代码的读者知道你使用了哪些类</p>
+<p>在大多数情况下，可以只导入你需要的包，但在发生命名冲突时要注意包，例如<code>java.util</code>和<code>java.sql</code>包都有Date类，在使用Date类时编译器无法确定你想使用的是哪一个Date类，可以增加一个特定的import语句来解决这个问题</p>
+<pre><code class="language-java">import java.util.*；
+import java.sql.*;
+import java.util.Date;
+</code></pre>
+<p>如果这两个类都需要使用，就在每个类名的前面加上完整的包名</p>
+<pre><code class="language-java">var startTime=new java.util.Date();
+var today=new java.sql.Date(...);
+</code></pre>
+<p>在包中定位类是编译器的工作，类文件中的字节码总是使用完整的包名来引用其他类</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715140202980.png" alt="image-20250715140202980"></p>
+<h3 id="4-8-3-静态导入"><a href="#4-8-3-静态导入" class="headerlink" title="4.8.3 静态导入"></a>4.8.3 静态导入</h3><p>有一种import语句允许导入静态方法和静态字段，而不只是类</p>
+<p>例如，如果在源文件最上面添加</p>
+<pre><code class="language-java">import static java.lang.System.*;
+</code></pre>
+<p>就可以使用System类的静态方法和静态字段而不必加类名前缀</p>
+<pre><code class="language-java">out.println(&quot;sfdsa&quot;);//i.e.,System.out
+exit(0);//i.e.,System.exit
+</code></pre>
+<p>另外还可以导入特定的方法和字段</p>
+<pre><code class="language-java">import static java.lang.System.out;
+</code></pre>
+<p>实际上，是否有很多程序员想要简写System.out或Syetem.exit很让人怀疑，这样写出来的代码很不清晰，不过像<code>sqrt(pow(x,2)+pow(y,2))</code>看起来则比<code>Math.sqrt(Math.pow(x,2)+Math.pow(y,2))</code>简洁得多</p>
+<h3 id="4-8-4-在包中增加类"><a href="#4-8-4-在包中增加类" class="headerlink" title="4.8.4 在包中增加类"></a>4.8.4 在包中增加类</h3><p>要想将类放入包中，就必须将包名放在源文件的开头，即放在定义这个包中各个类的代码之前</p>
+<pre><code class="language-java">package com.lyh.project;
+public class RecordTest 
+&#123;
+    ...
+&#125;
+</code></pre>
+<p>如果没有在源文件中放置package语句，那么这个源文件中的类就属于无名包，无名包没有包名，到目前为止我们定义的所有类都在无名包中</p>
+<p><em><strong>将源文件放到与完整包名匹配的子目录中</strong></em>，例如，com.lyh.project包中的所有源文件应该放置在子目录com&#x2F;lyh&#x2F;project中（Windows中则是com\lyh\project）编译器将类文件也放在相同的目录结构中</p>
+<pre><code class="language-java">import com.horstmann.corejava.*;
+// the Employee class is defined in that package
+
+import static java.lang.System.*;
+
+/**
+ * This program demonstrates the use of packages.
+ * @version 1.11 2004-02-19
+ * @author Cay Horstmann
+ */
+public class PackageTest
+&#123;
+   public static void main(String[] args)
+   &#123;
+      // because of the import statement, we don&#39;t have to use 
+      // com.horstmann.corejava.Employee here
+      var harry = new Employee(&quot;Harry Hacker&quot;, 50000, 1989, 10, 1);
+
+      harry.raiseSalary(5);
+
+      // because of the static import statement, we don&#39;t have to use System.out here
+      out.println(&quot;name=&quot; + harry.getName() + &quot;,salary=&quot; + harry.getSalary());
+   &#125;
+&#125;
+</code></pre>
+<pre><code class="language-java">package com.horstmann.corejava;
+
+// the classes in this file are part of this package
+
+import java.time.*;
+
+// import statements come after the package statement
+
+/**
+ * @version 1.11 2015-05-08
+ * @author Cay Horstmann
+ */
+public class Employee
+&#123;
+   private String name;
+   private double salary;
+   private LocalDate hireDay;
+
+   public Employee(String name, double salary, int year, int month, int day)
+   &#123;
+      this.name = name;
+      this.salary = salary;
+      hireDay = LocalDate.of(year, month, day);
+   &#125;
+
+   public String getName()
+   &#123;
+      return name;
+   &#125;
+
+   public double getSalary()
+   &#123;
+      return salary;
+   &#125;
+
+   public LocalDate getHireDay()
+   &#123;
+      return hireDay;
+   &#125;
+
+   public void raiseSalary(double byPercent)
+   &#123;
+      double raise = salary * byPercent / 100;
+      salary += raise;
+   &#125;
+&#125;
+</code></pre>
+<p>以上两个程序分别放在两个包中：PackageTest类属于无名包；Employee类属于com.horstman.corejava包，因此，Employee.java文件必须在子目录com&#x2F;horstman&#x2F;corejava中。换句话说，目录结构如下</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715142632888.png" alt="image-20250715142632888"></p>
+<p>要想编译这个程序，只需切换到基目录，并运行以下命令</p>
+<pre><code class="language-shell">javac PackageTest.java
+</code></pre>
+<p>编译器就会自动地查找文件com&#x2F;horstman&#x2F;corejava&#x2F;Employee.java并进行编译</p>
+<p>下面看一个更实际的例子，在这里没有使用无名包，而是将类分别放在不同的包中（com.horstman.corejava和com.mycompany）</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715143312860.png" alt="image-20250715143312860"></p>
+<p>在这种情况下，仍然要从基目录编译和运行类，即包含com目录的目录：</p>
+<pre><code class="language-shell">javac com/mycompany/PayrollApp.java
+java com.mycompany.PayrollApp
+</code></pre>
+<p><em><strong>编译器处理文件（带有文件分隔符和扩展名.java的文件），而Java解释器加载类（带有.分隔符）</strong></em></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715143649680.png" alt="image-20250715143649680"></p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715143657816.png" alt="image-20250715143657816"></p>
+<h3 id="4-8-5-包访问"><a href="#4-8-5-包访问" class="headerlink" title="4.8.5 包访问"></a>4.8.5 包访问</h3><p>标记为public的部分可以由任意类使用；标记为private的部分只能由定义它们的类使用。如果没有指定public或private，这个部分（类&#x2F;方法&#x2F;变量）可以由同一个包中的所有方法访问（即默认<code>包可访问</code>）</p>
+<p><em><strong>记得添加访问修饰符</strong></em>，尤其是对于变量必须显示地声明为private，不然默认为包可访问，会破坏封装性</p>
+<p>由于包不是封闭的实体，任何人都可以向包中添加更多的类，当然，有恶意或糟糕的程序员很可能利用包访问添加一些能修改变量的代码</p>
+<p>从1.2版本开始，JDK的实现者修改了类加载器，明确地禁止加载包名以”java.”开头的用户自定义的类，当然，用户自定义的类无法从这种保护中受益，另一种机制是让JAR文件声明包为密封的，以防止第三方修改，但这种机制已经过时。现在应当使用<code>模块</code>封装包，我们将会在卷二的第九章详细讨论</p>
+<h3 id="4-8-6-类路径"><a href="#4-8-6-类路径" class="headerlink" title="4.8.6 类路径"></a>4.8.6 类路径</h3><p>类存储在文件系统的子目录中，<em><strong>类的路径必须与包名匹配</strong></em></p>
+<p>另外类文件还可以存储在JAR（Java归档）文件中。在一个JAR文件中，可以包含多个压缩格式的类文件和子目录，这样既可以节省空间又可以改善性能。在程序中用到第三方的库时，你通常会得到一个或多个需要包含的JAR文件。</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>JAR文件使用ZIP格式组织文件和子目录，可以使用任何ZIP工具查看JAR文件</p>
+</blockquote>
+<p>为了使类能够被多个程序共享，需要做到以下几点：</p>
+<ol>
+<li>把类文件放到一个目录中，例如&#x2F;home&#x2F;user&#x2F;classdir，需要注意，这个目录是包树状结构的基目录，如果希望增加com.lyh.project.className类，那么className.class类文件就必须位于子目录&#x2F;home&#x2F;user&#x2F;classdir&#x2F;com&#x2F;lyh&#x2F;project中</li>
+<li>将JAR文件放在一个目录中，例如&#x2F;home&#x2F;user&#x2F;archives</li>
+<li>设置类路径，<em><strong>类路径是所有包含类文件的路径的集合</strong></em></li>
+</ol>
+<p>在UNIX环境中，类路径中的各项之间<em><strong>用<code>:</code>分隔</strong></em>：<code>/home/user/classdir:.:/home/user/archives/archive.jar</code></p>
+<p>而在Windows环境中，则<em><strong>以<code>;</code>分隔</strong></em>：<code>c:\classdir;.;c:\archives\archive.jar</code></p>
+<p>不论是UNIX还是Windows，都用<em><strong>句号<code>.</code>表示当前目录</strong></em></p>
+<p>类路径包括：</p>
+<ul>
+<li>基目录<code>/home/user/classdir</code>或<code>c:\classdir</code></li>
+<li>当前目录（<code>.</code>）</li>
+<li>JAR文件<code>/home/user/archives/archive.jar</code>或<code>c:\archives\archive.jar</code></li>
+</ul>
+<p>从Java6开始，可以为JAR文件目录下指定一个通配符，如<code>/home/user/archives/*</code>,在UNIX中，<code>*</code>必须转义防止shell扩展，archives目录中的所有JAR文件（但不包括.class文件）都包含在这个类路径中</p>
+<p>由于总是会搜索Java API的类，所以不必显式地包含在类路径中</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715151205513.png" alt="image-20250715151205513"></p>
+<p><em><strong>类路径所列出的目录和归档文件是搜寻类的起始点</strong></em></p>
+<p>下面看一个类路径示例</p>
+<p><code>/home/user/classdir:.:/home/user/archives/archive.jar</code></p>
+<p>假定虚拟机要搜寻com.horstman.corejava.Employee类的类文件，它首先要查看Java API类，显然，在那里找不到相应的类文件，所以转而查看类路径，它会查找以下文件：</p>
+<ul>
+<li>&#x2F;home&#x2F;user&#x2F;classdir&#x2F;com&#x2F;horstman&#x2F;corejava&#x2F;Employee.class</li>
+<li>com&#x2F;horstman&#x2F;corejava&#x2F;Employee.class(从当前目录开始)</li>
+<li>com&#x2F;horstman&#x2F;corejava&#x2F;Employee.class(&#x2F;home&#x2F;user&#x2F;archives&#x2F;archive.jar中)</li>
+</ul>
+<p>编译器查找文件要比虚拟机复杂得多，如果引用了一个类而没有指定这个类的包，那么编译器首先查找包含这个类的包。它会查看所有import指令，确定其中是否包含着类，例如假定源文件包含以下指令：</p>
+<pre><code class="language-java">import java.util.*;
+import com.horstman.corejava.*;
+</code></pre>
+<p>并且源文件引用了Employee类，编译器将尝试寻找java.lang.Employee(因为总是会默认导入java.lang包)、java.util.Employee、com.horstman.corejava.Employee和当前包中的Employee，它会在类路径所有位置上搜索以上各个类。如果找到一个以上的类，就会产生编译时错误（因为完全限定类名必须是唯一的，所以import语句的次序并不重要）</p>
+<p>编译器的任务并不止这些，它还要查看源文件是否比类文件新，如果是的话，那么源文件就会自动地重新编译，在前面已经知道，只可以导入其他包中的公共类，一个源文件只能包含一个公共类，而且文件名必须与公共类名相匹配。因此，编译器很容易找到公共类的源文件。不过，还可以从当前包中导入非公共类，这些类有可能在与类名不同的源文件中定义。如果从当前包中导入一个类，那么编译器就要搜索当前包中的所有源文件，查看哪个源文件定义了这个类。</p>
+<h3 id="4-8-7-设置类路径"><a href="#4-8-7-设置类路径" class="headerlink" title="4.8.7 设置类路径"></a>4.8.7 设置类路径</h3><p>最好使用-classpath(或-cp,或Java 9中的 –class-path)选项指定类路径</p>
+<pre><code class="language-shell">java -classpath /home/user/classdir:.:/home/user/archives/archive.jar MyProg
+</code></pre>
+<p>或</p>
+<pre><code class="language-shell">java -classpath c:\classdir;.;c:\archives\archive.jar MyProg
+</code></pre>
+<p><em><strong>整个指令必须写在一行</strong></em>，将这样一个很长的命令行放在一个shell脚本或一个批处理文件中是个很不错的主意</p>
+<p>还有一种方法是通过设置CLASSPATH环境变量来指定类路径，具体细节依赖于所使用的shell，在Bourne Again shell(bash)中，命令如下</p>
+<pre><code class="language-bash">export CLASSPATH=/home/user/classdir:.:/home/user/archives/archive.jar
+</code></pre>
+<p>在Windows shell中</p>
+<pre><code class="language-shell">set CLASSPATH=c:\classdir;.;c:\archives\archive.jar 
+</code></pre>
+<p>直到退出shell为止，类路径设置均有效</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715153829811.png" alt="image-20250715153829811"></p>
+<blockquote>
+<p>[!CAUTION]</p>
+<p>在Java 9 中，还可以从<code>模块路径</code>加载类</p>
+</blockquote>
+<h2 id="4-9-JAR文件"><a href="#4-9-JAR文件" class="headerlink" title="4.9 JAR文件"></a>4.9 JAR文件</h2><p>在将应用程序打包时，你希望只向用户提供一个单独的文件，而不是一个包含大量类文件的目录结构，Java归档（JAR）文件就是为此目的而设计的，JAR文件既可以包含类文件，也可以包含诸如图像和声音等其他类型的文件，此外，JAR文件是压缩的，它使用了我们熟悉的ZIP压缩格式</p>
+<h3 id="4-9-1-创建JAR文件"><a href="#4-9-1-创建JAR文件" class="headerlink" title="4.9.1 创建JAR文件"></a>4.9.1 创建JAR文件</h3><p>可以使用jar工具制作JAR文件（在默认的JDK安装中，这个工具位于jdk&#x2F;bin目录下），创建一个新JAR文件最常用的命令使用以下语法</p>
+<p><code>jar cvf jarFileName file1 file2 ...</code></p>
+<p>例如</p>
+<pre><code class="language-shell">jar cvf CalculatorClasses.jar *.class icon.gif
+</code></pre>
+<p><em><strong>通常jar命令的格式为<code>jar options file1 file2 ...</code></strong></em></p>
+<p>下表列出了jar程序的所有选项，它们类似于UNIX tar命令的选项</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715161715259.png" alt="image-20250715161715259"></p>
+<p>可以将应用程序和代码库打包在JAR文件中，例如，如果想在一个Java程序中发送邮件，可以使用打包在javax.mail.jar中的一个库</p>
+<h3 id="4-9-2-清单文件"><a href="#4-9-2-清单文件" class="headerlink" title="4.9.2 清单文件"></a>4.9.2 清单文件</h3><p>除了类文件、图像和其他资源外，每个JAR文件还包含一个清单文件（manifest），用于<em><strong>描述归档文件的特殊特性</strong></em></p>
+<p>清单文件被命名为<code>MANIFEST.MF</code>，它位于JAR文件的一个特殊的<code>META-INF</code>子目录中，合法的最小清单文件极其简单：<code>Manifest-Version: 1.0</code></p>
+<p>复杂的清单文件可能包含更多条目。这些清单条目被分组为多个节，<em><strong>第一节被称为<code>主节</code>，它作用于整个JAR文件</strong></em>，随后的条目可以指定命名实体的属性，如单个文件&#x2F;包&#x2F;URL，它们都必须以一个Name条目开始，节与节之间用空行分开</p>
+<img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715163856658.png" alt="image-20250715163856658" style="zoom:25%;">
+
+<p>要想编辑清单文件，需要将希望添加到清单文件中的行放到文本文件中，然后运行<code>jar cfm jarFileName manifestFileName ...</code></p>
+<p>例如，要创建一个包含清单文件的JAR文件，应该运行<code>jar cfm MyArchive.jar manifest.mf com/mycompany/mypkg/*.class</code></p>
+<p>要想更新一个已有的JAR文件的清单，则需要将增加的部分放置到一个文本文件中，然后执行命令 <code>jar ufm MyArchive.jar manifest-additions.mf</code></p>
+<p>想获取更多有关JAR文件和清单文件格式的信息可查阅 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/10/docs/specs/jar/jar.html">JAR File Specification</a></p>
+<h3 id="4-9-3-可执行JAR文件"><a href="#4-9-3-可执行JAR文件" class="headerlink" title="4.9.3 可执行JAR文件"></a>4.9.3 可执行JAR文件</h3><p>可以使用jar命令中的e选项指定程序的入口点，即通常调用java执行程序时指定的类：</p>
+<p><code>jar cvfe MyProgram.jar com.mycompany.mypkg.MainAppClass files to add</code></p>
+<p>或者可以在清单文件中指定程序的主类，包括以下形式的语句：</p>
+<p><code>Main-Class:com.mycompany.mypkg.MainAppClass</code></p>
+<p>不要为主类名加扩展名.class</p>
+<blockquote>
+<p>[!WARNING]</p>
+<p>清单文件的最后一行必须以换行符结束，否则将无法正确地读取清单文件，常见的一个错误是创建了一个只包含Main-Class行而没有行结束符的文本文件</p>
+</blockquote>
+<p>不论采用哪种方式用户都可以简单地通过下面的命令来启动程序</p>
+<pre><code class="language-shell">java -jar MyProgram.jar
+</code></pre>
+<p>取决于操作系统的配置，用户甚至可以通过双击JAR文件的图标来启动应用程序</p>
+<ul>
+<li>在Windows平台中，Java运行时安装程序将为”.jar”扩展名创建一个文件关联，会用<code>javaw -jar</code>命令启动文件（与java命令不同，javaw命令不打开shell窗口）</li>
+<li>在Mac OS X平台中，操作系统能够识别“.jar”扩展名文件，双击JAR文件就会执行Java程序</li>
+</ul>
+<p>JAR文件中的Java程序与原生应用仍有区别，可以使用第三方包装器工具将JAR文件转换成Windows可执行文件。包装器是一个Windows程序，有大家熟悉的扩展名.exe,它可以查找和加载java虚拟机（JVM），或者在没有找到JVM时告诉用户应该做些什么。有许多商业的和开源的产品，如<a target="_blank" rel="noopener" href="https://launch4j.sourceforge.net/">Launch4j - Cross-platform Java executable wrapper</a>和<a target="_blank" rel="noopener" href="https://izpack.org/">IzPack - Package once. Deploy everywhere.</a></p>
+<h3 id="4-9-4-多版本JAR文件"><a href="#4-9-4-多版本JAR文件" class="headerlink" title="4.9.4 多版本JAR文件"></a>4.9.4 多版本JAR文件</h3><p>随着模块和包强封装的引入，之前可以访问的一些内部API不再可用，这可能要求库提供商为不同java版本发布不同的代码，为此，Java 9引入了多版本JAR文件</p>
+<p>为了保证向后兼容，特定于版本的类文件放在<code>META-INF/versions</code>目录中</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715175112607.png" alt="image-20250715175112607"></p>
+<p>假设Application类使用了CssParser类，那么遗留版本的Application.class文件可以使用com.sun.javafx.css.CssParser，而Java 9版本可以使用javafx.css.CssParser</p>
+<p>Java 8完全不知道<code>META-INF/versions</code>目录，它只会加载遗留的类，Java 9读取这个JAR文件时则会使用新版本</p>
+<p>要增加不同版本的类文件，可以使用<code>--release</code>标志</p>
+<pre><code class="language-shell">jar uf MyProgram.jar --release 9 Application.class
+</code></pre>
+<p>要从头构建一个多版本JAR文件，可以使用<code>-C</code>选项，对应每个版本要切换到一个不同的类文件目录</p>
+<pre><code class="language-shell">jar cf MyProgram.jar -C bin/8 . --release 9 -C bin/9 Application.class
+</code></pre>
+<p>面向不同版本编译时，要使用<code>--release</code>和<code>-d</code>标志来指定输出目录</p>
+<pre><code class="language-shell">javac -d bin/8 --release 8 ...
+</code></pre>
+<p>在Java 9 中，<code>-d</code>选项会创建这个目录（如果原先该目录不存在）</p>
+<p><code>--release</code>标志也是Java 9 新增的，在较早的版本中使用<code>-source</code>,<code>-target</code>,<code>-bootclasspath</code>。JDK现在为之前的两个API版本提供了符号文件，在Java 9中，编译时可以将<code>--release</code>设置为9、8、7</p>
+<p>多版本JAR并不适用于不同版本的程序或库，对于不同的版本，所有类的公共API都应该是一样的，<em><strong>多版本JAR的唯一作用是使你的某个特定版本的程序或库能够使用多个不同的JDK版本</strong></em>。如果你增加了功能或改变了一个API，就应当提供一个新版本的JAR</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715180655587.png" alt="image-20250715180655587"></p>
+<h3 id="4-9-5-关于命令行选项的说明"><a href="#4-9-5-关于命令行选项的说明" class="headerlink" title="4.9.5 关于命令行选项的说明"></a>4.9.5 关于命令行选项的说明</h3><p>Java开发包（JDK）的命令行选项一直都使用单个短横线加多字母选项名的形式，但jar命令是个例外，这个命令遵循经典的tar命令选项格式，而没有短横线</p>
+<pre><code class="language-shell">java -jar ...
+jar cvf ...
+</code></pre>
+<p>从Java 9开始，Java工具转向一种更常用的选项格式，多字母选项名前加两个短横线，另外对于常用的选项可以使用单字母快捷方式</p>
+<p>例如</p>
+<pre><code class="language-shell">ls --human-readable
+ls -h 
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://openjdk.org/jeps/293">JEP 293: Guidelines for JDK Command-Line Tool Options</a></p>
+<p>标准化选项参数 带–和多字母选项的参数用空格或一个等号分隔</p>
+<pre><code class="language-shell">javac --class-path /home/user/classdir ...
+javac --class-path=/home/user/classdir ...
+</code></pre>
+<p>单字母选项的参数可以用空格分隔或直接跟在选项后面</p>
+<pre><code class="language-shell">javac -p moduledir ...
+javac -pmoduledir ...
+</code></pre>
+<blockquote>
+<p>[!WARNING]</p>
+<p>后一种方式现在不能使用，而且也不是一个好主意，如果模块目录刚好是arameters或rocessor，很容易与遗留选项（parameters或processor）发生冲突</p>
+</blockquote>
+<p>无参数的单字母选项可以组合在一起</p>
+<pre><code class="language-shell">jar -cvf MyProgram.jar -e mypackage.MyProgram */*.class
+</code></pre>
+<blockquote>
+<p>[!WARNING]</p>
+<p>目前不能使用这种方式，这肯定会带来混乱，假设javac有一个-c选项，那么javac -cp指的是java -c -p还是-cp?</p>
+</blockquote>
+<p>最好安全地使用jar命令的长选项：</p>
+<pre><code class="language-shell">jar --create --verbose --file jarFileName file1 file2 ...
+</code></pre>
+<p>对于单字母选项，如果不组合，也是可以使用的</p>
+<pre><code>jar -c -v -f jarFileName file1 file2 ...
+</code></pre>
+<h2 id="4-10-文档注释"><a href="#4-10-文档注释" class="headerlink" title="4.10 文档注释"></a>4.10 文档注释</h2><p>JDK有一个很有用的工具javadoc，它可以由一个源文件生成一个HTML文档，第三章介绍的联机API文档其实就是通过对标准Java类库的源代码运行javadoc生成的</p>
+<h3 id="4-10-1-注释的插入"><a href="#4-10-1-注释的插入" class="headerlink" title="4.10.1 注释的插入"></a>4.10.1 注释的插入</h3><p>javadoc实用工具将从下面几项中抽取信息：</p>
+<ul>
+<li>模块</li>
+<li>包</li>
+<li>公共类与接口</li>
+<li>公共的和受保护的字段</li>
+<li>公共的和受保护的构造器及方法</li>
+</ul>
+<p>可以（且应该）为以上各个特性编写注释，<em><strong>各个注释放置在所描述特性的前面，注释以<code>/**</code>开始，并以<code>*/</code>结束，每个<code>/** ... */</code>文档注释包含标记以及之后紧跟着的自由格式文本，标记以@开始，如<code>@since</code>或<code>@param</code></strong></em></p>
+<p><em><strong>自由格式文本的第一个句子应该是一个概要陈述</strong></em>，javadoc工具自动地将这些句子抽取出来生成概要页</p>
+<p>在自由格式文本中，可以使用HTML修饰符，如用于强调的<code>&lt;em&gt;...&lt;/em&gt;</code>、用于着重强调的<code>&lt;strong&gt;...&lt;/strong&gt;</code>、用于项目符号列表的<code>&lt;ul&gt;/&lt;li&gt;</code>以及包含图像的<code>&lt;img...&gt;</code>等，要键入等宽代码，需要使用<code>&#123;@code ...&#125;</code>而不是<code>&lt;code&gt;...&lt;/code&gt;</code>,这样就不用操心对代码中的<code>&lt;</code>字符转义了</p>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715183800616.png" alt="image-20250715183800616"></p>
+<h3 id="4-10-2-类注释"><a href="#4-10-2-类注释" class="headerlink" title="4.10.2 类注释"></a>4.10.2 类注释</h3><p>类注释必须放在import语句之后，class定义之前</p>
+<pre><code class="language-java">/**
+ * A &#123;@code Card&#125; object represents a playing card,such
+ * as &quot;Queen of Hearts&quot;.A card has a suit (Diamond, Heart, 
+ * Spade or Club) and a value (1=Ace,2...10,11=Jack,
+ * 12=Queen,13=King)
+ */
+public class Card
+&#123;
+    ...
+&#125;
+</code></pre>
+<p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715184333639.png" alt="image-20250715184333639"></p>
+<h3 id="4-10-3-方法注释"><a href="#4-10-3-方法注释" class="headerlink" title="4.10.3 方法注释"></a>4.10.3 方法注释</h3><p>每个方法注释必须放在所描述的方法之前，除了通用标记以外，还可以使用标记</p>
+<ul>
+<li><code>@param variable description</code></li>
+</ul>
+<p>这个标记给当前方法的“parameters”部分添加一个条目，这个描述可以占据多行，并且可以使用HTML标记，<em><strong>一个方法的所有<code>@param</code>标记必须放在一起</strong></em></p>
+<ul>
+<li><p><code>@return description</code>将给当前方法添加“return”部分，这个描述同样可以跨多行并使用HTML标记</p>
+</li>
+<li><p><code>@throws class description</code>这个标记添加一个注释，表示这个方法可能抛出异常</p>
+<pre><code class="language-java">/**
+ * Raises the salary of an employee.
+ * @param byPercent the percentage by which to raise the salary (e.g.,10 means 10%)
+ * @return the amount of the raise
+ */
+public double raiseSalary(double byPercent)
+&#123;
+    double raise = salary*byPercent / 100;
+    salary+=raise;
+    return raise;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h3 id="4-10-4-字段注释"><a href="#4-10-4-字段注释" class="headerlink" title="4.10.4 字段注释"></a>4.10.4 字段注释</h3><p>只需要对公共字段（通常指的是静态常量）增加文档注释</p>
+<pre><code class="language-java">/**
+ * The &quot;Hearts&quot; card suit
+ */
+public static final int HEARTS=1;
+</code></pre>
+<h3 id="4-10-5-通用注释"><a href="#4-10-5-通用注释" class="headerlink" title="4.10.5 通用注释"></a>4.10.5 通用注释</h3><p>标记<code>@since text</code>会创建一个“since”(始于)条目，text可以是对引入这个特性的版本的描述，如<code>@since 1.7.1</code></p>
+<p>类文档注释中可以使用下面的标记</p>
+<ul>
+<li><p><code>@author name</code></p>
+<p>这个标记将创建一个“author”条目，可以有多个<code>@author</code>标记，每个对应一个作者，并不是非得使用此标记，你的版本控制系统能更好地跟踪作者</p>
+</li>
+<li><p><code>@version text</code></p>
+<p>这个标记将创建一个“version”条目，这里的text可以是对当前版本的任何描述</p>
+<p>通过<code>@see</code>和<code>@link</code>标记，可以使用超链接连接到javadoc文档的相关部分或者外部文档</p>
+<p>通过<code>@see reference</code>标记将在“see also（参见）”部分增加一个超链接，它可以用于类中也可以用于方法中</p>
+</li>
+</ul>
+<h3 id="4-10-6-包注释"><a href="#4-10-6-包注释" class="headerlink" title="4.10.6 包注释"></a>4.10.6 包注释</h3><p>可以直接将类、方法、变量的注释放在源文件中，只要用<code>/** */</code>文档注释界定就可以，但是要想产生包注释，就<em><strong>需要在包目录中添加一个单独的文件</strong></em>，有如下两种选择：</p>
+<ol>
+<li>提供一个名为<code>package-info.java</code>的Java文件，这个文件必须包含一个初始的javadoc注释，以<code>/**</code>和<code>*/</code>界定，后面是一个package语句，它不能包含更多的代码和注释</li>
+<li>提供一个名为<code>package.html</code>的HTML文件，抽取标记<code>&lt;body&gt;...&lt;/body&gt;</code>之间的所有文本</li>
+</ol>
+<h3 id="4-10-7-注释提取"><a href="#4-10-7-注释提取" class="headerlink" title="4.10.7 注释提取"></a>4.10.7 注释提取</h3><h2 id="4-11-类设计技巧"><a href="#4-11-类设计技巧" class="headerlink" title="4.11 类设计技巧"></a>4.11 类设计技巧</h2><ol>
+<li><h3 id="一定要保证数据私有"><a href="#一定要保证数据私有" class="headerlink" title="一定要保证数据私有"></a>一定要保证数据私有</h3><p>避免破坏<em><strong>封装性</strong></em></p>
+<p>数据的表示形式很可能会改变，但它们的使用方式却不会经常变化。但数据保持私有时，表示形式的变化不会对类的使用者产生影响，而且也更容易检测bug</p>
+</li>
+<li><h3 id="一定要初始化数据"><a href="#一定要初始化数据" class="headerlink" title="一定要初始化数据"></a>一定要初始化数据</h3><p>Java不会为你初始化局部变量，但是会对对象的实例字段进行初始化，最好不要依赖系统的默认值，而是应该显式地初始化所有变量，可以提供默认值，也可以在所有构造器中设置默认值</p>
+</li>
+<li><h3 id="不要在类中使用过多的基本类型"><a href="#不要在类中使用过多的基本类型" class="headerlink" title="不要在类中使用过多的基本类型"></a>不要在类中使用过多的基本类型</h3><p>其想法是要用其他的类，而不是使用多个相关的基本类型。这样会使类更易于理解，也更易于修改。例如，可以用一个名为Address的新类替换一个Customer类中的以下实例字段</p>
+<pre><code class="language-java">private String street;
+private String city;
+private String state;
+private int zip;
+</code></pre>
+<p>这样一来，可以很容易地处理地址的变化，例如，可能需要处理国际地址</p>
+</li>
+<li><h3 id="不是所有的字段都需要单独的字段访问器和更改器"><a href="#不是所有的字段都需要单独的字段访问器和更改器" class="headerlink" title="不是所有的字段都需要单独的字段访问器和更改器"></a>不是所有的字段都需要单独的字段访问器和更改器</h3><p>你可能需要获得或设置员工的工资，而一旦构造了员工对象，肯定不需要更改雇用日期，另外在对象中常常包含一些不希望别人获得或设置的实例字段，例如Address类中的州缩写数组</p>
+</li>
+<li><h3 id="分解有过多职责的类"><a href="#分解有过多职责的类" class="headerlink" title="分解有过多职责的类"></a>分解有过多职责的类</h3><p>如果明显地可以把一个复杂的类分解成两个概念上更为简单的类，就应该进行分解，但另一方面也不能走极端，如果设计十个类而每个类只有一个方法，那就有些矫枉过正了</p>
+<p>下面是一个反面的设计示例</p>
+<pre><code class="language-java">public class CardDeck
+&#123;
+    private int[] value;
+    private int[] suit;
+    
+    public CardDeck()&#123;&#125;
+    public void shuffle()&#123;&#125;
+    public int getTopValue()&#123;&#125;
+    public int getTopSuit()&#123;&#125;
+    public void draw()&#123;&#125;
+&#125;
+</code></pre>
+<p>实际上这个类实现了两个独立的概念：一副牌（包含shuffle和draw方法）和一张牌（包括查看面值和花色的方法）。最好引入表示一张牌的Card类。</p>
+<p>现在有两个类，每个类分别完成自己的职责：</p>
+<pre><code class="language-java">public class CardDeck
+&#123;
+    public Card[] cards;
+
+    public CardDeck()&#123;&#125;
+    public void shuffle()&#123;&#125;
+    public Card getTopCard()&#123;&#125;
+    public void draw()&#123;&#125;
+&#125;
+
+public class Card
+&#123;
+    private int value;
+    private int suit;
+
+    public Card(int aValue,int aSuit)&#123;&#125;
+    public int getValue()&#123;return value;&#125;
+    public int getSuit()&#123;return suit;&#125;
+&#125;
+</code></pre>
+</li>
+<li><h3 id="类名和方法名要能够体现它们的职责"><a href="#类名和方法名要能够体现它们的职责" class="headerlink" title="类名和方法名要能够体现它们的职责"></a>类名和方法名要能够体现它们的职责</h3><p>变量应该有一个能够反映其含义的名字，类似地，类也应该如此（在标准类库中确实有一些含义不明确的例子，如Date类实际上是一个描述时间的类）</p>
+<p>对此有一个很好的惯例：<em><strong>类名应该是一个名词，或者是前面有形容词修饰的名词，或者是有动名词修饰的名词。对于方法来说，要遵循标准惯例：访问器方法用小写get开头，更改器方法用小写的get开头</strong></em></p>
+</li>
+<li><h3 id="优先使用不可变的类"><a href="#优先使用不可变的类" class="headerlink" title="优先使用不可变的类"></a>优先使用不可变的类</h3><p>LocalDate类以及java.time包中的其他类是不可变的——没有方法能够修改对象的状态。类似plusDays的方法不会更改对象，而是会返回一个状态已修改的新对象。</p>
+<p>如果多个线程试图同时更新一个对象，就会发生并发更改，其结果是不可预料的，如果类是不可变的，就可以安全地在多个线程间共享其对象。</p>
+<p>因此要尽可能让类是不可变的，对于表示值的类，如一个字符串或一个时间点这尤其容易，计算会生成新值而不是更新原来的值</p>
+<p>当然，<em><strong>并不是所有类都应当是不可变的</strong></em>，如果员工加薪时返回一个新的Employee对象，这会很奇怪</p>
+</li>
+</ol>
 
     </div>
     
