@@ -180,6 +180,30 @@
             2025/7/7
         </span>
         
+        <span class="category">
+            <a href="/categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                书
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/cpp/" style="color: #00a596">
+                    C++
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
@@ -187,7 +211,50 @@
         <p>C++语言入门教程</p>
 <span id="more"></span>
 
-<h1 id="第一章-预备知识"><a href="#第一章-预备知识" class="headerlink" title="第一章 预备知识"></a>第一章 预备知识</h1><p>本章包括：</p>
+<p><em><strong>目录</strong></em></p>
+<div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#di-yi-zhang-yu-bei-zhi-shi">第一章 预备知识</a><ul>
+<li><a href="#1-1c-jian-jie">1.1C++简介</a></li>
+<li><a href="#1-2c-jian-shi">1.2C++简史</a><ul>
+<li><a href="#1-2-1-c-yu-yan">1.2.1 C语言</a></li>
+<li><a href="#1-2-2-c-yu-yan-bian-cheng-yuan-li">1.2.2 C语言编程原理</a></li>
+<li><a href="#1-2-3-mian-xiang-dui-xiang-bian-cheng-oop">1.2.3 面向对象编程OOP</a></li>
+<li><a href="#1-2-4-c-he-fan-xing-bian-cheng">1.2.4 C++和泛型编程</a></li>
+<li><a href="#1-2-5-c-de-qi-yuan">1.2.5 C++的起源</a></li>
+</ul>
+</li>
+<li><a href="#1-3-ke-yi-zhi-xing-he-biao-zhun">1.3 可移植性和标准</a></li>
+<li><a href="#1-4-cheng-xu-chuang-jian-de-ji-qiao">1.4 程序创建的技巧</a><ul>
+<li><a href="#1-4-1-chuang-jian-yuan-wen-jian">1.4.1 创建源文件</a></li>
+<li><a href="#1-4-2-bian-yi-he-lian-jie">1.4.2 编译和链接</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#di-er-zhang-kai-shi-xue-xi-c">第二章 开始学习C++</a><ul>
+<li><a href="#2-1-jin-ru-c">2.1 进入C++</a><ul>
+<li><a href="#2-1-1-main-han-shu">2.1.1 main函数</a></li>
+<li><a href="#2-1-2-c-zhu-shi">2.1.2 C++注释</a></li>
+<li><a href="#2-1-3-c-yu-chu-li-qi-he-iostream-wen-jian-cin-cout">2.1.3 C++预处理器和iostream文件（cin\cout）</a></li>
+<li><a href="#2-1-4-tou-wen-jian-ming">2.1.4 头文件名</a></li>
+<li><a href="#2-1-5-ming-cheng-kong-jian">2.1.5 名称空间</a></li>
+<li><a href="#2-1-6-shi-yong-cout-jin-xing-c-shu-chu">2.1.6 使用cout进行C++输出</a></li>
+<li><a href="#2-1-7-c-yuan-dai-ma-de-ge-shi-hua">2.1.7 C++源代码的格式化</a></li>
+</ul>
+</li>
+<li><a href="#2-2-c-yu-ju">2.2 C++语句</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
+<h1><span id="di-yi-zhang-yu-bei-zhi-shi">第一章 预备知识</span><a href="#di-yi-zhang-yu-bei-zhi-shi" class="header-anchor">#</a></h1><p>本章包括：</p>
 <ul>
 <li>C语言和C++的发展历史和基本原理</li>
 <li>过程性编程和面向对象编程</li>
@@ -196,13 +263,13 @@
 <li>编程语言标准</li>
 <li>创建程序技巧</li>
 </ul>
-<h2 id="1-1C-简介"><a href="#1-1C-简介" class="headerlink" title="1.1C++简介"></a>1.1C++简介</h2><p>C++是在C语言基础上开发的一种<em><strong>集面向对象编程、泛型编程和过程化编程为一体的编程语言</strong></em>，是<em><strong>C语言的超集</strong></em>。</p>
-<h2 id="1-2C-简史"><a href="#1-2C-简史" class="headerlink" title="1.2C++简史"></a>1.2C++简史</h2><h3 id="1-2-1-C语言"><a href="#1-2-1-C语言" class="headerlink" title="1.2.1 C语言"></a>1.2.1 C语言</h3><p>贝尔实验室的Ritchie（UNIX操作系统开发人员）希望有一种语言将低级语言的效率、硬件访问能力和高级语言的通用性、可移植性融合在一起，所以在旧语言的基础上开发了C语言。</p>
-<h3 id="1-2-2-C语言编程原理"><a href="#1-2-2-C语言编程原理" class="headerlink" title="1.2.2 C语言编程原理"></a>1.2.2 C语言编程原理</h3><p>程序&#x3D;数据+算法</p>
+<h2><span id="1-1c-jian-jie">1.1C++简介</span><a href="#1-1c-jian-jie" class="header-anchor">#</a></h2><p>C++是在C语言基础上开发的一种<em><strong>集面向对象编程、泛型编程和过程化编程为一体的编程语言</strong></em>，是<em><strong>C语言的超集</strong></em>。</p>
+<h2><span id="1-2c-jian-shi">1.2C++简史</span><a href="#1-2c-jian-shi" class="header-anchor">#</a></h2><h3><span id="1-2-1-c-yu-yan">1.2.1 C语言</span><a href="#1-2-1-c-yu-yan" class="header-anchor">#</a></h3><p>贝尔实验室的Ritchie（UNIX操作系统开发人员）希望有一种语言将低级语言的效率、硬件访问能力和高级语言的通用性、可移植性融合在一起，所以在旧语言的基础上开发了C语言。</p>
+<h3><span id="1-2-2-c-yu-yan-bian-cheng-yuan-li">1.2.2 C语言编程原理</span><a href="#1-2-2-c-yu-yan-bian-cheng-yuan-li" class="header-anchor">#</a></h3><p>程序&#x3D;数据+算法</p>
 <p>C语言是过程性语言，关注<em><strong>算法</strong></em>，即从操作出发构造程序。</p>
-<p>使用***自顶向下（top-down）***设计，将大型程序分解成小型、便于管理的任务</p>
-<h3 id="1-2-3-面向对象编程OOP"><a href="#1-2-3-面向对象编程OOP" class="headerlink" title="1.2.3 面向对象编程OOP"></a>1.2.3 面向对象编程OOP</h3><p>强调<em><strong>数据</strong></em>，其理念是设计与问题的本质特性对应的数据格式，在C++中，类是一种规范，描述了这种新型数据格式</p>
-<p>OOP程序设计方法首先设计类，它们准确地表示了程序要处理的东西。从低级组织（如类）到高级组织（如程序）的处理过程叫做***自下向上（bottom-up）***的编程</p>
+<p>使用<em><strong>自顶向下（top-down）</strong></em>设计，将大型程序分解成小型、便于管理的任务</p>
+<h3><span id="1-2-3-mian-xiang-dui-xiang-bian-cheng-oop">1.2.3 面向对象编程OOP</span><a href="#1-2-3-mian-xiang-dui-xiang-bian-cheng-oop" class="header-anchor">#</a></h3><p>强调<em><strong>数据</strong></em>，其理念是设计与问题的本质特性对应的数据格式，在C++中，类是一种规范，描述了这种新型数据格式</p>
+<p>OOP程序设计方法首先设计类，它们准确地表示了程序要处理的东西。从低级组织（如类）到高级组织（如程序）的处理过程叫做<em><strong>自下向上（bottom-up）</strong></em>的编程</p>
 <p>三大特性：</p>
 <ul>
 <li><em><strong>封装</strong></em>：信息隐藏可以保护数据，免遭不合法的访问</li>
@@ -210,8 +277,8 @@
 <li><em><strong>多态</strong></em>：为运算符和函数创建多个定义</li>
 </ul>
 <p>C++真正的优点之一：可以<em><strong>方便地重用和修改现有的、经过仔细测试的代码</strong></em></p>
-<h3 id="1-2-4-C-和泛型编程"><a href="#1-2-4-C-和泛型编程" class="headerlink" title="1.2.4 C++和泛型编程"></a>1.2.4 C++和泛型编程</h3><p>术语泛型（generic）指的是创建<em><strong>独立于类型</strong></em>的代码：只编写一个泛型函数并将其用于各种实际类型</p>
-<h3 id="1-2-5-C-的起源"><a href="#1-2-5-C-的起源" class="headerlink" title="1.2.5 C++的起源"></a>1.2.5 C++的起源</h3><p>也诞生于贝尔实验室（<a target="_blank" rel="noopener" href="https://www.stroustrup.com/">Bjarne Stroustrup’s Homepage</a>）。</p>
+<h3><span id="1-2-4-c-he-fan-xing-bian-cheng">1.2.4 C++和泛型编程</span><a href="#1-2-4-c-he-fan-xing-bian-cheng" class="header-anchor">#</a></h3><p>术语泛型（generic）指的是创建<em><strong>独立于类型</strong></em>的代码：只编写一个泛型函数并将其用于各种实际类型</p>
+<h3><span id="1-2-5-c-de-qi-yuan">1.2.5 C++的起源</span><a href="#1-2-5-c-de-qi-yuan" class="header-anchor">#</a></h3><p>也诞生于贝尔实验室（<a target="_blank" rel="noopener" href="https://www.stroustrup.com/">Bjarne Stroustrup’s Homepage</a>）。</p>
 <p>名称C++来自于C语言的递增运算符++，表明它是C的扩充版本</p>
 <p>C++的二重性：</p>
 <ul>
@@ -219,17 +286,17 @@
 <li>C语言提供了低级硬件访问</li>
 </ul>
 <p>C++融合了OOP、泛型编程和传统过程性方法，表明C++强调实用价值而非意识形态方法</p>
-<h2 id="1-3-可移植性和标准"><a href="#1-3-可移植性和标准" class="headerlink" title="1.3 可移植性和标准"></a>1.3 可移植性和标准</h2><p><em><strong>在新平台运行时，如果在不修改代码的情况下，重新编译程序后，该程序运行良好，则该程序是可移植的。</strong></em></p>
+<h2><span id="1-3-ke-yi-zhi-xing-he-biao-zhun">1.3 可移植性和标准</span><a href="#1-3-ke-yi-zhi-xing-he-biao-zhun" class="header-anchor">#</a></h2><p><em><strong>在新平台运行时，如果在不修改代码的情况下，重新编译程序后，该程序运行良好，则该程序是可移植的。</strong></em></p>
 <p>在理想情况下，C语言程序都应该是有效的C++程序。</p>
 <p>本书重点介绍大多数编译器都支持的特性，并简要总结其它特性</p>
-<h2 id="1-4-程序创建的技巧"><a href="#1-4-程序创建的技巧" class="headerlink" title="1.4 程序创建的技巧"></a>1.4 程序创建的技巧</h2><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144146_151.jpg" alt="微信图片_20250707144146_151"></p>
-<h3 id="1-4-1-创建源文件"><a href="#1-4-1-创建源文件" class="headerlink" title="1.4.1 创建源文件"></a>1.4.1 创建源文件</h3><p>UNIX编译器报错“bad magic number”-&gt;后缀不正确 </p>
+<h2><span id="1-4-cheng-xu-chuang-jian-de-ji-qiao">1.4 程序创建的技巧</span><a href="#1-4-cheng-xu-chuang-jian-de-ji-qiao" class="header-anchor">#</a></h2><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144146_151.jpg" alt="微信图片_20250707144146_151"></p>
+<h3><span id="1-4-1-chuang-jian-yuan-wen-jian">1.4.1 创建源文件</span><a href="#1-4-1-chuang-jian-yuan-wen-jian" class="header-anchor">#</a></h3><p>UNIX编译器报错“bad magic number”-&gt;后缀不正确 </p>
 <p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707144729_152.jpg" alt="微信图片_20250707144729_152"></p>
-<h3 id="1-4-2-编译和链接"><a href="#1-4-2-编译和链接" class="headerlink" title="1.4.2 编译和链接"></a>1.4.2 编译和链接</h3><p>.c-&gt;.o-&gt;.out</p>
+<h3><span id="1-4-2-bian-yi-he-lian-jie">1.4.2 编译和链接</span><a href="#1-4-2-bian-yi-he-lian-jie" class="header-anchor">#</a></h3><p>.c-&gt;.o-&gt;.out</p>
 <p>如果程序违反了语言规则，编译器将生成错误信息，指出存在问题的行，问题可能在标识行之前，一个错误可能引发一连串的错误，所以改正错误时<em><strong>先改正第一个错误</strong></em>，如果在标识行找不到错误就往前找</p>
 <p>程序能通过某个编译器的编译不代表它是合法的C++程序，不能通过也不代表非法。有时编译器在不完全构建程序后将出现混乱，显示无法改正、无意义的错误信息</p>
 <p>可以使用***cin.get()***防止辅助窗口过快自动关闭</p>
-<h1 id="第二章-开始学习C"><a href="#第二章-开始学习C" class="headerlink" title="第二章 开始学习C++"></a>第二章 开始学习C++</h1><p>本章内容包括：</p>
+<h1><span id="di-er-zhang-kai-shi-xue-xi-c">第二章 开始学习C++</span><a href="#di-er-zhang-kai-shi-xue-xi-c" class="header-anchor">#</a></h1><p>本章内容包括：</p>
 <ul>
 <li>创建C++程序</li>
 <li>C++程序的一般格式</li>
@@ -242,14 +309,14 @@
 <li>使用cin对象进行输入</li>
 <li>定义和使用简单函数</li>
 </ul>
-<h2 id="2-1-进入C"><a href="#2-1-进入C" class="headerlink" title="2.1 进入C++"></a>2.1 进入C++</h2><p>C++能够使用printf()、scanf()和其他所有标准C输入和输出函数，只需要包含常规C语言的<em><strong>stdio.h</strong></em>文件即可</p>
-<h3 id="2-1-1-main函数"><a href="#2-1-1-main函数" class="headerlink" title="2.1.1 main函数"></a>2.1.1 main函数</h3><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707172903_153.jpg" alt="微信图片_20250707172903_153"></p>
+<h2><span id="2-1-jin-ru-c">2.1 进入C++</span><a href="#2-1-jin-ru-c" class="header-anchor">#</a></h2><p>C++能够使用printf()、scanf()和其他所有标准C输入和输出函数，只需要包含常规C语言的<em><strong>stdio.h</strong></em>文件即可</p>
+<h3><span id="2-1-1-main-han-shu">2.1.1 main函数</span><a href="#2-1-1-main-han-shu" class="header-anchor">#</a></h3><p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707172903_153.jpg" alt="微信图片_20250707172903_153"></p>
 <p><em><strong>函数头对函数与程序其他部分之间的接口进行了总结；函数体是指出函数应做什么的计算机指令</strong></em></p>
 <p>C++与C都使用终止符而非分隔符（如FORTRAN使用行尾将语句分隔开来），终止符是一个分号，是语句的结束标志，是语句的组成部分，不是语句之间的标志，故不能省略分号</p>
 <ol>
 <li><p>作为接口的函数头</p>
 <p><em><strong>main()被启动代码调用</strong></em>，启动代码是编译器添加到程序中的，是操作系统和程序之间的桥梁</p>
-<pre><code class="language-c++">int main()
+<pre><code class="c++">int main()
 int main(void)
 </code></pre>
 <p>在C++中，让括号空着与在括号中使用void等效，但在C中，让括号空着意味着对是否接收参数保持沉默</p>
@@ -260,7 +327,7 @@ int main(void)
 </ol>
 <p>·运行C++程序时，通常从main()函数开始运行</p>
 <p>常规独立程序均需要main()函数</p>
-<h3 id="2-1-2-C-注释"><a href="#2-1-2-C-注释" class="headerlink" title="2.1.2 C++注释"></a>2.1.2 C++注释</h3><p>C++注释以&#x2F;&#x2F;开头，到行尾结束，可独立一行也可与代码同一行</p>
+<h3><span id="2-1-2-c-zhu-shi">2.1.2 C++注释</span><a href="#2-1-2-c-zhu-shi" class="header-anchor">#</a></h3><p>C++注释以&#x2F;&#x2F;开头，到行尾结束，可独立一行也可与代码同一行</p>
 <blockquote>
 <p>[!TIP]</p>
 <p>应使用注释来说明程序，程序越复杂，注释的价值就越大</p>
@@ -269,32 +336,32 @@ int main(void)
 <p>[!NOTE]</p>
 <p>C++中也包含C 的&#x2F;* *&#x2F;注释，该注释可跨越多行，但应尽量使用&#x2F;&#x2F;避免产生问题</p>
 </blockquote>
-<h3 id="2-1-3-C-预处理器和iostream文件（cin-cout）"><a href="#2-1-3-C-预处理器和iostream文件（cin-cout）" class="headerlink" title="2.1.3 C++预处理器和iostream文件（cin\cout）"></a>2.1.3 C++预处理器和iostream文件（cin\cout）</h3><pre><code class="language-c++">#include&lt;iostream&gt;
+<h3><span id="2-1-3-c-yu-chu-li-qi-he-iostream-wen-jian-cin-cout">2.1.3 C++预处理器和iostream文件（cin\cout）</span><a href="#2-1-3-c-yu-chu-li-qi-he-iostream-wen-jian-cin-cout" class="header-anchor">#</a></h3><pre><code class="c++">#include&lt;iostream&gt;
 </code></pre>
 <p>该编译指令导致预处理器将iostream文件的内容添加到程序中，这是一种典型的预处理器操作：<em><strong>在源代码被编译之前，替换或添加文本</strong></em></p>
-<h3 id="2-1-4-头文件名"><a href="#2-1-4-头文件名" class="headerlink" title="2.1.4 头文件名"></a>2.1.4 头文件名</h3><p>像iostream这样的文件被称为包含文件，因为被包含在其他文件中；也被称为头文件，因为被包含在其他文件起始处</p>
+<h3><span id="2-1-4-tou-wen-jian-ming">2.1.4 头文件名</span><a href="#2-1-4-tou-wen-jian-ming" class="header-anchor">#</a></h3><p>像iostream这样的文件被称为包含文件，因为被包含在其他文件中；也被称为头文件，因为被包含在其他文件起始处</p>
 <p><img src="/2025/07/07/C-Primer-Plus/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250707175755_154.jpg" alt="微信图片_20250707175755_154"></p>
-<h3 id="2-1-5-名称空间"><a href="#2-1-5-名称空间" class="headerlink" title="2.1.5 名称空间"></a>2.1.5 名称空间</h3><p>如果使用iostream而非iostream.h则应使用下面的名称空间编译指令来使iostream中的定义对程序可用</p>
-<pre><code class="language-c++">using namespace std;
+<h3><span id="2-1-5-ming-cheng-kong-jian">2.1.5 名称空间</span><a href="#2-1-5-ming-cheng-kong-jian" class="header-anchor">#</a></h3><p>如果使用iostream而非iostream.h则应使用下面的名称空间编译指令来使iostream中的定义对程序可用</p>
+<pre><code class="c++">using namespace std;
 </code></pre>
 <p>这叫做using编译指令。</p>
 <p>名称空间支持是一项C++特性，旨在让您编写大型程序以及多个厂商现有的代码组合起来的程序时更容易，它还有助于组织程序。一个潜在的问题是，可能使用两个已经封装好的产品，而他们都包含一个同名函数，编译器将不知道指的是哪个版本，名称空间让厂商能够将其产品封装在一个叫做名称空间的单元中，这个时候可以使用名称空间来指出想使用哪个厂商的产品</p>
-<pre><code class="language-c++">Microflop::wanda(&quot;go dancing?&quot;);//using Microflop namespace version
+<pre><code class="c++">Microflop::wanda(&quot;go dancing?&quot;);//using Microflop namespace version
 Piscine:wanda(&quot;a fish named Desire&quot;);//using Piscine namespace version
 </code></pre>
 <p>按照这种方式，类、函数、变量便是C++编译器的标准组件，它们现在都放置在名称空间std中，仅当头文件名没有扩展名h时情况才是如此，这意味着在iostream中定义的用于输出的cout变量实际上是std::cout,而endl实际上是std::endl，因此可以省略编译指令using，使用下述方式进行编码</p>
-<pre><code class="language-c++">std::cout&lt;&lt;&quot;sdjk&quot;;
+<pre><code class="c++">std::cout&lt;&lt;&quot;sdjk&quot;;
 std::cout &lt;&lt; std::endl;
 </code></pre>
 <p>然而多数用户并不喜欢将引入名称空间之前的代码（使用iostream.h和cout）转换为名称空间代码（使用iostream和std::cout)。于是using编译指令产生</p>
-<pre><code class="language-c++">using namespace std;//可以使用std名称空间中定义的名称而不必使用std::前缀
+<pre><code class="c++">using namespace std;//可以使用std名称空间中定义的名称而不必使用std::前缀
 </code></pre>
 <p>这个using指令使得std名称空间中的所有名称都可用，但在大型项目中是一个潜在问题，可以如下只使所需名称可用</p>
-<pre><code class="language-c++">using std::cout;//make cout available
+<pre><code class="c++">using std::cout;//make cout available
 using std::endl;//make endl available
 using std::cin;//make cin available
 </code></pre>
-<h3 id="2-1-6-使用cout进行C-输出"><a href="#2-1-6-使用cout进行C-输出" class="headerlink" title="2.1.6 使用cout进行C++输出"></a>2.1.6 使用cout进行C++输出</h3><pre><code class="language-c++">cout&lt;&lt;&quot;sidiuw&quot;;
+<h3><span id="2-1-6-shi-yong-cout-jin-xing-c-shu-chu">2.1.6 使用cout进行C++输出</span><a href="#2-1-6-shi-yong-cout-jin-xing-c-shu-chu" class="header-anchor">#</a></h3><pre><code class="c++">cout&lt;&lt;&quot;sidiuw&quot;;
 </code></pre>
 <p>&lt;&lt;是一个插入运算符，表示把字符串发送给cout,指出了信息流动的路径，将字符串插入到输出流中；cout是一个预定义的对象，知道如何显示字符串、数字和单个字符</p>
 <p><em><strong>每条cout语句的输出将从前一个输出的末尾开始</strong></em></p>
@@ -308,7 +375,7 @@ using std::cin;//make cin available
 <p>诸如endl等对于cout来说有特殊含义的特殊符号被称为<em><strong>控制符</strong></em></p>
 </li>
 <li><p>换行符</p>
-<pre><code class="language-c++">cout &lt;&lt; &quot;\n&quot;;
+<pre><code class="c++">cout &lt;&lt; &quot;\n&quot;;
 </code></pre>
 <p>一个差别是，<em><strong>endl确保程序继续运行前刷新输出（将其立即显示在屏幕上），而是用”\n”则不能提供这样的保证，这意味着在某些系统中有时可能在输入信息后才会出现提示</strong></em></p>
 <p>原理：</p>
@@ -330,7 +397,7 @@ using std::cin;//make cin available
 </ul>
 </li>
 </ol>
-<h3 id="2-1-7-C-源代码的格式化"><a href="#2-1-7-C-源代码的格式化" class="headerlink" title="2.1.7 C++源代码的格式化"></a>2.1.7 C++源代码的格式化</h3><p>不能把空格、制表符或回车放在元素（如名称）中间，也不能把回车放在字符串中间</p>
+<h3><span id="2-1-7-c-yuan-dai-ma-de-ge-shi-hua">2.1.7 C++源代码的格式化</span><a href="#2-1-7-c-yuan-dai-ma-de-ge-shi-hua" class="header-anchor">#</a></h3><p>不能把空格、制表符或回车放在元素（如名称）中间，也不能把回车放在字符串中间</p>
 <ol>
 <li><p>源代码中的标记和空白</p>
 <p><em><strong>一行代码中不可分割的元素叫做标记（token）</strong></em></p>
@@ -348,7 +415,7 @@ using std::cin;//make cin available
 <li>与函数名称相关的圆括号周围没有空白</li>
 </ul>
 <p>前三条规则旨在确保代码清晰易读，第四条帮忙区分函数和一些也是用圆括号的C++内置结构，如循环</p>
-<h2 id="2-2-C-语句"><a href="#2-2-C-语句" class="headerlink" title="2.2 C++语句"></a>2.2 C++语句</h2>
+<h2><span id="2-2-c-yu-ju">2.2 C++语句</span><a href="#2-2-c-yu-ju" class="header-anchor">#</a></h2>
     </div>
     
     

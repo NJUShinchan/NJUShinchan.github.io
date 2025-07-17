@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Typora激活 | NJUShinchan&#39;s Nest</title>
+    <title>Categories: 教程 | NJUShinchan&#39;s Nest</title>
     <meta name="author" content="Yonghong Lin" />
     <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
     <meta name="keywords" content="" />
@@ -44,19 +44,6 @@
 <script src="/js/lib/preview.js"></script>
 
 
-
-
-
-<script src="https://s4.zstatic.net/ajax/libs/gitalk/1.8.0/gitalk.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/gitalk/1.8.0/gitalk.min.css" />
-
-
-<script src="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline.min.css" />
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/waline/2.15.8/waline-meta.min.css" />
-
-
-<script src="https://s4.zstatic.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
 
 
 
@@ -168,20 +155,36 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>Typora激活</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/7/7
+            <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/categories/book/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                书
+            </a>
         </span>
         
-        <span class="category">
-            <a href="/categories/tutorial/">
+        
+        
+        <span>
+            <a href="/categories/solutions/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                常见问题
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/tutorial/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -190,52 +193,58 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/tags/resources/" style="color: #ffa2c4">
-                    资源
-                </a>
-            </span>
-            
+        
+        
+        
+        <span>
+            <a href="/categories/notes/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                课程笔记
+            </a>
         </span>
+        
         
     </div>
     
-    <div class="content" v-pre>
-        <p>Typora免费版激活</p>
-<span id="more"></span>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linux_xiaobai_/article/details/146253390">最新版Typora 1.10.8版 激活方法（修改文件法）-CSDN博客</a></p>
-
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2025/7/7</div>
+            <a href="/2025/07/07/Typora%E6%BF%80%E6%B4%BB/">
+                <h3>Typora激活</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/tutorial/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        教程
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/resources/" style="color: #ffa2c4">
+                            资源
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    
-    
-    
-    <div id="comment">
-        <div id="gitalk-container"></div>
-    </div>
-    
-    
-    <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
-    </div>
-    
-    
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
-    
-    
-    <div id="comment">
-        <div id="twikoo-container"></div>
-    </div>
-    
     
 </div>
 
@@ -267,70 +276,6 @@
         
     </div>
     <script src="/js/main.js"></script>
-
-
-    
-    
-<script
-    src="https://giscus.app/client.js"
-    data-repo=""
-    data-repo-id=""
-    data-category=""
-    data-category-id=""
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang=""
-    crossorigin
-    async
-></script>
-
-
-<script>
-    const gitalk = new Gitalk({
-        clientID: "",
-        clientSecret: "",
-        repo: "",
-        owner: "",
-        admin: "".split(","),
-        language: "",
-        id: location.pathname,
-        
-    })
-    gitalk.render("gitalk-container");
-</script>
-
-
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick".split(","),
-        lang: "",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        
-    });
-</script>
-
-
-<script>
-    twikoo.init({
-        el: "#twikoo-container",
-        envId: "",
-        region: "",
-        path: location.pathname,
-        lang: "",
-    })
-</script>
 
 
     
