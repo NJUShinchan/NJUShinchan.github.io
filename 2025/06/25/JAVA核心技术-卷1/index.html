@@ -189,13 +189,218 @@
 <p>Learn <a target="_blank" rel="noopener" href="https://horstmann.com/corejava/">Java 核心技术</a></p>
 <span id="more"></span>
 
+<!-- toc -->
 
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0">第一章 JAVA程序设计概述</a><ul>
+<li><a href="#11-java%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%B9%B3%E5%8F%B0">1.1 JAVA程序设计平台</a></li>
+<li><a href="#12-java%E7%99%BD%E7%9A%AE%E4%B9%A6%E7%9A%84%E5%85%B3%E9%94%AE%E6%9C%AF%E8%AF%AD">1.2 JAVA白皮书的关键术语</a><ul>
+<li><a href="#121-%E7%AE%80%E5%8D%95%E6%80%A7">1.2.1 简单性</a></li>
+<li><a href="#122-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">1.2.2 面向对象</a></li>
+<li><a href="#123-%E5%88%86%E5%B8%83%E5%BC%8F">1.2.3 分布式</a></li>
+<li><a href="#124-%E5%81%A5%E5%A3%AE%E6%80%A7">1.2.4 健壮性</a></li>
+<li><a href="#125-%E5%AE%89%E5%85%A8%E6%80%A7">1.2.5 安全性</a></li>
+<li><a href="#126-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%E7%AB%8B">1.2.6 体系结构中立</a></li>
+<li><a href="#127-%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7">1.2.7 可移植性</a></li>
+<li><a href="#128-%E8%A7%A3%E9%87%8A%E6%80%A7">1.2.8 解释性</a></li>
+<li><a href="#129-%E9%AB%98%E6%80%A7%E8%83%BD">1.2.9 高性能</a></li>
+<li><a href="#1210-%E5%A4%9A%E7%BA%BF%E7%A8%8B">1.2.10 多线程</a></li>
+<li><a href="#1211-%E5%8A%A8%E6%80%81%E6%80%A7">1.2.11 动态性</a></li>
+</ul>
+</li>
+<li><a href="#13-java-applet-%E4%B8%8E-internet">1.3 JAVA applet 与 Internet</a></li>
+<li><a href="#14-java%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2">1.4 JAVA发展简史</a></li>
+<li><a href="#15%E5%85%B3%E4%BA%8Ejava%E7%9A%84%E5%B8%B8%E8%A7%81%E8%AF%AF%E8%A7%A3">1.5关于JAVA的常见误解</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-java%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83">第二章 JAVA编程环境</a><ul>
+<li><a href="#21-%E5%AE%89%E8%A3%85java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E5%8C%85jdk">2.1 安装Java开发工具包（JDK）</a><ul>
+<li><a href="#211-%E4%B8%8B%E8%BD%BDjdk">2.1.1 下载JDK</a></li>
+<li><a href="#212-%E8%AE%BE%E7%BD%AEjdk">2.1.2 设置JDK</a></li>
+<li><a href="#213-%E5%AE%89%E8%A3%85%E6%BA%90%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E6%A1%A3">2.1.3 安装源文件和文档</a></li>
+</ul>
+</li>
+<li><a href="#22%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7">2.2使用命令行工具</a></li>
+<li><a href="#23-%E4%BD%BF%E7%94%A8%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">2.3 使用集成开发环境</a></li>
+<li><a href="#24-jshell">2.4 JShell</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-java%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84">第三章 JAVA的基本程序设计结构</a><ul>
+<li><a href="#31-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84java%E7%A8%8B%E5%BA%8F">3.1 一个简单的JAVA程序</a></li>
+<li><a href="#32-%E6%B3%A8%E9%87%8A">3.2 注释</a></li>
+<li><a href="#33-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">3.3 数据类型</a><ul>
+<li><a href="#331-%E6%95%B4%E5%9E%8B">3.3.1 整型</a></li>
+<li><a href="#332-%E6%B5%AE%E7%82%B9%E5%9E%8B">3.3.2 浮点型</a></li>
+<li><a href="#333-char%E5%9E%8B">3.3.3 char型</a></li>
+<li><a href="#334-unicode%E5%92%8Cchar%E5%9E%8B">3.3.4 Unicode和char型</a></li>
+<li><a href="#335-boolean%E7%B1%BB%E5%9E%8B">3.3.5 boolean类型</a></li>
+</ul>
+</li>
+<li><a href="#34%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">3.4变量与常量</a><ul>
+<li><a href="#341%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F">3.4.1声明变量</a></li>
+<li><a href="#342%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%98%E9%87%8F">3.4.2初始化变量</a></li>
+<li><a href="#343%E5%B8%B8%E9%87%8F">3.4.3常量</a></li>
+<li><a href="#344%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B">3.4.4枚举类型</a></li>
+</ul>
+</li>
+<li><a href="#35%E8%BF%90%E7%AE%97%E7%AC%A6">3.5运算符</a><ul>
+<li><a href="#351%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6">3.5.1算术运算符</a></li>
+<li><a href="#352-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E4%B8%8E%E5%B8%B8%E9%87%8F">3.5.2 数学函数与常量</a></li>
+<li><a href="#353%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2">3.5.3数值类型之间的转换</a></li>
+<li><a href="#354%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">3.5.4强制类型转换</a></li>
+<li><a href="#355%E8%B5%8B%E5%80%BC">3.5.5赋值</a></li>
+<li><a href="#356%E8%87%AA%E5%A2%9E%E4%B8%8E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6">3.5.6自增与自减运算符</a></li>
+<li><a href="#357%E5%85%B3%E7%B3%BB%E5%92%8Cboolean%E8%BF%90%E7%AE%97%E7%AC%A6">3.5.7关系和boolean运算符</a></li>
+<li><a href="#358-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6">3.5.8 条件运算符</a></li>
+<li><a href="#359-switch%E8%A1%A8%E8%BE%BE%E5%BC%8F">3.5.9 switch表达式</a></li>
+<li><a href="#3510-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6">3.5.10 位运算符</a></li>
+<li><a href="#3511%E6%8B%AC%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB">3.5.11括号与运算符级别</a></li>
+</ul>
+</li>
+<li><a href="#36%E5%AD%97%E7%AC%A6%E4%B8%B2">3.6字符串</a><ul>
+<li><a href="#361-%E5%AD%90%E4%B8%B2">3.6.1 子串</a></li>
+<li><a href="#362-%E6%8B%BC%E6%8E%A5">3.6.2 拼接</a></li>
+<li><a href="#363-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E5%8F%AF%E5%8F%98">3.6.3 字符串不可变</a></li>
+<li><a href="#364-%E6%A3%80%E6%B5%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89">3.6.4 检测字符串是否相等</a></li>
+<li><a href="#365%E7%A9%BA%E4%B8%B2%E4%B8%8Enull%E4%B8%B2">3.6.5空串与Null串</a></li>
+<li><a href="#366-%E7%A0%81%E7%82%B9%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83">3.6.6 码点与代码单元</a></li>
+<li><a href="#367-string-api">3.6.7 String API</a></li>
+<li><a href="#368-%E8%81%94%E6%9C%BAapi%E6%96%87%E6%A1%A3">3.6.8 联机API文档***</a></li>
+<li><a href="#369-%E6%9E%84%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2">3.6.9 构建字符串</a></li>
+<li><a href="#3610-%E6%96%87%E6%9C%AC%E5%9D%97">3.6.10 文本块</a></li>
+</ul>
+</li>
+<li><a href="#36%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">3.6输入与输出</a><ul>
+<li><a href="#371-%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5">3.7.1 读取输入</a></li>
+<li><a href="#372%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA">3.7.2格式化输出</a></li>
+<li><a href="#373%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA">3.7.3文件输入与输出</a></li>
+</ul>
+</li>
+<li><a href="#38%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B">3.8控制流程</a><ul>
+<li><a href="#381%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F">3.8.1块作用域</a></li>
+<li><a href="#382%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5">3.8.2条件语句</a></li>
+<li><a href="#383-%E5%BE%AA%E7%8E%AF">3.8.3 循环</a></li>
+<li><a href="#384-%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%BE%AA%E7%8E%AF">3.8.4 确定性循环</a></li>
+<li><a href="#385-%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9switch%E8%AF%AD%E5%8F%A5">3.8.5 多重选择：switch语句</a></li>
+<li><a href="#386%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B%E7%9A%84%E8%AF%AD%E5%8F%A5">3.8.6中断控制流程的语句</a></li>
+</ul>
+</li>
+<li><a href="#39%E5%A4%A7%E6%95%B0">3.9大数</a></li>
+<li><a href="#310%E6%95%B0%E7%BB%84">3.10数组</a><ul>
+<li><a href="#3101-%E5%A3%B0%E6%98%8E%E6%95%B0%E7%BB%84">3.10.1 声明数组</a></li>
+<li><a href="#3102-%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0">3.10.2 访问数组元素</a></li>
+<li><a href="#3103-for-each%E5%BE%AA%E7%8E%AF">3.10.3 for each循环</a></li>
+<li><a href="#3104%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D">3.10.4数组拷贝</a></li>
+<li><a href="#3105-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0">3.10.5 命令行参数</a></li>
+<li><a href="#3106-%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F">3.10.6 数组排序</a></li>
+<li><a href="#3107%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84">3.10.7多维数组</a></li>
+<li><a href="#3108-%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84">3.10.8 不规则数组</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB">第四章 对象与类</a><ul>
+<li><a href="#41-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0">4.1 面向对象程序设计概述</a><ul>
+<li><a href="#411-%E7%B1%BB">4.1.1 类</a></li>
+<li><a href="#412-%E5%AF%B9%E8%B1%A1">4.1.2 对象</a></li>
+<li><a href="#413-%E8%AF%86%E5%88%AB%E7%B1%BB">4.1.3 识别类</a></li>
+<li><a href="#414-%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB">4.1.4 类之间的关系</a></li>
+</ul>
+</li>
+<li><a href="#42-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB">4.2 使用预定义类</a><ul>
+<li><a href="#421-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F">4.2.1 对象与对象变量</a></li>
+<li><a href="#422-java%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%9A%84localdate%E7%B1%BB">4.2.2 Java类库中的LocalDate类</a></li>
+<li><a href="#423-%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95">4.2.3 更改器方法与访问器方法</a></li>
+</ul>
+</li>
+<li><a href="#43-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB">4.3 自定义类</a><ul>
+<li><a href="#431-employee%E7%B1%BB">4.3.1 Employee类</a></li>
+<li><a href="#432-%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA%E6%BA%90%E6%96%87%E4%BB%B6">4.3.2 使用多个源文件</a></li>
+<li><a href="#433-%E5%89%96%E6%9E%90employee%E7%B1%BB">4.3.3 剖析Employee类</a></li>
+<li><a href="#434-%E4%BB%8E%E6%9E%84%E9%80%A0%E5%99%A8%E5%BC%80%E5%A7%8B">4.3.4 从构造器开始</a></li>
+<li><a href="#435-%E7%94%A8var%E5%A3%B0%E6%98%8E%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F">4.3.5 用var声明局部变量</a></li>
+<li><a href="#436-%E4%BD%BF%E7%94%A8null%E5%BC%95%E7%94%A8">4.3.6 使用null引用</a></li>
+<li><a href="#437-%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0%E4%B8%8E%E6%98%BE%E5%BC%8F%E5%8F%82%E6%95%B0">4.3.7 隐式参数与显式参数</a></li>
+<li><a href="#438-%E5%B0%81%E8%A3%85%E7%9A%84%E4%BC%98%E7%82%B9">4.3.8 封装的优点</a></li>
+<li><a href="#439-%E5%9F%BA%E4%BA%8E%E7%B1%BB%E7%9A%84%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">4.3.9 基于类的访问权限</a></li>
+<li><a href="#4310-%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95">4.3.10 私有方法</a></li>
+<li><a href="#4311-final%E5%AE%9E%E4%BE%8B%E5%AD%97%E6%AE%B5">4.3.11 final实例字段</a></li>
+</ul>
+</li>
+<li><a href="#44-%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">4.4 静态字段与静态方法</a><ul>
+<li><a href="#441-%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5">4.4.1 静态字段</a></li>
+<li><a href="#442-%E9%9D%99%E6%80%81%E5%B8%B8%E9%87%8F">4.4.2 静态常量</a></li>
+<li><a href="#443-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">4.4.3 静态方法</a></li>
+<li><a href="#444-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95">4.4.4 工厂方法</a></li>
+<li><a href="#445-main%E6%96%B9%E6%B3%95">4.4.5 main方法</a></li>
+</ul>
+</li>
+<li><a href="#45-%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0">4.5 方法参数</a></li>
+<li><a href="#46-%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0">4.6 对象构造</a><ul>
+<li><a href="#461-%E9%87%8D%E8%BD%BD">4.6.1 重载</a></li>
+<li><a href="#462-%E9%BB%98%E8%AE%A4%E5%AD%97%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96">4.6.2 默认字段初始化</a></li>
+<li><a href="#463-%E6%97%A0%E5%8F%82%E6%95%B0%E6%9E%84%E9%80%A0%E5%99%A8">4.6.3 无参数构造器</a></li>
+<li><a href="#464-%E6%98%BE%E5%BC%8F%E5%AD%97%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96">4.6.4 显式字段初始化</a></li>
+<li><a href="#465-%E5%8F%82%E6%95%B0%E5%90%8D">4.6.5 参数名</a></li>
+<li><a href="#466-%E8%B0%83%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%9E%84%E9%80%A0%E5%99%A8">4.6.6 调用另一个构造器</a></li>
+<li><a href="#467-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9D%97">4.6.7 初始化块</a></li>
+<li><a href="#468-%E5%AF%B9%E8%B1%A1%E6%9E%90%E6%9E%84%E4%B8%8Efinalize%E6%96%B9%E6%B3%95">4.6.8 对象析构与finalize方法</a></li>
+</ul>
+</li>
+<li><a href="#47-%E8%AE%B0%E5%BD%95">4.7 记录</a><ul>
+<li><a href="#471-%E8%AE%B0%E5%BD%95%E6%A6%82%E5%BF%B5">4.7.1 记录概念</a></li>
+<li><a href="#472-%E6%9E%84%E9%80%A0%E5%99%A8%E6%A0%87%E5%87%86-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%92%8C%E7%AE%80%E6%B4%81">4.7.2 构造器：标准、自定义和简洁</a></li>
+</ul>
+</li>
+<li><a href="#48-%E5%8C%85">4.8 包</a><ul>
+<li><a href="#481-%E5%8C%85%E5%90%8D">4.8.1 包名</a></li>
+<li><a href="#482-%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5">4.8.2 包的导入</a></li>
+<li><a href="#483-%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5">4.8.3 静态导入</a></li>
+<li><a href="#484-%E5%9C%A8%E5%8C%85%E4%B8%AD%E5%A2%9E%E5%8A%A0%E7%B1%BB">4.8.4 在包中增加类</a></li>
+<li><a href="#485-%E5%8C%85%E8%AE%BF%E9%97%AE">4.8.5 包访问</a></li>
+<li><a href="#486-%E7%B1%BB%E8%B7%AF%E5%BE%84">4.8.6 类路径</a></li>
+<li><a href="#487-%E8%AE%BE%E7%BD%AE%E7%B1%BB%E8%B7%AF%E5%BE%84">4.8.7 设置类路径</a></li>
+</ul>
+</li>
+<li><a href="#49-jar%E6%96%87%E4%BB%B6">4.9 JAR文件</a><ul>
+<li><a href="#491-%E5%88%9B%E5%BB%BAjar%E6%96%87%E4%BB%B6">4.9.1 创建JAR文件</a></li>
+<li><a href="#492-%E6%B8%85%E5%8D%95%E6%96%87%E4%BB%B6">4.9.2 清单文件</a></li>
+<li><a href="#493-%E5%8F%AF%E6%89%A7%E8%A1%8Cjar%E6%96%87%E4%BB%B6">4.9.3 可执行JAR文件</a></li>
+<li><a href="#494-%E5%A4%9A%E7%89%88%E6%9C%ACjar%E6%96%87%E4%BB%B6">4.9.4 多版本JAR文件</a></li>
+<li><a href="#495-%E5%85%B3%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%80%89%E9%A1%B9%E7%9A%84%E8%AF%B4%E6%98%8E">4.9.5 关于命令行选项的说明</a></li>
+</ul>
+</li>
+<li><a href="#410-%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A">4.10 文档注释</a><ul>
+<li><a href="#4101-%E6%B3%A8%E9%87%8A%E7%9A%84%E6%8F%92%E5%85%A5">4.10.1 注释的插入</a></li>
+<li><a href="#4102-%E7%B1%BB%E6%B3%A8%E9%87%8A">4.10.2 类注释</a></li>
+<li><a href="#4103-%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A">4.10.3 方法注释</a></li>
+<li><a href="#4104-%E5%AD%97%E6%AE%B5%E6%B3%A8%E9%87%8A">4.10.4 字段注释</a></li>
+<li><a href="#4105-%E9%80%9A%E7%94%A8%E6%B3%A8%E9%87%8A">4.10.5 通用注释</a></li>
+<li><a href="#4106-%E5%8C%85%E6%B3%A8%E9%87%8A">4.10.6 包注释</a></li>
+<li><a href="#4107-%E6%B3%A8%E9%87%8A%E6%8F%90%E5%8F%96">4.10.7 注释提取</a></li>
+</ul>
+</li>
+<li><a href="#411-%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7">4.11 类设计技巧</a><ul>
+<li><a href="#%E4%B8%80%E5%AE%9A%E8%A6%81%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E7%A7%81%E6%9C%89">一定要保证数据私有</a></li>
+<li><a href="#%E4%B8%80%E5%AE%9A%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE">一定要初始化数据</a></li>
+<li><a href="#%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%B1%BB%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%BF%87%E5%A4%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">不要在类中使用过多的基本类型</a></li>
+<li><a href="#%E4%B8%8D%E6%98%AF%E6%89%80%E6%9C%89%E7%9A%84%E5%AD%97%E6%AE%B5%E9%83%BD%E9%9C%80%E8%A6%81%E5%8D%95%E7%8B%AC%E7%9A%84%E5%AD%97%E6%AE%B5%E8%AE%BF%E9%97%AE%E5%99%A8%E5%92%8C%E6%9B%B4%E6%94%B9%E5%99%A8">不是所有的字段都需要单独的字段访问器和更改器</a></li>
+<li><a href="#%E5%88%86%E8%A7%A3%E6%9C%89%E8%BF%87%E5%A4%9A%E8%81%8C%E8%B4%A3%E7%9A%84%E7%B1%BB">分解有过多职责的类</a></li>
+<li><a href="#%E7%B1%BB%E5%90%8D%E5%92%8C%E6%96%B9%E6%B3%95%E5%90%8D%E8%A6%81%E8%83%BD%E5%A4%9F%E4%BD%93%E7%8E%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E8%81%8C%E8%B4%A3">类名和方法名要能够体现它们的职责</a></li>
+<li><a href="#%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E7%B1%BB">优先使用不可变的类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC5%E7%AB%A0-%E7%BB%A7%E6%89%BF">第5章 继承</a><ul>
+<li><a href="#51-%E7%B1%BB-%E8%B6%85%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB">5.1 类、超类和子类</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
 
-
-
-
-
-<h1 id="第一章-JAVA程序设计概述"><a href="#第一章-JAVA程序设计概述" class="headerlink" title="第一章 JAVA程序设计概述"></a>第一章 JAVA程序设计概述</h1><h2 id="1-1-JAVA程序设计平台"><a href="#1-1-JAVA程序设计平台" class="headerlink" title="1.1 JAVA程序设计平台"></a>1.1 JAVA程序设计平台</h2><p>JAVA是一个完整的平台，有一个<strong>庞大丰富</strong>的库，其中包含了大量可重用的代码，还有一个提供诸如安全性、跨操作系统的可移植性以及自动垃圾收集等服务的执行环境。</p>
+<p>[TOC]</p>
+<h1><span id="第一章-java程序设计概述">第一章 JAVA程序设计概述</span></h1><h2><span id="11-java程序设计平台">1.1 JAVA程序设计平台</span></h2><p>JAVA是一个完整的平台，有一个<strong>庞大丰富</strong>的库，其中包含了大量可重用的代码，还有一个提供诸如安全性、跨操作系统的可移植性以及自动垃圾收集等服务的执行环境。</p>
 <pre><code class="language-java">import java.awt.*;
 import java.io.*;
 import javax.swing.*;
@@ -267,12 +472,12 @@ class ImageViewerFrame extends JFrame
    &#125;
 &#125;
 </code></pre>
-<h2 id="1-2-JAVA白皮书的关键术语"><a href="#1-2-JAVA白皮书的关键术语" class="headerlink" title="1.2 JAVA白皮书的关键术语"></a>1.2 JAVA白皮书的关键术语</h2><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/language-environment.html">白皮书</a>以及<a target="_blank" rel="noopener" href="https://horstmann.com/corejava/java-an-overview/7Gosling.pdf">11个关键术语的概述</a></p>
-<h3 id="1-2-1-简单性"><a href="#1-2-1-简单性" class="headerlink" title="1.2.1 简单性"></a>1.2.1 简单性</h3><p>JAVA语法是C++语法的一个纯净版本，没有头文件、指针运算（甚至没有指针语法）、结构、联合、操作符重载、虚基类等，但设计者并没有试图修正C++的所有不适当的特性。</p>
-<h3 id="1-2-2-面向对象"><a href="#1-2-2-面向对象" class="headerlink" title="1.2.2 面向对象"></a>1.2.2 面向对象</h3><p>面向对象设计是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上。Java与C++的不同点主要在于多重继承，在Java中取而代之的是更简单的接口概念。与C++相比，Java提供了更丰富的运行时自省功能。</p>
-<h3 id="1-2-3-分布式"><a href="#1-2-3-分布式" class="headerlink" title="1.2.3 分布式"></a>1.2.3 分布式</h3><p>Java应用程序能够通过URL打开和访问网上的对象，其便捷程度就好像访问本地的文件一样（以前的特性，如今已理所当然）。</p>
-<h3 id="1-2-4-健壮性"><a href="#1-2-4-健壮性" class="headerlink" title="1.2.4 健壮性"></a>1.2.4 健壮性</h3><p>Java编译器能够检测许多其他语言在运行时才能检测出来的问题。</p>
-<h3 id="1-2-5-安全性"><a href="#1-2-5-安全性" class="headerlink" title="1.2.5 安全性"></a>1.2.5 安全性</h3><p>使用Java可以构建防病毒、防篡改的系统。</p>
+<h2><span id="12-java白皮书的关键术语">1.2 JAVA白皮书的关键术语</span></h2><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/language-environment.html">白皮书</a>以及<a target="_blank" rel="noopener" href="https://horstmann.com/corejava/java-an-overview/7Gosling.pdf">11个关键术语的概述</a></p>
+<h3><span id="121-简单性">1.2.1 简单性</span></h3><p>JAVA语法是C++语法的一个纯净版本，没有头文件、指针运算（甚至没有指针语法）、结构、联合、操作符重载、虚基类等，但设计者并没有试图修正C++的所有不适当的特性。</p>
+<h3><span id="122-面向对象">1.2.2 面向对象</span></h3><p>面向对象设计是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上。Java与C++的不同点主要在于多重继承，在Java中取而代之的是更简单的接口概念。与C++相比，Java提供了更丰富的运行时自省功能。</p>
+<h3><span id="123-分布式">1.2.3 分布式</span></h3><p>Java应用程序能够通过URL打开和访问网上的对象，其便捷程度就好像访问本地的文件一样（以前的特性，如今已理所当然）。</p>
+<h3><span id="124-健壮性">1.2.4 健壮性</span></h3><p>Java编译器能够检测许多其他语言在运行时才能检测出来的问题。</p>
+<h3><span id="125-安全性">1.2.5 安全性</span></h3><p>使用Java可以构建防病毒、防篡改的系统。</p>
 <p>从一开始，Java就设计成能够防范各种攻击，其中包括：</p>
 <ul>
 <li><p>运行时堆栈溢出，这是蠕虫和病毒常用的攻击手段</p>
@@ -283,16 +488,16 @@ class ImageViewerFrame extends JFrame
 <p>ActiveX：使用数字签名进行代码交付</p>
 </li>
 </ul>
-<h3 id="1-2-6-体系结构中立"><a href="#1-2-6-体系结构中立" class="headerlink" title="1.2.6 体系结构中立"></a>1.2.6 体系结构中立</h3><p>编译器生成体系结构中立的目标文件格式，这是一种编译型代码，即Java通过生成与特定计算机体系结构无关的字节码指令来实现这一特性。</p>
+<h3><span id="126-体系结构中立">1.2.6 体系结构中立</span></h3><p>编译器生成体系结构中立的目标文件格式，这是一种编译型代码，即Java通过生成与特定计算机体系结构无关的字节码指令来实现这一特性。</p>
 <p>Java虚拟机还有一些其他优点，如它可以检查指令序列的行为，从而增强安全性。</p>
-<h3 id="1-2-7-可移植性"><a href="#1-2-7-可移植性" class="headerlink" title="1.2.7 可移植性"></a>1.2.7 可移植性</h3><p>数值类型有固定的字节数，二进制数据以固定的格式进行存储和传输，消除了有关字节顺序的困扰，字符串则采用标准的Unicode格式存储。可以很好地支持平台独立性。（C&#x2F;C++中int可以是16&#x2F;32位整数&#x2F;编译器开发商指定的其他大小，在Java中总是32位）</p>
-<h3 id="1-2-8-解释性"><a href="#1-2-8-解释性" class="headerlink" title="1.2.8 解释性"></a>1.2.8 解释性</h3><p>Java解释器可以在任何移植了解释器的机器码上直接执行Java字节码。</p>
-<h3 id="1-2-9-高性能"><a href="#1-2-9-高性能" class="headerlink" title="1.2.9 高性能"></a>1.2.9 高性能</h3><p>即时编译器可以监控哪些代码频繁执行，并优化这些代码以提高速度。跟为复杂的优化是消除函数调用（内联）。</p>
-<h3 id="1-2-10-多线程"><a href="#1-2-10-多线程" class="headerlink" title="1.2.10 多线程"></a>1.2.10 多线程</h3><p>第一个支持并发程序设计。</p>
-<h3 id="1-2-11-动态性"><a href="#1-2-11-动态性" class="headerlink" title="1.2.11 动态性"></a>1.2.11 动态性</h3><p>库可以自由地添加新方法和实例变量，而对客户端没有任何影响。让一个正在运行的程序实现演进。</p>
-<h2 id="1-3-JAVA-applet-与-Internet"><a href="#1-3-JAVA-applet-与-Internet" class="headerlink" title="1.3 JAVA applet 与 Internet"></a>1.3 JAVA applet 与 Internet</h2><p>在网页中运行的JAVA程序称为applet</p>
-<h2 id="1-4-JAVA发展简史"><a href="#1-4-JAVA发展简史" class="headerlink" title="1.4 JAVA发展简史"></a>1.4 JAVA发展简史</h2><p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/1.jpg" alt="1.jpg"><br><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/2.jpg" alt="2.jpg"></p>
-<h2 id="1-5关于JAVA的常见误解"><a href="#1-5关于JAVA的常见误解" class="headerlink" title="1.5关于JAVA的常见误解"></a>1.5关于JAVA的常见误解</h2><ol>
+<h3><span id="127-可移植性">1.2.7 可移植性</span></h3><p>数值类型有固定的字节数，二进制数据以固定的格式进行存储和传输，消除了有关字节顺序的困扰，字符串则采用标准的Unicode格式存储。可以很好地支持平台独立性。（C&#x2F;C++中int可以是16&#x2F;32位整数&#x2F;编译器开发商指定的其他大小，在Java中总是32位）</p>
+<h3><span id="128-解释性">1.2.8 解释性</span></h3><p>Java解释器可以在任何移植了解释器的机器码上直接执行Java字节码。</p>
+<h3><span id="129-高性能">1.2.9 高性能</span></h3><p>即时编译器可以监控哪些代码频繁执行，并优化这些代码以提高速度。跟为复杂的优化是消除函数调用（内联）。</p>
+<h3><span id="1210-多线程">1.2.10 多线程</span></h3><p>第一个支持并发程序设计。</p>
+<h3><span id="1211-动态性">1.2.11 动态性</span></h3><p>库可以自由地添加新方法和实例变量，而对客户端没有任何影响。让一个正在运行的程序实现演进。</p>
+<h2><span id="13-java-applet-与-internet">1.3 JAVA applet 与 Internet</span></h2><p>在网页中运行的JAVA程序称为applet</p>
+<h2><span id="14-java发展简史">1.4 JAVA发展简史</span></h2><p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/1.jpg" alt="1.jpg"><br><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/2.jpg" alt="2.jpg"></p>
+<h2><span id="15关于java的常见误解">1.5关于JAVA的常见误解</span></h2><ol>
 <li><p>JAVA是HTML的扩展</p>
 <p>JAVA是一种程序设计语言，而HTML是一种描述网页结构的方式。</p>
 </li>
@@ -327,9 +532,9 @@ class ImageViewerFrame extends JFrame
 </li>
 </ol>
 <p>​	网络计算机（是一种以网络为中心的计算设备，强调通过网络访问应用和数据，而不是依赖本地资源。它的理念在现代云计算、虚拟	化和瘦客户端技术中得到了延续。虽然在 20 世纪末未能大规模普及，但它为后来的网络化、云化计算奠定了基础）没有本地存储且	功能有限</p>
-<h1 id="第二章-JAVA编程环境"><a href="#第二章-JAVA编程环境" class="headerlink" title="第二章 JAVA编程环境"></a>第二章 JAVA编程环境</h1><h2 id="2-1-安装Java开发工具包（JDK）"><a href="#2-1-安装Java开发工具包（JDK）" class="headerlink" title="2.1 安装Java开发工具包（JDK）"></a>2.1 安装Java开发工具包（JDK）</h2><h3 id="2-1-1-下载JDK"><a href="#2-1-1-下载JDK" class="headerlink" title="2.1.1 下载JDK"></a>2.1.1 下载JDK</h3><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/?er=221886">Java Downloads | Oracle</a></p>
+<h1><span id="第二章-java编程环境">第二章 JAVA编程环境</span></h1><h2><span id="21-安装java开发工具包jdk">2.1 安装Java开发工具包（JDK）</span></h2><h3><span id="211-下载jdk">2.1.1 下载JDK</span></h3><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/?er=221886">Java Downloads | Oracle</a></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/3.jpg" alt="图片"></p>
-<h3 id="2-1-2-设置JDK"><a href="#2-1-2-设置JDK" class="headerlink" title="2.1.2 设置JDK"></a>2.1.2 设置JDK</h3><p>重点：</p>
+<h3><span id="212-设置jdk">2.1.2 设置JDK</span></h3><p>重点：</p>
 <ul>
 <li><p>最好不要接受默认位置，自己选择路径，推荐安装在其他盘（如D&#x2F;E盘）</p>
 </li>
@@ -347,30 +552,30 @@ class ImageViewerFrame extends JFrame
 <p>windows系统：在设置中搜索环境变量，编辑环境变量&#x2F;点击Win+R，输入sysdm.cpl，然后选择高级，再单击环境变量，在用户变量列表中找到并选择一个名为Path的变量，单击Edit再单击New，添加一个新值——jdk的bin目录</p>
 </li>
 </ul>
-<h3 id="2-1-3-安装源文件和文档"><a href="#2-1-3-安装源文件和文档" class="headerlink" title="2.1.3 安装源文件和文档"></a>2.1.3 安装源文件和文档</h3><p>解压lib&#x2F;src.zip到新建的目录javasrc中，可通过终端创建该目录</p>
+<h3><span id="213-安装源文件和文档">2.1.3 安装源文件和文档</span></h3><p>解压lib&#x2F;src.zip到新建的目录javasrc中，可通过终端创建该目录</p>
 <pre><code class="language-shell">mkdir javasrc
 cd javasrc
 jar xvf jdk/lib/src.zip
 cd ..
 </code></pre>
 <p>文档则包含在独立于JDK的一个压缩文件中，后续略</p>
-<h2 id="2-2使用命令行工具"><a href="#2-2使用命令行工具" class="headerlink" title="2.2使用命令行工具"></a>2.2使用命令行工具</h2><pre><code>cd dir(该文件所在目录)
+<h2><span id="22使用命令行工具">2.2使用命令行工具</span></h2><pre><code>cd dir(该文件所在目录)
 javac xxx.java
 java xxx
 </code></pre>
 <p>此过程中javac编译器将xxx.java编译成xxx.class,java程序启动jvm,jvm执行编译器编译到类文件中的字节码</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/4.jpg" alt="4.jpg"></p>
 <p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/getStarted/cupojava/netbeans.html">初学者易犯错误)</a></p>
-<h2 id="2-3-使用集成开发环境"><a href="#2-3-使用集成开发环境" class="headerlink" title="2.3 使用集成开发环境"></a>2.3 使用集成开发环境</h2><p>下载JetBrains Toolbox，验证学生身份后即可免费使用，然后在工具箱中下载IntelliJ IDEA </p>
+<h2><span id="23-使用集成开发环境">2.3 使用集成开发环境</span></h2><p>下载JetBrains Toolbox，验证学生身份后即可免费使用，然后在工具箱中下载IntelliJ IDEA </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63173180/article/details/135510713">jetbrains工具箱教程：下载IDEA社区版与完全版的步骤-CSDN博客</a></p>
-<h2 id="2-4-JShell"><a href="#2-4-JShell" class="headerlink" title="2.4 JShell"></a>2.4 JShell</h2><p>键入一个JAVA表达式，JShell会评估输入，打印结果并等待下一个输入</p>
+<h2><span id="24-jshell">2.4 JShell</span></h2><p>键入一个JAVA表达式，JShell会评估输入，打印结果并等待下一个输入</p>
 <img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/10.png" alt="10.png">
 
 <p>另一个有用的特性是“tab补全”，如果键入Math.然后按一次tab键，会得到Math类调用的所有方法的一个列表</p>
 <p>键入l,再按一次tab键，方法名会补全为log，然后得到一个比较小的列表</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250709175741239.png" alt="image-20250709175741239"></p>
 <p><em><strong>小技巧</strong></em>：重复运行某个命令可按↑知道看到想要重复运行或编辑的命令行，←→移动光标至指定位置增加或删除指定字符</p>
-<h1 id="第三章-JAVA的基本程序设计结构"><a href="#第三章-JAVA的基本程序设计结构" class="headerlink" title="第三章 JAVA的基本程序设计结构"></a>第三章 JAVA的基本程序设计结构</h1><h2 id="3-1-一个简单的JAVA程序"><a href="#3-1-一个简单的JAVA程序" class="headerlink" title="3.1 一个简单的JAVA程序"></a>3.1 一个简单的JAVA程序</h2><pre><code class="language-java">public class FirstSample &#123;
+<h1><span id="第三章-java的基本程序设计结构">第三章 JAVA的基本程序设计结构</span></h1><h2><span id="31-一个简单的java程序">3.1 一个简单的JAVA程序</span></h2><pre><code class="language-java">public class FirstSample &#123;
     public static void main(String[] args) &#123;
         System.out.println(&quot;We will not use &#39;hello world!&#39;&quot;);
     &#125;
@@ -421,7 +626,7 @@ java xxx
 <li><p>println(a)&#x3D;print(a)+print(‘\n’)</p>
 </li>
 </ol>
-<h2 id="3-2-注释"><a href="#3-2-注释" class="headerlink" title="3.2 注释"></a>3.2 注释</h2><p>JAVA中的注释不会出现在可执行程序中。所以可以添加任意多的注释而无须担心代码膨胀</p>
+<h2><span id="32-注释">3.2 注释</span></h2><p>JAVA中的注释不会出现在可执行程序中。所以可以添加任意多的注释而无须担心代码膨胀</p>
 <p>共有三种注释方法</p>
 <ol>
 <li><p>从&#x2F;&#x2F;开始到本行结束都是注释</p>
@@ -445,12 +650,12 @@ java xxx
  * 888
  */
 </code></pre>
-<h2 id="3-3-数据类型"><a href="#3-3-数据类型" class="headerlink" title="3.3 数据类型"></a>3.3 数据类型</h2><p>JAVA是一种强类型语言，必须为每一个变量声明一个类型。在Java中，一共有8种基本类型，其中4种整型、2种浮点类型，1种字符类型，1种用于表示真值的boolean类型</p>
+<h2><span id="33-数据类型">3.3 数据类型</span></h2><p>JAVA是一种强类型语言，必须为每一个变量声明一个类型。在Java中，一共有8种基本类型，其中4种整型、2种浮点类型，1种字符类型，1种用于表示真值的boolean类型</p>
 <blockquote>
 <p>[!NOTE]</p>
 <p>JAVA有一个能够表示任意精度的算数包，所谓的“大数”（big number）是JAVA对象而非基本类型。</p>
 </blockquote>
-<h3 id="3-3-1-整型"><a href="#3-3-1-整型" class="headerlink" title="3.3.1 整型"></a>3.3.1 整型</h3><p>整型用于表示没有小数部分的数，可以是负数。</p>
+<h3><span id="331-整型">3.3.1 整型</span></h3><p>整型用于表示没有小数部分的数，可以是负数。</p>
 <table>
 <thead>
 <tr>
@@ -486,7 +691,7 @@ java xxx
 <p>如果使用不可能为负的整数值而且确实需要额外的一位（bit），也可以把有符号整数值解释为无符号数。例如，一个byte值b可以不表示-128~127的范围,如果你想表示0-255的范围，也可以存储在一个byte中。基于二进制算术运算的性质，只要不溢出，加法、减法、乘法都能正常运算。但对于其他运算，需要调用Byte.tuUnsignedInt(b)来得到一个0-255的int值，然后处理这个整数值，再把它转换回Byte.Integer和Long类都提供了处理无符号除法和余数的方法。</p>
 </blockquote>
 <p>长整型的后缀有一个L或1（如40 0000 0000L),十六进制数有一个前缀0x或0X（如0xCAFE),八进制有一个前缀0（010对应十进制里面的8），八进制易混淆，所以不建议使用，二进制数有一个前缀0b或0B。另外可以为数字字面量增加下划线，如1_000_000(或0b1111_0110_1101_0011)表示一百万，下划线的作用是为了增加易读性。</p>
-<h3 id="3-3-2-浮点型"><a href="#3-3-2-浮点型" class="headerlink" title="3.3.2 浮点型"></a>3.3.2 浮点型</h3><p>浮点类型用来表示有小数部分的数。</p>
+<h3><span id="332-浮点型">3.3.2 浮点型</span></h3><p>浮点类型用来表示有小数部分的数。</p>
 <table>
 <thead>
 <tr>
@@ -530,7 +735,7 @@ java xxx
 <p>[!WARNING]</p>
 <p>浮点数值不适用于无法接受舍入误差的金融计算，例如System.out.println(2.0-1.1)将打印出0.89999999999，而非我们期望中的0.9。这样的舍入误差主要原因是浮点数采用二进制表示，所以无法精确地表示1&#x2F;10，好比十进制无法精确地表示1&#x2F;3。如果需要精确的数值计算，不允许舍入误差，则应该使用BigDecimal类。</p>
 </blockquote>
-<h3 id="3-3-3-char型"><a href="#3-3-3-char型" class="headerlink" title="3.3.3 char型"></a>3.3.3 char型</h3><p>char类型的字面量值要用单引号括起来，例如，’A’是编码值为65的字符常量。它与”A”（包含一个字符的字符串）不同。char类型的值可以表示为十六进制值，其范围从\u0000-\uFFFF,例如，\u2122表示商标符号™ ，\u03C0表示希腊字母π。</p>
+<h3><span id="333-char型">3.3.3 char型</span></h3><p>char类型的字面量值要用单引号括起来，例如，’A’是编码值为65的字符常量。它与”A”（包含一个字符的字符串）不同。char类型的值可以表示为十六进制值，其范围从\u0000-\uFFFF,例如，\u2122表示商标符号™ ，\u03C0表示希腊字母π。</p>
 <p>除了转义序列\u以外，还有一些用来表示特殊字符的转义序列。</p>
 <table>
 <thead>
@@ -596,16 +801,16 @@ java xxx
 <p>[!WARNING]</p>
 <p>Unicode转义序列会在解析代码前处理。例如“\u0022+\u0022”会得到一个空串（解析为””+””）。更隐秘地，一定要注意注释中的\u，例如&#x2F;&#x2F; \u000A is a newline（\u000A会替换为一个换行符）会产生语法错误，&#x2F;&#x2F; look inside c:\users（\u后面没有跟着四位十六进制数）也会产生一个语法错误。</p>
 </blockquote>
-<h3 id="3-3-4-Unicode和char型"><a href="#3-3-4-Unicode和char型" class="headerlink" title="3.3.4 Unicode和char型"></a>3.3.4 Unicode和char型</h3><p>不同的编码机制标准：美国的ASCII，西欧语言的ISO 8859-1，俄罗斯的KOI-8，中国的GB 18030和BIG-5等</p>
+<h3><span id="334-unicode和char型">3.3.4 Unicode和char型</span></h3><p>不同的编码机制标准：美国的ASCII，西欧语言的ISO 8859-1，俄罗斯的KOI-8，中国的GB 18030和BIG-5等</p>
 <p><em><strong>码点（code point）是指与一个编码表中的某个字对应的代码值</strong></em>。在Unicode标准中，码点采用十六进制书写，并加上前缀U+，例如U+0041为拉丁字母A的码点。Unicode的码点可以氛围17个代码平面（code plane）。第一个代码平面称为基本多语言平面，范围为U+0000-U+FFFF，其余十六个平面从U+10000到U+10FFFF，包含各种辅助字符</p>
 <p>UTF-16编码采用不同长度的代码来表示所有Unicode码点，在基本多语言平面中，每个字符用16位表示，通常称为<em><strong>代码单元</strong></em>；而辅助字符编码为一对连续的代码单元，采用这种编码对表示的每个值都属于基本多语言平面中未用的2048个值范围，通常称为替代区域（U+D800-U+DBFF用于第一个代码单元，U+DC00-U+DFFF用于第二个代码单元）。</p>
 <blockquote>
 <p>[!TIP]</p>
 <p><em><strong>强烈建议不要使用char类型</strong></em>，除非确实需要处理UTF-16代码单元，最好将字符串作为抽象数据类型来处理</p>
 </blockquote>
-<h3 id="3-3-5-boolean类型"><a href="#3-3-5-boolean类型" class="headerlink" title="3.3.5 boolean类型"></a>3.3.5 boolean类型</h3><p>boolean类型有两个值：true和false，用来判定逻辑条件，<em><strong>整型值和布尔值之间不能互相转换</strong></em>。（在C++中，数值甚至指针可以代替布尔值，if(x&#x3D;0)在C++中始终为false,而在Java中无法通过编译，因为整数表达式x&#x3D;0不能转换为布尔值）</p>
-<h2 id="3-4变量与常量"><a href="#3-4变量与常量" class="headerlink" title="3.4变量与常量"></a>3.4变量与常量</h2><p>常量就是值不变的变量。</p>
-<h3 id="3-4-1声明变量"><a href="#3-4-1声明变量" class="headerlink" title="3.4.1声明变量"></a>3.4.1声明变量</h3><p>声明是一个完整的JAVA语句，先指定变量类型，然后是变量名，每个声明都以分号结束</p>
+<h3><span id="335-boolean类型">3.3.5 boolean类型</span></h3><p>boolean类型有两个值：true和false，用来判定逻辑条件，<em><strong>整型值和布尔值之间不能互相转换</strong></em>。（在C++中，数值甚至指针可以代替布尔值，if(x&#x3D;0)在C++中始终为false,而在Java中无法通过编译，因为整数表达式x&#x3D;0不能转换为布尔值）</p>
+<h2><span id="34变量与常量">3.4变量与常量</span></h2><p>常量就是值不变的变量。</p>
+<h3><span id="341声明变量">3.4.1声明变量</span></h3><p>声明是一个完整的JAVA语句，先指定变量类型，然后是变量名，每个声明都以分号结束</p>
 <pre><code class="language-java">double salary;
 </code></pre>
 <p>作为变量名的标识符<em><strong>由字母、数字、货币符号以及”标点连接符”组成</strong></em>，<em><strong>第一个字符不能是数字</strong></em>，’+’、空格等不能出现，字母<em><strong>区分大小写</strong></em>，<em><strong>不能使用Java关键字</strong></em>作为变量名，可以一行声明多个变量，但推荐<em><strong>分别声明</strong></em>以此来提高程序可读性</p>
@@ -613,7 +818,7 @@ java xxx
 <p>[!NOTE]</p>
 <p>如果想要知道标识符中可以使用哪些Unicode字符，可以使用Charater类的<em><strong>isJavaIdentifierStart</strong></em>和<em><strong>isJavaIdentifierPart</strong></em>来检查</p>
 </blockquote>
-<h3 id="3-4-2初始化变量"><a href="#3-4-2初始化变量" class="headerlink" title="3.4.2初始化变量"></a>3.4.2初始化变量</h3><p>声明变量后必须显式地使用赋值语句初始化变量，不能使用未初始化的变量。</p>
+<h3><span id="342初始化变量">3.4.2初始化变量</span></h3><p>声明变量后必须显式地使用赋值语句初始化变量，不能使用未初始化的变量。</p>
 <pre><code class="language-java">double salary;
 salary=10000;
 </code></pre>
@@ -627,9 +832,9 @@ salary=10000;
 <pre><code class="language-java">var salary=10000;
 var greeting=&quot;hello&quot;;
 </code></pre>
-<h4 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h4><p>声明：不分配内存（变量）&#x2F;不提供具体实现（方法函数）</p>
+<h4><span id="声明与定义">声明与定义</span></h4><p>声明：不分配内存（变量）&#x2F;不提供具体实现（方法函数）</p>
 <p>定义则反之</p>
-<h3 id="3-4-3常量"><a href="#3-4-3常量" class="headerlink" title="3.4.3常量"></a>3.4.3常量</h3><p>可以使用<em><strong>final</strong></em>关键字来指示，表示该变量<em><strong>只能被赋值一次</strong></em>，一旦赋值就无法更改，习惯上，<em><strong>常量名使用全大写</strong></em></p>
+<h3><span id="343常量">3.4.3常量</span></h3><p>可以使用<em><strong>final</strong></em>关键字来指示，表示该变量<em><strong>只能被赋值一次</strong></em>，一旦赋值就无法更改，习惯上，<em><strong>常量名使用全大写</strong></em></p>
 <pre><code class="language-java">final double pai=3.14;
 </code></pre>
 <p>类常量（class constant）：在一个类的多个方法中使用，使用static final设置 ,定义位于main函数之外，如果一个类常量声明为public，那么其他类也可以使用这个常量，通过<em><strong>类名.类常量名</strong></em>的形式调用</p>
@@ -639,16 +844,16 @@ var greeting=&quot;hello&quot;;
 <p>[!NOTE]</p>
 <p>const是Java保留的关键字，目前并没有使用，在Java中必须使用final声明常量</p>
 </blockquote>
-<h3 id="3-4-4枚举类型"><a href="#3-4-4枚举类型" class="headerlink" title="3.4.4枚举类型"></a>3.4.4枚举类型</h3><p>一个变量<em><strong>只包含有限的一组值</strong></em>。例如</p>
+<h3><span id="344枚举类型">3.4.4枚举类型</span></h3><p>一个变量<em><strong>只包含有限的一组值</strong></em>。例如</p>
 <pre><code class="language-java">enum Size&#123;SMALL,MEDIUM,LARGE,EXTRA_LARGE&#125;;
 Size s=Size.MEDIUM;
 </code></pre>
 <p>Size类型的变量<em><strong>只能存储这个类型声明中所列的某个值，或者特殊值null</strong></em>，null表示这个变量没有设置任何值</p>
-<h2 id="3-5运算符"><a href="#3-5运算符" class="headerlink" title="3.5运算符"></a>3.5运算符</h2><p>运算符用于连接值。</p>
-<h3 id="3-5-1算术运算符"><a href="#3-5-1算术运算符" class="headerlink" title="3.5.1算术运算符"></a>3.5.1算术运算符</h3><p>+，-，*，&#x2F; 加减乘除 求余%</p>
+<h2><span id="35运算符">3.5运算符</span></h2><p>运算符用于连接值。</p>
+<h3><span id="351算术运算符">3.5.1算术运算符</span></h3><p>+，-，*，&#x2F; 加减乘除 求余%</p>
 <p>当参与&#x2F;运算的两个操作数都为整数时，&#x2F;表示整数除法，否则这表示浮点数除法 15&#x2F;2&#x3D;7 15.0&#x2F;2&#x3D;7.5</p>
 <p><em><strong>整数被零除将产生一个异常，而浮点数被零除将会得到一个无穷大或NaN结果</strong></em> x&#x2F;0</p>
-<h3 id="3-5-2-数学函数与常量"><a href="#3-5-2-数学函数与常量" class="headerlink" title="3.5.2 数学函数与常量"></a>3.5.2 数学函数与常量</h3><p>Math类中包含了各种常用的数学函数</p>
+<h3><span id="352-数学函数与常量">3.5.2 数学函数与常量</span></h3><p>Math类中包含了各种常用的数学函数</p>
 <p>要想计算一个数的平方根，可以使用sqrt函数</p>
 <pre><code class="language-java">double x=4;
 double y=Math.sqrt(x);
@@ -745,7 +950,7 @@ System.out.println(y);//prints 2.0
 <p>[!CAUTION]</p>
 <p>Math类提供了一些方法让整数运算更加安全，如果一个计算溢出，数学运算只是<em><strong>悄悄地返回错误的结果而不做任何提醒</strong></em>，使用Math.multiplyExact（10 0000 0000，3）就会生成一个异常，使得你可以<em><strong>捕获这个异常并进行处理</strong></em>，还存在其他方法（abbExact,subtractExact,incrementExact,decrementExact,negateExact,absExact）也可以正确地处理int和long参数</p>
 </blockquote>
-<h3 id="3-5-3数值类型之间的转换"><a href="#3-5-3数值类型之间的转换" class="headerlink" title="3.5.3数值类型之间的转换"></a>3.5.3数值类型之间的转换</h3><p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/6.jpg" alt="6"></p>
+<h3><span id="353数值类型之间的转换">3.5.3数值类型之间的转换</span></h3><p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/6.jpg" alt="6"></p>
 <p>其中实线类型表示无信息丢失的转换，而另有三个虚线箭头，表示有精度损失的转换</p>
 <pre><code class="language-java">int n=123456789;
 float f=n;//f is 1.23456792E8
@@ -758,7 +963,7 @@ float f=n;//f is 1.23456792E8
 <li>否则，两个都被转换为int类型</li>
 </ul>
 <p>即优先转换为精度高的浮点数类型</p>
-<h3 id="3-5-4强制类型转换"><a href="#3-5-4强制类型转换" class="headerlink" title="3.5.4强制类型转换"></a>3.5.4强制类型转换</h3><p>可能丢失信息的转换要通过强制类型转换来完成,确保开发者知道转换后果</p>
+<h3><span id="354强制类型转换">3.5.4强制类型转换</span></h3><p>可能丢失信息的转换要通过强制类型转换来完成,确保开发者知道转换后果</p>
 <p>强制类型转换（cast）的语法格式是在圆括号中指定想要转换的目标类型，后面紧跟待转换的变量名</p>
 <pre><code class="language-java">double x=9.997;
 int nx=(int)x;//nx is 9
@@ -774,7 +979,7 @@ int nx=(int)Math.round(x);//nx is 10
 <p>如果试图将一个数从一种类型强制转换为另一种类型而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值，如（byte）300&#x3D;44</p>
 </blockquote>
 <p><em><strong>不要在boolean类型和任何类型之间进行强制类型转换</strong></em>，若需要将boolean类型转换成一个数，可以使用条件表达式b?1:0</p>
-<h3 id="3-5-5赋值"><a href="#3-5-5赋值" class="headerlink" title="3.5.5赋值"></a>3.5.5赋值</h3><p>可以在赋值中使用二元运算符 +&#x3D; *&#x3D; %&#x3D; …</p>
+<h3><span id="355赋值">3.5.5赋值</span></h3><p>可以在赋值中使用二元运算符 +&#x3D; *&#x3D; %&#x3D; …</p>
 <pre><code class="language-java">x+=4;//等价于x=x+4
 </code></pre>
 <blockquote>
@@ -790,7 +995,7 @@ x+=3.5;//x被设置为（int）(x+3.5)
 int y= x+=4;//x+=4的值是5
 </code></pre>
 <p>但不推荐这样写，嵌套赋值容易混淆</p>
-<h3 id="3-5-6自增与自减运算符"><a href="#3-5-6自增与自减运算符" class="headerlink" title="3.5.6自增与自减运算符"></a>3.5.6自增与自减运算符</h3><table>
+<h3><span id="356自增与自减运算符">3.5.6自增与自减运算符</span></h3><table>
 <thead>
 <tr>
 <th>类型</th>
@@ -820,13 +1025,13 @@ int a=2*(++m);//now a is 16,m is 8
 int b=2*(n++);//now b is 14,n is 8
 </code></pre>
 <p>但在Java中较少使用</p>
-<h3 id="3-5-7关系和boolean运算符"><a href="#3-5-7关系和boolean运算符" class="headerlink" title="3.5.7关系和boolean运算符"></a>3.5.7关系和boolean运算符</h3><p>&#x3D;&#x3D;，！&#x3D;，&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;关系运算符 3&#x3D;&#x3D;7值为false</p>
+<h3><span id="357关系和boolean运算符">3.5.7关系和boolean运算符</span></h3><p>&#x3D;&#x3D;，！&#x3D;，&lt;,&gt;,&lt;&#x3D;,&gt;&#x3D;关系运算符 3&#x3D;&#x3D;7值为false</p>
 <p>&amp;&amp;逻辑与运算 ||逻辑或运算  ！逻辑非运算 &amp;&amp;与||是<em><strong>按照短路方式来求值</strong></em>的，即<em><strong>如果第一个操作数已经能够确定表达式的值，那么第二个操作数就不会计算</strong></em></p>
 <p>如exp1&amp;&amp;exp2，若exp1真值为false，就不会计算exp2,可以利用这种行为来避免错误</p>
 <p>如x!&#x3D;0&amp;&amp;1&#x2F;x&gt;x+y&#x2F;&#x2F;no division by 0 如果x&#x3D;0，那么第二部分就不会计算，exp1||exp2同理</p>
-<h3 id="3-5-8-条件运算符"><a href="#3-5-8-条件运算符" class="headerlink" title="3.5.8 条件运算符"></a>3.5.8 条件运算符</h3><p>condition?exp1:exp2 如果condition为真，表达式计算为exp1的值，反之则为exp2的值</p>
+<h3><span id="358-条件运算符">3.5.8 条件运算符</span></h3><p>condition?exp1:exp2 如果condition为真，表达式计算为exp1的值，反之则为exp2的值</p>
 <p>如x&lt;y?x:y 会返回x、y中较小的一个</p>
-<h3 id="3-5-9-switch表达式"><a href="#3-5-9-switch表达式" class="headerlink" title="3.5.9 switch表达式"></a>3.5.9 switch表达式</h3><p>需要在两个以上的值中做出选择时，可以使用switch表达式（Java14后引入）</p>
+<h3><span id="359-switch表达式">3.5.9 switch表达式</span></h3><p>需要在两个以上的值中做出选择时，可以使用switch表达式（Java14后引入）</p>
 <pre><code class="language-java">        String seasonName=switch(seasonCode)
         &#123;
             case 0-&gt; &quot;Spring&quot;;
@@ -863,7 +1068,7 @@ String label=switch(itemSize)
 <p>[!WARNING]</p>
 <p>使用整数或者String操作数的switch表达式必须有一个default，因为不论操作数值是什么，这个表达式都必须生成一个值；如果操作数为null，那么会抛出一个NullPointerException</p>
 </blockquote>
-<h3 id="3-5-10-位运算符"><a href="#3-5-10-位运算符" class="headerlink" title="3.5.10 位运算符"></a>3.5.10 位运算符</h3><p><em><strong>处理整数类型时</strong></em>，有一些运算符可以直接处理组成整数的各个位，这意味着<em><strong>可以使用掩码技术得到一个数中的各个位</strong></em></p>
+<h3><span id="3510-位运算符">3.5.10 位运算符</span></h3><p><em><strong>处理整数类型时</strong></em>，有一些运算符可以直接处理组成整数的各个位，这意味着<em><strong>可以使用掩码技术得到一个数中的各个位</strong></em></p>
 <p>位运算符包括：&amp;（and） |(or)   ^(xor)  -(not)</p>
 <p>如果n是一个整数变量，而且n的二进制表示中从右边数第四位为1，则</p>
 <pre><code class="language-java">int fourthBitFromRight=(n &amp; 0b1000)/0b1000;
@@ -885,7 +1090,7 @@ String label=switch(itemSize)
 <p>[!NOTE]</p>
 <p>C&#x2F;C++中，不能保证&gt;&gt;是完成算术移位（扩展符号位）还是逻辑移位（填充0），Java消除了这种不确定性</p>
 </blockquote>
-<h3 id="3-5-11括号与运算符级别"><a href="#3-5-11括号与运算符级别" class="headerlink" title="3.5.11括号与运算符级别"></a>3.5.11括号与运算符级别</h3><p>同一级别的运算符按从左到右的运算次序进行计算（右结合运算符除外）</p>
+<h3><span id="3511括号与运算符级别">3.5.11括号与运算符级别</span></h3><p>同一级别的运算符按从左到右的运算次序进行计算（右结合运算符除外）</p>
 <p>a &amp;&amp; b||c由于&amp;&amp;的优先级比||高，所以等价于(a&amp;&amp;b)||c</p>
 <p>因为+&#x3D;是右结合运算符，所以a+&#x3D;b+&#x3D;c等价于a+&#x3D;(b+&#x3D;c)</p>
 <table>
@@ -952,8 +1157,8 @@ String label=switch(itemSize)
 <td><em><strong>从右向左</strong></em></td>
 </tr>
 </tbody></table>
-<h2 id="3-6字符串"><a href="#3-6字符串" class="headerlink" title="3.6字符串"></a>3.6字符串</h2><p><em><strong>Java字符串就是Unicode字符序列</strong></em>，<em><strong>Java没有内置的字符串类型，而是标准Java类库中提供了一个预定义类String</strong></em>，每个用双引号括起来的字符串都是String类的一个实例。</p>
-<h3 id="3-6-1-子串"><a href="#3-6-1-子串" class="headerlink" title="3.6.1 子串"></a>3.6.1 子串</h3><pre><code class="language-java">String greeting=&quot;Hello&quot;;
+<h2><span id="36字符串">3.6字符串</span></h2><p><em><strong>Java字符串就是Unicode字符序列</strong></em>，<em><strong>Java没有内置的字符串类型，而是标准Java类库中提供了一个预定义类String</strong></em>，每个用双引号括起来的字符串都是String类的一个实例。</p>
+<h3><span id="361-子串">3.6.1 子串</span></h3><pre><code class="language-java">String greeting=&quot;Hello&quot;;
 String s=greeting.substring(0,3);//创建一个由字符”Hel&quot;组成的字符串
 </code></pre>
 <blockquote>
@@ -961,7 +1166,7 @@ String s=greeting.substring(0,3);//创建一个由字符”Hel&quot;组成的字
 <p>类似于C&#x2F;C++，Java字符串中的代码单元和码点从0开始计数</p>
 </blockquote>
 <p><em><strong>substring的第二个参数是你不想复制的第一个位置</strong></em>，[a,b)，这样也有一个优点：很容易计算子串长度——b-a</p>
-<h3 id="3-6-2-拼接"><a href="#3-6-2-拼接" class="headerlink" title="3.6.2 拼接"></a>3.6.2 拼接</h3><p>Java<em><strong>允许使用+号拼接字符串</strong></em>，当将一个字符串与一个非字符串进行拼接时，后者会被转换成字符串（任何一个Java对象都可以转换成字符串）</p>
+<h3><span id="362-拼接">3.6.2 拼接</span></h3><p>Java<em><strong>允许使用+号拼接字符串</strong></em>，当将一个字符串与一个非字符串进行拼接时，后者会被转换成字符串（任何一个Java对象都可以转换成字符串）</p>
 <pre><code class="language-java">int age=13;
 String rating=&quot;PG&quot;+age;//rating is &quot;PG13&quot;
 </code></pre>
@@ -974,7 +1179,7 @@ String rating=&quot;PG&quot;+age;//rating is &quot;PG13&quot;
 <p>Java11中，还提供了<em><strong>repeat方法</strong></em></p>
 <pre><code class="language-java">String repeated=&quot;java&quot;.repeat(3);//repeated is &quot;javajavajava&quot;
 </code></pre>
-<h3 id="3-6-3-字符串不可变"><a href="#3-6-3-字符串不可变" class="headerlink" title="3.6.3 字符串不可变"></a>3.6.3 字符串不可变</h3><p><em><strong>String类没有提供任何方法来修改字符串中的某个字符</strong></em>，可以提取想要保留的子串，再与希望替换的字符拼接</p>
+<h3><span id="363-字符串不可变">3.6.3 字符串不可变</span></h3><p><em><strong>String类没有提供任何方法来修改字符串中的某个字符</strong></em>，可以提取想要保留的子串，再与希望替换的字符拼接</p>
 <pre><code class="language-java">String greeting=&quot;Hello&quot;;
 greeting=greeting.substring(0,3)+&quot;p!&quot;;//&quot;Help!&quot;
 </code></pre>
@@ -984,7 +1189,7 @@ greeting=greeting.substring(0,3)+&quot;p!&quot;;//&quot;Help!&quot;
 <p>[!NOTE]</p>
 <p>Java字符串与C++中的字符数组char a[]不同，但与char* a指针类似，即a指向某个字符串。C++中的字符串是可修改&#x2F;可变的</p>
 </blockquote>
-<h3 id="3-6-4-检测字符串是否相等"><a href="#3-6-4-检测字符串是否相等" class="headerlink" title="3.6.4 检测字符串是否相等"></a>3.6.4 检测字符串是否相等</h3><p>使用<em><strong>equals方法</strong></em>检测字符串是否相等</p>
+<h3><span id="364-检测字符串是否相等">3.6.4 检测字符串是否相等</span></h3><p>使用<em><strong>equals方法</strong></em>检测字符串是否相等</p>
 <pre><code class="language-java">s.equals(t);//其中s、t可以是字符串变量（greeting）也可以是字符串字面量(&quot;Hello&quot;),若相等返回true，不等返回false
 </code></pre>
 <p>若要检测两个字符串是否相等而不区分大小写，可以使用<em><strong>equalsIgnoreCase方法</strong></em></p>
@@ -1006,13 +1211,13 @@ if(greeting.substring(0,3)==&quot;Hel&quot;)...//probably false
 </code></pre>
 <p>但还是推荐使用更为清晰的equals方法</p>
 </blockquote>
-<h3 id="3-6-5空串与Null串"><a href="#3-6-5空串与Null串" class="headerlink" title="3.6.5空串与Null串"></a>3.6.5空串与Null串</h3><p><em><strong>空串””是长度为0的字符串，是一个Java对象，有自己的长度（0）和内容（空）</strong></em></p>
+<h3><span id="365空串与null串">3.6.5空串与Null串</span></h3><p><em><strong>空串””是长度为0的字符串，是一个Java对象，有自己的长度（0）和内容（空）</strong></em></p>
 <p>String变量还可以存在一个特殊的值，名为null，表示<em><strong>目前没有任何对象与该变量关联</strong></em></p>
 <p>若要检查一个字符串既不是null也不是空串，可以使用</p>
 <pre><code class="language-java">if(str!=null &amp;&amp; str.length()!=0)
 </code></pre>
 <p><em><strong>首先要检查str不为null</strong></em>，因为如果在一个null值上调用方法，会出现错误，所以上述检查顺序不可调换</p>
-<h3 id="3-6-6-码点与代码单元"><a href="#3-6-6-码点与代码单元" class="headerlink" title="3.6.6 码点与代码单元"></a>3.6.6 码点与代码单元</h3><p>length()方法将返回采用UTF-16编码表示给定字符串所需要的代码单元个数。</p>
+<h3><span id="366-码点与代码单元">3.6.6 码点与代码单元</span></h3><p>length()方法将返回采用UTF-16编码表示给定字符串所需要的代码单元个数。</p>
 <pre><code class="language-java">String greeting=&quot;Hello&quot;;
 int n=greeting.length();//n is 5
 </code></pre>
@@ -1059,7 +1264,7 @@ str=Character.toString(codePoint);
 <p>[!NOTE]</p>
 <p>虚拟机不一定把字符串实现为代码单元序列，在Java9中使用了一个跟为紧凑的表示，如果只包含单字节代码单元，字符串使用Byte数组实现，所有其他字符串使用char数组</p>
 </blockquote>
-<h3 id="3-6-7-String-API"><a href="#3-6-7-String-API" class="headerlink" title="3.6.7 String API"></a>3.6.7 String API</h3><p><em><strong>API（Application Programming Interface）：应用程序编程接口</strong></em></p>
+<h3><span id="367-string-api">3.6.7 String API</span></h3><p><em><strong>API（Application Programming Interface）：应用程序编程接口</strong></em></p>
 <p>类 java.lang.String <strong>1.0</strong>(引入版本号，下同)</p>
 <ul>
 <li><p>char charAt(int index)</p>
@@ -1147,9 +1352,9 @@ str=Character.toString(codePoint);
 <p>[!IMPORTANT]</p>
 <p>在API注释中，有一些CharSequence类型的参数，这是一种接口类型，所有字符串都属于这种接口，当看到一个CharSequence形参（parameter)时，完全可以传入String类型的实参（argument)</p>
 </blockquote>
-<h3 id="3-6-8-联机API文档"><a href="#3-6-8-联机API文档" class="headerlink" title="3.6.8 联机API文档***"></a>3.6.8 联机API文档***</h3><p>类与方法数量过多，不可能全部记住，必须学会阅读联机API文档</p>
+<h3><span id="368-联机api文档">3.6.8 联机API文档***</span></h3><p>类与方法数量过多，不可能全部记住，必须学会阅读联机API文档</p>
 <p><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/17/docs/api/">Overview (Java SE 17 &amp; JDK 17)</a></p>
-<h3 id="3-6-9-构建字符串"><a href="#3-6-9-构建字符串" class="headerlink" title="3.6.9 构建字符串"></a>3.6.9 构建字符串</h3><p>采用字符串拼接的方式将较短的字符串构建长字符串效率低，使用<em><strong>StringBuilder类</strong></em>可以避免此问题</p>
+<h3><span id="369-构建字符串">3.6.9 构建字符串</span></h3><p>采用字符串拼接的方式将较短的字符串构建长字符串效率低，使用<em><strong>StringBuilder类</strong></em>可以避免此问题</p>
 <pre><code class="language-java">StringBuilder builder = new StringBuilder();//构建一个空的字符串构建器
 builder.append(ch);//appends a single character
 builder.append(str);//appends a string
@@ -1192,7 +1397,7 @@ String completedString=builder.toString();//得到一个包含构建器中字符
 <p>返回一个字符串，其数据与构建器或缓冲器内容相同</p>
 </li>
 </ul>
-<h3 id="3-6-10-文本块"><a href="#3-6-10-文本块" class="headerlink" title="3.6.10 文本块"></a>3.6.10 文本块</h3><p>利用java15新增的文本块特性，可以很容易地提供跨多行的字符串字面量，<em><strong>文本块以”””开头，后面是一个换行符，并以另一个”””结束</strong></em></p>
+<h3><span id="3610-文本块">3.6.10 文本块</span></h3><p>利用java15新增的文本块特性，可以很容易地提供跨多行的字符串字面量，<em><strong>文本块以”””开头，后面是一个换行符，并以另一个”””结束</strong></em></p>
 <pre><code class="language-java">        String greeting= &quot;&quot;&quot;
                 Hello
                 World
@@ -1227,8 +1432,8 @@ String completedString=builder.toString();//得到一个包含构建器中字符
 <p><em><strong>文本块将去除所有行的公共缩进</strong></em>，</p>
 <p>实际字符串为”<div class="warning">\n	Beware of those who say “Hello” to the world.\n</div>\n”</p>
 <p>去除缩进过程中不考虑空行，不过，结束”””前面的空白符很重要，一定要缩进到想要去除的空白符末尾</p>
-<h2 id="3-6输入与输出"><a href="#3-6输入与输出" class="headerlink" title="3.6输入与输出"></a>3.6输入与输出</h2><p>简单介绍如何使用基本控制台来实现输入输出而非使用GUI</p>
-<h3 id="3-7-1-读取输入"><a href="#3-7-1-读取输入" class="headerlink" title="3.7.1 读取输入"></a>3.7.1 读取输入</h3><p>要想读取控制台输入，<em><strong>首先要构造一个与“标准输入流”System.in关联的Scanner对象</strong></em>。</p>
+<h2><span id="36输入与输出">3.6输入与输出</span></h2><p>简单介绍如何使用基本控制台来实现输入输出而非使用GUI</p>
+<h3><span id="371-读取输入">3.7.1 读取输入</span></h3><p>要想读取控制台输入，<em><strong>首先要构造一个与“标准输入流”System.in关联的Scanner对象</strong></em>。</p>
 <pre><code class="language-java">Scanner in=new Scanner(System.in);
 </code></pre>
 <p>然后使用Scanner类的各种方法读取输入，如nextLine方法将读取一行输入</p>
@@ -1294,7 +1499,7 @@ char[] password=cons.readPassword(&quot;Enter your password: &quot;);
 <p>显示提示符(prompt)并读取用户输入，直到输入行结束，可选的args参数用来提供格式参数</p>
 </li>
 </ul>
-<h3 id="3-7-2格式化输出"><a href="#3-7-2格式化输出" class="headerlink" title="3.7.2格式化输出"></a>3.7.2格式化输出</h3><p>可以使用System.out.println(x)语句将数值x输出到控制台，这个命令将以x的类型所允许的最大非零位数打印x。可以使用printf方法解决某些格式问题</p>
+<h3><span id="372格式化输出">3.7.2格式化输出</span></h3><p>可以使用System.out.println(x)语句将数值x输出到控制台，这个命令将以x的类型所允许的最大非零位数打印x。可以使用printf方法解决某些格式问题</p>
 <pre><code class="language-java">double x=10000.0/3.0;
 System.out.printf(&quot;%8.2f&quot;,x);
 </code></pre>
@@ -1462,7 +1667,7 @@ System.out.printf(&quot;%8.2f&quot;,x);
 <p>[!CAUTION]</p>
 <p><em><strong>格式化规则是特定于本地环境的</strong></em>，例如在德国分组分隔符是点号而不是逗号，因此要学习如何控制应用的国际化行为</p>
 </blockquote>
-<h3 id="3-7-3文件输入与输出"><a href="#3-7-3文件输入与输出" class="headerlink" title="3.7.3文件输入与输出"></a>3.7.3文件输入与输出</h3><p>要想读取一个文件，需要先构造一个Scanner对象</p>
+<h3><span id="373文件输入与输出">3.7.3文件输入与输出</span></h3><p>要想读取一个文件，需要先构造一个Scanner对象</p>
 <pre><code class="language-java">Scanner in=new Scanner(Path.of(&quot;myfile.txt&quot;), StandardCharsets.UTF_8);
 </code></pre>
 <p><em><strong>如果文件名中包含反斜线符号，要在每个反斜线符号之前加上一个额外的反斜线进行转义</strong></em></p>
@@ -1526,12 +1731,12 @@ System.out.printf(&quot;%8.2f&quot;,x);
 <p>由指定路径名构造一个Path</p>
 </li>
 </ul>
-<h2 id="3-8控制流程"><a href="#3-8控制流程" class="headerlink" title="3.8控制流程"></a>3.8控制流程</h2><p>与任何程序设计语句一样，java支持使用<em><strong>条件语句和循环结构</strong></em>来控制流程</p>
+<h2><span id="38控制流程">3.8控制流程</span></h2><p>与任何程序设计语句一样，java支持使用<em><strong>条件语句和循环结构</strong></em>来控制流程</p>
 <blockquote>
 <p>[!NOTE]</p>
 <p>Java的控制流程结构与C&#x2F;C++基本相同，只有很少几个例外。Java中没有goto语句，但break语句可以带标签，可以利用它从嵌套循环中跳出（C中可能就要使用goto语句了）。以及还有一种变形的for循环，有点类似于C++中基于范围的for循环和C#中的foreach循环</p>
 </blockquote>
-<h3 id="3-8-1块作用域"><a href="#3-8-1块作用域" class="headerlink" title="3.8.1块作用域"></a>3.8.1块作用域</h3><p><em><strong>块（即复合语句）由若干条Java语句组成，并用一对大括号括起来，块确定了变量的作用域，一个块可以嵌套在另一个块中</strong></em></p>
+<h3><span id="381块作用域">3.8.1块作用域</span></h3><p><em><strong>块（即复合语句）由若干条Java语句组成，并用一对大括号括起来，块确定了变量的作用域，一个块可以嵌套在另一个块中</strong></em></p>
 <p><em><strong>不能在嵌套的两个块中声明同名变量</strong></em></p>
 <pre><code class="language-java">public static void main(String[] args)
 &#123;
@@ -1548,7 +1753,7 @@ System.out.printf(&quot;%8.2f&quot;,x);
 <p>[!NOTE]</p>
 <p>在C++中，可以在嵌套的块中重定义一个变量，在内层定义的变量会屏蔽在外层定义的变量，这就有可能带来编程错误，因此Java中不允许这样做</p>
 </blockquote>
-<h3 id="3-8-2条件语句"><a href="#3-8-2条件语句" class="headerlink" title="3.8.2条件语句"></a>3.8.2条件语句</h3><p>条件语句的形式为<em><strong>if(condition) statement</strong></em></p>
+<h3><span id="382条件语句">3.8.2条件语句</span></h3><p>条件语句的形式为<em><strong>if(condition) statement</strong></em></p>
 <p>其中statement可以是块语句</p>
 <pre><code class="language-java">if(condition)
 &#123;
@@ -1571,7 +1776,7 @@ else if()&#123;&#125;
 ...
 else&#123;&#125;
 </code></pre>
-<h3 id="3-8-3-循环"><a href="#3-8-3-循环" class="headerlink" title="3.8.3 循环"></a>3.8.3 循环</h3><p><em><strong>while循环会在条件为true时反复执行一个（块）语句，如果开始时循环条件就为false，那么while循环一次也不执行</strong></em></p>
+<h3><span id="383-循环">3.8.3 循环</span></h3><p><em><strong>while循环会在条件为true时反复执行一个（块）语句，如果开始时循环条件就为false，那么while循环一次也不执行</strong></em></p>
 <p>如果希望循环体至少循环一次，需要使用do&#x2F;while循环将检测放到最后 <em><strong>do statement while(condition)</strong></em></p>
 <p>这种循环先执行语句（块），然后再检查循环条件，如果条件为true，重复执行语句，然后继续检测，以此类推</p>
 <p>示例程序1</p>
@@ -1661,7 +1866,7 @@ public class Retirement2
    &#125;
 &#125;
 </code></pre>
-<h3 id="3-8-4-确定性循环"><a href="#3-8-4-确定性循环" class="headerlink" title="3.8.4 确定性循环"></a>3.8.4 确定性循环</h3><p>for循环语句是支持迭代的一种通用结构，它由一个计数器或类似的变量控制迭代次数，每次迭代后更新变量。</p>
+<h3><span id="384-确定性循环">3.8.4 确定性循环</span></h3><p>for循环语句是支持迭代的一种通用结构，它由一个计数器或类似的变量控制迭代次数，每次迭代后更新变量。</p>
 <pre><code class="language-java">for(int i=1;i&lt;=10;i++)
 	System.out.println(i);
 </code></pre>
@@ -1708,7 +1913,7 @@ public class LotteryOdds
    &#125;
 &#125;
 </code></pre>
-<h3 id="3-8-5-多重选择：switch语句"><a href="#3-8-5-多重选择：switch语句" class="headerlink" title="3.8.5 多重选择：switch语句"></a>3.8.5 多重选择：switch语句</h3><p><em><strong>适用于处理同一个表达式的多个选项</strong></em></p>
+<h3><span id="385-多重选择switch语句">3.8.5 多重选择：switch语句</span></h3><p><em><strong>适用于处理同一个表达式的多个选项</strong></em></p>
 <pre><code class="language-java">      String input=&quot;&quot;;
       switch(input.toLowerCase())
       &#123;
@@ -1828,9 +2033,9 @@ switch (seasonName)
 <p><em><strong>不能在switch表达式中使用return，break，continue语句</strong></em></p>
 </blockquote>
 <p><em><strong>switch表达式优于switch语句</strong></em>，只有在确实需要直通式行为，或者必须为一个switch表达式增加语句时，才需要使用break或yield</p>
-<h3 id="3-8-6中断控制流程的语句"><a href="#3-8-6中断控制流程的语句" class="headerlink" title="3.8.6中断控制流程的语句"></a>3.8.6中断控制流程的语句</h3><p>尽管Java的设计者将goto仍作为一个保留字，但实际上并不打算在语言中包含goto。通常使用goto会被认为是一种拙劣的编码风格，无限制地使用goto语句很容易导致错误，但在有些情况下偶尔使用goto跳出循环还是很有益处的。</p>
-<h4 id="不带标签的break"><a href="#不带标签的break" class="headerlink" title="不带标签的break"></a>不带标签的break</h4><p>退出循环（最内层）</p>
-<h4 id="带标签的break（与C-不同，新增）"><a href="#带标签的break（与C-不同，新增）" class="headerlink" title="带标签的break（与C++不同，新增）"></a>带标签的break（与C++不同，新增）</h4><p><em><strong>允许跳出多重嵌套的循环</strong></em>（有时希望跳出所有循环）</p>
+<h3><span id="386中断控制流程的语句">3.8.6中断控制流程的语句</span></h3><p>尽管Java的设计者将goto仍作为一个保留字，但实际上并不打算在语言中包含goto。通常使用goto会被认为是一种拙劣的编码风格，无限制地使用goto语句很容易导致错误，但在有些情况下偶尔使用goto跳出循环还是很有益处的。</p>
+<h4><span id="不带标签的break">不带标签的break</span></h4><p>退出循环（最内层）</p>
+<h4><span id="带标签的break与c不同新增">带标签的break（与C++不同，新增）</span></h4><p><em><strong>允许跳出多重嵌套的循环</strong></em>（有时希望跳出所有循环）</p>
 <p><em><strong>标签必须放在你想跳出的最外层循环之前，并且紧跟一个冒号</strong></em></p>
 <pre><code class="language-java">Scanner in=new Scanner(System.in);
 int n;
@@ -1860,8 +2065,8 @@ else
 &#125;
 </code></pre>
 <p>实际上，<em><strong>可以将标签应用到任何语句</strong></em>，包括if语句或块语句。<em><strong>但只能跳出语句块，而不能跳入语句块</strong></em></p>
-<h4 id="continue语句（不带标签）"><a href="#continue语句（不带标签）" class="headerlink" title="continue语句（不带标签）"></a>continue语句（不带标签）</h4><p><em><strong>将控制转移到最内层外围循环首部，如果在for循环中使用会跳转到for循环的更新部分</strong></em></p>
-<h4 id="带标签的continue语句"><a href="#带标签的continue语句" class="headerlink" title="带标签的continue语句"></a>带标签的continue语句</h4><h2 id="3-9大数"><a href="#3-9大数" class="headerlink" title="3.9大数"></a>3.9大数</h2><p>使用java.math包中两个很有用的类：<em><strong>BigInteger</strong></em>和<em><strong>BigDecimal</strong></em>可以处理包含<em><strong>任意长度数字序列</strong></em>的数值，BigInteger实现任意精度的整数运算，BigDecimal类实现任意精度的浮点数运算</p>
+<h4><span id="continue语句不带标签">continue语句（不带标签）</span></h4><p><em><strong>将控制转移到最内层外围循环首部，如果在for循环中使用会跳转到for循环的更新部分</strong></em></p>
+<h4><span id="带标签的continue语句">带标签的continue语句</span></h4><h2><span id="39大数">3.9大数</span></h2><p>使用java.math包中两个很有用的类：<em><strong>BigInteger</strong></em>和<em><strong>BigDecimal</strong></em>可以处理包含<em><strong>任意长度数字序列</strong></em>的数值，BigInteger实现任意精度的整数运算，BigDecimal类实现任意精度的浮点数运算</p>
 <p>使用静态的<em><strong>valueOf</strong></em>方法可以将一个普通的数转换成大数</p>
 <pre><code class="language-java">BigInteger a=BigInteger.valueOf(100);
 </code></pre>
@@ -1960,8 +2165,8 @@ public class BigIntegerTest
 <p>如果和另一个大实数other相等，返回0；如果小于other，返回负数；否则返回正数</p>
 </li>
 </ul>
-<h2 id="3-10数组"><a href="#3-10数组" class="headerlink" title="3.10数组"></a>3.10数组</h2><p>数组存储相同类型值的序列</p>
-<h3 id="3-10-1-声明数组"><a href="#3-10-1-声明数组" class="headerlink" title="3.10.1 声明数组"></a>3.10.1 声明数组</h3><p>数组是一种数据结构，用来存储同一类型值的集合，通过一个整型下标（index）可以访问数组中的每一个值</p>
+<h2><span id="310数组">3.10数组</span></h2><p>数组存储相同类型值的序列</p>
+<h3><span id="3101-声明数组">3.10.1 声明数组</span></h3><p>数组是一种数据结构，用来存储同一类型值的集合，通过一个整型下标（index）可以访问数组中的每一个值</p>
 <pre><code class="language-java">int[] a;//声明数组
 int[] a=new int[100];//or var a=new int[100];//初始化
 </code></pre>
@@ -1990,7 +2195,7 @@ String[] authors=
 </code></pre>
 <p><em><strong>长度为0的数组与null并不同</strong></em></p>
 </blockquote>
-<h3 id="3-10-2-访问数组元素"><a href="#3-10-2-访问数组元素" class="headerlink" title="3.10.2 访问数组元素"></a>3.10.2 访问数组元素</h3><p><em><strong>数组元素从0开始编号，最后一个合法索引为数组长度-1</strong></em></p>
+<h3><span id="3102-访问数组元素">3.10.2 访问数组元素</span></h3><p><em><strong>数组元素从0开始编号，最后一个合法索引为数组长度-1</strong></em></p>
 <p><em><strong>创建一个数字数组时，所有元素都初始化为0；boolean数组的元素会初始化为false；对象数组（如字符串）的元素则初始化为一个特殊值null，表示还未存放任何对象</strong></em></p>
 <blockquote>
 <p>[!CAUTION]</p>
@@ -1998,7 +2203,7 @@ String[] authors=
 </blockquote>
 <p>如果创建一个包含一百个元素的数组然后访问a[100]就会出现”array index out of bounds”(数组索引越界)异常</p>
 <p>要想获取数组中元素个数可以使用array.length</p>
-<h3 id="3-10-3-for-each循环"><a href="#3-10-3-for-each循环" class="headerlink" title="3.10.3 for each循环"></a>3.10.3 for each循环</h3><p>增强的for循环形式（遍历数组而不用考虑指定索引值）</p>
+<h3><span id="3103-for-each循环">3.10.3 for each循环</span></h3><p>增强的for循环形式（遍历数组而不用考虑指定索引值）</p>
 <pre><code class="language-java">for(variable:collection)statement//循环collection中的每一个元素
 </code></pre>
 <p>variable：集合中的每一个元素</p>
@@ -2009,7 +2214,7 @@ String[] authors=
 <p>[!NOTE]</p>
 <p>利用Arrays类中的toString方法可以更容易地打印数组中的所有值，调用Arrays.toString(a)会返回一个包含数组元素的字符串，这些元素包含在中括号中，并用逗号分隔，如”[2,3,5,7]”(并非逐个输出，而是整体输出)</p>
 </blockquote>
-<h3 id="3-10-4数组拷贝"><a href="#3-10-4数组拷贝" class="headerlink" title="3.10.4数组拷贝"></a>3.10.4数组拷贝</h3><p>在Java中，允许将一个数组变量拷贝到另一个数组变量，此时两个变量将<em><strong>引用同一个数组</strong></em>（指针）</p>
+<h3><span id="3104数组拷贝">3.10.4数组拷贝</span></h3><p>在Java中，允许将一个数组变量拷贝到另一个数组变量，此时两个变量将<em><strong>引用同一个数组</strong></em>（指针）</p>
 <pre><code class="language-java">int[] luckyNumbers=smallPrimes;
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/8.jpg" alt="8"></p>
@@ -2034,7 +2239,7 @@ String[] authors=
 </code></pre>
 <p><em><strong>Java中的[]运算符预定义为会完成越界检查（编写代码时便会出现越界警告）</strong></em>。另外，没有指针运算，意味着<em><strong>不能通过a+1得到数组中的下一个元素</strong></em></p>
 </blockquote>
-<h3 id="3-10-5-命令行参数"><a href="#3-10-5-命令行参数" class="headerlink" title="3.10.5 命令行参数"></a>3.10.5 命令行参数</h3><p><em><strong>String args[]表明main方法接受一个字符串数组，也就是命令行上指定的参数</strong></em></p>
+<h3><span id="3105-命令行参数">3.10.5 命令行参数</span></h3><p><em><strong>String args[]表明main方法接受一个字符串数组，也就是命令行上指定的参数</strong></em></p>
 <pre><code class="language-java">public class Message&#123;
    public static void main(String[] args)
    &#123;
@@ -2060,7 +2265,7 @@ String[] authors=
 </code></pre>
 <p>args[0]是”-h”,而不是”Message”或者”java”</p>
 </blockquote>
-<h3 id="3-10-6-数组排序"><a href="#3-10-6-数组排序" class="headerlink" title="3.10.6 数组排序"></a>3.10.6 数组排序</h3><p>想对数值型数组排序可以使用Arrays类中的sort方法，这个方法使用了优化的<em><strong>快速排序</strong></em>算法</p>
+<h3><span id="3106-数组排序">3.10.6 数组排序</span></h3><p>想对数值型数组排序可以使用Arrays类中的sort方法，这个方法使用了优化的<em><strong>快速排序</strong></em>算法</p>
 <p>示例程序</p>
 <pre><code class="language-java">import java.util.*;
 
@@ -2137,7 +2342,7 @@ public class LotteryDrawing
 <p>如果两个数组长度相同且相同索引对应元素相同返回true</p>
 </li>
 </ul>
-<h3 id="3-10-7多维数组"><a href="#3-10-7多维数组" class="headerlink" title="3.10.7多维数组"></a>3.10.7多维数组</h3><p>创建、初始化、访问与一维数组类似</p>
+<h3><span id="3107多维数组">3.10.7多维数组</span></h3><p>创建、初始化、访问与一维数组类似</p>
 <blockquote>
 <p>[!CAUTION]</p>
 <p>for each循环语句不会自动循环处理二维数组的所有元素，他会循环处理行，而这些行本身是一维数组，要想访问二维数组a的所有元素，需要使用两个嵌套循环</p>
@@ -2211,7 +2416,7 @@ public class CompoundInterest
    &#125;
 &#125;
 </code></pre>
-<h3 id="3-10-8-不规则数组"><a href="#3-10-8-不规则数组" class="headerlink" title="3.10.8 不规则数组"></a>3.10.8 不规则数组</h3><p><em><strong>Java实际上没有多维数组，只有一维数组，被解释为”数组的数组”</strong></em></p>
+<h3><span id="3108-不规则数组">3.10.8 不规则数组</span></h3><p><em><strong>Java实际上没有多维数组，只有一维数组，被解释为”数组的数组”</strong></em></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/9.jpg" alt="9"></p>
 <p>由于可以单独地访问数组的某一行，所以可以让两行交换。</p>
 <pre><code class="language-java">double[] temp =balance[i];
@@ -2280,18 +2485,18 @@ public class LotteryArray
    &#125;
 &#125;
 </code></pre>
-<h1 id="第四章-对象与类"><a href="#第四章-对象与类" class="headerlink" title="第四章 对象与类"></a>第四章 对象与类</h1><h2 id="4-1-面向对象程序设计概述"><a href="#4-1-面向对象程序设计概述" class="headerlink" title="4.1 面向对象程序设计概述"></a>4.1 面向对象程序设计概述</h2><p>面向对象程序设计（Object-Oriented Programming,OOP）是当今主流的程序设计类型</p>
+<h1><span id="第四章-对象与类">第四章 对象与类</span></h1><h2><span id="41-面向对象程序设计概述">4.1 面向对象程序设计概述</span></h2><p>面向对象程序设计（Object-Oriented Programming,OOP）是当今主流的程序设计类型</p>
 <p>面向对象的程序是由对象组成的，每个对象包含<em><strong>对用户公开的特定功能和隐藏的实现</strong></em></p>
 <p>OOP将<em><strong>数据放在第一位</strong></em>，然后再考虑操作数据的算法</p>
 <p>规模较小的问题将其分解为过程的做法是合适的，规模较大的问题则更适合分解为对象</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250710220907648.png" alt="image-20250710220907648"></p>
-<h3 id="4-1-1-类"><a href="#4-1-1-类" class="headerlink" title="4.1.1 类"></a>4.1.1 类</h3><p><em><strong>类指定了如何构造对象，由一个类构造对象的过程称为创建这个类的一个实例</strong></em></p>
+<h3><span id="411-类">4.1.1 类</span></h3><p><em><strong>类指定了如何构造对象，由一个类构造对象的过程称为创建这个类的一个实例</strong></em></p>
 <p><em><strong>封装</strong></em>（encapsulation,有时称为信息隐藏）：将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现细节</p>
 <p>对象中的数据称为<code>实例字段（instance field）</code>，操作数据的过程称为<code>方法</code>，作为一个类的实例，一个特定对象有一组特定的实例字段值，这些值的集合就是这个对象的当前<code>状态</code>，调用方法便可能导致状态改变</p>
 <p>实现封装的关键在于：<em><strong>绝对不能让其他类中的其他方法直接访问这个类的实例字段</strong></em>，程序<em><strong>只能通过对象的方法</strong></em>与对象数据进行交互。封装为对象赋予了”黑盒”性质</p>
 <p>OOP的另一原则：可以通过扩展其他类来构建新类 所有Java类都扩展自Object类   扩展一个已有的类时，新类具有被扩展的类的全部属性和方法</p>
 <p>通过一个类来得到另一个新类被称为<code>继承</code></p>
-<h3 id="4-1-2-对象"><a href="#4-1-2-对象" class="headerlink" title="4.1.2 对象"></a>4.1.2 对象</h3><p>对象的三个主要特性：</p>
+<h3><span id="412-对象">4.1.2 对象</span></h3><p>对象的三个主要特性：</p>
 <ul>
 <li><p>行为：可以对这个对象进行哪些操作</p>
 <p>同一个类的所有实例对象具有一种家族相似性，他们都支持相同的行为。<em><strong>一个对象的行为由所能调用的方法来定义</strong></em></p>
@@ -2303,9 +2508,9 @@ public class LotteryArray
 <p>对象的状态并不能完全描述一个对象，因为每个对象都有一个唯一的标识。<em><strong>作为同一个类的实例，每个对象的标识总是不同的，状态也<code>通常</code>有所不同</strong></em></p>
 </li>
 </ul>
-<h3 id="4-1-3-识别类"><a href="#4-1-3-识别类" class="headerlink" title="4.1.3 识别类"></a>4.1.3 识别类</h3><p>设计一个面向对象系统时，首先从识别类开始，然后为各个类添加方法</p>
+<h3><span id="413-识别类">4.1.3 识别类</span></h3><p>设计一个面向对象系统时，首先从识别类开始，然后为各个类添加方法</p>
 <p>识别类的一个简单经验是在分析问题的过程中寻找名词，而方法对应动词</p>
-<h3 id="4-1-4-类之间的关系"><a href="#4-1-4-类之间的关系" class="headerlink" title="4.1.4 类之间的关系"></a>4.1.4 类之间的关系</h3><ul>
+<h3><span id="414-类之间的关系">4.1.4 类之间的关系</span></h3><ul>
 <li><p><em><strong>依赖</strong></em>（”uses-a”）dependence</p>
 <p><em><strong>如果一个类的方法要使用或操作另一个类的对象，我们就说前一个类依赖于后一个类</strong></em>，是最明显也是最一般的关系</p>
 <p>应当尽可能减少相互依赖的类，用软件工程术语来说就是要<em><strong>减少类之间的耦合（coupling）</strong></em></p>
@@ -2320,7 +2525,7 @@ public class LotteryArray
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250710232644776.png" alt="image-20250710232644776"></p>
 </li>
 </ul>
-<h2 id="4-2-使用预定义类"><a href="#4-2-使用预定义类" class="headerlink" title="4.2 使用预定义类"></a>4.2 使用预定义类</h2><h3 id="4-2-1-对象与对象变量"><a href="#4-2-1-对象与对象变量" class="headerlink" title="4.2.1 对象与对象变量"></a>4.2.1 对象与对象变量</h3><p>要想使用对象，必须先构造对象，并指定其初始状态，然后对对象应用方法。在Java中，要使用<code>构造器</code>构造对象，<em><strong>构造器始终与类同名</strong></em></p>
+<h2><span id="42-使用预定义类">4.2 使用预定义类</span></h2><h3><span id="421-对象与对象变量">4.2.1 对象与对象变量</span></h3><p>要想使用对象，必须先构造对象，并指定其初始状态，然后对对象应用方法。在Java中，要使用<code>构造器</code>构造对象，<em><strong>构造器始终与类同名</strong></em></p>
 <pre><code class="language-java">Date rightNow=new Date();
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143302954.png" alt="image-20250714143302954"></p>
@@ -2334,7 +2539,7 @@ startTime=rightNow;
 <p>null指示当前对象还没有引用任何对象</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143802791.png" alt="image-20250714143802791"></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714143827114.png" alt="image-20250714143827114"></p>
-<h3 id="4-2-2-Java类库中的LocalDate类"><a href="#4-2-2-Java类库中的LocalDate类" class="headerlink" title="4.2.2 Java类库中的LocalDate类"></a>4.2.2 Java类库中的LocalDate类</h3><p>用于表示日期，使用静态工厂方法构造对象</p>
+<h3><span id="422-java类库中的localdate类">4.2.2 Java类库中的LocalDate类</span></h3><p>用于表示日期，使用静态工厂方法构造对象</p>
 <pre><code class="language-java">LocalDate now = LocalDate.now();
 LocalDate writeTime=LocalDate.of(2025,7,14);
 int year= writeTime.getYear();//2025
@@ -2347,7 +2552,7 @@ LocalDate aThousandsLater=writeTime.plusDays(1000);
 <p>[!NOTE]</p>
 <p>JDK提供了jdeprscan工具来检查代码中是否使用了Java API中已经废弃的特性。<a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/17/docs/specs/man/jdeprscan.html">The jdeprscan Command</a></p>
 </blockquote>
-<h3 id="4-2-3-更改器方法与访问器方法"><a href="#4-2-3-更改器方法与访问器方法" class="headerlink" title="4.2.3 更改器方法与访问器方法"></a>4.2.3 更改器方法与访问器方法</h3><p><em><strong>只访问对象而不修改对象的方法称为访问器方法</strong></em>，如LocalDate中的plusDays方法会生成一个新的对象</p>
+<h3><span id="423-更改器方法与访问器方法">4.2.3 更改器方法与访问器方法</span></h3><p><em><strong>只访问对象而不修改对象的方法称为访问器方法</strong></em>，如LocalDate中的plusDays方法会生成一个新的对象</p>
 <p>会修改对象的方法称为更改器方法，如GregorianCalendar中的add反法</p>
 <pre><code class="language-java">GregorianCalendar someday=new GregorianCalendar(2025, 6,14);//6代表7月，0-11
 someday.add(Calendar.DAY_OF_MONTH, 1000);
@@ -2403,7 +2608,7 @@ public class CalendarTest
 <li>LocalDate plusDays(int n)</li>
 <li>LocalDate minusDays(int n)</li>
 </ul>
-<h2 id="4-3-自定义类"><a href="#4-3-自定义类" class="headerlink" title="4.3 自定义类"></a>4.3 自定义类</h2><h3 id="4-3-1-Employee类"><a href="#4-3-1-Employee类" class="headerlink" title="4.3.1 Employee类"></a>4.3.1 Employee类</h3><p>最简单类定义形式</p>
+<h2><span id="43-自定义类">4.3 自定义类</span></h2><h3><span id="431-employee类">4.3.1 Employee类</span></h3><p>最简单类定义形式</p>
 <pre><code class="language-java">class ClassName
 &#123;
 	field1
@@ -2482,10 +2687,10 @@ class Employee
 &#125;
 </code></pre>
 <p>源文件名为EmployeeTest.java，这是因为文件名必须与public类的名字相匹配，<em><strong>一个源文件只能有一个公共类，但可以有任意数目的非公共类</strong></em></p>
-<h3 id="4-3-2-使用多个源文件"><a href="#4-3-2-使用多个源文件" class="headerlink" title="4.3.2 使用多个源文件"></a>4.3.2 使用多个源文件</h3><p>推荐将各个类放在一个单独的源文件中</p>
-<h3 id="4-3-3-剖析Employee类"><a href="#4-3-3-剖析Employee类" class="headerlink" title="4.3.3 剖析Employee类"></a>4.3.3 剖析Employee类</h3><p>标记为public代表任何类的任何方法都可以调用，private则说明只有Employee类本身能够调用（实例字段）</p>
+<h3><span id="432-使用多个源文件">4.3.2 使用多个源文件</span></h3><p>推荐将各个类放在一个单独的源文件中</p>
+<h3><span id="433-剖析employee类">4.3.3 剖析Employee类</span></h3><p>标记为public代表任何类的任何方法都可以调用，private则说明只有Employee类本身能够调用（实例字段）</p>
 <p>类经常包含类类型的实例字段，如String类</p>
-<h3 id="4-3-4-从构造器开始"><a href="#4-3-4-从构造器开始" class="headerlink" title="4.3.4 从构造器开始"></a>4.3.4 从构造器开始</h3><pre><code class="language-java">   public Employee(String n, double s, int year, int month, int day)
+<h3><span id="434-从构造器开始">4.3.4 从构造器开始</span></h3><pre><code class="language-java">   public Employee(String n, double s, int year, int month, int day)
    &#123;
       name = n;
       salary = s;
@@ -2505,13 +2710,13 @@ class Employee
 <p><em><strong>不要引入与实例字段同名的局部变量</strong></em></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714153040069.png" alt="image-20250714153040069"></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714153047603.png" alt="image-20250714153047603"></p>
-<h3 id="4-3-5-用var声明局部变量"><a href="#4-3-5-用var声明局部变量" class="headerlink" title="4.3.5 用var声明局部变量"></a>4.3.5 用var声明局部变量</h3><p>从java10开始，如果<em><strong>可以从变量的初始值推导出它们的类型</strong></em>，可以<em><strong>用var关键字声明局部变量而无需指定类型</strong></em></p>
+<h3><span id="435-用var声明局部变量">4.3.5 用var声明局部变量</span></h3><p>从java10开始，如果<em><strong>可以从变量的初始值推导出它们的类型</strong></em>，可以<em><strong>用var关键字声明局部变量而无需指定类型</strong></em></p>
 <pre><code class="language-java">Employee harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 </code></pre>
 <p><em><strong>不要对数值类型使用var</strong></em>,如long&#x2F;int&#x2F;double，否则难以区分0、0L、0.0之间的区别</p>
 <p><em><strong>var关键字只能用于方法中的局部变量，参数和字段的类型必须声明</strong></em></p>
-<h3 id="4-3-6-使用null引用"><a href="#4-3-6-使用null引用" class="headerlink" title="4.3.6 使用null引用"></a>4.3.6 使用null引用</h3><p>使用null值要非常小心，虽然这是一种处理特殊情况的便捷机制，但是比如对null值应用方法时，会产生NullPointerException异常</p>
+<h3><span id="436-使用null引用">4.3.6 使用null引用</span></h3><p>使用null值要非常小心，虽然这是一种处理特殊情况的便捷机制，但是比如对null值应用方法时，会产生NullPointerException异常</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714154120836.png" alt="image-20250714154120836"></p>
 <p>定义一个类时，最好请楚地知道哪些字段可能为null，然后进行处理</p>
 <p>两种解决方法</p>
@@ -2534,7 +2739,7 @@ var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 </li>
 </ul>
 <p>如果要接受一个对象引用作为构造参数，就要弄清楚是否接受可有可无的值，如果不是，那么严格方法更适用</p>
-<h3 id="4-3-7-隐式参数与显式参数"><a href="#4-3-7-隐式参数与显式参数" class="headerlink" title="4.3.7 隐式参数与显式参数"></a>4.3.7 隐式参数与显式参数</h3><pre><code class="language-java">public void raiseSalary(double byPercent)
+<h3><span id="437-隐式参数与显式参数">4.3.7 隐式参数与显式参数</span></h3><pre><code class="language-java">public void raiseSalary(double byPercent)
    &#123;
       double raise = salary * byPercent / 100;
       salary += raise;
@@ -2552,7 +2757,7 @@ var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 <p>这样的风格能将实例字段与局部变量明显地区分开来</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714155721278.png" alt="image-20250714155721278"></p>
 <p>内联方法（Inline Method）是一种编程中的代码重构技术，用于将一个方法的实现直接嵌入到调用该方法的代码中，从而去除该方法的定义。这种方法通常用于简化代码结构、提高性能或减少方法调用的开销</p>
-<h3 id="4-3-8-封装的优点"><a href="#4-3-8-封装的优点" class="headerlink" title="4.3.8 封装的优点"></a>4.3.8 封装的优点</h3><pre><code class="language-java">   public String getName()
+<h3><span id="438-封装的优点">4.3.8 封装的优点</span></h3><pre><code class="language-java">   public String getName()
    &#123;
       return name;
    &#125;
@@ -2582,9 +2787,9 @@ var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 </ul>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714161313188.png" alt="image-20250714161313188"></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714161328088.png" alt="image-20250714161328088"></p>
-<h3 id="4-3-9-基于类的访问权限"><a href="#4-3-9-基于类的访问权限" class="headerlink" title="4.3.9 基于类的访问权限"></a>4.3.9 基于类的访问权限</h3><p><em><strong>方法可以访问调用这个方法的对象的私有数据，一个类的方法可以访问这个类的<u>所有对象</u>的私有数据</strong></em></p>
-<h3 id="4-3-10-私有方法"><a href="#4-3-10-私有方法" class="headerlink" title="4.3.10 私有方法"></a>4.3.10 私有方法</h3><p>public-&gt;private 多为辅助方法</p>
-<h3 id="4-3-11-final实例字段"><a href="#4-3-11-final实例字段" class="headerlink" title="4.3.11 final实例字段"></a>4.3.11 final实例字段</h3><p>这样的字段必须<em><strong>在构造对象时初始化，并且之后不能再修改修改这个字段</strong></em></p>
+<h3><span id="439-基于类的访问权限">4.3.9 基于类的访问权限</span></h3><p><em><strong>方法可以访问调用这个方法的对象的私有数据，一个类的方法可以访问这个类的<u>所有对象</u>的私有数据</strong></em></p>
+<h3><span id="4310-私有方法">4.3.10 私有方法</span></h3><p>public-&gt;private 多为辅助方法</p>
+<h3><span id="4311-final实例字段">4.3.11 final实例字段</span></h3><p>这样的字段必须<em><strong>在构造对象时初始化，并且之后不能再修改修改这个字段</strong></em></p>
 <p>final修饰符对类型为基本类型或不可变类（如String）的字段尤其有效</p>
 <p>对于可变类，使用final修饰符可能会造成混乱</p>
 <p>考虑以下字段</p>
@@ -2596,8 +2801,8 @@ var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 <p><em><strong>final关键字只是表示存储在evaluations变量中的对象引用不会再指示另一个不同的StringBuilder对象，不过该对象可以更改</strong></em></p>
 <pre><code class="language-java">evaluations.append(&quot;123456&quot;);
 </code></pre>
-<h2 id="4-4-静态字段与静态方法"><a href="#4-4-静态字段与静态方法" class="headerlink" title="4.4 静态字段与静态方法"></a>4.4 静态字段与静态方法</h2><p>有关static修饰符</p>
-<h3 id="4-4-1-静态字段"><a href="#4-4-1-静态字段" class="headerlink" title="4.4.1 静态字段"></a>4.4.1 静态字段</h3><p>如果将一个字段定义为static，那么该字段并不出现在每个类的对象中，每个静态字段只有一个副本，可以认为<em><strong>静态字段属于类而不属于单个对象</strong></em></p>
+<h2><span id="44-静态字段与静态方法">4.4 静态字段与静态方法</span></h2><p>有关static修饰符</p>
+<h3><span id="441-静态字段">4.4.1 静态字段</span></h3><p>如果将一个字段定义为static，那么该字段并不出现在每个类的对象中，每个静态字段只有一个副本，可以认为<em><strong>静态字段属于类而不属于单个对象</strong></em></p>
 <pre><code class="language-java">class Employee
 &#123;
 	private static int nextId=1;
@@ -2615,7 +2820,7 @@ var harry=new Employee(&quot;Harry Hacker&quot;,50000,1989,10,1);
 <pre><code class="language-java">harry.id=Employee.nextId;
 Employee.nextId++;
 </code></pre>
-<h3 id="4-4-2-静态常量"><a href="#4-4-2-静态常量" class="headerlink" title="4.4.2 静态常量"></a>4.4.2 静态常量</h3><p>如Math类中定义的静态常量PI，使用Math.PI 访问，另一经常使用的静态常量为System.out</p>
+<h3><span id="442-静态常量">4.4.2 静态常量</span></h3><p>如Math类中定义的静态常量PI，使用Math.PI 访问，另一经常使用的静态常量为System.out</p>
 <pre><code class="language-java">public class System
 &#123;
 	...
@@ -2624,7 +2829,7 @@ Employee.nextId++;
 &#125;
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714164543350.png" alt="image-20250714164543350"></p>
-<h3 id="4-4-3-静态方法"><a href="#4-4-3-静态方法" class="headerlink" title="4.4.3 静态方法"></a>4.4.3 静态方法</h3><p><em><strong>静态方法是不操作对象的方法，即这个方法没有隐式参数</strong></em></p>
+<h3><span id="443-静态方法">4.4.3 静态方法</span></h3><p><em><strong>静态方法是不操作对象的方法，即这个方法没有隐式参数</strong></em></p>
 <p>Employee类的静态方法不能访问id实例字段，因为它并不操作对象，但是它可以访问静态字段</p>
 <pre><code class="language-java">public static int advanceId()
 &#123;
@@ -2644,7 +2849,7 @@ Employee.nextId++;
 <li>方法只需要访问类的静态字段</li>
 </ul>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714165359566.png" alt="image-20250714165359566"></p>
-<h3 id="4-4-4-工厂方法"><a href="#4-4-4-工厂方法" class="headerlink" title="4.4.4 工厂方法"></a>4.4.4 工厂方法</h3><p>类似LocalDate和NumberFormat的类使用静态工厂方法来构造对象，如LocalDate.now和LocalDate.of</p>
+<h3><span id="444-工厂方法">4.4.4 工厂方法</span></h3><p>类似LocalDate和NumberFormat的类使用静态工厂方法来构造对象，如LocalDate.now和LocalDate.of</p>
 <pre><code class="language-java">	  NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
       NumberFormat percentFormatter = NumberFormat.getPercentInstance();
       double x=0.1;
@@ -2656,7 +2861,7 @@ Employee.nextId++;
 <li>无法为构造器命名，构造器的名字要与类名相同，这里希望有两个不同的名字分别得到货币实例和百分比实例</li>
 <li>使用构造器方法时无法改变所构造对象的类型，而工厂方法实际将返回DecimalFormat类的对象，这是继承NumberFormat的一个子类</li>
 </ol>
-<h3 id="4-4-5-main方法"><a href="#4-4-5-main方法" class="headerlink" title="4.4.5 main方法"></a>4.4.5 main方法</h3><p>main方法也是一个静态方法，不对任何对象进行操作</p>
+<h3><span id="445-main方法">4.4.5 main方法</span></h3><p>main方法也是一个静态方法，不对任何对象进行操作</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714175302678.png" alt="image-20250714175302678"></p>
 <pre><code class="language-java">/**
  * This program demonstrates static methods.
@@ -2745,7 +2950,7 @@ class Employee
 <p>如果obj不为null则返回obj，或者如果obj为null则返回默认对象</p>
 </li>
 </ul>
-<h2 id="4-5-方法参数"><a href="#4-5-方法参数" class="headerlink" title="4.5 方法参数"></a>4.5 方法参数</h2><p><code>按值调用（call by value）</code>表示方法接收的是调用者提供的值，<code>按引用调用（call by reference）</code>表示方法接收的是调用者提供的变量位置，所以<em><strong>可以修改按引用传递的变量的值，而不能修改按值传递的变量的值</strong></em></p>
+<h2><span id="45-方法参数">4.5 方法参数</span></h2><p><code>按值调用（call by value）</code>表示方法接收的是调用者提供的值，<code>按引用调用（call by reference）</code>表示方法接收的是调用者提供的变量位置，所以<em><strong>可以修改按引用传递的变量的值，而不能修改按值传递的变量的值</strong></em></p>
 <p>按…调用是一个标准的计算机术语，用来描述各种程序设计语言中方法参数的行为，还有一种古老的方式——按名调用已经成为历史</p>
 <p>java程序设计语言总是采用<em><strong>按值调用</strong></em>，方法会得到所有参数值的一个副本，所以无法修改传递给它的任何参数变量的值</p>
 <pre><code class="language-java">public static void tripleValue(double x)// doesn&#39;t work
@@ -2890,14 +3095,14 @@ class Employee // simplified Employee class
    &#125;
 &#125;
 </code></pre>
-<h2 id="4-6-对象构造"><a href="#4-6-对象构造" class="headerlink" title="4.6 对象构造"></a>4.6 对象构造</h2><p>Java提供了多种编写构造器的机制</p>
-<h3 id="4-6-1-重载"><a href="#4-6-1-重载" class="headerlink" title="4.6.1 重载"></a>4.6.1 重载</h3><pre><code class="language-java">var messages=new StringBuilder();
+<h2><span id="46-对象构造">4.6 对象构造</span></h2><p>Java提供了多种编写构造器的机制</p>
+<h3><span id="461-重载">4.6.1 重载</span></h3><pre><code class="language-java">var messages=new StringBuilder();
 var todoList=new StringBuilder(&quot;to do&quot;);
 </code></pre>
 <p>如果多个方法有<em><strong>相同的方法名</strong></em>但有<em><strong>不同的参数</strong></em>，便出现了<code>重载</code>，编译器必须挑选出具体调用哪个方法，它用各个方法首部中的参数类型与特定方法调用中所使用 的值的类型进行匹配来选出正确的方法，不存在匹配就会产生编译时错误，这个查找匹配的过程称为<code>重载解析</code></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714183341689.png" alt="image-20250714183341689"></p>
-<h3 id="4-6-2-默认字段初始化"><a href="#4-6-2-默认字段初始化" class="headerlink" title="4.6.2 默认字段初始化"></a>4.6.2 默认字段初始化</h3><p>构造器中若没有显式地为一个字段设置初始值，就会为它设置为默认值：数值将设置为0，布尔值为false，对象引用为null</p>
-<h3 id="4-6-3-无参数构造器"><a href="#4-6-3-无参数构造器" class="headerlink" title="4.6.3 无参数构造器"></a>4.6.3 无参数构造器</h3><p>对象状态设置为默认值</p>
+<h3><span id="462-默认字段初始化">4.6.2 默认字段初始化</span></h3><p>构造器中若没有显式地为一个字段设置初始值，就会为它设置为默认值：数值将设置为0，布尔值为false，对象引用为null</p>
+<h3><span id="463-无参数构造器">4.6.3 无参数构造器</span></h3><p>对象状态设置为默认值</p>
 <pre><code class="language-java">public Employee()
 &#123;
 	name=&quot;&quot;;
@@ -2908,7 +3113,7 @@ var todoList=new StringBuilder(&quot;to do&quot;);
 <p>如果你写的类没有构造器，就会默认为你提供一个无参数构造器，这个构造器将会进行默认字段初始化</p>
 <p><em><strong>如果类中提供了至少一个构造器，但是没有提供无参数构造器，这个时候使用无参数构造器就是不合法的</strong></em></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714184225487.png" alt="image-20250714184225487"></p>
-<h3 id="4-6-4-显式字段初始化"><a href="#4-6-4-显式字段初始化" class="headerlink" title="4.6.4 显式字段初始化"></a>4.6.4 显式字段初始化</h3><p>如果一个类的所有构造器都需要把某个特定的实例字段设置为同一个值，可以在类定义中直接为其赋值，在执行构造器之前会完成这个赋值，<em><strong>初始值不一定是常量值</strong></em>，例如</p>
+<h3><span id="464-显式字段初始化">4.6.4 显式字段初始化</span></h3><p>如果一个类的所有构造器都需要把某个特定的实例字段设置为同一个值，可以在类定义中直接为其赋值，在执行构造器之前会完成这个赋值，<em><strong>初始值不一定是常量值</strong></em>，例如</p>
 <pre><code class="language-java">class Employee
 &#123;
 	private static int nextId;
@@ -2923,7 +3128,7 @@ var todoList=new StringBuilder(&quot;to do&quot;);
 	...
 &#125;
 </code></pre>
-<h3 id="4-6-5-参数名"><a href="#4-6-5-参数名" class="headerlink" title="4.6.5 参数名"></a>4.6.5 参数名</h3><p><em><strong>出发点：提高易读性（避免xyz），简洁，不会出错</strong></em></p>
+<h3><span id="465-参数名">4.6.5 参数名</span></h3><p><em><strong>出发点：提高易读性（避免xyz），简洁，不会出错</strong></em></p>
 <p>如</p>
 <pre><code class="language-java">public Employee(String aName,double aSalary)
 &#123;
@@ -2939,7 +3144,7 @@ var todoList=new StringBuilder(&quot;to do&quot;);
 &#125;
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714185207385.png" alt="image-20250714185207385"></p>
-<h3 id="4-6-6-调用另一个构造器"><a href="#4-6-6-调用另一个构造器" class="headerlink" title="4.6.6 调用另一个构造器"></a>4.6.6 调用另一个构造器</h3><p>关键字this指示一个方法的隐式参数</p>
+<h3><span id="466-调用另一个构造器">4.6.6 调用另一个构造器</span></h3><p>关键字this指示一个方法的隐式参数</p>
 <p>如果构造器的一个语句形如this(…)，这个构造器将调用同一个类的另一个构造器</p>
 <pre><code class="language-java">public Employee(double s)
 &#123;
@@ -2949,7 +3154,7 @@ var todoList=new StringBuilder(&quot;to do&quot;);
 &#125;
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714185627596.png" alt="image-20250714185627596"></p>
-<h3 id="4-6-7-初始化块"><a href="#4-6-7-初始化块" class="headerlink" title="4.6.7 初始化块"></a>4.6.7 初始化块</h3><pre><code class="language-java">class Employee
+<h3><span id="467-初始化块">4.6.7 初始化块</span></h3><pre><code class="language-java">class Employee
 &#123;
 	private static int nextId;
 	private int id;
@@ -3087,14 +3292,14 @@ class Employee
 <p>由给定算法名生成一个随机数生成器，算法L64X128MixRandom对大多数应用都适用</p>
 </li>
 </ul>
-<h3 id="4-6-8-对象析构与finalize方法"><a href="#4-6-8-对象析构与finalize方法" class="headerlink" title="4.6.8 对象析构与finalize方法"></a>4.6.8 对象析构与finalize方法</h3><p>java会完成自动的垃圾回收，不需要人工回收内存，所以java不支持析构器</p>
+<h3><span id="468-对象析构与finalize方法">4.6.8 对象析构与finalize方法</span></h3><p>java会完成自动的垃圾回收，不需要人工回收内存，所以java不支持析构器</p>
 <p>当然，如果某些对象使用了内存之外的其他资源，如文件或使用系统资源的另一个对象的句柄，在这种情况下当资源不再需要时回收再利用就十分重要。如果一个资源一旦使用完就需要立即关闭，那么应当提供一个close方法来完成必要的清理工作（第七章中将介绍如何确保自动调用这个方法）</p>
 <p>如果可以等到虚拟机退出，那么可以使用方法Runtime.addShutdownHook增加一个关闭钩，在java9中可以使用Cleaner类注册一个动作，当对象不再可达时（除了清洁器还能访问，其他对象都无法再访问这个对象）就会完成这个动作，可在API文档中了解这两种方法的详细内容</p>
 <blockquote>
 <p>[!WARNING]</p>
 <p>不要使用finalize方法进行清理，这个方法原本要在垃圾回收器清理对象之前调用，不过你并不能知道这个方法到底什么时候调用，而且该方法已经废弃</p>
 </blockquote>
-<h2 id="4-7-记录"><a href="#4-7-记录" class="headerlink" title="4.7 记录"></a>4.7 记录</h2><p>考虑一个类Point,这个类描述平面上的一个点，有x和y坐标</p>
+<h2><span id="47-记录">4.7 记录</span></h2><p>考虑一个类Point,这个类描述平面上的一个点，有x和y坐标</p>
 <pre><code class="language-java">public class Point &#123;
     private final double x;
     private final double y;
@@ -3106,7 +3311,7 @@ class Employee
 &#125;
 </code></pre>
 <p>为了更简洁地表示这些类，JDK14引入了一个预览特性：”记录”</p>
-<h3 id="4-7-1-记录概念"><a href="#4-7-1-记录概念" class="headerlink" title="4.7.1 记录概念"></a>4.7.1 记录概念</h3><p><em><strong>记录是一种特殊形式的类，其状态不可变，而且公共可读</strong></em></p>
+<h3><span id="471-记录概念">4.7.1 记录概念</span></h3><p><em><strong>记录是一种特殊形式的类，其状态不可变，而且公共可读</strong></em></p>
 <p>可以如下将Point定义为一个记录</p>
 <pre><code class="language-java">record Point(double x,double y)&#123;&#125;
 </code></pre>
@@ -3140,7 +3345,7 @@ System.out.println(p.x()+&quot;&quot;+p.y());
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714212353831.png" alt="image-20250714212353831"></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714212402329.png" alt="image-20250714212402329"></p>
-<h3 id="4-7-2-构造器：标准、自定义和简洁"><a href="#4-7-2-构造器：标准、自定义和简洁" class="headerlink" title="4.7.2 构造器：标准、自定义和简洁"></a>4.7.2 构造器：标准、自定义和简洁</h3><p>自动定义地设置所有实例字段的构造器称为<code>标准构造器</code>。</p>
+<h3><span id="472-构造器标准-自定义和简洁">4.7.2 构造器：标准、自定义和简洁</span></h3><p>自动定义地设置所有实例字段的构造器称为<code>标准构造器</code>。</p>
 <p>还可以定义另外的<code>自定义构造器</code>，<em><strong>这种构造器的第一个语句必须调用另一个构造器</strong></em>，所以最终会调用标准构造器</p>
 <pre><code class="language-java">record Point(double x,double y)
 &#123;
@@ -3246,13 +3451,13 @@ record Range(int from, int to)
 </code></pre>
 <p>运行结果</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250714214129008.png" alt="image-20250714214129008"></p>
-<h2 id="4-8-包"><a href="#4-8-包" class="headerlink" title="4.8 包"></a>4.8 包</h2><p>Java允许<em><strong>使用包（package）将类组织在一个集合中</strong></em>，借助包可以方便地组织你的代码，并将你自己的代码和别人提供的代码库分开</p>
-<h3 id="4-8-1-包名"><a href="#4-8-1-包名" class="headerlink" title="4.8.1 包名"></a>4.8.1 包名</h3><p>使用包的主要原因是<em><strong>确保类名的唯一性</strong></em>。假如两个程序员不约而同地提供了Employee类，只要他们将自己的类放置在不同的包中，就不会产生冲突。事实上，为了保证包名的绝对唯一性，可以使用一个因特网域名（这显然是唯一的）以逆序的形式作为包名，然后对于不同的项目使用不同的子包。例如，考虑域名lyh.com,如果逆序来写，就得到了com.lyh,然后可以追加一个项目名，如com.lyh.project,如果再把某个类放在这个包里，那么这个类的“完全限定”名就是com.lyh.project.className</p>
+<h2><span id="48-包">4.8 包</span></h2><p>Java允许<em><strong>使用包（package）将类组织在一个集合中</strong></em>，借助包可以方便地组织你的代码，并将你自己的代码和别人提供的代码库分开</p>
+<h3><span id="481-包名">4.8.1 包名</span></h3><p>使用包的主要原因是<em><strong>确保类名的唯一性</strong></em>。假如两个程序员不约而同地提供了Employee类，只要他们将自己的类放置在不同的包中，就不会产生冲突。事实上，为了保证包名的绝对唯一性，可以使用一个因特网域名（这显然是唯一的）以逆序的形式作为包名，然后对于不同的项目使用不同的子包。例如，考虑域名lyh.com,如果逆序来写，就得到了com.lyh,然后可以追加一个项目名，如com.lyh.project,如果再把某个类放在这个包里，那么这个类的“完全限定”名就是com.lyh.project.className</p>
 <blockquote>
 <p>[!NOTE]</p>
 <p>从编译器的角度来看，嵌套的包之间没有任何关系，例如java.util包与java.util.jar包毫无关系，<em><strong>每一个包都是独立的类的集合</strong></em></p>
 </blockquote>
-<h3 id="4-8-2-包的导入"><a href="#4-8-2-包的导入" class="headerlink" title="4.8.2 包的导入"></a>4.8.2 包的导入</h3><p><em><strong>一个类可以使用一个所属包的所有类以及其他包中的公共类</strong></em></p>
+<h3><span id="482-包的导入">4.8.2 包的导入</span></h3><p><em><strong>一个类可以使用一个所属包的所有类以及其他包中的公共类</strong></em></p>
 <p>可以采用两种方式访问另一个包中的公共类</p>
 <ol>
 <li><p>使用完全限定名（包名+类名）</p>
@@ -3282,7 +3487,7 @@ var today=new java.sql.Date(...);
 </code></pre>
 <p>在包中定位类是编译器的工作，类文件中的字节码总是使用完整的包名来引用其他类</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715140202980.png" alt="image-20250715140202980"></p>
-<h3 id="4-8-3-静态导入"><a href="#4-8-3-静态导入" class="headerlink" title="4.8.3 静态导入"></a>4.8.3 静态导入</h3><p>有一种import语句允许导入静态方法和静态字段，而不只是类</p>
+<h3><span id="483-静态导入">4.8.3 静态导入</span></h3><p>有一种import语句允许导入静态方法和静态字段，而不只是类</p>
 <p>例如，如果在源文件最上面添加</p>
 <pre><code class="language-java">import static java.lang.System.*;
 </code></pre>
@@ -3294,7 +3499,7 @@ exit(0);//i.e.,System.exit
 <pre><code class="language-java">import static java.lang.System.out;
 </code></pre>
 <p>实际上，是否有很多程序员想要简写System.out或Syetem.exit很让人怀疑，这样写出来的代码很不清晰，不过像<code>sqrt(pow(x,2)+pow(y,2))</code>看起来则比<code>Math.sqrt(Math.pow(x,2)+Math.pow(y,2))</code>简洁得多</p>
-<h3 id="4-8-4-在包中增加类"><a href="#4-8-4-在包中增加类" class="headerlink" title="4.8.4 在包中增加类"></a>4.8.4 在包中增加类</h3><p>要想将类放入包中，就必须将包名放在源文件的开头，即放在定义这个包中各个类的代码之前</p>
+<h3><span id="484-在包中增加类">4.8.4 在包中增加类</span></h3><p>要想将类放入包中，就必须将包名放在源文件的开头，即放在定义这个包中各个类的代码之前</p>
 <pre><code class="language-java">package com.lyh.project;
 public class RecordTest 
 &#123;
@@ -3390,11 +3595,11 @@ java com.mycompany.PayrollApp
 <p><em><strong>编译器处理文件（带有文件分隔符和扩展名.java的文件），而Java解释器加载类（带有.分隔符）</strong></em></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715143649680.png" alt="image-20250715143649680"></p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715143657816.png" alt="image-20250715143657816"></p>
-<h3 id="4-8-5-包访问"><a href="#4-8-5-包访问" class="headerlink" title="4.8.5 包访问"></a>4.8.5 包访问</h3><p>标记为public的部分可以由任意类使用；标记为private的部分只能由定义它们的类使用。如果没有指定public或private，这个部分（类&#x2F;方法&#x2F;变量）可以由同一个包中的所有方法访问（即默认<code>包可访问</code>）</p>
+<h3><span id="485-包访问">4.8.5 包访问</span></h3><p>标记为public的部分可以由任意类使用；标记为private的部分只能由定义它们的类使用。如果没有指定public或private，这个部分（类&#x2F;方法&#x2F;变量）可以由同一个包中的所有方法访问（即默认<code>包可访问</code>）</p>
 <p><em><strong>记得添加访问修饰符</strong></em>，尤其是对于变量必须显示地声明为private，不然默认为包可访问，会破坏封装性</p>
 <p>由于包不是封闭的实体，任何人都可以向包中添加更多的类，当然，有恶意或糟糕的程序员很可能利用包访问添加一些能修改变量的代码</p>
 <p>从1.2版本开始，JDK的实现者修改了类加载器，明确地禁止加载包名以”java.”开头的用户自定义的类，当然，用户自定义的类无法从这种保护中受益，另一种机制是让JAR文件声明包为密封的，以防止第三方修改，但这种机制已经过时。现在应当使用<code>模块</code>封装包，我们将会在卷二的第九章详细讨论</p>
-<h3 id="4-8-6-类路径"><a href="#4-8-6-类路径" class="headerlink" title="4.8.6 类路径"></a>4.8.6 类路径</h3><p>类存储在文件系统的子目录中，<em><strong>类的路径必须与包名匹配</strong></em></p>
+<h3><span id="486-类路径">4.8.6 类路径</span></h3><p>类存储在文件系统的子目录中，<em><strong>类的路径必须与包名匹配</strong></em></p>
 <p>另外类文件还可以存储在JAR（Java归档）文件中。在一个JAR文件中，可以包含多个压缩格式的类文件和子目录，这样既可以节省空间又可以改善性能。在程序中用到第三方的库时，你通常会得到一个或多个需要包含的JAR文件。</p>
 <blockquote>
 <p>[!NOTE]</p>
@@ -3433,7 +3638,7 @@ import com.horstman.corejava.*;
 </code></pre>
 <p>并且源文件引用了Employee类，编译器将尝试寻找java.lang.Employee(因为总是会默认导入java.lang包)、java.util.Employee、com.horstman.corejava.Employee和当前包中的Employee，它会在类路径所有位置上搜索以上各个类。如果找到一个以上的类，就会产生编译时错误（因为完全限定类名必须是唯一的，所以import语句的次序并不重要）</p>
 <p>编译器的任务并不止这些，它还要查看源文件是否比类文件新，如果是的话，那么源文件就会自动地重新编译，在前面已经知道，只可以导入其他包中的公共类，一个源文件只能包含一个公共类，而且文件名必须与公共类名相匹配。因此，编译器很容易找到公共类的源文件。不过，还可以从当前包中导入非公共类，这些类有可能在与类名不同的源文件中定义。如果从当前包中导入一个类，那么编译器就要搜索当前包中的所有源文件，查看哪个源文件定义了这个类。</p>
-<h3 id="4-8-7-设置类路径"><a href="#4-8-7-设置类路径" class="headerlink" title="4.8.7 设置类路径"></a>4.8.7 设置类路径</h3><p>最好使用-classpath(或-cp,或Java 9中的 –class-path)选项指定类路径</p>
+<h3><span id="487-设置类路径">4.8.7 设置类路径</span></h3><p>最好使用-classpath(或-cp,或Java 9中的 –class-path)选项指定类路径</p>
 <pre><code class="language-shell">java -classpath /home/user/classdir:.:/home/user/archives/archive.jar MyProg
 </code></pre>
 <p>或</p>
@@ -3452,8 +3657,8 @@ import com.horstman.corejava.*;
 <p>[!CAUTION]</p>
 <p>在Java 9 中，还可以从<code>模块路径</code>加载类</p>
 </blockquote>
-<h2 id="4-9-JAR文件"><a href="#4-9-JAR文件" class="headerlink" title="4.9 JAR文件"></a>4.9 JAR文件</h2><p>在将应用程序打包时，你希望只向用户提供一个单独的文件，而不是一个包含大量类文件的目录结构，Java归档（JAR）文件就是为此目的而设计的，JAR文件既可以包含类文件，也可以包含诸如图像和声音等其他类型的文件，此外，JAR文件是压缩的，它使用了我们熟悉的ZIP压缩格式</p>
-<h3 id="4-9-1-创建JAR文件"><a href="#4-9-1-创建JAR文件" class="headerlink" title="4.9.1 创建JAR文件"></a>4.9.1 创建JAR文件</h3><p>可以使用jar工具制作JAR文件（在默认的JDK安装中，这个工具位于jdk&#x2F;bin目录下），创建一个新JAR文件最常用的命令使用以下语法</p>
+<h2><span id="49-jar文件">4.9 JAR文件</span></h2><p>在将应用程序打包时，你希望只向用户提供一个单独的文件，而不是一个包含大量类文件的目录结构，Java归档（JAR）文件就是为此目的而设计的，JAR文件既可以包含类文件，也可以包含诸如图像和声音等其他类型的文件，此外，JAR文件是压缩的，它使用了我们熟悉的ZIP压缩格式</p>
+<h3><span id="491-创建jar文件">4.9.1 创建JAR文件</span></h3><p>可以使用jar工具制作JAR文件（在默认的JDK安装中，这个工具位于jdk&#x2F;bin目录下），创建一个新JAR文件最常用的命令使用以下语法</p>
 <p><code>jar cvf jarFileName file1 file2 ...</code></p>
 <p>例如</p>
 <pre><code class="language-shell">jar cvf CalculatorClasses.jar *.class icon.gif
@@ -3462,7 +3667,7 @@ import com.horstman.corejava.*;
 <p>下表列出了jar程序的所有选项，它们类似于UNIX tar命令的选项</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715161715259.png" alt="image-20250715161715259"></p>
 <p>可以将应用程序和代码库打包在JAR文件中，例如，如果想在一个Java程序中发送邮件，可以使用打包在javax.mail.jar中的一个库</p>
-<h3 id="4-9-2-清单文件"><a href="#4-9-2-清单文件" class="headerlink" title="4.9.2 清单文件"></a>4.9.2 清单文件</h3><p>除了类文件、图像和其他资源外，每个JAR文件还包含一个清单文件（manifest），用于<em><strong>描述归档文件的特殊特性</strong></em></p>
+<h3><span id="492-清单文件">4.9.2 清单文件</span></h3><p>除了类文件、图像和其他资源外，每个JAR文件还包含一个清单文件（manifest），用于<em><strong>描述归档文件的特殊特性</strong></em></p>
 <p>清单文件被命名为<code>MANIFEST.MF</code>，它位于JAR文件的一个特殊的<code>META-INF</code>子目录中，合法的最小清单文件极其简单：<code>Manifest-Version: 1.0</code></p>
 <p>复杂的清单文件可能包含更多条目。这些清单条目被分组为多个节，<em><strong>第一节被称为<code>主节</code>，它作用于整个JAR文件</strong></em>，随后的条目可以指定命名实体的属性，如单个文件&#x2F;包&#x2F;URL，它们都必须以一个Name条目开始，节与节之间用空行分开</p>
 <img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715163856658.png" alt="image-20250715163856658" style="zoom:25%;">
@@ -3471,7 +3676,7 @@ import com.horstman.corejava.*;
 <p>例如，要创建一个包含清单文件的JAR文件，应该运行<code>jar cfm MyArchive.jar manifest.mf com/mycompany/mypkg/*.class</code></p>
 <p>要想更新一个已有的JAR文件的清单，则需要将增加的部分放置到一个文本文件中，然后执行命令 <code>jar ufm MyArchive.jar manifest-additions.mf</code></p>
 <p>想获取更多有关JAR文件和清单文件格式的信息可查阅 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/10/docs/specs/jar/jar.html">JAR File Specification</a></p>
-<h3 id="4-9-3-可执行JAR文件"><a href="#4-9-3-可执行JAR文件" class="headerlink" title="4.9.3 可执行JAR文件"></a>4.9.3 可执行JAR文件</h3><p>可以使用jar命令中的e选项指定程序的入口点，即通常调用java执行程序时指定的类：</p>
+<h3><span id="493-可执行jar文件">4.9.3 可执行JAR文件</span></h3><p>可以使用jar命令中的e选项指定程序的入口点，即通常调用java执行程序时指定的类：</p>
 <p><code>jar cvfe MyProgram.jar com.mycompany.mypkg.MainAppClass files to add</code></p>
 <p>或者可以在清单文件中指定程序的主类，包括以下形式的语句：</p>
 <p><code>Main-Class:com.mycompany.mypkg.MainAppClass</code></p>
@@ -3489,7 +3694,7 @@ import com.horstman.corejava.*;
 <li>在Mac OS X平台中，操作系统能够识别“.jar”扩展名文件，双击JAR文件就会执行Java程序</li>
 </ul>
 <p>JAR文件中的Java程序与原生应用仍有区别，可以使用第三方包装器工具将JAR文件转换成Windows可执行文件。包装器是一个Windows程序，有大家熟悉的扩展名.exe,它可以查找和加载java虚拟机（JVM），或者在没有找到JVM时告诉用户应该做些什么。有许多商业的和开源的产品，如<a target="_blank" rel="noopener" href="https://launch4j.sourceforge.net/">Launch4j - Cross-platform Java executable wrapper</a>和<a target="_blank" rel="noopener" href="https://izpack.org/">IzPack - Package once. Deploy everywhere.</a></p>
-<h3 id="4-9-4-多版本JAR文件"><a href="#4-9-4-多版本JAR文件" class="headerlink" title="4.9.4 多版本JAR文件"></a>4.9.4 多版本JAR文件</h3><p>随着模块和包强封装的引入，之前可以访问的一些内部API不再可用，这可能要求库提供商为不同java版本发布不同的代码，为此，Java 9引入了多版本JAR文件</p>
+<h3><span id="494-多版本jar文件">4.9.4 多版本JAR文件</span></h3><p>随着模块和包强封装的引入，之前可以访问的一些内部API不再可用，这可能要求库提供商为不同java版本发布不同的代码，为此，Java 9引入了多版本JAR文件</p>
 <p>为了保证向后兼容，特定于版本的类文件放在<code>META-INF/versions</code>目录中</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715175112607.png" alt="image-20250715175112607"></p>
 <p>假设Application类使用了CssParser类，那么遗留版本的Application.class文件可以使用com.sun.javafx.css.CssParser，而Java 9版本可以使用javafx.css.CssParser</p>
@@ -3507,7 +3712,7 @@ import com.horstman.corejava.*;
 <p><code>--release</code>标志也是Java 9 新增的，在较早的版本中使用<code>-source</code>,<code>-target</code>,<code>-bootclasspath</code>。JDK现在为之前的两个API版本提供了符号文件，在Java 9中，编译时可以将<code>--release</code>设置为9、8、7</p>
 <p>多版本JAR并不适用于不同版本的程序或库，对于不同的版本，所有类的公共API都应该是一样的，<em><strong>多版本JAR的唯一作用是使你的某个特定版本的程序或库能够使用多个不同的JDK版本</strong></em>。如果你增加了功能或改变了一个API，就应当提供一个新版本的JAR</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715180655587.png" alt="image-20250715180655587"></p>
-<h3 id="4-9-5-关于命令行选项的说明"><a href="#4-9-5-关于命令行选项的说明" class="headerlink" title="4.9.5 关于命令行选项的说明"></a>4.9.5 关于命令行选项的说明</h3><p>Java开发包（JDK）的命令行选项一直都使用单个短横线加多字母选项名的形式，但jar命令是个例外，这个命令遵循经典的tar命令选项格式，而没有短横线</p>
+<h3><span id="495-关于命令行选项的说明">4.9.5 关于命令行选项的说明</span></h3><p>Java开发包（JDK）的命令行选项一直都使用单个短横线加多字母选项名的形式，但jar命令是个例外，这个命令遵循经典的tar命令选项格式，而没有短横线</p>
 <pre><code class="language-shell">java -jar ...
 jar cvf ...
 </code></pre>
@@ -3542,8 +3747,8 @@ javac -pmoduledir ...
 <p>对于单字母选项，如果不组合，也是可以使用的</p>
 <pre><code>jar -c -v -f jarFileName file1 file2 ...
 </code></pre>
-<h2 id="4-10-文档注释"><a href="#4-10-文档注释" class="headerlink" title="4.10 文档注释"></a>4.10 文档注释</h2><p>JDK有一个很有用的工具javadoc，它可以由一个源文件生成一个HTML文档，第三章介绍的联机API文档其实就是通过对标准Java类库的源代码运行javadoc生成的</p>
-<h3 id="4-10-1-注释的插入"><a href="#4-10-1-注释的插入" class="headerlink" title="4.10.1 注释的插入"></a>4.10.1 注释的插入</h3><p>javadoc实用工具将从下面几项中抽取信息：</p>
+<h2><span id="410-文档注释">4.10 文档注释</span></h2><p>JDK有一个很有用的工具javadoc，它可以由一个源文件生成一个HTML文档，第三章介绍的联机API文档其实就是通过对标准Java类库的源代码运行javadoc生成的</p>
+<h3><span id="4101-注释的插入">4.10.1 注释的插入</span></h3><p>javadoc实用工具将从下面几项中抽取信息：</p>
 <ul>
 <li>模块</li>
 <li>包</li>
@@ -3555,7 +3760,7 @@ javac -pmoduledir ...
 <p><em><strong>自由格式文本的第一个句子应该是一个概要陈述</strong></em>，javadoc工具自动地将这些句子抽取出来生成概要页</p>
 <p>在自由格式文本中，可以使用HTML修饰符，如用于强调的<code>&lt;em&gt;...&lt;/em&gt;</code>、用于着重强调的<code>&lt;strong&gt;...&lt;/strong&gt;</code>、用于项目符号列表的<code>&lt;ul&gt;/&lt;li&gt;</code>以及包含图像的<code>&lt;img...&gt;</code>等，要键入等宽代码，需要使用<code>&#123;@code ...&#125;</code>而不是<code>&lt;code&gt;...&lt;/code&gt;</code>,这样就不用操心对代码中的<code>&lt;</code>字符转义了</p>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715183800616.png" alt="image-20250715183800616"></p>
-<h3 id="4-10-2-类注释"><a href="#4-10-2-类注释" class="headerlink" title="4.10.2 类注释"></a>4.10.2 类注释</h3><p>类注释必须放在import语句之后，class定义之前</p>
+<h3><span id="4102-类注释">4.10.2 类注释</span></h3><p>类注释必须放在import语句之后，class定义之前</p>
 <pre><code class="language-java">/**
  * A &#123;@code Card&#125; object represents a playing card,such
  * as &quot;Queen of Hearts&quot;.A card has a suit (Diamond, Heart, 
@@ -3568,7 +3773,7 @@ public class Card
 &#125;
 </code></pre>
 <p><img src="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/image-20250715184333639.png" alt="image-20250715184333639"></p>
-<h3 id="4-10-3-方法注释"><a href="#4-10-3-方法注释" class="headerlink" title="4.10.3 方法注释"></a>4.10.3 方法注释</h3><p>每个方法注释必须放在所描述的方法之前，除了通用标记以外，还可以使用标记</p>
+<h3><span id="4103-方法注释">4.10.3 方法注释</span></h3><p>每个方法注释必须放在所描述的方法之前，除了通用标记以外，还可以使用标记</p>
 <ul>
 <li><code>@param variable description</code></li>
 </ul>
@@ -3591,13 +3796,13 @@ public double raiseSalary(double byPercent)
 </code></pre>
 </li>
 </ul>
-<h3 id="4-10-4-字段注释"><a href="#4-10-4-字段注释" class="headerlink" title="4.10.4 字段注释"></a>4.10.4 字段注释</h3><p>只需要对公共字段（通常指的是静态常量）增加文档注释</p>
+<h3><span id="4104-字段注释">4.10.4 字段注释</span></h3><p>只需要对公共字段（通常指的是静态常量）增加文档注释</p>
 <pre><code class="language-java">/**
  * The &quot;Hearts&quot; card suit
  */
 public static final int HEARTS=1;
 </code></pre>
-<h3 id="4-10-5-通用注释"><a href="#4-10-5-通用注释" class="headerlink" title="4.10.5 通用注释"></a>4.10.5 通用注释</h3><p>标记<code>@since text</code>会创建一个“since”(始于)条目，text可以是对引入这个特性的版本的描述，如<code>@since 1.7.1</code></p>
+<h3><span id="4105-通用注释">4.10.5 通用注释</span></h3><p>标记<code>@since text</code>会创建一个“since”(始于)条目，text可以是对引入这个特性的版本的描述，如<code>@since 1.7.1</code></p>
 <p>类文档注释中可以使用下面的标记</p>
 <ul>
 <li><p><code>@author name</code></p>
@@ -3631,12 +3836,12 @@ public static final int HEARTS=1;
 <p>最后，在Java 9 中还可以使用<code>&#123;@index entry&#125;</code>标记为搜索框添加一个条目</p>
 </li>
 </ul>
-<h3 id="4-10-6-包注释"><a href="#4-10-6-包注释" class="headerlink" title="4.10.6 包注释"></a>4.10.6 包注释</h3><p>可以直接将类、方法、变量的注释放在源文件中，只要用<code>/** */</code>文档注释界定就可以，但是要想产生包注释，就<em><strong>需要在包目录中添加一个单独的文件</strong></em>，有如下两种选择：</p>
+<h3><span id="4106-包注释">4.10.6 包注释</span></h3><p>可以直接将类、方法、变量的注释放在源文件中，只要用<code>/** */</code>文档注释界定就可以，但是要想产生包注释，就<em><strong>需要在包目录中添加一个单独的文件</strong></em>，有如下两种选择：</p>
 <ol>
 <li>提供一个名为<code>package-info.java</code>的Java文件，这个文件必须包含一个初始的javadoc注释，以<code>/**</code>和<code>*/</code>界定，后面是一个package语句，它不能包含更多的代码和注释</li>
 <li>提供一个名为<code>package.html</code>的HTML文件，抽取标记<code>&lt;body&gt;...&lt;/body&gt;</code>之间的所有文本</li>
 </ol>
-<h3 id="4-10-7-注释提取"><a href="#4-10-7-注释提取" class="headerlink" title="4.10.7 注释提取"></a>4.10.7 注释提取</h3><p>假设你希望HTML文件位于名为docDirectory目录下，执行以下步骤：</p>
+<h3><span id="4107-注释提取">4.10.7 注释提取</span></h3><p>假设你希望HTML文件位于名为docDirectory目录下，执行以下步骤：</p>
 <ol>
 <li><p>切换到源文件目录，其中包含想要生成文档的源文件。如果有嵌套的包要生成文档，例如com.horstman.corejava,就必须切换到包含子目录com的目录（如果提供overview.html文件的话，这就是这个文件所在目录）</p>
 </li>
@@ -3659,13 +3864,13 @@ public static final int HEARTS=1;
 <p>如果使用<code>-linksource</code>选项，那么每个源文件将会转换为HTML文件（不对代码着色，但会显示行号），并且每个类和方法名将会变为指向源代码的超链接</p>
 <p>还可以为所有源文件提供一个概要注释，把它放在一个类似<code>overview.html</code>的文件中，运行javadoc工具，并提供命令行选项<code>-overview filename</code>，将抽取<code>&lt;body&gt;...&lt;/body&gt;</code>之间的所有文本，当用户从导航栏中选择“Overview”时就会显示这些内容</p>
 <p>有关其他选项，可查看<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/9/javadoc/javadoc.htm">Javadoc</a></p>
-<h2 id="4-11-类设计技巧"><a href="#4-11-类设计技巧" class="headerlink" title="4.11 类设计技巧"></a>4.11 类设计技巧</h2><ol>
-<li><h3 id="一定要保证数据私有"><a href="#一定要保证数据私有" class="headerlink" title="一定要保证数据私有"></a>一定要保证数据私有</h3><p>避免破坏<em><strong>封装性</strong></em></p>
+<h2><span id="411-类设计技巧">4.11 类设计技巧</span></h2><ol>
+<li><h3><span id="一定要保证数据私有">一定要保证数据私有</span></h3><p>避免破坏<em><strong>封装性</strong></em></p>
 <p>数据的表示形式很可能会改变，但它们的使用方式却不会经常变化。但数据保持私有时，表示形式的变化不会对类的使用者产生影响，而且也更容易检测bug</p>
 </li>
-<li><h3 id="一定要初始化数据"><a href="#一定要初始化数据" class="headerlink" title="一定要初始化数据"></a>一定要初始化数据</h3><p>Java不会为你初始化局部变量，但是会对对象的实例字段进行初始化，最好不要依赖系统的默认值，而是应该显式地初始化所有变量，可以提供默认值，也可以在所有构造器中设置默认值</p>
+<li><h3><span id="一定要初始化数据">一定要初始化数据</span></h3><p>Java不会为你初始化局部变量，但是会对对象的实例字段进行初始化，最好不要依赖系统的默认值，而是应该显式地初始化所有变量，可以提供默认值，也可以在所有构造器中设置默认值</p>
 </li>
-<li><h3 id="不要在类中使用过多的基本类型"><a href="#不要在类中使用过多的基本类型" class="headerlink" title="不要在类中使用过多的基本类型"></a>不要在类中使用过多的基本类型</h3><p>其想法是要用其他的类，而不是使用多个相关的基本类型。这样会使类更易于理解，也更易于修改。例如，可以用一个名为Address的新类替换一个Customer类中的以下实例字段</p>
+<li><h3><span id="不要在类中使用过多的基本类型">不要在类中使用过多的基本类型</span></h3><p>其想法是要用其他的类，而不是使用多个相关的基本类型。这样会使类更易于理解，也更易于修改。例如，可以用一个名为Address的新类替换一个Customer类中的以下实例字段</p>
 <pre><code class="language-java">private String street;
 private String city;
 private String state;
@@ -3673,9 +3878,9 @@ private int zip;
 </code></pre>
 <p>这样一来，可以很容易地处理地址的变化，例如，可能需要处理国际地址</p>
 </li>
-<li><h3 id="不是所有的字段都需要单独的字段访问器和更改器"><a href="#不是所有的字段都需要单独的字段访问器和更改器" class="headerlink" title="不是所有的字段都需要单独的字段访问器和更改器"></a>不是所有的字段都需要单独的字段访问器和更改器</h3><p>你可能需要获得或设置员工的工资，而一旦构造了员工对象，肯定不需要更改雇用日期，另外在对象中常常包含一些不希望别人获得或设置的实例字段，例如Address类中的州缩写数组</p>
+<li><h3><span id="不是所有的字段都需要单独的字段访问器和更改器">不是所有的字段都需要单独的字段访问器和更改器</span></h3><p>你可能需要获得或设置员工的工资，而一旦构造了员工对象，肯定不需要更改雇用日期，另外在对象中常常包含一些不希望别人获得或设置的实例字段，例如Address类中的州缩写数组</p>
 </li>
-<li><h3 id="分解有过多职责的类"><a href="#分解有过多职责的类" class="headerlink" title="分解有过多职责的类"></a>分解有过多职责的类</h3><p>如果明显地可以把一个复杂的类分解成两个概念上更为简单的类，就应该进行分解，但另一方面也不能走极端，如果设计十个类而每个类只有一个方法，那就有些矫枉过正了</p>
+<li><h3><span id="分解有过多职责的类">分解有过多职责的类</span></h3><p>如果明显地可以把一个复杂的类分解成两个概念上更为简单的类，就应该进行分解，但另一方面也不能走极端，如果设计十个类而每个类只有一个方法，那就有些矫枉过正了</p>
 <p>下面是一个反面的设计示例</p>
 <pre><code class="language-java">public class CardDeck
 &#123;
@@ -3712,16 +3917,16 @@ public class Card
 &#125;
 </code></pre>
 </li>
-<li><h3 id="类名和方法名要能够体现它们的职责"><a href="#类名和方法名要能够体现它们的职责" class="headerlink" title="类名和方法名要能够体现它们的职责"></a>类名和方法名要能够体现它们的职责</h3><p>变量应该有一个能够反映其含义的名字，类似地，类也应该如此（在标准类库中确实有一些含义不明确的例子，如Date类实际上是一个描述时间的类）</p>
+<li><h3><span id="类名和方法名要能够体现它们的职责">类名和方法名要能够体现它们的职责</span></h3><p>变量应该有一个能够反映其含义的名字，类似地，类也应该如此（在标准类库中确实有一些含义不明确的例子，如Date类实际上是一个描述时间的类）</p>
 <p>对此有一个很好的惯例：<em><strong>类名应该是一个名词，或者是前面有形容词修饰的名词，或者是有动名词修饰的名词。对于方法来说，要遵循标准惯例：访问器方法用小写get开头，更改器方法用小写的get开头</strong></em></p>
 </li>
-<li><h3 id="优先使用不可变的类"><a href="#优先使用不可变的类" class="headerlink" title="优先使用不可变的类"></a>优先使用不可变的类</h3><p>LocalDate类以及java.time包中的其他类是不可变的——没有方法能够修改对象的状态。类似plusDays的方法不会更改对象，而是会返回一个状态已修改的新对象。</p>
+<li><h3><span id="优先使用不可变的类">优先使用不可变的类</span></h3><p>LocalDate类以及java.time包中的其他类是不可变的——没有方法能够修改对象的状态。类似plusDays的方法不会更改对象，而是会返回一个状态已修改的新对象。</p>
 <p>如果多个线程试图同时更新一个对象，就会发生并发更改，其结果是不可预料的，如果类是不可变的，就可以安全地在多个线程间共享其对象。</p>
 <p>因此要尽可能让类是不可变的，对于表示值的类，如一个字符串或一个时间点这尤其容易，计算会生成新值而不是更新原来的值</p>
 <p>当然，<em><strong>并不是所有类都应当是不可变的</strong></em>，如果员工加薪时返回一个新的Employee对象，这会很奇怪</p>
 </li>
 </ol>
-<h1 id="第5章-继承"><a href="#第5章-继承" class="headerlink" title="第5章 继承"></a>第5章 继承</h1><h2 id="5-1-类、超类和子类"><a href="#5-1-类、超类和子类" class="headerlink" title="5.1 类、超类和子类"></a>5.1 类、超类和子类</h2>
+<h1><span id="第5章-继承">第5章 继承</span></h1><h2><span id="51-类-超类和子类">5.1 类、超类和子类</span></h2>
     </div>
     
     
