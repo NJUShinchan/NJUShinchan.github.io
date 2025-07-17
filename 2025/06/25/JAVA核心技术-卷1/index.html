@@ -3606,7 +3606,29 @@ public static final int HEARTS=1;
 <li><p><code>@version text</code></p>
 <p>这个标记将创建一个“version”条目，这里的text可以是对当前版本的任何描述</p>
 <p>通过<code>@see</code>和<code>@link</code>标记，可以使用超链接连接到javadoc文档的相关部分或者外部文档</p>
-<p>通过<code>@see reference</code>标记将在“see also（参见）”部分增加一个超链接，它可以用于类中也可以用于方法中</p>
+<p>通过<code>@see reference</code>标记将在“see also（参见）”部分增加一个超链接，它可以用于类中也可以用于方法中，这里的<code>reference</code>可以有以下选择</p>
+<pre><code>package.class#feature label
+&lt;a href=&quot;...&quot;&gt;label&lt;/a&gt;
+&quot;text&quot;
+</code></pre>
+<p>第一种情况是最有用的，只要提供类、方法或变量的名字，javadoc就在文档中插入一个超链接，例如</p>
+<pre><code>@see com.horstman.corejava.Employee#raiseSalary(double)
+</code></pre>
+<p>会建立一个超链接，链接到com.horstman.corejava.Employee类的raiseSalary（double）方法，可以省略包名甚至连类名一起省去，这样一来这会位于当前包或当前类</p>
+<p>需要注意，<em><strong>一定要使用<code>#</code></strong></em>，而不要使用句号（<code>.</code>）分隔类名与方法名（或类名与变量名）。Java编译器自身可以熟练地确定句点在分隔包、子包、类、内部类以及方法和变量时的不同含义。但是javadoc工具就没有那么聪明了，因此必须对它提供帮助。</p>
+<p>如果<code>@see</code>标记后面有个<code>&lt;</code>字符，就需要指定一个超链接，可以超链接到任何URL</p>
+<pre><code>@see &lt;a href=&quot;www.horstman.com/corejava.html&quot;&gt;The Core Java home page&lt;/a&gt;
+</code></pre>
+<p>在上述各种情况下都可以指定一个可选的标签<code>label</code>，这会显示为链接锚。如果省略了标签，则用户看到的锚就是目标代码名或者是URL</p>
+<p>如果<code>@see</code>标记后面有一个<code>&quot;&quot;</code>字符，文本就会显示在”see also”部分</p>
+<pre><code>@see &quot;Core Java 2 volume 2&quot;
+</code></pre>
+<p>可以为一个特性添加多个<code>@see</code>标记，但必须将它们放在一起。</p>
+<p>如果愿意，可以在任何文档注释中放置指向其他类或方法的超链接，可以在注释中的任何位置插入一个形式如下的特殊标记</p>
+<pre><code>&#123;@link package.class#feature label&#125;
+</code></pre>
+<p>这里的特性描述规则与<code>@see</code>一致</p>
+<p>最后，在Java 9 中还可以使用<code>&#123;@index entry&#125;</code>标记为搜索框添加一个条目</p>
 </li>
 </ul>
 <h3 id="4-10-6-包注释"><a href="#4-10-6-包注释" class="headerlink" title="4.10.6 包注释"></a>4.10.6 包注释</h3><p>可以直接将类、方法、变量的注释放在源文件中，只要用<code>/** */</code>文档注释界定就可以，但是要想产生包注释，就<em><strong>需要在包目录中添加一个单独的文件</strong></em>，有如下两种选择：</p>
@@ -3614,7 +3636,30 @@ public static final int HEARTS=1;
 <li>提供一个名为<code>package-info.java</code>的Java文件，这个文件必须包含一个初始的javadoc注释，以<code>/**</code>和<code>*/</code>界定，后面是一个package语句，它不能包含更多的代码和注释</li>
 <li>提供一个名为<code>package.html</code>的HTML文件，抽取标记<code>&lt;body&gt;...&lt;/body&gt;</code>之间的所有文本</li>
 </ol>
-<h3 id="4-10-7-注释提取"><a href="#4-10-7-注释提取" class="headerlink" title="4.10.7 注释提取"></a>4.10.7 注释提取</h3><h2 id="4-11-类设计技巧"><a href="#4-11-类设计技巧" class="headerlink" title="4.11 类设计技巧"></a>4.11 类设计技巧</h2><ol>
+<h3 id="4-10-7-注释提取"><a href="#4-10-7-注释提取" class="headerlink" title="4.10.7 注释提取"></a>4.10.7 注释提取</h3><p>假设你希望HTML文件位于名为docDirectory目录下，执行以下步骤：</p>
+<ol>
+<li><p>切换到源文件目录，其中包含想要生成文档的源文件。如果有嵌套的包要生成文档，例如com.horstman.corejava,就必须切换到包含子目录com的目录（如果提供overview.html文件的话，这就是这个文件所在目录）</p>
+</li>
+<li><p>如果是一个包，应该运行命令</p>
+<pre><code class="language-shell">javadoc -d docDirectory nameOfPackage
+</code></pre>
+<p>或者如果要为多个包生成文档，运行</p>
+<pre><code class="language-shell">javadoc -d docDirectory nameOfPackage1 nameOfPackage2
+</code></pre>
+<p>如果你的文件在无名包中，则应该运行</p>
+<pre><code class="language-shell">javadoc -d docDirectory *.java
+</code></pre>
+<p>如果省略了<code>-d docDirectory</code>选项，HTML文件就会提取到当前目录下，这样就很可能会混乱，故不提倡</p>
+</li>
+</ol>
+<p>可以使用很多命令行选项对javadoc程序进行微调，例如可以使用<code>-author</code>和<code>-verison</code>选项在文档中包含<code>@author</code>和<code>@verison</code>标记（默认情况下这些标记会被省略）。另一个很有用的选项是<code>-link</code>，用来为标准类添加超链接，例如，如果使用命令</p>
+<pre><code class="language-shell">javadoc -link http://docs.oracle.com/javase/9/docs/api *.java
+</code></pre>
+<p>那么所有的标准类库的类都会自动地链接到Oracle网站的文档</p>
+<p>如果使用<code>-linksource</code>选项，那么每个源文件将会转换为HTML文件（不对代码着色，但会显示行号），并且每个类和方法名将会变为指向源代码的超链接</p>
+<p>还可以为所有源文件提供一个概要注释，把它放在一个类似<code>overview.html</code>的文件中，运行javadoc工具，并提供命令行选项<code>-overview filename</code>，将抽取<code>&lt;body&gt;...&lt;/body&gt;</code>之间的所有文本，当用户从导航栏中选择“Overview”时就会显示这些内容</p>
+<p>有关其他选项，可查看<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/9/javadoc/javadoc.htm">Javadoc</a></p>
+<h2 id="4-11-类设计技巧"><a href="#4-11-类设计技巧" class="headerlink" title="4.11 类设计技巧"></a>4.11 类设计技巧</h2><ol>
 <li><h3 id="一定要保证数据私有"><a href="#一定要保证数据私有" class="headerlink" title="一定要保证数据私有"></a>一定要保证数据私有</h3><p>避免破坏<em><strong>封装性</strong></em></p>
 <p>数据的表示形式很可能会改变，但它们的使用方式却不会经常变化。但数据保持私有时，表示形式的变化不会对类的使用者产生影响，而且也更容易检测bug</p>
 </li>
@@ -3676,7 +3721,7 @@ public class Card
 <p>当然，<em><strong>并不是所有类都应当是不可变的</strong></em>，如果员工加薪时返回一个新的Employee对象，这会很奇怪</p>
 </li>
 </ol>
-
+<h1 id="第5章-继承"><a href="#第5章-继承" class="headerlink" title="第5章 继承"></a>第5章 继承</h1><h2 id="5-1-类、超类和子类"><a href="#5-1-类、超类和子类" class="headerlink" title="5.1 类、超类和子类"></a>5.1 类、超类和子类</h2>
     </div>
     
     
