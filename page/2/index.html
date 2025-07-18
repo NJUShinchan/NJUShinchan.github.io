@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Tags: Bug | NJUShinchan&#39;s Nest</title>
+    <title>NJUShinchan&#39;s Nest</title>
     <meta name="author" content="Yonghong Lin" />
     <meta name="description" content="And let your spirit dance with the world’s endless possibilities." />
     <meta name="keywords" content="" />
@@ -46,6 +46,8 @@
 
 
 
+
+<script src="/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -155,106 +157,118 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/images/background.jpg"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>NJUShinchan&#39;s Nest</h1>
+                <h3>Let the past be the past</h3>
+                <h5>And let your spirit dance with the world’s endless possibilities.</h5>
+            </div>
+        </span>
+    </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
         
+
+<div class="post">
+    <a href="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/">
+        <h2 class="post-title">JAVA核心技术 卷1</h2>
+    </a>
+    <div class="category-and-date">
         
-        
-        <span>
-            <a href="/tags/resources/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/categories/book/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                资源
+                书
             </a>
         </span>
         
-        
-        
-        <span>
-            <a href="/tags/cpp/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C++
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/java/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                JAVA
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/bug/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Bug
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/tags/embedded-development/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                嵌入式开发
-            </a>
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/6/25
         </span>
         
         
     </div>
-    
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2025/7/9</div>
-            <a href="/2025/07/09/DNS%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">
-                <h3>DNS缓存问题</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/solutions/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        常见问题
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/bug/" style="color: #ffa2c4">
-                            Bug
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>作者：Cay S.Horstmann</p>
+<p>介绍了JAVA语言的基本概念以及用户界面程序设计的基础知识</p>
+<p>Learn <a target="_blank" rel="noopener" href="https://horstmann.com/corejava/">Java 核心技术</a></p>
+            
         </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/java/" style="color: #03a9f4">JAVA</a>
+        </span>
+        
+    </div>
+    <a href="/2025/06/25/JAVA%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF-%E5%8D%B71/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    
+    <a class="page-num" href="/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">2</span>
+    
+    
+    
+    
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">Yonghong Lin</div>
+        <div class="description">
+            <p>A Tech Newbie</p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
     </div>
     
 </div>
